@@ -57,7 +57,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Batch
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Batch(FacebookSession session)
+		public Batch(IFacebookSession session)
 			: base(session)
 		{
 		}

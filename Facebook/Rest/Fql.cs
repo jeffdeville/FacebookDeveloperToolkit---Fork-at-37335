@@ -40,7 +40,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Fql
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Fql(FacebookSession session)
+		public Fql(IFacebookSession session)
 			: base(session)
 		{
 		}

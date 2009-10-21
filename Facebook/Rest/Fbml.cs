@@ -20,7 +20,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Fbml
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Fbml(FacebookSession session)
+        public Fbml(IFacebookSession session)
             : base(session)
         {
         }

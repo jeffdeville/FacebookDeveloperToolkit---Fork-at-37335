@@ -13,7 +13,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Represents object responsible for facebook REST calls.
     /// </summary>
-    public class RestBase : Facebook.Rest.IRestBase
+    public class RestBase : IRestBase
     {
         #region Private Members
         private static Dictionary<string, Enums.FileType> _mimeTypes = new Dictionary<string, Enums.FileType> {
@@ -59,7 +59,7 @@ namespace Facebook.Rest
         /// <summary>
         /// Gets the FacebookSession object.
         /// </summary>
-        public FacebookSession Session { get; internal set; }
+        public IFacebookSession Session { get; set; }
 
         #endregion Protected Properties
 
@@ -67,14 +67,18 @@ namespace Facebook.Rest
 
         #region Constructor
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="session">Session object</param>
-        public RestBase(FacebookSession session)
-        {
-            Session = session;
-        }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="session">Session object</param>
+		public RestBase(IFacebookSession session)
+		{
+			Session = session;
+		}
+
+		public RestBase(){}
+
+
 
         #endregion Constructor
 

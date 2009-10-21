@@ -11,7 +11,7 @@ namespace Facebook.Session
     /// <summary>
     /// Base class for session object
     /// </summary>
-    public abstract class FacebookSession
+    public abstract class FacebookSession : IFacebookSession
     {
         const string _promptPermissionsUrl = "http://www.facebook.com/connect/prompt_permissions.php?api_key={0}&v=1.0&next={1}&display=popup&ext_perm={2}&enable_profile_selector=1&profile_selector_ids={3}";
         const string _promptPermissionsNextUrl = "http://www.facebook.com/connect/login_success.html?xxRESULTTOKENxx";
@@ -94,7 +94,7 @@ namespace Facebook.Session
         /// <summary>
         /// Secret key that needs to be used to encrypt requests
         /// </summary>
-        internal virtual string Secret
+        public virtual string Secret
         {
             get
             {
@@ -157,7 +157,7 @@ namespace Facebook.Session
                 List<Enums.ExtendedPermissions> permissionsToApprove = new List<Enums.ExtendedPermissions>();
                 string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(RequiredPermissions), this.UserId); ;
 
-                var fql = new Api(this).Fql;
+                var fql = new Api().Initialize(this).Fql;
 
                 var permission = fql.Query<permissions_response>(query);
 

@@ -52,7 +52,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Photo
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Photos(FacebookSession session)
+        public Photos(IFacebookSession session)
             : base(session)
         {
         }

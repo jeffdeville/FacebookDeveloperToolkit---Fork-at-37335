@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Auth API methods.
     /// </summary>
-    public class Auth : RestBase, Facebook.Rest.IAuth
+    public class Auth : RestBase, IAuth
     {
         #region Methods
 
@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Auth
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Auth(FacebookSession session)
+        public Auth(IFacebookSession session)
             : base(session)
         {
         }

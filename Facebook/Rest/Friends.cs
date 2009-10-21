@@ -27,7 +27,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <param name="users"></param>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Friends(IUsers users, FacebookSession session)
+        public Friends(IUsers users, IFacebookSession session)
             : base(session)
         {
             _users = users;

@@ -21,7 +21,7 @@ namespace Facebook.Web
     [ToolboxData("<{0}:CanvasFBMLLoginControl runat=server></{0}:CanvasFBMLLoginControl>")]
     public class CanvasIFrameLoginControl : WebControl
     {
-        private readonly Api _api = new Api(new IFrameCanvasSession(null, null));
+		private readonly IFacebookApi _api = new Api().Initialize(new IFrameCanvasSession(null, null));
         private bool _requireLogin = false;
 
         /// <summary> 
@@ -63,7 +63,7 @@ namespace Facebook.Web
         /// <summary> 
         /// instance of the api that can be used to make rest calls
         /// </summary>
-        public Api Api
+		public IFacebookApi Api
         {
             get { return _api; }
         }

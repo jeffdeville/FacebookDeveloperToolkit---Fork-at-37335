@@ -4,7 +4,7 @@ namespace Facebook.Winforms.Components
 	interface IFacebookService
 	{
 		Facebook.Rest.IAdmin Admin { get; }
-		Facebook.Rest.IApi Api { get; }
+		Facebook.Rest.IFacebookApi Api { get; }
 		Facebook.Rest.IApplication Application { get; }
 		string ApplicationKey { get; set; }
 		Facebook.Rest.IBatch Batch { get; }

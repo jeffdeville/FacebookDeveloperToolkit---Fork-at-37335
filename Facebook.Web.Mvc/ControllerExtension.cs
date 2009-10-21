@@ -11,15 +11,20 @@ namespace Facebook.Web.Mvc
 {
     public static class ControllerExtension
     {
-        public static Api GetApi(this Controller controller, string apiKey, string secret)
+        public static IFacebookApi GetApi(this Controller controller, string apiKey, string secret)
         {
             FBMLCanvasSession session = new FBMLCanvasSession(apiKey ?? WebConfigurationManager.AppSettings["ApiKey"], secret ?? WebConfigurationManager.AppSettings["Secret"]);
-            return new Api(session);
+			return new Api().Initialize(session);
         }
-        public static Api GetApi(this Controller controller)
+		public static IFacebookApi GetApi(this Controller controller)
         {
             FBMLCanvasSession session = new FBMLCanvasSession(WebConfigurationManager.AppSettings["ApiKey"], WebConfigurationManager.AppSettings["Secret"]);
-            return new Api(session);
+			return new Api().Initialize(session);
         }
+		public static CanvasSession GetFacebookSession(this Controller controller)
+		{
+			return controller.HttpContext.Items["facebook-session"] as CanvasSession;
+		}
+
     }
 }

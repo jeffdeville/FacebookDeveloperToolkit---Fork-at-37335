@@ -1,4 +1,6 @@
 ﻿using System;
+using Facebook.Session;
+
 namespace Facebook.Rest
 {
 	public interface IRestBase
@@ -19,7 +21,7 @@ namespace Facebook.Rest
 		void SendRequestAsync<TObject, TResult>(System.Collections.Generic.Dictionary<string, string> parameterList, FacebookCallCompleted<TResult> callback, object state, string propertyName);
 		void SendRequestAsync<TObject, TResult>(System.Collections.Generic.Dictionary<string, string> parameterList, bool useSession, FacebookCallCompleted<TResult> callback, object state);
 		void SendRequestAsync<TObject, TResult>(System.Collections.Generic.Dictionary<string, string> parameterList, bool useSession, FacebookCallCompleted<TResult> callback, object state, string propertyName);
-		Facebook.Session.FacebookSession Session { get; }
+		IFacebookSession Session { get; }
 		void UploadFile(System.Collections.Generic.IDictionary<string, string> parameters, byte[] data, string contentType, Facebook.Utility.AsyncResult ar);
 		void UploadFile(System.Collections.Generic.IDictionary<string, string> parameters, byte[] data, string contentType, Uri uploadUrl, Facebook.Utility.AsyncResult ar);
 		void UploadVideoFile(System.Collections.Generic.IDictionary<string, string> parameters, byte[] data, string contentType, Facebook.Utility.AsyncResult ar);

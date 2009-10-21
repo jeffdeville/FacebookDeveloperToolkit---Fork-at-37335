@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Notifications
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Notifications(FacebookSession session)
+        public Notifications(IFacebookSession session)
             : base(session)
         {
         }

@@ -62,7 +62,7 @@ namespace Facebook.Rest
         /// Public constructor for Facebook.ExampleObject
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Admin(FacebookSession session)
+        public Admin(IFacebookSession session)
             : base(session)
         {
         }

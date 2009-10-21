@@ -16,10 +16,14 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SccProjectName>%24/FacebookToolkit/DEV/Source/Facebook</SccProjectName>
-    <SccLocalPath>.</SccLocalPath>
-    <SccAuxPath>https://tfs03.codeplex.com</SccAuxPath>
-    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -144,7 +148,7 @@
     <Compile Include="Rest\Application.cs" />
     <Compile Include="Rest\Auth.cs" />
     <Compile Include="Rest\IAdmin.cs" />
-    <Compile Include="Rest\IApi.cs" />
+    <Compile Include="Rest\IFacebookApi.cs" />
     <Compile Include="Rest\IApplication.cs" />
     <Compile Include="Rest\IAuth.cs" />
     <Compile Include="Rest\IBatch.cs" />
@@ -224,6 +228,7 @@
     <Compile Include="Schema\Enums.cs" />
     <Compile Include="Rest\Users.cs" />
     <Compile Include="Session\FBMLCanvasSession.cs" />
+    <Compile Include="Session\IFacebookSession.cs" />
     <Compile Include="Session\IFrameCanvasSession.cs" />
     <Compile Include="Utility\AsyncResult.cs" />
     <Compile Include="Utility\HashHelper.cs" />
@@ -289,11 +294,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Json\" />
-    <Folder Include="Properties\DataSources\" />
-    <Folder Include="Session\Popup\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -309,6 +309,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Json\" />
+    <Folder Include="Properties\DataSources\" />
+    <Folder Include="Session\Popup\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

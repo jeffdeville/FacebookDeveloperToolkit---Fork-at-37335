@@ -19,7 +19,7 @@ namespace Facebook.Winforms.Components
     [ToolboxItem(true), ToolboxBitmap(typeof (FacebookService)), Designer(typeof (FacebookServiceDesigner))]
     public partial class FacebookService : Component, Facebook.Winforms.Components.IFacebookService
     {
-        private readonly IApi api;
+        private readonly IFacebookApi api;
 
         #region Accessors
 
@@ -233,7 +233,7 @@ namespace Facebook.Winforms.Components
         /// <summary>
         /// The underlying API client object to use to communicate with Facebook.
         /// </summary>
-        public IApi Api
+        public IFacebookApi Api
         {
             get { return api; }
 	        
@@ -322,7 +322,7 @@ namespace Facebook.Winforms.Components
         /// </summary>
         public FacebookService()
         {
-            api = new Api(new DesktopSession(null, null, null));
+            api = new Api().Initialize(new DesktopSession(null, null, null));
             InitializeComponent();
         }
 
@@ -333,8 +333,8 @@ namespace Facebook.Winforms.Components
         public FacebookService(IContainer container)
         {
             if (container != null) container.Add(this);
-            
-            api = new Api(new DesktopSession(null, null, null));
+
+			api = new Api().Initialize(new DesktopSession(null, null, null));
             InitializeComponent();
         }
 

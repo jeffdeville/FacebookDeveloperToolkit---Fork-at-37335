@@ -70,7 +70,7 @@ namespace Facebook.BindingHelper
 
         #region Members
 
-        Api _fbApi;
+        IFacebookApi _fbApi;
         FacebookSession _session;
 
         #endregion
@@ -98,7 +98,7 @@ namespace Facebook.BindingHelper
         /// <summary>
         /// Facebook api object
         /// </summary>
-        public Api Api
+		public IFacebookApi Api
         {
             get
             {
@@ -289,7 +289,7 @@ namespace Facebook.BindingHelper
         private BindingManager(FacebookSession session)
         {
             _session = session;
-            _fbApi = new Api(session);
+			_fbApi = new Api().Initialize(session);
             _cache = new FacebookDataCache();
             Initialize();
         }

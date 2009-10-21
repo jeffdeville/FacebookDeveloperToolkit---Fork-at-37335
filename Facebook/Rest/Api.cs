@@ -8,7 +8,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Provides various methods to utilize the Facebook Platform API.
     /// </summary>
-    public class Api : RestBase, Facebook.Rest.IApi
+    public class Api : RestBase, IFacebookApi
     {
         #region Public Properties
 
@@ -192,52 +192,59 @@ namespace Facebook.Rest
 
         #region Constructor
 
-        /// <summary>
-        /// Facebook API Instance
-        /// </summary>
-        /// <param name="session"></param>
-        public Api(FacebookSession session) : base(session)
-        {
-            AuthToken = string.Empty;
+		///// <summary>
+		///// Facebook API Instance
+		///// </summary>
+		///// <param name="session"></param>
+		//public Api(FacebookSession session) : base(session)
+		//{
+		//    Initialize(session);
+		//}
+		
+		public Api(){}
+
+		public IFacebookApi Initialize(FacebookSession session)
+		{
+			AuthToken = string.Empty;
 
 #if !SILVERLIGHT
-            InstalledCulture = CultureInfo.InstalledUICulture;
+			InstalledCulture = CultureInfo.InstalledUICulture;
 #else
             InstalledCulture = CultureInfo.CurrentUICulture;
 #endif
 
-            Session = session;
+			Session = session;
 
-            Auth = new Auth(Session);
-            Video = new Video(Session);
-            Marketplace = new Marketplace(Session);
-            Admin = new Admin(Session);
-            Photos = new Photos(Session);
-            Users = new Users(Session);
-            Friends = new Friends(Users, Session);
-            Events = new Events(Session);
-            Groups = new Groups(Session);
-            Notifications = new Notifications(Session);
-            Profile = new Profile(Session);
-            Fbml = new Fbml(Session);
-            Feed = new Feed(Session);
-            Fql = new Fql(Session);
-            LiveMessage = new LiveMessage(Session);
-            Message = new Message(Session);
-            Batch = new Batch(Session);
-            Pages = new Pages(Session);
-            Application = new Application(Session);
-            Data = new Data(Session);
-            Permissions = new Permissions(Session);
-            Connect = new Connect(Session);
-            Comments = new Comments(Session);
-            Stream = new Stream(Session);
-            Status = new Status(Session);
-            Links = new Links(Session);
-            Notes = new Notes(Session);
-            Intl = new Intl(Session);
+			Auth = new Auth(Session);
+			Video = new Video(Session);
+			Marketplace = new Marketplace(Session);
+			Admin = new Admin(Session);
+			Photos = new Photos(Session);
+			Users = new Users(Session);
+			Friends = new Friends(Users, Session);
+			Events = new Events(Session);
+			Groups = new Groups(Session);
+			Notifications = new Notifications(Session);
+			Profile = new Profile(Session);
+			Fbml = new Fbml(Session);
+			Feed = new Feed(Session);
+			Fql = new Fql(Session);
+			LiveMessage = new LiveMessage(Session);
+			Message = new Message(Session);
+			Batch = new Batch(Session);
+			Pages = new Pages(Session);
+			Application = new Application(Session);
+			Data = new Data(Session);
+			Permissions = new Permissions(Session);
+			Connect = new Connect(Session);
+			Comments = new Comments(Session);
+			Stream = new Stream(Session);
+			Status = new Status(Session);
+			Links = new Links(Session);
+			Notes = new Notes(Session);
+			Intl = new Intl(Session);
 
-			Batch.Batch = Batch; 
+			Batch.Batch = Batch;
 			Permissions.Permissions = Permissions;
 			Batch.Permissions = Permissions;
 			Permissions.Batch = Batch;
@@ -249,7 +256,9 @@ namespace Facebook.Rest
 				restBase.Batch = Batch;
 				restBase.Permissions = Permissions;
 			}
-        }
+
+			return this;
+		}
 
         #endregion Constructor
 

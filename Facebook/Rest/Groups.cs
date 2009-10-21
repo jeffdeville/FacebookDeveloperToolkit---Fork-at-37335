@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Groups
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Groups(FacebookSession session)
+        public Groups(IFacebookSession session)
             : base(session)
         {
         }

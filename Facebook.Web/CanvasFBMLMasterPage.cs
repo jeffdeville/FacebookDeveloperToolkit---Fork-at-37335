@@ -16,7 +16,7 @@ namespace Facebook.Web
     /// </summary>
     public class CanvasFBMLMasterPage : MasterPage
 	{
-		private readonly Api _api = new Api(new FBMLCanvasSession(null, null));
+		private readonly IFacebookApi _api = new Api().Initialize(new FBMLCanvasSession(null, null));
 	    private bool _requireLogin = false;
 
         /// <summary> 
@@ -79,7 +79,7 @@ namespace Facebook.Web
         /// <summary> 
         /// instance of the api that can be used to make rest calls
         /// </summary>
-        public Api Api
+		public IFacebookApi Api
 		{
 			get { return _api; }
 		}

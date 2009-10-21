@@ -20,7 +20,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Marketplace
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Marketplace(FacebookSession session)
+        public Marketplace(IFacebookSession session)
             : base(session)
         {
         }

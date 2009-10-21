@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Web", "Facebook.Web\Facebook.Web.csproj", "{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook", "Facebook\Facebook.csproj", "{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Winforms", "Facebook.Winforms\Facebook.Winforms.csproj", "{8F4B9954-1BA5-4664-BBCE-B79519FEE120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Web.Mvc", "Facebook.Web.Mvc\Facebook.Web.Mvc.csproj", "{E801B3B0-C2D8-4336-A512-BCFBDC97465E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Facebook.Web\\Facebook.Web.csproj
+		SccProjectName1 = Facebook.web
+		SccLocalPath1 = Facebook.web
+		SccProjectUniqueName2 = Facebook\\Facebook.csproj
+		SccProjectName2 = Facebook
+		SccLocalPath2 = Facebook
+		SccProjectUniqueName3 = Facebook.Winforms\\Facebook.Winforms.csproj
+		SccProjectName3 = Facebook.Winforms
+		SccLocalPath3 = Facebook.Winforms
+		SccProjectUniqueName4 = Facebook.Web.Mvc\\Facebook.Web.Mvc.csproj
+		SccProjectName4 = Facebook.Web.Mvc
+		SccLocalPath4 = Facebook.Web.Mvc
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Release|.NET.ActiveCfg = Release|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7D03AD84-8A25-4A07-ADD2-B3AFFBEFCFB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Release|.NET.ActiveCfg = Release|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Release|.NET.ActiveCfg = Release|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8F4B9954-1BA5-4664-BBCE-B79519FEE120}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Release|.NET.ActiveCfg = Release|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E801B3B0-C2D8-4336-A512-BCFBDC97465E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
