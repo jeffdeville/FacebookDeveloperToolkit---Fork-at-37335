@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <ConnectionProperties>
+        <ConnectString />
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>b51b8e94-bb10-4a1a-8e3a-9913d17336ce</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>1in</BottomMargin>
+  <RightMargin>1in</RightMargin>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ReportItems>
+      <Chart Name="chart1">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+          <Position>RightCenter</Position>
+        </Legend>
+        <Subtype>Plain</Subtype>
+        <Title />
+        <Height>3in</Height>
+        <CategoryAxis>
+          <Axis>
+            <Title />
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Visible>true</Visible>
+          </Axis>
+        </CategoryAxis>
+        <PointWidth>0</PointWidth>
+        <Left>1.25in</Left>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <DataSetName>Facebook_User</DataSetName>
+        <Top>0.75in</Top>
+        <PlotArea>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <BackgroundColor>LightGrey</BackgroundColor>
+          </Style>
+        </PlotArea>
+        <ValueAxis>
+          <Axis>
+            <Title />
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <Type>Column</Type>
+        <Width>3in</Width>
+        <CategoryGroupings>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="chart1_CategoryGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!PoliticalView.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!PoliticalView.Value</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+        </CategoryGroupings>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Count(Fields!PoliticalView.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Marker />
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+      </Chart>
+    </ReportItems>
+    <Height>4.375in</Height>
+  </Body>
+  <rd:ReportID>a4cf7a4e-6869-4f47-9d0b-60974c4c528b</rd:ReportID>
+  <LeftMargin>1in</LeftMargin>
+  <DataSets>
+    <DataSet Name="Facebook_User">
+      <rd:DataSetInfo>
+        <rd:DataSetName>Facebook</rd:DataSetName>
+        <rd:ObjectDataSourceType>Facebook.User, Facebook, Version=1.0.2642.35388, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>User</rd:TableName>
+      </rd:DataSetInfo>
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText />
+        <DataSourceName>DummyDataSource</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="AboutMe">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AboutMe</DataField>
+        </Field>
+        <Field Name="Activities">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Activities</DataField>
+        </Field>
+        <Field Name="Birthday">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>Birthday</DataField>
+        </Field>
+        <Field Name="Books">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Books</DataField>
+        </Field>
+        <Field Name="CurrentLocation">
+          <rd:TypeName>Facebook.Location</rd:TypeName>
+          <DataField>CurrentLocation</DataField>
+        </Field>
+        <Field Name="FirstName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>FirstName</DataField>
+        </Field>
+        <Field Name="HometownLocation">
+          <rd:TypeName>Facebook.Location</rd:TypeName>
+          <DataField>HometownLocation</DataField>
+        </Field>
+        <Field Name="Interests">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Interests</DataField>
+        </Field>
+        <Field Name="LastName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LastName</DataField>
+        </Field>
+        <Field Name="Movies">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Movies</DataField>
+        </Field>
+        <Field Name="Music">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Music</DataField>
+        </Field>
+        <Field Name="Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="NotesCount">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>NotesCount</DataField>
+        </Field>
+        <Field Name="Picture">
+          <rd:TypeName>System.Drawing.Image</rd:TypeName>
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="PictureBytes">
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+          <DataField>PictureBytes</DataField>
+        </Field>
+        <Field Name="PoliticalView">
+          <rd:TypeName>Facebook.PoliticalView</rd:TypeName>
+          <DataField>PoliticalView</DataField>
+        </Field>
+        <Field Name="Quotes">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Quotes</DataField>
+        </Field>
+        <Field Name="RelationshipStatus">
+          <rd:TypeName>Facebook.RelationshipStatus</rd:TypeName>
+          <DataField>RelationshipStatus</DataField>
+        </Field>
+        <Field Name="Religion">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Religion</DataField>
+        </Field>
+        <Field Name="SchoolHistory">
+          <rd:TypeName>Facebook.SchoolHistory</rd:TypeName>
+          <DataField>SchoolHistory</DataField>
+        </Field>
+        <Field Name="Sex">
+          <rd:TypeName>Facebook.Gender</rd:TypeName>
+          <DataField>Sex</DataField>
+        </Field>
+        <Field Name="SignificantOtherId">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SignificantOtherId</DataField>
+        </Field>
+        <Field Name="TVShows">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>TVShows</DataField>
+        </Field>
+        <Field Name="UserId">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>UserId</DataField>
+        </Field>
+        <Field Name="WallCount">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>WallCount</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Width>6.5in</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

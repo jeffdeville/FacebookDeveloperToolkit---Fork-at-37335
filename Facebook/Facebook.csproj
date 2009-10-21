@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Facebook</RootNamespace>
+    <AssemblyName>Facebook</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>%24/FacebookToolkit/DEV/Source/Facebook</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>https://tfs03.codeplex.com</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Facebook.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Facebook.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindingHelper\ActivityComment.cs" />
+    <Compile Include="BindingHelper\ActivityCommentCollection.cs" />
+    <Compile Include="BindingHelper\ActivityPost.cs" />
+    <Compile Include="BindingHelper\ActivityPostAttachment.cs" />
+    <Compile Include="BindingHelper\ActivityPostCollection.cs" />
+    <Compile Include="BindingHelper\DataCollectionErrorEventArgs.cs" />
+    <Compile Include="BindingHelper\DataRetrievalCompletedEventArgs.cs" />
+    <Compile Include="BindingHelper\FacebookContact.cs" />
+    <Compile Include="BindingHelper\FacebookDataCache.cs" />
+    <Compile Include="BindingHelper\FacebookDataCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookHashTable.cs" />
+    <Compile Include="BindingHelper\FacebookImage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookNotificationInfo.cs" />
+    <Compile Include="BindingHelper\FacebookPhoto.cs" />
+    <Compile Include="BindingHelper\FacebookPhotoAlbum.cs" />
+    <Compile Include="BindingHelper\FacebookPhotoAlbumCollection.cs" />
+    <Compile Include="BindingHelper\FacebookPhotoCollection.cs" />
+    <Compile Include="BindingHelper\FacebookPhotoTagCollection.cs" />
+    <Compile Include="BindingHelper\FacebookProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookProfileCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\BindingManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\GetImageSourceCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\SearchResultsCollection.cs" />
+    <Compile Include="BindingHelper\UpdatableCollection.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Forms\FacebookAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FacebookAuthentication.designer.cs">
+      <DependentUpon>FacebookAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rest\Admin.cs" />
+    <Compile Include="Rest\Api.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rest\Application.cs" />
+    <Compile Include="Rest\Auth.cs" />
+    <Compile Include="Rest\IAdmin.cs" />
+    <Compile Include="Rest\IApi.cs" />
+    <Compile Include="Rest\IApplication.cs" />
+    <Compile Include="Rest\IAuth.cs" />
+    <Compile Include="Rest\IBatch.cs" />
+    <Compile Include="Rest\IComments.cs" />
+    <Compile Include="Rest\IConnect.cs" />
+    <Compile Include="Rest\IData.cs" />
+    <Compile Include="Rest\IEvents.cs" />
+    <Compile Include="Rest\IFbml.cs" />
+    <Compile Include="Rest\IFeed.cs" />
+    <Compile Include="Rest\IFql.cs" />
+    <Compile Include="Rest\IFriends.cs" />
+    <Compile Include="Rest\IGroups.cs" />
+    <Compile Include="Rest\IIntl.cs" />
+    <Compile Include="Rest\ILinks.cs" />
+    <Compile Include="Rest\ILiveMessage.cs" />
+    <Compile Include="Rest\IMarketplace.cs" />
+    <Compile Include="Rest\IMessage.cs" />
+    <Compile Include="Rest\INotes.cs" />
+    <Compile Include="Rest\INotifications.cs" />
+    <Compile Include="Rest\Intl.cs" />
+    <Compile Include="Rest\IPages.cs" />
+    <Compile Include="Rest\IPermissions.cs" />
+    <Compile Include="Rest\IPhotos.cs" />
+    <Compile Include="Rest\IProfile.cs" />
+    <Compile Include="Rest\IRestBase.cs" />
+    <Compile Include="Rest\IStatus.cs" />
+    <Compile Include="Rest\IStream.cs" />
+    <Compile Include="Rest\IUsers.cs" />
+    <Compile Include="Rest\IVideo.cs" />
+    <Compile Include="Rest\Message.cs" />
+    <Compile Include="Rest\RestBase.cs" />
+    <Compile Include="Rest\Batch.cs" />
+    <Compile Include="Rest\Connect.cs" />
+    <Compile Include="Rest\Comments.cs" />
+    <Compile Include="Rest\Video.cs" />
+    <Compile Include="Rest\Stream.cs" />
+    <Compile Include="Rest\Status.cs" />
+    <Compile Include="Rest\Notes.cs" />
+    <Compile Include="Rest\Links.cs" />
+    <Compile Include="Rest\LiveMessage.cs" />
+    <Compile Include="Rest\Data.cs" />
+    <Compile Include="Rest\Fbml.cs" />
+    <Compile Include="Rest\Feed.cs" />
+    <Compile Include="Rest\Fql.cs" />
+    <Compile Include="Rest\Groups.cs" />
+    <Compile Include="Rest\Marketplace.cs" />
+    <Compile Include="Rest\Pages.cs" />
+    <Compile Include="Rest\Permissions.cs" />
+    <Compile Include="Rest\Profile.cs" />
+    <Compile Include="Rest\Events.cs" />
+    <Compile Include="Rest\Friends.cs" />
+    <Compile Include="Rest\Notifications.cs" />
+    <Compile Include="Rest\Photos.cs" />
+    <Compile Include="Schema\Xsd2CodeSource.cs" />
+    <Compile Include="Schema\Xsd2CodeSourceExtension.cs" />
+    <Compile Include="Session\BrowserSession.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Session\CachedSession.cs" />
+    <Compile Include="Session\CanvasSession.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Session\ConnectSession.cs" />
+    <Compile Include="Session\DesktopPopup\FacebookWinformBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\DesktopPopup\FacebookWinformBrowser.designer.cs">
+      <DependentUpon>FacebookWinformBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Session\DesktopPopup\FacebookWPFBrowser.xaml.cs">
+      <DependentUpon>FacebookWPFBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Session\DesktopSession.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Session\FacebookSession.cs" />
+    <Compile Include="Schema\Enums.cs" />
+    <Compile Include="Rest\Users.cs" />
+    <Compile Include="Session\FBMLCanvasSession.cs" />
+    <Compile Include="Session\IFrameCanvasSession.cs" />
+    <Compile Include="Utility\AsyncResult.cs" />
+    <Compile Include="Utility\HashHelper.cs" />
+    <Compile Include="Utility\FacebookObject.cs" />
+    <Compile Include="Utility\FacebookStreamData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\FacebookStreamPost.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\JSONHelper.cs" />
+    <Compile Include="Utility\FacebookException.cs" />
+    <Compile Include="Utility\ImageHelper.cs" />
+    <Compile Include="Utility\EnumHelper.cs" />
+    <Compile Include="Utility\MD5.cs" />
+    <Compile Include="Utility\StringHelper.cs" />
+    <Compile Include="Utility\DateHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\TypeHelper.cs" />
+    <Compile Include="Utility\Utilities.cs" />
+    <Compile Include="Utility\WebClientHelper.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapPage.htm" />
+    <None Include="Resources\MissingPicture.jpg" />
+    <None Include="Schema\facebook.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\FacebookAuthentication.resx">
+      <DependentUpon>FacebookAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Facebook.bmp" />
+    <EmbeddedResource Include="Session\DesktopPopup\FacebookWinformBrowser.resx">
+      <DependentUpon>FacebookWinformBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\s_default.jpg" />
+    <Content Include="Resources\s_default1.jpg" />
+    <Content Include="Schema\generationInstructions.txt" />
+    <Content Include="Schema\schemaChanges.txt" />
+    <Content Include="Schema\sourceChanges.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Session\DesktopPopup\FacebookWPFBrowser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Json\" />
+    <Folder Include="Properties\DataSources\" />
+    <Folder Include="Session\Popup\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

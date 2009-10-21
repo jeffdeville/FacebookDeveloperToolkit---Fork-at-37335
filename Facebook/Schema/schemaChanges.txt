@@ -1,0 +1,69 @@
+Note: Bugs have been filed with Facebook for all of the following issues. A task has also been filed on Codeplex to keep track of this issue on our end. You can
+find links to all of the Facebook bug tracker bugs related to this issue on that task: http://facebooktoolkit.codeplex.com/WorkItem/View.aspx?WorkItemId=13733
+
+1. Change   
+<xsd:element name="stream_addComment_response" type="xsd:long" />
+to
+<xsd:element name="stream_addComment_response" type="xsd:string" />
+
+2. Change   
+  <xsd:element name="fbml_registerCustomTags_response" type="xsd:boolean" />
+to
+  <xsd:element name="fbml_registerCustomTags_response" type="xsd:long" />
+
+3. In stream_filter, change
+  <xsd:element name="value" type="xsd:long" />
+to
+  <xsd:element name="value" type="xsd:long" nillable="true" />
+
+4. In users_getStandardInfo_repsonse, change
+  <xsd:element name="user" type="user" minOccurs="0" maxOccurs="unbounded" />
+to
+  <xsd:element name="standard_user_info" type="user" minOccurs="0" maxOccurs="unbounded" />
+  
+5. Change
+  <xsd:element name="profile_getInfo_response">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="user_info" type="user_info" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+      <xsd:attribute name="list" type="xsd:boolean" />
+    </xsd:complexType>
+  </xsd:element>
+to
+  <xsd:element name="profile_getInfo_response" type="user_info" />
+  
+6. Change
+  <xsd:element name="profile_getInfoOptions_response" type="xsd:boolean" />
+to
+  <xsd:element name="profile_getInfoOptions_response">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="info_item" type="info_item" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+7. Change comment_id from xsd:int to xsd:string
+
+8. Change the definition of stream_post as follows:
+  * remove <xsd:element name="view" type="xsd:string" />
+  * Add the attribute nillable="true" to <xsd:element name="app_id" type="xsd:long" /> and <xsd:element name="target_id" type="uid" />
+  
+9. Change the definition of feed_publishUserAction_response to
+  <xsd:element name="feed_publishUserAction_response">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="feed_publishUserAction_response_elt" type="xsd:boolean" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+10. Change the definition for privacy in stream_post to:
+  <xsd:element name="privacy">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="value" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>

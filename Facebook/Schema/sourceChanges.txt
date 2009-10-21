@@ -1,0 +1,40 @@
+﻿1. change @event to facebookevent
+2.  Add these using statements
+    using System.Xml;
+    using System.Xml.Linq;
+2. In fql_result, update to look like.  public partial class fql_result
+	{
+
+		private string nameField;
+
+		private XElement fql_result_setField;
+
+		public string name
+		{
+			get
+			{
+				return this.nameField;
+			}
+			set
+			{
+				this.nameField = value;
+			}
+		}
+
+		[XmlAnyElement]
+		public XElement fql_result_set
+		{
+			get
+			{
+				return this.fql_result_setField;
+			}
+			set
+			{
+				this.fql_result_setField = value;
+			}
+		}
+
+	}
+3. For any property that has an associated "Specified" property, change the property and its underlying private data member to be nullable.
+   For example, user has a uid property (long) and a uidSpecified property. In this case, you would change the type of uid and uidField both to long?.
+   Note that you can probably ignore this for the list property that shows up on many classes, since it shouldn't be used anywhere.

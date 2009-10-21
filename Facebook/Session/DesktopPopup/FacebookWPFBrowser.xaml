@@ -1,0 +1,8 @@
+﻿<Window x:Class="Facebook.Session.DesktopPopup.FacebookWPFBrowser"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" Height="600" Width="800">
+    <Grid>
+         <WebBrowser x:Name="webBrowser" Navigated="webBrowser_Navigated" />
+    </Grid>
+</Window>

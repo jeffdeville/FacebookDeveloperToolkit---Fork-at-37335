@@ -1,0 +1,10 @@
+﻿To update the schema classes, follow the following steps:
+
+Prerequisites: Xsd2Code
+
+1. Download the newest facebook.xsd from http://api.facebook.com/1.0/facebook.xsd
+2. Make the changes to facebook.xsd described in schemaChages.txt
+3. Run Xsd2Code on facebook.xsd. Make sure that the namespace is set to Facebook.Schema, the name of the output file is Xsd2CodeSource.cs, and that XML attributes are turned on.
+   If running from the command prompt, the command should look something like this:
+   > Xsd2Code.exe facebook.xsd Facebook.Schema /o Xsd2CodeSource.cs /xa   
+4. Make the changes to Xsd2CodeSource described in sourceChanges.txt
