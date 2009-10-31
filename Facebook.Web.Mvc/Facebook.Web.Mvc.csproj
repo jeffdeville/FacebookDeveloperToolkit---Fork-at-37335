@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E801B3B0-C2D8-4336-A512-BCFBDC97465E}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -69,7 +69,10 @@
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\shared\lib\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -82,6 +85,7 @@
   <ItemGroup>
     <Compile Include="ControllerExtension.cs" />
     <Compile Include="FacebookAuthorizationAttribute.cs" />
+    <Compile Include="HandleFacebookSessionTimeoutAttribute.cs" />
     <Compile Include="IFacebookController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
