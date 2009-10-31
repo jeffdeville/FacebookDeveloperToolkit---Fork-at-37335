@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text;
 using System.Web;
+using System.Security.Cryptography;
 
 namespace Facebook.Session
 {
@@ -61,12 +63,69 @@ namespace Facebook.Session
         ///<returns></returns>
         public bool IsConnected()
         {
-            return (SessionKey != null && UserId != -1);
+			if (!AllCookiesExist(HttpContext.Current.Request.Cookies))
+				return false;
+			return ResponseWasNotTamperedWith(HttpContext.Current.Request.Cookies);
         }
 
-        #endregion Public Methods
+		#endregion Public Methods
 
         #region Private Methods
+		internal const string USER = "user";
+		internal const string SESSION_KEY = "session_key";
+		internal const string SS = "ss";
+		internal const string EXPIRES = "expires";		
+		private const string SECRET_SESSION_KEY = "";
+
+		internal string GetUnencodedValueHash(HttpCookieCollection cookies)
+		{
+			var expiresCookie = cookies[GetCookieName(EXPIRES)];
+			var expires = expiresCookie == null ? "" : expiresCookie.Value;
+			var sessionKeyCookie = cookies[GetCookieName(SESSION_KEY)];
+			var sessionKey = sessionKeyCookie == null ? "" : sessionKeyCookie.Value;
+			var ssCookie = cookies[GetCookieName(SS)];
+			var ss = ssCookie == null ? "" : ssCookie.Value;
+			var userCookie = cookies[GetCookieName(USER)];
+			var user = userCookie == null ? "" : userCookie.Value;
+
+
+			return string.Format("{0}={1}", EXPIRES, expires)
+				   + string.Format("{0}={1}", SESSION_KEY, sessionKey)
+				   + string.Format("{0}={1}", SS, ss)
+				   + string.Format("{0}={1}", USER, user)
+				   + ApplicationSecret;
+		}
+
+		private string GetCookieName(string cookieName)
+		{
+			if (string.IsNullOrEmpty(cookieName))
+				return ApplicationKey;
+			return string.Format("{0}_{1}", ApplicationKey, cookieName);
+		}
+
+		private bool AllCookiesExist(HttpCookieCollection cookies)
+		{
+			if (cookies == null || cookies.Count == 0)
+				return false;
+			if (cookies[GetCookieName(EXPIRES)] == null)
+				return false;
+			if (cookies[GetCookieName(SESSION_KEY)] == null)
+				return false;
+			if (cookies[GetCookieName(SS)] == null)
+				return false;
+			if (cookies[GetCookieName(SECRET_SESSION_KEY)] == null)
+				return false;
+			if (cookies[GetCookieName(USER)] == null)
+				return false;
+
+			return true;
+		}
+
+		public bool ResponseWasNotTamperedWith(HttpCookieCollection cookies)
+		{
+			string computedHashKey = ComputeHash(GetUnencodedValueHash(cookies));
+			return cookies[GetCookieName(SECRET_SESSION_KEY)].Value == computedHashKey;
+		}
 
         private void PopulateConnectCookieInformation()
         {
@@ -88,6 +147,41 @@ namespace Facebook.Session
             long.TryParse(GetCookie("user"), out userID);
             return userID;
         }
+		#region ComputeHash
+
+		/// <summary>
+		/// Computes an MD5 Hash from the given clear text string.
+		/// </summary>
+		/// <param name="clearTextString">Clear text string used to compute the hash.</param>
+		/// <returns>Returns an MD5 computed hash.</returns>
+		/// <remarks>Uses <see cref="Encoding.UTF8">UTF-8</see> encoding by default.</remarks>
+		public static string ComputeHash(string clearTextString)
+		{
+			return ComputeHash(clearTextString, Encoding.UTF8);
+		}
+
+
+		/// <summary>
+		/// Computes an MD5 Hash from the given clear text string.
+		/// </summary>
+		/// <param name="clearTextString">Clear text string used to compute the hash.</param>
+		/// <param name="encoding">Encoding to be used.</param>
+		/// <returns>Returns an MD5 computed hash.</returns>
+		public static string ComputeHash(string clearTextString, Encoding encoding)
+		{
+			var result = new StringBuilder(32);
+			var inputBytes = encoding.GetBytes(clearTextString);
+			var md5 = new MD5CryptoServiceProvider();
+			var sum = md5.ComputeHash(inputBytes);
+			foreach (var b in sum)
+			{
+				result.Append(b.ToString("x2"));
+			}
+			return result.ToString();
+		}
+
+
+		#endregion
 
         #endregion Private Methods
     }

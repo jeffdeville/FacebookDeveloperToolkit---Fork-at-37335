@@ -38,40 +38,19 @@ namespace Facebook.Web.Mvc
             else
                 session = new IFrameCanvasSession(ApiKey ?? WebConfigurationManager.AppSettings["ApiKey"], Secret ?? WebConfigurationManager.AppSettings["Secret"], ParsePermissions(RequiredPermissions));
 
-			// - This is the original, that I'm holding on to until I know the above has no side effects.
-			//if (IsFbml)
-			//{
-			//    if (!string.IsNullOrEmpty(RequiredPermissions))
-			//    {
-			//        session = new FBMLCanvasSession(ApiKey ?? WebConfigurationManager.AppSettings["ApiKey"], Secret ?? WebConfigurationManager.AppSettings["Secret"], ParsePermissions(RequiredPermissions));
-			//    }
-			//    else
-			//    {
-			//        session = new FBMLCanvasSession(ApiKey ?? WebConfigurationManager.AppSettings["ApiKey"], Secret ?? WebConfigurationManager.AppSettings["Secret"]);
-			//    }
-			//}
-			//else
-			//{
-			//    if (!string.IsNullOrEmpty(RequiredPermissions))
-			//    {
-			//        session = new IFrameCanvasSession(ApiKey ?? WebConfigurationManager.AppSettings["ApiKey"], Secret ?? WebConfigurationManager.AppSettings["Secret"], ParsePermissions(RequiredPermissions));
-			//    }
-			//    else
-			//    {
-			//        session = new IFrameCanvasSession(ApiKey ?? WebConfigurationManager.AppSettings["ApiKey"], Secret ?? WebConfigurationManager.AppSettings["Secret"]);
-			//    }
-			//}
-            if (string.IsNullOrEmpty(session.SessionKey))
-                c.Result = new ContentResult { Content = session.GetRedirect() };
-            else
+			if (string.IsNullOrEmpty(session.SessionKey))
             {
-                var permissionsString = session.CheckPermissions();
-                if (!string.IsNullOrEmpty(permissionsString))
-                {
-                    c.Result = new ContentResult { Content = session.GetPermissionsRedirect(session.GetPermissionUrl(permissionsString, session.GetNextUrl())) };
-                }
+            	c.Result = new ContentResult { Content = session.GetRedirect() };
+            	return;
             }
-			/// 
+        	
+			var permissionsString = session.CheckPermissions();
+        	if (!string.IsNullOrEmpty(permissionsString))
+        	{
+        		c.Result = new ContentResult { Content = session.GetPermissionsRedirect(session.GetPermissionUrl(permissionsString, session.GetNextUrl())) };
+        		return;
+        	}
+        	/// 
 			/// If this is an instance of IFacebookController, then initialize the API
 			/// object if it has been newed up.
 			/// 
