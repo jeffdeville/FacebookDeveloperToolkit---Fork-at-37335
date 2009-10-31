@@ -10,24 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Web.Mvc", "Facebook.Web.Mvc\Facebook.Web.Mvc.csproj", "{E801B3B0-C2D8-4336-A512-BCFBDC97465E}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs03.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Facebook.Web\\Facebook.Web.csproj
-		SccProjectName1 = Facebook.web
-		SccLocalPath1 = Facebook.web
-		SccProjectUniqueName2 = Facebook\\Facebook.csproj
-		SccProjectName2 = Facebook
-		SccLocalPath2 = Facebook
-		SccProjectUniqueName3 = Facebook.Winforms\\Facebook.Winforms.csproj
-		SccProjectName3 = Facebook.Winforms
-		SccLocalPath3 = Facebook.Winforms
-		SccProjectUniqueName4 = Facebook.Web.Mvc\\Facebook.Web.Mvc.csproj
-		SccProjectName4 = Facebook.Web.Mvc
-		SccLocalPath4 = Facebook.Web.Mvc
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
