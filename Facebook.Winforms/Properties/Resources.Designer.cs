@@ -150,7 +150,7 @@ namespace Facebook.Winforms.Properties {
         ///        }
         ///    &lt;/style&gt;
         ///    
-        ///    &lt; [rest of string was truncated]&quot;;.
+        ///    &lt;title&gt;Untitled Pa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MapPage {
             get {

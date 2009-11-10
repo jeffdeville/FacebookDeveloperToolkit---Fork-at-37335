@@ -77,6 +77,12 @@ namespace Facebook.BindingHelper
                     Application.Current.Dispatcher.BeginInvoke(action);
                 }
             }
+            /* - This code still did not exist in the 38617 release
+			else
+            {
+                action();
+            }
+			*/
 #else
             if (Deployment.Current.Dispatcher.CheckAccess())
             {
