@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,6 +52,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MvcContrib, Version=1.5.996.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\code\lib\MVCContrib\MvcContrib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -73,12 +77,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerExtension.cs" />
-    <Compile Include="FacebookAuthorizationAttribute.cs" />
-	<Compile Include="HandleFacebookSessionTimeoutAttribute.cs" />
+    <Compile Include="FacebookAttribute.cs" />
+    <Compile Include="FacebookController.cs" />
+    <Compile Include="FacebookPageType.cs" />
+    <Compile Include="HandleFacebookSessionTimeoutAttribute.cs" />
     <Compile Include="IFacebookController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\code\gifter.common\gifter.common.csproj">
+      <Project>{95E9A655-B6A8-4901-9FF0-980CFB9A4A5B}</Project>
+      <Name>gifter.common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Facebook\Facebook.csproj">
       <Project>{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}</Project>
       <Name>Facebook</Name>

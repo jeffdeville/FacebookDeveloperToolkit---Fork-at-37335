@@ -146,7 +146,7 @@ namespace Facebook.Session
                     long.Parse(inProfileTab ? HttpContext.Current.Request[QueryParameters.ProfileUser] : HttpContext.Current.Request[QueryParameters.User]),
                     DateHelper.ConvertUnixTimeToDateTime(long.Parse(HttpContext.Current.Request[QueryParameters.Expires])));
             }
-            else if (cachedSessionInfo != null && (HttpContext.Current.Request.HttpMethod == "POST" || !string.IsNullOrEmpty(authToken))) // only use cached info if user hasn't removed the app
+            else if (cachedSessionInfo != null)// && (HttpContext.Current.Request.HttpMethod == "POST" || !string.IsNullOrEmpty(authToken))) // only use cached info if user hasn't removed the app
             {
                 SetSessionProperties(cachedSessionInfo.SessionKey, cachedSessionInfo.UserId, cachedSessionInfo.ExpiryTime);
             }
