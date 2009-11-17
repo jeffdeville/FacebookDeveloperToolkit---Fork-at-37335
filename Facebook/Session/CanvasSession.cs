@@ -21,29 +21,6 @@ namespace Facebook.Session
 		public const string ProfileSessionKey = "fb_sig_profile_session_key";
 		public const string ProfileUser = "fb_sig_profile_user";
 		public const string Expires = "fb_sig_expires";
-		//static QueryParameters()
-		//{
-		//    var appKey = WebConfigurationManager.AppSettings["ApiKey"];
-		//    AuthToken = "auth_token";
-		//    InCanvas = appKey + "_in_canvas";
-		//    InIframe = appKey + "_in_iframe";
-		//    InProfileTab = appKey + "_in_profile_tab";
-		//    SessionKey = appKey + "_session_key";
-		//    User = appKey + "_user";
-		//    ProfileSessionKey = appKey + "_profile_session_key";
-		//    ProfileUser = appKey + "_profile_user";
-		//    Expires = appKey + "_expires";
-		//}
-
-		//public static readonly string AuthToken;
-		//public static readonly string InCanvas;
-		//public static readonly string InIframe;
-		//public static readonly string InProfileTab;
-		//public static readonly string SessionKey;
-		//public static readonly string User;
-		//public static readonly string ProfileSessionKey;
-		//public static readonly string ProfileUser;
-		//public static readonly string Expires;
 	}
 
 	internal class CachedSessionInfo

@@ -166,7 +166,7 @@ namespace Facebook.BindingHelper
                 {
                     if (_posts == null)
                     {
-                        _posts = BindingManager.Instance.GetStream(new List<string>() { this.uid.Value.ToString() }, null, null, Stream_PerUserLimit, null);
+                        _posts = BindingManager.Instance.GetStream(new List<long>() { this.uid.Value }, null, null, Stream_PerUserLimit, null);
                     }
                 }
                 return _posts;

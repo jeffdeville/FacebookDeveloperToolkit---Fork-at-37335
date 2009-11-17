@@ -51,7 +51,7 @@ namespace Facebook.Tests.Asynchronous
 		[Asynchronous]
 		public void getTest2()
 		{
-			_api.Stream.GetAsync(0, new List<string>() { "665621453", "630947564" }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, Get2Completed, null);
+			_api.Stream.GetAsync(0, new List<long>() { 665621453, 630947564 }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, Get2Completed, null);
 			
 		}
 
@@ -102,7 +102,7 @@ namespace Facebook.Tests.Asynchronous
 		[Asynchronous]
 		public void addCommentTest()
 		{
-			_api.Stream.GetAsync(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForAddCommentCompleted, null);
+			_api.Stream.GetAsync(0, new List<long>() { Constants.FBSamples_UserId }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForAddCommentCompleted, null);
 		}
 
 		private void GetForAddCommentCompleted(stream_data stream, object state, FacebookException e)
@@ -124,7 +124,7 @@ namespace Facebook.Tests.Asynchronous
 		[Asynchronous]
 		public void addLikeTest()
 		{
-			_api.Stream.GetAsync(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForLikeCompleted, null);
+			_api.Stream.GetAsync(0, new List<long>() { Constants.FBSamples_UserId}, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForLikeCompleted, null);
 			
 		}
 
@@ -147,7 +147,7 @@ namespace Facebook.Tests.Asynchronous
 		[Asynchronous]
 		public void getCommentsTest()
 		{
-			_api.Stream.GetAsync(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForGetCommentsCompleted, null);
+			_api.Stream.GetAsync(0, new List<long>() { Constants.FBSamples_UserId }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null, GetForGetCommentsCompleted, null);
 		}
 
 		private void GetForGetCommentsCompleted(stream_data stream, object state, FacebookException e)

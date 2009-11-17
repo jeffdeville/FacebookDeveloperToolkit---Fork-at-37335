@@ -204,7 +204,7 @@ namespace Facebook.Session
         /// </summary>
         /// <param name="permissions"></param>
         /// <returns>This method returns a string of permissions.</returns>
-        private string PermissionsToString(List<Enums.ExtendedPermissions> permissions)
+        protected string PermissionsToString(List<Enums.ExtendedPermissions> permissions)
         {
             StringBuilder sb = new StringBuilder();
 
