@@ -1,4 +1,4 @@
-namespace Facebook.Winforms.Forms
+﻿namespace Facebook.Winforms.Forms
 {
     partial class RequestSelection
     {
