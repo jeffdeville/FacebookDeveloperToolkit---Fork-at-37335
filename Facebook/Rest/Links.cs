@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Links API methods.
 	/// </summary>
-	public class Links : RestBase, Facebook.Rest.ILinks
+	public class Links : RestBase, ILinks
 	{
 		#region Methods
 

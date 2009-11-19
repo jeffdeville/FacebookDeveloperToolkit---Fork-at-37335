@@ -1,4 +1,4 @@
-namespace Facebook.Session.DesktopPopup
+﻿namespace Facebook.Session.DesktopPopup
 {
     partial class FacebookWinformBrowser
     {

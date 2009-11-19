@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Facebook.Rest;
 #if !SILVERLIGHT
@@ -130,10 +130,6 @@ namespace Facebook.Session
             {
                 this.UserId = long.Parse(sessionProperties["uid"]);
             }
-            if (RequiredPermissions != null && RequiredPermissions.Count > 0)
-            {
-                PromptPermissions();
-            }
             OnLoggedIn(null);
 
         }
@@ -153,44 +149,14 @@ namespace Facebook.Session
         /// <returns>This method returns the Facebook Login URL.</returns>
         public string GetLoginUrl()
         {
-            return String.Format(_loginUrl, ApplicationKey);
-        }
+            string loginUrl = String.Format(_loginUrl, ApplicationKey);
 
-        private void PromptPermissions()
-        {
-            var permissionsString = CheckPermissions();
-            if(!string.IsNullOrEmpty(permissionsString))
+            if (RequiredPermissions != null)
             {
-                if (_isWPF)
-                {
-                    var formLogin = new FacebookWPFBrowser(GetPermissionUrl(permissionsString));
-                    formLogin.Title = "Facebook: Approve Permissions";
-                    formLogin.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    formLogin.Width = 626;
-                    formLogin.Height = 431;
-                    formLogin.WindowStyle = System.Windows.WindowStyle.ToolWindow;
-                    bool? dialogResult = formLogin.ShowDialog();
-                    if (!dialogResult.HasValue || !dialogResult.Value)
-                    {
-                        OnLoggedIn(new FacebookException("Permission Prompt failed"));
-                    }
-                }
-                else
-                {
-                    DialogResult result;
-                    using (var formLogin = new FacebookWinformBrowser(GetPermissionUrl(permissionsString)))
-                    {
-                        result = formLogin.ShowDialog();
-                        if (result != DialogResult.OK)
-                        {
-                            OnLoggedIn(new FacebookException("Permission Prompt failed"));
-                        }
-                    }
-
-                }
+                loginUrl += "&req_perms=" + PermissionsToString(RequiredPermissions);
             }
+            return loginUrl;
         }
-
 
         #endregion
 

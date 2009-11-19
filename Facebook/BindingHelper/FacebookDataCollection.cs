@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Windows;
 using System.Collections.Generic;
@@ -76,6 +76,10 @@ namespace Facebook.BindingHelper
                 {
                     Application.Current.Dispatcher.BeginInvoke(action);
                 }
+            }
+            else
+            {
+                action();
             }
 #else
             if (Deployment.Current.Dispatcher.CheckAccess())

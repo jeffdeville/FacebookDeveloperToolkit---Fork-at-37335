@@ -1,4 +1,4 @@
-namespace Facebook.Winforms
+﻿namespace Facebook.Winforms
 {
     /// <summary> 
     /// Control that displays a photo album

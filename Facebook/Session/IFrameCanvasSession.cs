@@ -94,6 +94,9 @@ namespace Facebook.Session
                            "top.location.href = \"" + url + @"&v=1.0" + "\";\n" +
                            "else self.location.href = \"" + url + @"&v=1.0" + "\";\n" +
                            "</script>");
+			/// There's looks like
+			/// "top.location.href = \"" + url + "\";\n" +
+            /// "else self.location.href = \"" + url + "\";\n" +
         }
 
 		internal override void CacheSession()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Facebook.Schema;
 using Facebook.Session;
@@ -114,7 +114,7 @@ namespace Facebook.Rest
         /// <param name="endTime">The latest DateTime for which to retrieve posts from the stream. The end_time uses the updated_time field in the stream (FQL) table as the baseline for determining the latest time for which to get the stream.</param>
         /// <param name="limit">The total number of posts to return. (Default value is 30 posts.)</param>
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
-		public stream_data Get(List<string> sourceIds, DateTime? startTime, DateTime? endTime, int? limit)
+		public stream_data Get(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit)
 		{
 			return Get(Session.UserId, sourceIds, startTime, endTime, limit, string.Empty);
 		}
@@ -135,7 +135,7 @@ namespace Facebook.Rest
         /// <param name="limit">The total number of posts to return. (Default value is 30 posts.)</param>
         /// <param name="filter_key">A filter associated with the user. Filters get returned by stream.getFilters or the stream_filter FQL table. To filter for stream posts from your application, look for a filter with a filter_key set to app_YOUR_APPLICATION_ID.</param>
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
-        public stream_data Get(long viewerId, List<string> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key)
+        public stream_data Get(long viewerId, List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key)
 		{
             return Get(viewerId, sourceIds, startTime, endTime, limit, filter_key, false, null, null);
 		}
@@ -378,7 +378,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
-        public void GetAsync(List<string> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, GetCallback callback, Object state)
+        public void GetAsync(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, GetCallback callback, Object state)
 		{
 			GetAsync(Session.UserId, sourceIds, startTime, endTime, limit, string.Empty, callback, state);
 		}
@@ -409,7 +409,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
-        public void GetAsync(long viewerId, List<string> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key, GetCallback callback, Object state)
+        public void GetAsync(long viewerId, List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key, GetCallback callback, Object state)
 		{
 			Get(viewerId, sourceIds, startTime, endTime, limit, filter_key, true, callback, state);
 		}
@@ -881,7 +881,7 @@ namespace Facebook.Rest
 			return response == null ? true : response.TypedValue;
 		}
 
-        private stream_data Get(long viewer_id, List<string> source_ids, DateTime? start_time, DateTime? end_time, int? limit, string filter_key, bool isAsync, GetCallback callback, Object state)
+        private stream_data Get(long viewer_id, List<long> source_ids, DateTime? start_time, DateTime? end_time, int? limit, string filter_key, bool isAsync, GetCallback callback, Object state)
 		{
 			var parameterList = new Dictionary<string, string> { { "method", "facebook.stream.get" } };
 			Utilities.AddOptionalParameter(parameterList, "viewer_id", viewer_id);

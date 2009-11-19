@@ -1,4 +1,4 @@
-namespace Facebook.Winforms.Components
+﻿namespace Facebook.Winforms.Components
 {
     partial class FacebookService
     {

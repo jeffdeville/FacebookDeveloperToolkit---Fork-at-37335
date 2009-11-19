@@ -10,8 +10,6 @@ using Facebook.Session;
 using System.Web.Configuration;
 using Facebook.Schema;
 using Facebook.Rest;
-using gifter.common;
-using MvcContrib;
 
 namespace Facebook.Web.Mvc
 {

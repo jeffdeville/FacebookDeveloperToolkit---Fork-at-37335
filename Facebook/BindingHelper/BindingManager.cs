@@ -248,7 +248,7 @@ namespace Facebook.BindingHelper
         /// <summary>
         /// UserID about currently logged in user
         /// </summary>
-        internal long CurrentUserId
+        public long CurrentUserId
         {
             get
             {
@@ -514,7 +514,7 @@ namespace Facebook.BindingHelper
         /// <param name="endTime">The latest time  for which to retrieve posts from the stream</param>
         /// <param name="limit">The total number of posts to return.</param>
         /// <param name="filter">User specified filter</param>
-        public ActivityPostCollection GetStream(List<string> userIds, DateTime? startTime, DateTime? endTime, int? limit, string filter)
+        public ActivityPostCollection GetStream(List<long> userIds, DateTime? startTime, DateTime? endTime, int? limit, string filter)
         {
             ActivityPostCollection posts = new ActivityPostCollection();
             _fbApi.Stream.GetAsync(_session.UserId, userIds, startTime, endTime, limit, filter, OnGetStream, posts);

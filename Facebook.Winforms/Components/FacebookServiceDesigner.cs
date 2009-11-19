@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.Design;
 
 namespace Facebook.Winforms.Components
@@ -47,16 +47,6 @@ namespace Facebook.Winforms.Components
 			set { SetProperty("ApplicationKey", value); }
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		[Category("Setup")]
-		[Description("The secret received from facebook for this application that is using the FacebookService component")]
-		public string Secret
-		{
-			get { return FacebookService.Secret; }
-			set { SetProperty("Secret", value); }
-		}
 
 		/// <summary>
 		/// 

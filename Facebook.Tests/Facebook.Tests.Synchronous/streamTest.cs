@@ -74,7 +74,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest2()
         {
-            var actual = _api.Stream.Get(0, new List<string>() { "665621453", "630947564" }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
+            var actual = _api.Stream.Get(0, new List<long>() { 665621453, 630947564 }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
             Assert.IsNotNull(actual);
             foreach (var post in actual.posts.stream_post)
             {
@@ -107,7 +107,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void addCommentTest()
         {
-            var actual = _api.Stream.Get(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
+            var actual = _api.Stream.Get(0, new List<long>() { Constants.FBSamples_UserId }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
             Assert.IsNotNull(actual);
             var actual2 = _api.Stream.AddComment(actual.posts.stream_post[0].post_id, "Testing stream.AddComment");
             Assert.IsTrue(!string.IsNullOrEmpty(actual2));
@@ -118,7 +118,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void addLikeTest()
         {
-			var actual = _api.Stream.Get(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
+			var actual = _api.Stream.Get(0, new List<long>() { Constants.FBSamples_UserId }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
             Assert.IsNotNull(actual);
             var actual2 = _api.Stream.AddLike(actual.posts.stream_post[0].post_id);
             Assert.IsTrue(actual2);
@@ -129,7 +129,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getCommentsTest()
         {
-            var actual = _api.Stream.Get(0, new List<string>() { Constants.FBSamples_UserId.ToString() }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
+            var actual = _api.Stream.Get(0, new List<long>() { Constants.FBSamples_UserId }, Constants.MinFacebookDate, DateTime.MaxValue, 0, null);
             Assert.IsNotNull(actual);
             var actual2 = _api.Stream.GetComments(actual.posts.stream_post[0].post_id);
             Assert.IsNotNull(actual2);
