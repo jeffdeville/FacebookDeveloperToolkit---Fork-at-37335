@@ -203,7 +203,7 @@ namespace Facebook.Rest
 		
 		public Api(){}
 
-		public IFacebookApi Initialize(FacebookSession session)
+		public IFacebookApi Initialize(IFacebookSession session)
 		{
 			AuthToken = string.Empty;
 

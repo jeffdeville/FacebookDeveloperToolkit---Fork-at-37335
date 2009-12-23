@@ -5,7 +5,7 @@ namespace Facebook.Rest
 {
 	public interface IFacebookApi : IRestBase
 	{
-		IFacebookApi Initialize(FacebookSession session);
+		IFacebookApi Initialize(IFacebookSession session);
 		IAdmin Admin { get; }
 		IApplication Application { get; }
 		IAuth Auth { get; }

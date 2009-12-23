@@ -14,6 +14,22 @@ using Facebook.Rest;
 namespace Facebook.Web.Mvc
 {
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+	public class CheckForRedirectAttribute : FilterAttribute, IActionFilter
+	{
+		public void OnActionExecuting(ActionExecutingContext filterContext)
+		{
+			var redirectCookie = filterContext.HttpContext.Request.Cookies["CheckForRedirect"];
+			if (redirectCookie == null) return;
+			filterContext.Result = new RedirectResult(redirectCookie.Values["dest_url"]);
+		}
+
+		public void OnActionExecuted(ActionExecutedContext filterContext)
+		{
+			return;
+		}
+	}
+
+	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
 	public class FacebookAttribute : FilterAttribute, IAuthorizationFilter
 	{
 		public const string FACEBOOK_CANVAS_SESSION = "facebook-canvas-session";
@@ -35,9 +51,12 @@ namespace Facebook.Web.Mvc
 		/// </summary>
 		public string Secret { get; set; }
 
+		private AuthorizationContext FilterContext;
+
 		public void OnAuthorization(AuthorizationContext filterContext)
 		{
 			FacebookSession session = null;
+			FilterContext = filterContext;
 			switch (PageType)
 			{
 				case FacebookPageType.Connect:
@@ -109,7 +128,8 @@ namespace Facebook.Web.Mvc
 			//var cookieIndex = 0;
 
 			var cookie = new HttpCookie("prelogin-form-params");
-            foreach (var key in formValues.AllKeys)
+			cookie.Values.Add("dest_url", HttpUtility.UrlEncode(FilterContext.HttpContext.Request.Url.ToString()));
+         foreach (var key in formValues.AllKeys)
 				cookie.Values.Add(key, HttpUtility.UrlEncode(formValues[key]));
 			response.Cookies.Add(cookie);		
 			response.AppendHeader("P3P", "CP=\"CAO PSA OUR\"");
@@ -128,4 +148,6 @@ namespace Facebook.Web.Mvc
 			return output;
 		}
 	}
+
+
 }
