@@ -13,23 +13,7 @@ using Facebook.Rest;
 
 namespace Facebook.Web.Mvc
 {
-	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-	public class CheckForRedirectAttribute : FilterAttribute, IActionFilter
-	{
-		public void OnActionExecuting(ActionExecutingContext filterContext)
-		{
-			var redirectCookie = filterContext.HttpContext.Request.Cookies["CheckForRedirect"];
-			if (redirectCookie == null) return;
-			filterContext.Result = new RedirectResult(redirectCookie.Values["dest_url"]);
-		}
-
-		public void OnActionExecuted(ActionExecutedContext filterContext)
-		{
-			return;
-		}
-	}
-
-	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
 	public class FacebookAttribute : FilterAttribute, IAuthorizationFilter
 	{
 		public const string FACEBOOK_CANVAS_SESSION = "facebook-canvas-session";
