@@ -50,7 +50,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest()
         {
-            var actual = _apiWeb.Status.Get();
+            var actual = _facebookApiWeb.Status.Get();
             Assert.IsNotNull(actual);
         }
         /// <summary>
@@ -59,7 +59,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void setTest()
         {
-            var actual = _apiWeb.Status.Set("testing status.setStatus");
+            var actual = _facebookApiWeb.Status.Set("testing status.setStatus");
             Assert.IsTrue(actual);
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void setTest2()
         {
-            var actual = _apiWeb.Status.Set(Constants.FBSamples_UserId, "testing status.setStatus");
+            var actual = _facebookApiWeb.Status.Set(Constants.FBSamples_UserId, "testing status.setStatus");
             Assert.IsTrue(actual);
         }
 

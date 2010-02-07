@@ -289,7 +289,7 @@ namespace Facebook.BindingHelper
         private BindingManager(FacebookSession session)
         {
             _session = session;
-			_fbApi = new Api().Initialize(session);
+			_fbApi = new FacebookApi().Initialize(session);
             _cache = new FacebookDataCache();
             Initialize();
         }

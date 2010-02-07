@@ -16,17 +16,17 @@ namespace Facebook.Tests.Synchronous
 		///</summary>
 		public TestContext TestContext { get; set; }
 
-		protected Api _api;
-		protected Api _apiWeb;
+		protected FacebookApi _api;
+		protected FacebookApi _facebookApiWeb;
 
 		[TestInitialize()]
 		public void Initialize()
 		{
-			_api = new Api(new DesktopSession(Constants.FBSamples_ApplicationKey, Constants.FBSamples_SessionSecret, Constants.FBSamples_SessionKey));
+			_api = new FacebookApi(new DesktopSession(Constants.FBSamples_ApplicationKey, Constants.FBSamples_SessionSecret, Constants.FBSamples_SessionKey));
 			_api.Session.UserId = Constants.FBSamples_UserId;
-			_apiWeb = new Api(new FBMLCanvasSession(Constants.FBSamples_WebApplicationKey, Constants.FBSamples_WebSecret, false));
-			_apiWeb.Session.UserId = Constants.FBSamples_UserId;
-            _apiWeb.Session.SessionKey = Constants.FBSamples_WebSessionKey;
+			_facebookApiWeb = new FacebookApi(new FBMLCanvasSession(Constants.FBSamples_WebApplicationKey, Constants.FBSamples_WebSecret, false));
+			_facebookApiWeb.Session.UserId = Constants.FBSamples_UserId;
+            _facebookApiWeb.Session.SessionKey = Constants.FBSamples_WebSessionKey;
 		}
 	}
 }

@@ -38,7 +38,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.LiveMessage.Send(Constants.UserId, "live message event", "sending a message...");
         /// </code>
         /// </example>
@@ -65,7 +65,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.LiveMessage.SendAsync(Constants.UserId, "live message event", "sending a message...", AsyncDemoCompleted, null);
         /// }
         ///

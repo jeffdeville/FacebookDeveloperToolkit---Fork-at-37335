@@ -13,7 +13,7 @@ namespace Facebook.Web
     /// </summary>
     public class CanvasFBMLBasePage : Page
 	{
-		private readonly IFacebookApi _api = new Api().Initialize(new FBMLCanvasSession(null, null));
+		private readonly IFacebookApi _api = new FacebookApi().Initialize(new FBMLCanvasSession(null, null));
         private bool _requireLogin = false;
 
         /// <summary> 

@@ -47,7 +47,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest()
         {
-            var actual = _apiWeb.Comments.Get("1");
+            var actual = _facebookApiWeb.Comments.Get("1");
             Assert.IsNotNull(actual);
             
         }
@@ -67,7 +67,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void addTest2()
         {
-            var actual2 = _apiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId);
+            var actual2 = _facebookApiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId);
             Assert.IsNotNull(actual2);
 
         }
@@ -77,7 +77,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void addTest3()
         {
-            var actual2 = _apiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId, "comment title", "http://www.claritycon.com", false);
+            var actual2 = _facebookApiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId, "comment title", "http://www.claritycon.com", false);
             Assert.IsNotNull(actual2);
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void addTest4()
         {
-            var actual2 = _apiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId, "comment title", "http://www.claritycon.com", true);
+            var actual2 = _facebookApiWeb.Comments.Add("xid_test", "test", Constants.FBSamples_UserId, "comment title", "http://www.claritycon.com", true);
             Assert.IsNotNull(actual2);
         }
         /// <summary>

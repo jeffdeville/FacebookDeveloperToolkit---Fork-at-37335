@@ -14,7 +14,7 @@ namespace Facebook.Web
     /// </summary>
     public class CanvasIFrameMasterPage : MasterPage
 	{
-		private readonly IFacebookApi _api = new Api().Initialize(new IFrameCanvasSession(null, null));
+		private readonly IFacebookApi _api = new FacebookApi().Initialize(new IFrameCanvasSession(null, null));
 		private bool _requireLogin = false;
 
         /// <summary> 

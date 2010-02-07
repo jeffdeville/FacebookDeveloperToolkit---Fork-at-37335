@@ -38,7 +38,7 @@ namespace Facebook.Rest
 		/// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// string result = api.Auth.CreateToken();
         /// </code>
@@ -55,7 +55,7 @@ namespace Facebook.Rest
 		/// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// // Note see GetSession(string auth_token) method for a more complete (creating token, authenticating) example flow
         /// var result = api.Auth.GetSession();
         /// </code>
@@ -72,7 +72,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///
         /// // Create auth token
         /// var token = api.Auth.CreateToken();
@@ -99,7 +99,7 @@ namespace Facebook.Rest
 		/// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Auth.ExpireSession();
         /// </code>
         /// </example>
@@ -114,7 +114,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Auth.RevokeAuthorization();
         /// </code>
         /// </example>
@@ -129,7 +129,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Auth.RevokeExtendedPermission(Enums.ExtendedPermissions.create_event);
         /// </code>
         /// </example>
@@ -145,7 +145,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Auth.RevokeExtendedPermission(Enums.ExtendedPermissions.create_event, Constants.UserId);
         /// </code>
         /// </example>
@@ -162,7 +162,7 @@ namespace Facebook.Rest
 		/// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Auth.PromoteSession();
         /// </code>
         /// </example>
@@ -186,7 +186,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.CreateTokenAsync(AsyncDemoCompleted, null);
         /// }
         /// 
@@ -211,7 +211,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///
         ///     // Create auth token (using synchronous for sample brevity only)
         ///     var token = api.Auth.CreateToken();
@@ -247,7 +247,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.ExpireSessionAsync(AsyncDemoCompleted, null);
         /// }
         ///
@@ -272,7 +272,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.PromoteSessionAsync(AsyncDemoCompleted, null);
         /// }
         ///
@@ -297,7 +297,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.RevokeAuthorizationAsync(AsyncDemoCompleted, null);
         /// }
         /// 
@@ -322,7 +322,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.RevokeExtendedPermissionAsync(Enums.ExtendedPermissions.create_event, AsyncDemoCompleted, null);
         /// }
         ///
@@ -349,7 +349,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Auth.RevokeExtendedPermissionAsync(Enums.ExtendedPermissions.create_event, Constants.UserId, AsyncDemoCompleted, null);
         /// }
         ///

@@ -51,7 +51,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest()
         {
-            var actual = _apiWeb.Links.Get();
+            var actual = _facebookApiWeb.Links.Get();
             Assert.IsNotNull(actual);
             
         }
@@ -61,7 +61,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest2()
         {
-            var actual = _apiWeb.Links.Get(_api.Session.UserId);
+            var actual = _facebookApiWeb.Links.Get(_api.Session.UserId);
             Assert.IsNotNull(actual);
 
         }
@@ -72,7 +72,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void postTest()
         {
-            var actual = _apiWeb.Links.Post(_api.Session.UserId, new Uri("http://www.claritycon.com"), "My company website");
+            var actual = _facebookApiWeb.Links.Post(_api.Session.UserId, new Uri("http://www.claritycon.com"), "My company website");
             Assert.IsNotNull(actual);
 
         }
@@ -82,7 +82,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void postTest2()
         {
-            var actual = _apiWeb.Links.Post(_api.Session.UserId, new Uri("http://www.claritycon.com"), "My company website");
+            var actual = _facebookApiWeb.Links.Post(_api.Session.UserId, new Uri("http://www.claritycon.com"), "My company website");
             Assert.IsNotNull(actual);
 
         }

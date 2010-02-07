@@ -37,7 +37,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// app_info result = api.Application.GetPublicInfo();
         /// </code>
@@ -53,7 +53,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// app_info result = api.Application.GetPublicInfo(null, Constants.WebApplicationKey, null);
         /// </code>
@@ -80,7 +80,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Application.GetPublicInfoAsync(AsyncDemoCompleted, null);
         /// }
@@ -106,7 +106,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Application.GetPublicInfoAsync(null, Constants.WebApplicationKey, null, AsyncDemoCompleted, null);
         /// }

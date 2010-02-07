@@ -58,7 +58,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var query = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// var result = api.Fql.Query(query);
         /// </code>
@@ -75,7 +75,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var query = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// user result = api.Fql.Query&lt;user&gt;(query);
         /// </code>
@@ -92,7 +92,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var query1 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// var query2 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// var queries = new Dictionary&lt;string, string&gt;();
@@ -112,7 +112,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var query1 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// var query2 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         /// var queries = new Dictionary&lt;string, string&gt;();
@@ -148,7 +148,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     var query = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         ///     api.Fql.QueryAsync(query, AsyncDemoCompleted, null);
         /// }
@@ -188,7 +188,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     var query1 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         ///     var query2 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         ///     var queries = new Dictionary&lt;string, string&gt;();
@@ -218,7 +218,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     var query1 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         ///     var query2 = string.Format("SELECT uid, name FROM user WHERE uid IN ({0})", Constants.UserId);
         ///     var queries = new Dictionary&lt;string, string&gt;();

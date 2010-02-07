@@ -20,7 +20,7 @@ namespace Facebook.Tests.Synchronous
 		public void sendEmailTest()
 		{
             var recipients = Constants.FBSamples_UserId.ToString();
-			var subject = "test SendEmail Api";
+			var subject = "test SendEmail FacebookApi";
 			var text = "This is a test email for the notifications.SendEmail Unit Test";
 			string fbml = null;
 			var actual = _api.Notifications.SendEmail(recipients, subject, text, fbml);

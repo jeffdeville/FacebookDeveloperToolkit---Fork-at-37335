@@ -37,7 +37,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Links.Get();
         /// </code>
         /// </example>
@@ -53,7 +53,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Links.Get(Constants.UserId);
         /// </code>
         /// </example>
@@ -70,7 +70,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Links.Post(Constants.UserId, new Uri("http://www.bing.com"), "I'm checking out Bing.");
         /// </code>
         /// </example>
@@ -96,7 +96,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Links.GetAsync(AsyncDemoCompleted, null);
         /// } 
         ///
@@ -122,7 +122,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Links.GetAsync(Constants.UserId, AsyncDemoCompleted, null);
         /// } 
         ///
@@ -149,7 +149,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Links.PostAsync(Constants.UserId, new Uri("http://www.bing.com"), "I'm checking out Bing.", AsyncDemoCompleted, null);
         /// }
         ///

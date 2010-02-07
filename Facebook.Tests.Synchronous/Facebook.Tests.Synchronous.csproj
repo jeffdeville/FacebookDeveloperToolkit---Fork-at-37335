@@ -97,7 +97,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Facebook\Facebook.csproj">
+    <ProjectReference Include="..\Facebook\Facebook.csproj">
       <Project>{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}</Project>
       <Name>Facebook</Name>
     </ProjectReference>

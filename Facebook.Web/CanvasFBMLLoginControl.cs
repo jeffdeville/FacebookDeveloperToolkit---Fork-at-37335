@@ -20,7 +20,7 @@ namespace Facebook.Web
     [ToolboxData("<{0}:CanvasFBMLLoginControl runat=server></{0}:CanvasFBMLLoginControl>")]
     public class CanvasFBMLLoginControl : WebControl
     {
-		private readonly IFacebookApi _api = new Api().Initialize(new FBMLCanvasSession(null, null));
+		private readonly IFacebookApi _api = new FacebookApi().Initialize(new FBMLCanvasSession(null, null));
         private bool _requireLogin = false;
 
         /// <summary> 

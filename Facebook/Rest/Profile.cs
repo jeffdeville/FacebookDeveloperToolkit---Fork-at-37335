@@ -37,7 +37,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// var result = api.Profile.GetFBML(Constants.UserId, 1);
         /// </code>
@@ -56,7 +56,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Session.UserId = Constants.UserId;
         /// string fbml = string.Format("&lt;fb:name uid=\"{0}\"&gt; is testing setFBML.&lt;/fb:name&gt;", Constants.UserId);
         /// var result = api.Profile.SetFBML(Constants.UserId, fbml, fbml, fbml);
@@ -78,7 +78,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// Api api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// var result = api.Profile.GetInfo(Constants.UserId);
         /// </code>
@@ -95,7 +95,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// Api api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Session.UserId = Constants.UserId;
         /// var result = api.Profile.GetInfoOptions("Test Field");
         /// </code>
@@ -112,7 +112,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Session.UserId = Constants.UserId;
         /// var item = new info_item();
         /// item.label = "Test info item";
@@ -139,7 +139,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// api.Session.UserId = Constants.UserId;
         /// var item1 = new info_item {link = "www.claritycon.com", label = "SetInfoOptions test 1"};
         /// var result = api.Profile.SetInfoOptions("Test Field", new List&lt;info_item&gt;() { item1 });
@@ -166,7 +166,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Profile.GetFBMLAsync(Constants.UserId, 1, AsyncDemoCompleted, null);
         /// }
@@ -195,7 +195,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Session.UserId = Constants.UserId;
         ///     string fbml = string.Format("&lt;fb:name uid=\"{0}\"&gt; is testing setFBML.&lt;/fb:name&gt;", Constants.UserId);
         ///     api.Profile.SetFBMLAsync(Constants.UserId, fbml, fbml, fbml, AsyncDemoCompleted, null);
@@ -227,7 +227,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Profile.GetInfoAsync(Constants.UserId, AsyncDemoCompleted, null);
         /// }
@@ -254,7 +254,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Profile.GetInfoOptionsAsync("Test Field", AsyncDemoCompleted, null);
         /// }
@@ -281,7 +281,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Session.UserId = Constants.UserId;
         ///     var item = new info_item();
         ///     item.label = "Test info item";
@@ -318,7 +318,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Session.UserId = Constants.UserId;
         ///     var item1 = new info_item { link = "www.claritycon.com", label = "SetInfoOptions test 1" };
         ///     api.Profile.SetInfoOptionsAsync("Test Field", new List&lt;info_item&gt;() { item1 }, AsyncDemoCompleted, null);

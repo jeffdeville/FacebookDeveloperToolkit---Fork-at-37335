@@ -44,7 +44,7 @@ namespace Facebook.Rest
         /// 
         /// if (_connectSession.IsConnected())
         /// {
-        ///     Api _api = new Api(_connectSession);
+        ///     FacebookApi _api = new FacebookApi(_connectSession);
         ///     List&lt;string&gt; hashes = new List&lt;string&gt;();
         ///     hashes.Add(_currentUser.email_hashes.email_hashes_elt[0]);
         ///     var result = _api.Connect.UnregisterUsers(hashes);
@@ -69,7 +69,7 @@ namespace Facebook.Rest
         /// 
         /// if (_connectSession.IsConnected())
         /// {
-        ///     _api = new Api(_connectSession);
+        ///     _api = new FacebookApi(_connectSession);
         ///     var registerList = new List&lt;ConnectAccountMap&gt;();
         ///     registerList.Add(new ConnectAccountMap
         ///     {
@@ -98,7 +98,7 @@ namespace Facebook.Rest
         /// /// 
         /// /// if(connectSession.IsConnected())
         /// {
-        ///     Api api = new Api(connectSession);
+        ///     FacebookApi api = new FacebookApi(connectSession);
         ///     var result = api.Connect.GetUnconnectedFriends();
         /// }
         /// </code>
@@ -130,7 +130,7 @@ namespace Facebook.Rest
         ///    
         ///     if (connectSession.IsConnected())
         ///     {
-        ///         Api _api = new Api(connectSession);
+        ///         FacebookApi _api = new FacebookApi(connectSession);
         ///         List&lt;string&gt; hashes = new List&lt;string&gt;();
         ///         hashes.Add(_currentUser.email_hashes.email_hashes_elt[0]);
         ///         _api.Connect.UnregisterUsersAsync(hashes, AsyncDemoCompleted, null); 
@@ -167,7 +167,7 @@ namespace Facebook.Rest
         ///    
         ///     if (connectSession.IsConnected())
         ///     {
-        ///         Api _api = new Api(connectSession);
+        ///         FacebookApi _api = new FacebookApi(connectSession);
         ///
         ///         var registerList = new List&lt;ConnectAccountMap&gt;();
         ///         registerList.Add(new ConnectAccountMap
@@ -209,7 +209,7 @@ namespace Facebook.Rest
         ///    
         ///     if (connectSession.IsConnected())
         ///     {
-        ///         Api api = new Api(connectSession);
+        ///         FacebookApi api = new FacebookApi(connectSession);
         ///         api.Connect.GetUnconnectedFriendsAsync(AsyncDemoCompleted, null);
         ///     }
         /// }

@@ -37,7 +37,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Notifications.Get();
         /// </code>
         /// </example>
@@ -54,7 +54,7 @@ namespace Facebook.Rest
         /// <code>
         /// List&lt;long&gt; notificationList = new List&lt;long&gt;();
         /// notificationList.Add(Constants.UserId);
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Notifications.Send(notificationList, "my notification from samples app");
         /// </code>
         /// </example>
@@ -74,7 +74,7 @@ namespace Facebook.Rest
         /// <code>
         /// List&lt;long&gt; notificationList = new List&lt;long&gt;();
         /// notificationList.Add(Constants.UserId);
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Notifications.Send(notificationList, "my notification from samples app", "app_to_user");
         /// </code>
         /// </example>
@@ -93,7 +93,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Notifications.Send(Constants.UserId.ToString(), "my notification from samples app");
         /// </code>
         /// </example>
@@ -111,7 +111,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Notifications.Send(Constants.UserId.ToString(), "my notification from samples app", "app_to_user");
         /// </code>
         /// </example>
@@ -156,7 +156,7 @@ namespace Facebook.Rest
         /// List&lt;long&gt; notificationList = new List&lt;long&gt;();
         /// notificationList.Add(Constants.UserId);
         /// string fbml = string.Format("&lt;fb:switch&gt;&lt;fb:profile-pic uid=\"{0}\" /&gt;&lt;fb:default&gt;Unable to show profile pic&lt;/fb:default&gt;&lt;/fb:switch&gt;", Constants.UserId);
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// 
         /// // This action will require the user to have granted this app "email" Extended Permission.
         /// //var result = api.Notifications.SendEmail(notificationList, "email test", "here is plain text", string.Empty);
@@ -179,7 +179,7 @@ namespace Facebook.Rest
         /// <example>
         /// <code>
         /// string fbml = string.Format("&lt;fb:switch&gt;&lt;fb:profile-pic uid=\"{0}\" /&gt;&lt;fb:default&gt;Unable to show profile pic&lt;/fb:default&gt;&lt;/fb:switch&gt;", Constants.UserId);
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///
         /// // This action will require the user to have granted this app "email" Extended Permission.
         /// //var result = api.Notifications.SendEmail(Constants.UserId.ToString(), "email test", "here is plain text", string.Empty);
@@ -209,7 +209,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Notifications.GetAsync(AsyncDemoCompleted, null);
         /// }
         ///
@@ -236,7 +236,7 @@ namespace Facebook.Rest
         /// {
         ///     List&lt;long&gt; notificationList = new List&lt;long&gt;();
         ///     notificationList.Add(Constants.UserId);
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Notifications.SendAsync(notificationList, "my notification from samples app", AsyncDemoCompleted, null);
         /// }
         ///
@@ -266,7 +266,7 @@ namespace Facebook.Rest
         /// {
         ///     List&lt;long&gt; notificationList = new List&lt;long&gt;();
         ///     notificationList.Add(Constants.UserId);
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Notifications.SendAsync(notificationList, "my notification from samples app", "app_to_user", AsyncDemoCompleted, null);
         /// }
         ///
@@ -295,7 +295,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Notifications.SendAsync(Constants.UserId.ToString(), "my notification from samples app", AsyncDemoCompleted, null);
         /// }
         ///
@@ -323,7 +323,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Notifications.SendAsync(Constants.UserId.ToString(), "my notification from samples app", "app_to_user", AsyncDemoCompleted, null);
         /// }
         ///
@@ -381,7 +381,7 @@ namespace Facebook.Rest
         ///     List&lt;long&gt; notificationList = new List&lt;long&gt;();
         ///     notificationList.Add(Constants.UserId);
         ///     string fbml = string.Format("&lt;fb:switch&gt;&lt;fb:profile-pic uid=\"{0}\" /&gt;&lt;fb:default&gt;Unable to show profile pic&lt;/fb:default&gt;&lt;/fb:switch&gt;", Constants.UserId);
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///
         ///     // This action will require the user to have granted this app "email" Extended Permission.
         ///     //var result = api.Notifications.SendEmail(notificationList, "email test", "here is plain text", string.Empty);
@@ -414,7 +414,7 @@ namespace Facebook.Rest
         /// private static void RunDemoAsync()
         /// {
         ///     string fbml = string.Format("&lt;fb:switch&gt;&lt;fb:profile-pic uid=\"{0}\" /&gt;&lt;fb:default&gt;Unable to show profile pic&lt;/fb:default&gt;&lt;/fb:switch&gt;", Constants.UserId);
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///
         ///     // This action will require the user to have granted this app "email" Extended Permission.
         ///     //var result = api.Notifications.SendEmail(Constants.UserId.ToString(), "email test", "here is plain text", string.Empty);

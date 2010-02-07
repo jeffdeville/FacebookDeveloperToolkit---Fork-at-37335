@@ -77,7 +77,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Feed.DeactivateTemplateBundleByID(Constants.TemplateBundleId);
         /// </code>
         /// </example>
@@ -93,7 +93,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Feed.GetRegisteredTemplateBundleByID(long.Parse(Constants.TemplateBundleId));
         /// </code>
         /// </example>
@@ -109,7 +109,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// var result = api.Feed.GetRegisteredTemplateBundles();
         /// </code>
         /// </example>
@@ -124,7 +124,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///
         /// string oneLineStoryTemplate = "{*actor*} has been playing.";
         /// string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing!&lt;/a&gt;";
@@ -153,7 +153,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///
         /// string oneLineStoryTemplate = "{*actor*} has been playing.";
         /// string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing!&lt;/a&gt;";
@@ -185,7 +185,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// string oneLineStoryTemplate = "{*actor*} is at {*host*}'s house.";
         /// string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing&lt;/a&gt;";
         /// string shortStoryTemplateBody = "short story body from {*host*}'s house";
@@ -288,7 +288,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     api.Feed.DeactivateTemplateBundleByIDAsync(Constants.TemplateBundleId, AsyncDemoCompleted, null);
         /// }
         ///
@@ -314,7 +314,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     api.Feed.GetRegisteredTemplateBundleByIDAsync(long.Parse(Constants.TemplateBundleId), AsyncDemoCompleted, null);
         /// }
         ///
@@ -340,7 +340,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     api.Feed.GetRegisteredTemplateBundlesAsync(AsyncDemoCompleted, null);
         /// }
         ///
@@ -365,7 +365,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///     string oneLineStoryTemplate = "{*actor*} is at {*host*}'s house.";
         ///     string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing&lt;/a&gt;";
         ///     string shortStoryTemplateBody = "short story body from {*host*}'s house";
@@ -425,7 +425,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///
         ///     string oneLineStoryTemplate = "{*actor*} has been playing.";
         ///     string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing!&lt;/a&gt;";
@@ -464,7 +464,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         ///
         ///     string oneLineStoryTemplate = "{*actor*} has been playing.";
         ///     string shortStoryTemplateTitle = "{*actor*} has been &lt;a href='http://www.facebook.com/apps/application.php?id=xxx&gt;testing!&lt;/a&gt;";

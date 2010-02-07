@@ -96,7 +96,7 @@ namespace Facebook.Tests.Synchronous
 		[TestMethod]
 		public void getMutualFriendsTest2()
 		{
-			var friends = _apiWeb.Friends.GetMutualFriends(Constants.FBSamples_friend1, Constants.FBSamples_friend2);
+			var friends = _facebookApiWeb.Friends.GetMutualFriends(Constants.FBSamples_friend1, Constants.FBSamples_friend2);
 			Assert.IsNotNull(friends);
 			Assert.IsTrue(friends.Count > 0);
 		}

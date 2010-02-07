@@ -312,7 +312,7 @@ namespace Facebook.Winforms.Components
         /// </summary>
         public FacebookService()
         {
-            api = new Api().Initialize(new DesktopSession(null, null, null));
+            api = new FacebookApi().Initialize(new DesktopSession(null, null, null));
             InitializeComponent();
         }
 
@@ -324,7 +324,7 @@ namespace Facebook.Winforms.Components
         {
             if (container != null) container.Add(this);
 
-			api = new Api().Initialize(new DesktopSession(null, null, null));
+			api = new FacebookApi().Initialize(new DesktopSession(null, null, null));
             InitializeComponent();
         }
 

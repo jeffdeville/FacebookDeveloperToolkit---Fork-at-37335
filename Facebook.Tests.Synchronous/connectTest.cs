@@ -73,10 +73,10 @@ namespace Facebook.Tests.Synchronous
                                         AccountUrl = "http://www.facebook.com/10001.htm"
                                     });
             
-            var actual = _apiWeb.Connect.RegisterUsers(accountMappings);
+            var actual = _facebookApiWeb.Connect.RegisterUsers(accountMappings);
             Assert.IsTrue(actual.Count == 2);
 
-            var userGetInfoResult = _apiWeb.Users.GetInfo(Constants.FBSamples_UserId);
+            var userGetInfoResult = _facebookApiWeb.Users.GetInfo(Constants.FBSamples_UserId);
             Assert.IsNotNull(userGetInfoResult.email_hashes);
         }
 
@@ -89,15 +89,15 @@ namespace Facebook.Tests.Synchronous
             RegisterUsersTest();
 
             // Retrieve existing hash
-            var existingUser = _apiWeb.Users.GetInfo(Constants.FBSamples_UserId);
+            var existingUser = _facebookApiWeb.Users.GetInfo(Constants.FBSamples_UserId);
             Assert.IsNotNull(existingUser.email_hashes);
 
             var hashes = new List<string>();
             hashes.Add(existingUser.email_hashes.email_hashes_elt[0]);
-            var actual = _apiWeb.Connect.UnregisterUsers(hashes);
+            var actual = _facebookApiWeb.Connect.UnregisterUsers(hashes);
             Assert.IsTrue(actual.Count == 1);
 
-            var resultUser = _apiWeb.Users.GetInfo(Constants.FBSamples_UserId);
+            var resultUser = _facebookApiWeb.Users.GetInfo(Constants.FBSamples_UserId);
             Assert.IsNull(resultUser.email_hashes);
         }
     }

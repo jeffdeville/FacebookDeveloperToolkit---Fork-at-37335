@@ -52,7 +52,7 @@ namespace Facebook.Tests.Synchronous
             string application_api_key = Constants.FBSamples_ApplicationKey; 
             string application_canvas_name = string.Empty; 
             app_info actual;
-            actual = _apiWeb.Application.GetPublicInfo(application_id, application_api_key, application_canvas_name);
+            actual = _facebookApiWeb.Application.GetPublicInfo(application_id, application_api_key, application_canvas_name);
             Assert.AreEqual(actual.api_key, Constants.FBSamples_ApplicationKey);
             Assert.IsNotNull(actual.display_name);
         }
@@ -64,7 +64,7 @@ namespace Facebook.Tests.Synchronous
         public void getPublicInfoTest1()
         {
             app_info actual;
-            actual = _apiWeb.Application.GetPublicInfo();
+            actual = _facebookApiWeb.Application.GetPublicInfo();
             Assert.AreEqual(actual.api_key, Constants.FBSamples_WebApplicationKey);
             Assert.IsNotNull(actual.display_name);
 

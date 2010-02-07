@@ -35,7 +35,7 @@ namespace Facebook.Web
         private IList<album> _albums;
 		private int _currentAlbumIndex;
 		private int _currentImageIndex;
-        private Api _facebookApi;
+        private FacebookApi _facebookFacebookApi;
 		private IList<photo> _photos;
 		private int _userId;
 		private bool _useViewState = true;
@@ -52,12 +52,12 @@ namespace Facebook.Web
 		}
 
 		/// <summary>
-		/// An insance of the Facebook Api.  We use this to look up the albums and photos. 
+		/// An insance of the Facebook FacebookApi.  We use this to look up the albums and photos. 
 		/// </summary>
-		public Api FacebookApi
+		public FacebookApi _facebookFacebookApi
 		{
-			get { return _facebookApi; }
-            set { _facebookApi = value; }
+			get { return _facebookFacebookApi; }
+            set { _facebookFacebookApi = value; }
 		}
 
 		/// <summary>
@@ -274,7 +274,7 @@ namespace Facebook.Web
 		/// </summary>
 		public void LoadAlbums()
 		{
-			if (Equals(_facebookApi, null))
+			if (Equals(_facebookFacebookApi, null))
 			{
 				throw new Exception("Cannot load albums before FacebookService property is set.");
 			}
@@ -283,7 +283,7 @@ namespace Facebook.Web
 				throw new Exception("Cannot load albums before UserID property is set.");
 			}
 			
-            Albums = _facebookApi.Photos.GetAlbums(_userId);
+            Albums = _facebookFacebookApi.Photos.GetAlbums(_userId);
 			ResetAlbumIndex();
 			LoadPhotos();
 		}
@@ -291,7 +291,7 @@ namespace Facebook.Web
 		/// <summary>
 		/// Loads the albums for the Facebook User.
 		/// </summary>
-		public void LoadAlbums(Api fb, int userId)
+		public void LoadAlbums(FacebookApi fb, int userId)
 		{
             FacebookApi = fb;
 			UserId = userId;

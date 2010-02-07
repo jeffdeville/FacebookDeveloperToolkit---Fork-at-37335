@@ -80,7 +80,7 @@ namespace Facebook.Rest
 		/// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// DateTime startDate = DateTime.Now.Subtract(new TimeSpan(10, 0, 0, 0));
         /// DateTime endDate = DateTime.Now;
         /// Admin.Period period = Admin.Period.Day;
@@ -101,7 +101,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// DateTime startDate = DateTime.Now.Subtract(new TimeSpan(10, 0, 0, 0));
         /// DateTime endDate = DateTime.Now;
         /// Admin.Period period = Admin.Period.Day;
@@ -124,7 +124,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
+        /// FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.SessionSecret, Constants.SessionKey));
         /// int requests = api.Admin.GetAllocation(Admin.IntegrationPointName.requests_per_day);
         /// </code>
         /// </example>
@@ -140,7 +140,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// Dictionary&lt;string, string&gt; properties = new Dictionary&lt;string, string&gt; { { "privacy_url", "http://localhost/" } };
         /// bool result = api.Admin.SetAppProperties(properties);
@@ -158,7 +158,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// Dictionary&lt;string, string&gt; result = api.Admin.GetAppProperties();
         /// </code>
@@ -174,7 +174,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// List&lt;string&gt; properties = new List&lt;string&gt; { "privacy_url" };
         /// Dictionary&lt;string, string&gt; result = api.Admin.GetAppProperties(properties);
@@ -192,7 +192,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// string result = api.Admin.GetRestrictionInfo();
         /// </code>
@@ -208,7 +208,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// bool result = api.Admin.SetRestrictionInfo();
         /// </code>
@@ -224,7 +224,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// Dictionary&lt;string, string&gt; restrictions = new Dictionary&lt;string, string&gt; {{"age_distribution", "10-99"}};
         /// bool result = api.Admin.SetRestrictionInfo(restrictions);
@@ -242,7 +242,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         /// bool result = api.Admin.BanUsers(uids);
@@ -260,7 +260,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         /// bool result = api.Admin.UnbanUsers(uids);
@@ -278,7 +278,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// IList&lt;long&gt; result = api.Admin.GetBannedUsers();
         /// </code>
@@ -294,7 +294,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <example>
         /// <code>
-        /// Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        /// FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         /// api.Session.UserId = Constants.UserId;
         /// List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         /// IList&lt;long&gt; result = api.Admin.GetBannedUsers(uids);
@@ -320,7 +320,7 @@ namespace Facebook.Rest
         /// <code>
         /// private void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     api.Admin.GetAllocationAsync(Admin.IntegrationPointName.requests_per_day, AsyncDemoCompleted, null);
         /// }
         /// 
@@ -346,7 +346,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunWebDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Admin.GetAppPropertiesAsync(AsyncWebDemoCompleted, null);
         /// }
@@ -372,7 +372,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunWebDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     List&lt;string&gt; properties = new List&lt;string&gt; { "privacy_url" };
         ///     api.Admin.GetAppPropertiesAsync(properties, AsyncWebDemoCompleted, null);
@@ -400,7 +400,7 @@ namespace Facebook.Rest
         /// <code>
         /// private void RunDemo()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     DateTime startDate = DateTime.Now.Subtract(new TimeSpan(10, 0, 0, 0));
         ///     DateTime endDate = DateTime.Now;
         ///     Admin.Period period = Admin.Period.Day;
@@ -431,7 +431,7 @@ namespace Facebook.Rest
         /// <code>
         /// private void RunDemo()
         /// {
-        ///     Api api = new Api(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
+        ///     FacebookApi api = new FacebookApi(new DesktopSession(Constants.ApplicationKey, Constants.ApplicationSecret, Constants.ApplicationSecret, Constants.SessionKey));
         ///     DateTime startDate = DateTime.Now.Subtract(new TimeSpan(10, 0, 0, 0));
         ///     DateTime endDate = DateTime.Now;
         ///     Admin.Period period = Admin.Period.Day;
@@ -464,7 +464,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunWebDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     Dictionary&lt;string, string&gt; properties = new Dictionary&lt;string, string&gt; { { "privacy_url", "http://localhost/" } };
         ///     api.Admin.SetAppPropertiesAsync(properties, AsyncWebDemoCompleted, null);
@@ -492,7 +492,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Admin.GetRestrictionInfoAsync(AsyncDemoCompleted, null);
         /// }
@@ -518,7 +518,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Admin.SetRestrictionInfoAsync(AsyncDemoCompleted, null);
         /// }
@@ -544,7 +544,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     Dictionary&lt;string, string&gt; restrictions = new Dictionary&lt;string, string&gt; { { "age_distribution", "10-99" } };
         ///     api.Admin.SetRestrictionInfoAsync(restrictions, AsyncDemoCompleted, null);
@@ -572,7 +572,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         ///     api.Admin.BanUsersAsync(uids, AsyncDemoCompleted, null);
@@ -600,7 +600,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///    Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///    FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///    api.Session.UserId = Constants.UserId;
         ///    List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         ///    api.Admin.UnbanUsersAsync(uids, AsyncDemoCompleted, null);
@@ -628,7 +628,7 @@ namespace Facebook.Rest
         /// <code>
         /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     api.Admin.GetBannedUsersAsync(AsyncDemoCompleted, null);
         /// }
@@ -654,7 +654,7 @@ namespace Facebook.Rest
         /// <code>
         /// /// private static void RunDemoAsync()
         /// {
-        ///     Api api = new Api(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
+        ///     FacebookApi api = new FacebookApi(new FBMLCanvasSession(Constants.WebApplicationKey, Constants.WebSecret));
         ///     api.Session.UserId = Constants.UserId;
         ///     List&lt;long&gt; uids = new List&lt;long&gt; { 1000001, 1000002 };
         ///     api.Admin.GetBannedUsersAsync(uids, AsyncDemoCompleted, null);

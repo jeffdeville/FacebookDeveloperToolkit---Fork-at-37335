@@ -60,8 +60,8 @@ namespace Facebook.Tests.Synchronous
             long obj_id = _objectID;
             string prop_name = Constants.TestObjectPropertyName;
             string prop_value = Constants.TestPropertyValue;
-            _apiWeb.Data.SetObjectProperty(obj_id, prop_name, prop_value);
-            var typ = _apiWeb.Data.GetObject(_objectID, null);
+            _facebookApiWeb.Data.SetObjectProperty(obj_id, prop_name, prop_value);
+            var typ = _facebookApiWeb.Data.GetObject(_objectID, null);
             //Assert.IsTrue(typ.ToString().IndexOf(prop_value) > 0);
             Assert.IsNotNull(typ);
             // TODO: Check typ value?
@@ -75,7 +75,7 @@ namespace Facebook.Tests.Synchronous
         {
             int pref_id = 0; 
             string value = Constants.TestString1;
-            _apiWeb.Data.SetUserPreference(pref_id, value);
+            _facebookApiWeb.Data.SetUserPreference(pref_id, value);
             Assert.IsTrue(1 == 1); 
         }
 
@@ -89,11 +89,11 @@ namespace Facebook.Tests.Synchronous
             bool replace = true;
 
             // No return value
-            _apiWeb.Data.SetUserPreferences(values, replace);
+            _facebookApiWeb.Data.SetUserPreferences(values, replace);
             
-            string result1 = _apiWeb.Data.GetUserPreference(0);
+            string result1 = _facebookApiWeb.Data.GetUserPreference(0);
             Assert.AreEqual(Constants.TestString2, result1);
-            string result2 = _apiWeb.Data.GetUserPreference(1);
+            string result2 = _facebookApiWeb.Data.GetUserPreference(1);
             Assert.AreEqual(Constants.TestString3, result2);
         }
 
@@ -104,11 +104,11 @@ namespace Facebook.Tests.Synchronous
         public void undefineAssociationTest()
         {
             defineAssociationTest();
-            _apiWeb.Data.UndefineAssociation(Constants.TestAssociationDefName);
+            _facebookApiWeb.Data.UndefineAssociation(Constants.TestAssociationDefName);
             try
             {
                 // retry, expectin failure
-                _apiWeb.Data.UndefineAssociation(Constants.TestAssociationDefName);
+                _facebookApiWeb.Data.UndefineAssociation(Constants.TestAssociationDefName);
             }
             catch (FacebookException e)
             {
@@ -132,12 +132,12 @@ namespace Facebook.Tests.Synchronous
             string prop_name = Constants.TestObjectPropertyName; 
 
             //Check to make sure we've got just one from out setup
-            var types = _apiWeb.Data.GetObjectType(obj_type);
+            var types = _facebookApiWeb.Data.GetObjectType(obj_type);
             Assert.AreEqual(types.Count, 1);
 
             //Should have been dropped at this point.
-            _apiWeb.Data.UndefineObjectProperty(obj_type, prop_name);
-            types = _apiWeb.Data.GetObjectType(obj_type);
+            _facebookApiWeb.Data.UndefineObjectProperty(obj_type, prop_name);
+            types = _facebookApiWeb.Data.GetObjectType(obj_type);
             Assert.AreEqual(types.Count,0);
         }
 
@@ -152,10 +152,10 @@ namespace Facebook.Tests.Synchronous
             //var properties = new Dictionary<string, string> { { Constants.TestObjectPropertyName, Constants.TestObjectPropertyNewName } };
             var properties = new Dictionary<string, string> { { Constants.TestObjectPropertyName, Constants.TestPropertyUpdateValue } };
             bool replace = true;
-            _apiWeb.Data.UpdateObject(obj_id, properties, replace);
-            var newObject = _apiWeb.Data.GetObject(obj_id, null);
+            _facebookApiWeb.Data.UpdateObject(obj_id, properties, replace);
+            var newObject = _facebookApiWeb.Data.GetObject(obj_id, null);
             Assert.IsNotNull(newObject);
-            var updatedActualValue = _apiWeb.Data.GetObjectProperty(obj_id, Constants.TestObjectPropertyName);
+            var updatedActualValue = _facebookApiWeb.Data.GetObjectProperty(obj_id, Constants.TestObjectPropertyName);
             Assert.AreEqual(Constants.TestPropertyUpdateValue, updatedActualValue);
             //Assert.IsTrue(newObject.ToString().IndexOf(Constants.TestObjectPropertyNewName) > 0);
         }
@@ -171,11 +171,11 @@ namespace Facebook.Tests.Synchronous
             string key = Constants.TestHashKey;
             string value = Constants.TestHashValue;
             string prop_name = Constants.TestObjectPropertyName;
-            long actual = _apiWeb.Data.SetHashValue(obj_type, key, value, prop_name);
+            long actual = _facebookApiWeb.Data.SetHashValue(obj_type, key, value, prop_name);
             _hashID = actual;
             Assert.IsInstanceOfType(actual, typeof(long));
             Assert.IsTrue(actual>0);
-            var ret = _apiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
+            var ret = _facebookApiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
             Assert.AreEqual(ret, Constants.TestHashValue);
         }
 
@@ -192,7 +192,7 @@ namespace Facebook.Tests.Synchronous
             string path = string.Empty; 
             bool expected = true; 
             bool actual;
-            actual = _apiWeb.Data.SetCookie(uid, cookieName, value, expires, path);
+            actual = _facebookApiWeb.Data.SetCookie(uid, cookieName, value, expires, path);
             Assert.AreEqual(expected, actual);
             
         }
@@ -228,7 +228,7 @@ namespace Facebook.Tests.Synchronous
 		//                                               }
 		//                                       };
 		//    string name = Constants.TestAssociationName;
-		//    _apiWeb.Data.SetAssociations(assocs, name);
+		//    _facebookApiWeb.Data.SetAssociations(assocs, name);
 		//}
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Facebook.Tests.Synchronous
             string name = Constants.TestType;
             string data = Constants.TestAssociationData1;
             DateTime assoc_time = DateTime.Now;
-            _apiWeb.Data.SetAssociation(name, _id1, _id2, data, assoc_time);
+            _facebookApiWeb.Data.SetAssociation(name, _id1, _id2, data, assoc_time);
         }
 
         private void Get2ObjectIDs()
@@ -261,8 +261,8 @@ namespace Facebook.Tests.Synchronous
             createObjectTypeTest();
             string obj_type = Constants.TestType; 
             string new_name = Constants.TestTypeRename;
-            _apiWeb.Data.RenameObjectType(obj_type, new_name);
-            var types = _apiWeb.Data.GetObjectTypes();
+            _facebookApiWeb.Data.RenameObjectType(obj_type, new_name);
+            var types = _facebookApiWeb.Data.GetObjectTypes();
             foreach(var typ in types)
             {
                 Assert.AreEqual(typ.name,new_name);
@@ -279,8 +279,8 @@ namespace Facebook.Tests.Synchronous
             string obj_type = Constants.TestType; 
             string prop_name = Constants.TestObjectPropertyName; 
             string new_name = Constants.TestObjectPropertyNewName;
-            _apiWeb.Data.RenameObjectProperty(obj_type, prop_name, new_name);
-            var typ = _apiWeb.Data.GetObjectType(obj_type);
+            _facebookApiWeb.Data.RenameObjectProperty(obj_type, prop_name, new_name);
+            var typ = _facebookApiWeb.Data.GetObjectType(obj_type);
             Assert.AreEqual(typ[0].name, Constants.TestObjectPropertyNewName);
         }
 
@@ -298,7 +298,7 @@ namespace Facebook.Tests.Synchronous
             string new_name = Constants.TestAssociationRename;
             string new_alias1 = Constants.TestAssociationDefAlias3;
             string new_alias2 = Constants.TestAssociationDefAlias4;
-            _apiWeb.Data.RenameAssociation(name, new_name, new_alias1, new_alias2);
+            _facebookApiWeb.Data.RenameAssociation(name, new_name, new_alias1, new_alias2);
         }
 
         /// <summary>
@@ -314,8 +314,8 @@ namespace Facebook.Tests.Synchronous
             List<string> keys = new List<string>{_hashID.ToString()};
             // TODO: Facebook returning following exception:
             // A database error occurred. Please try again: unable to lookup hash keys
-            //_apiWeb.Data.RemoveHashKeys(obj_type, keys);
-            //var ret = _apiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
+            //_facebookApiWeb.Data.RemoveHashKeys(obj_type, keys);
+            //var ret = _facebookApiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
             //Assert.AreEqual(ret, null);
         }
 
@@ -328,8 +328,8 @@ namespace Facebook.Tests.Synchronous
             setHashValueTest();
             string obj_type = Constants.TestType;
             string key = Constants.TestHashKey;
-            _apiWeb.Data.RemoveHashKey(obj_type, key);
-            var ret = _apiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
+            _facebookApiWeb.Data.RemoveHashKey(obj_type, key);
+            var ret = _facebookApiWeb.Data.GetHashValue(Constants.TestType, Constants.TestHashKey, Constants.TestObjectPropertyName);
             Assert.AreEqual(ret, null);
         }
 
@@ -344,7 +344,7 @@ namespace Facebook.Tests.Synchronous
 		//    // TODO: No DataAssociation object is provided by the XSD, so this will not work.
 		//    List<DataAssociation> assocs = null; // TODO: Initialize to an appropriate value
 		//    string name = string.Empty; // TODO: Initialize to an appropriate value
-		//    _apiWeb.Data.RemoveAssociations(assocs, name);
+		//    _facebookApiWeb.Data.RemoveAssociations(assocs, name);
 		//    Assert.Inconclusive("A method that does not return a value cannot be verified.");
 		//}
 
@@ -356,7 +356,7 @@ namespace Facebook.Tests.Synchronous
         {
             setAssociationTest();
             string name = Constants.TestType;
-            _apiWeb.Data.RemoveAssociation(name, _id1, _id2);
+            _facebookApiWeb.Data.RemoveAssociation(name, _id1, _id2);
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace Facebook.Tests.Synchronous
             setAssociationTest();
             string name = Constants.TestType;
             long obj_id = _id1;
-            _apiWeb.Data.RemoveAssociatedObjects(name, obj_id);
+            _facebookApiWeb.Data.RemoveAssociatedObjects(name, obj_id);
         }   
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace Facebook.Tests.Synchronous
             int increment = 2; 
             long expected = long.Parse(Constants.TestHashValue) + increment;
             long actual;
-            actual = _apiWeb.Data.IncHashValue(obj_type, key, prop_name, increment);
+            actual = _facebookApiWeb.Data.IncHashValue(obj_type, key, prop_name, increment);
             Assert.AreEqual(expected, actual);
             
         }
@@ -399,7 +399,7 @@ namespace Facebook.Tests.Synchronous
             int pref_id = 0; 
             string expected = Constants.TestString1; 
             string actual;
-            actual = _apiWeb.Data.GetUserPreference(pref_id);
+            actual = _facebookApiWeb.Data.GetUserPreference(pref_id);
             Assert.AreEqual(expected, actual);
         }
 
@@ -412,7 +412,7 @@ namespace Facebook.Tests.Synchronous
             setUserPreferencesTest();
             
             // No return value
-            var actual = _apiWeb.Data.GetUserPreferences();
+            var actual = _facebookApiWeb.Data.GetUserPreferences();
             Assert.IsNotNull(actual);
             Assert.AreEqual(Constants.TestString2, actual[0].value);
             Assert.AreEqual(Constants.TestString3, actual[1].value);
@@ -436,7 +436,7 @@ namespace Facebook.Tests.Synchronous
                                                                }
                                                        };
             IList<object_property_info> actual;
-            actual = _apiWeb.Data.GetObjectType(obj_type);
+            actual = _facebookApiWeb.Data.GetObjectType(obj_type);
             Assert.AreEqual(expected[0].name, actual[0].name);
             Assert.AreEqual(expected[0].data_type, actual[0].data_type);
             Assert.AreEqual(expected[0].index_type, actual[0].index_type);
@@ -459,7 +459,7 @@ namespace Facebook.Tests.Synchronous
                                                            }
                                                    };
                     
-            var actual = _apiWeb.Data.GetObjectTypes();
+            var actual = _facebookApiWeb.Data.GetObjectTypes();
             Assert.IsNotNull(actual);
             Assert.AreEqual(expected[0].name, actual[0].name);
             Assert.AreEqual(expected[0].object_class, actual[0].object_class);
@@ -478,7 +478,7 @@ namespace Facebook.Tests.Synchronous
             created.Add(_objectID);
             // TODO: Facebook returning following exception:
             // A database error occurred. Please try again: unable to fetch all objects
-            //var actual = _apiWeb.Data.GetObjects(created, null);
+            //var actual = _facebookApiWeb.Data.GetObjects(created, null);
             //Assert.IsNotNull(actual);
             //Assert.AreEqual(actual, created);
         }
@@ -490,7 +490,7 @@ namespace Facebook.Tests.Synchronous
         public void getObjectTest()
         {
             createObjectTest();
-            var actual = _apiWeb.Data.GetObject(_objectID, null);
+            var actual = _facebookApiWeb.Data.GetObject(_objectID, null);
             Assert.IsNotNull(actual);
         }
 
@@ -506,7 +506,7 @@ namespace Facebook.Tests.Synchronous
             string prop_name = Constants.TestObjectPropertyName;
             string expected = Constants.TestHashValue; 
             string actual;
-            actual = _apiWeb.Data.GetHashValue(obj_type, key, prop_name);
+            actual = _facebookApiWeb.Data.GetHashValue(obj_type, key, prop_name);
             Assert.AreEqual(expected, actual);
         }
 
@@ -518,7 +518,7 @@ namespace Facebook.Tests.Synchronous
         {
             long uid = Constants.FBSamples_UserId; 
             IList<cookie> actual;
-            actual = _apiWeb.Data.GetCookies(uid);
+            actual = _facebookApiWeb.Data.GetCookies(uid);
             Assert.AreEqual(0, actual.Count);
             
         }
@@ -532,7 +532,7 @@ namespace Facebook.Tests.Synchronous
             long uid = Constants.FBSamples_UserId;
             string cookieName = "test"; 
             IList<cookie> actual;
-            actual = _apiWeb.Data.GetCookies(uid, cookieName);
+            actual = _facebookApiWeb.Data.GetCookies(uid, cookieName);
             Assert.AreEqual(0, actual.Count);
             
         }
@@ -546,7 +546,7 @@ namespace Facebook.Tests.Synchronous
             IList<cookie> actual;
             try
             {
-                actual = _apiWeb.Data.GetCookies();
+                actual = _facebookApiWeb.Data.GetCookies();
 
             }
             catch (Exception ex)
@@ -568,7 +568,7 @@ namespace Facebook.Tests.Synchronous
             long obj_id2 = _id2;
             bool no_data = false;
             data_getAssociations_response actual;
-            actual = _apiWeb.Data.GetAssociations(obj_id1, obj_id2, no_data);
+            actual = _facebookApiWeb.Data.GetAssociations(obj_id1, obj_id2, no_data);
             // TODO: Facebook returns 0 assocations?
             //Assert.AreEqual(2, actual.object_association.Count);
         }
@@ -582,7 +582,7 @@ namespace Facebook.Tests.Synchronous
 		//public void getAssociationDefinitionsTest()
 		//{
 		//    defineAssociationTest();
-		//    var resps = _apiWeb.Data.GetAssociationDefinitions();
+		//    var resps = _facebookApiWeb.Data.GetAssociationDefinitions();
 		//    foreach(var resp in resps.object_assoc_info)
 		//    {
 		//        // TODO: Doesn't work right now... parsing from FB doesn't work.  You can see the values in the untyped value
@@ -636,7 +636,7 @@ namespace Facebook.Tests.Synchronous
             string name = Constants.TestType;
             List<long> obj_ids = new List<long>{_id1,_id2};
             IList<int> actual;
-            actual = _apiWeb.Data.GetAssociatedObjectCounts(name, obj_ids);
+            actual = _facebookApiWeb.Data.GetAssociatedObjectCounts(name, obj_ids);
             // TODO: Facebook returns 0 assocations?
             //Assert.AreEqual(1, actual[0]);
             //Assert.AreEqual(1, actual[1]); 
@@ -653,7 +653,7 @@ namespace Facebook.Tests.Synchronous
             long obj_id = _id2;
             int expected = 1;  // //Test is known to fail as of 8/10.  Don't know why there are 0 being returned by facebook.  It should be 1.
             int actual;
-            actual = _apiWeb.Data.GetAssociatedObjectCount(name, obj_id);
+            actual = _facebookApiWeb.Data.GetAssociatedObjectCount(name, obj_id);
             // TODO: Facebook returns 0 assocations?
             //Assert.AreEqual(expected, actual);
         }
@@ -665,11 +665,11 @@ namespace Facebook.Tests.Synchronous
         public void dropObjectTypeTest()
         {
             //var existingTypes = _api.Data.GetObjectTypes();
-            var existingTypes = _apiWeb.Data.GetObjectTypes();
+            var existingTypes = _facebookApiWeb.Data.GetObjectTypes();
             foreach (var typ in existingTypes)
             {
                 //_api.Data.DropObjectType(typ.name);
-                _apiWeb.Data.DropObjectType(typ.name);
+                _facebookApiWeb.Data.DropObjectType(typ.name);
             }
         }
 
@@ -686,7 +686,7 @@ namespace Facebook.Tests.Synchronous
             created.Add(_objectID);
             // TODO: Facebook returning following exception:
             // A database error occurred. Please try again: unable to fetch objects
-            // _apiWeb.Data.DeleteObjects(created);
+            // _facebookApiWeb.Data.DeleteObjects(created);
         }
 
         /// <summary>
@@ -697,7 +697,7 @@ namespace Facebook.Tests.Synchronous
         {
             createObjectTest();
             long obj_id = _objectID;  
-            _apiWeb.Data.DeleteObject(obj_id);
+            _facebookApiWeb.Data.DeleteObject(obj_id);
         }
 
         /// <summary>
@@ -713,7 +713,7 @@ namespace Facebook.Tests.Synchronous
         {
             createObjectTypeTest();
             int prop_type = 1;
-            _apiWeb.Data.DefineObjectProperty(objectType, propertyName, prop_type);
+            _facebookApiWeb.Data.DefineObjectProperty(objectType, propertyName, prop_type);
         }
 
         /// <summary>
@@ -737,7 +737,7 @@ namespace Facebook.Tests.Synchronous
                                                     object_type = Constants.TestType
                                                 };
             bool? inverse = null;
-            _apiWeb.Data.DefineAssociation(name, assoc_type, assoc_info1, assoc_info2, inverse);
+            _facebookApiWeb.Data.DefineAssociation(name, assoc_type, assoc_info1, assoc_info2, inverse);
         }
 
         private void DropAssociations()
@@ -749,7 +749,7 @@ namespace Facebook.Tests.Synchronous
         {
             try
             {
-                _apiWeb.Data.UndefineAssociation(associationName);
+                _facebookApiWeb.Data.UndefineAssociation(associationName);
             }
             catch(FacebookException e)
             {
@@ -781,9 +781,9 @@ namespace Facebook.Tests.Synchronous
                                          propertyValue
                                      }
                                  };
-            var ret = _apiWeb.Data.CreateObject(objectType, null);
+            var ret = _facebookApiWeb.Data.CreateObject(objectType, null);
             Assert.IsNotNull(ret);
-            ret = _apiWeb.Data.CreateObject(objectType, properties);
+            ret = _facebookApiWeb.Data.CreateObject(objectType, properties);
             _objectID = ret;
             Assert.IsNotNull(ret);
         }
@@ -796,8 +796,8 @@ namespace Facebook.Tests.Synchronous
         {
             dropObjectTypeTest();
             string name = Constants.TestType; 
-            _apiWeb.Data.CreateObjectType(name);
-            var existingTypes = _apiWeb.Data.GetObjectTypes();
+            _facebookApiWeb.Data.CreateObjectType(name);
+            var existingTypes = _facebookApiWeb.Data.GetObjectTypes();
             foreach (var typ in existingTypes)
             {
                 Assert.AreEqual(typ.name,name);
@@ -815,7 +815,7 @@ namespace Facebook.Tests.Synchronous
             string prop_name = Constants.TestObjectPropertyName;
             string expected = Constants.TestPropertyValue;
             string actual;
-            actual = _apiWeb.Data.GetObjectProperty(obj_id, prop_name);
+            actual = _facebookApiWeb.Data.GetObjectProperty(obj_id, prop_name);
             Assert.AreEqual(expected, actual);
         }
     }

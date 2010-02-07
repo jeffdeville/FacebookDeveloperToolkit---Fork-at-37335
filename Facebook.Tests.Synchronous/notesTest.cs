@@ -50,7 +50,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getTest()
         {
-            var actual = _apiWeb.Notes.Get();
+            var actual = _facebookApiWeb.Notes.Get();
             Assert.IsNotNull(actual);
             
         }
@@ -60,7 +60,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void createTest()
         {
-            var actual = _apiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
+            var actual = _facebookApiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
             Assert.IsNotNull(actual);
 
         }
@@ -70,7 +70,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void createTest2()
         {
-            var actual = _apiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
+            var actual = _facebookApiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
             Assert.IsNotNull(actual);
 
         }
@@ -80,8 +80,8 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void editTest()
         {
-            var actual = _apiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
-            var actual2 = _apiWeb.Notes.Edit(actual, "Test Note Title Edited", "Test note content edited");
+            var actual = _facebookApiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
+            var actual2 = _facebookApiWeb.Notes.Edit(actual, "Test Note Title Edited", "Test note content edited");
 
             Assert.IsNotNull(actual2);
         }
@@ -91,8 +91,8 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void deleteTest()
         {
-            var noteID = _apiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
-            var actual = _apiWeb.Notes.Delete(noteID);
+            var noteID = _facebookApiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
+            var actual = _facebookApiWeb.Notes.Delete(noteID);
 
             Assert.IsTrue(actual);
         }
@@ -102,8 +102,8 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void editTest2()
         {
-            var actual = _apiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
-            var actual2 = _apiWeb.Notes.Edit(actual, "Test Note Title Edited", "Test note content edited");
+            var actual = _facebookApiWeb.Notes.Create(Constants.FBSamples_UserId, "Test Note Title", "Test note content");
+            var actual2 = _facebookApiWeb.Notes.Edit(actual, "Test Note Title Edited", "Test note content edited");
 
             Assert.IsNotNull(actual2);
         }

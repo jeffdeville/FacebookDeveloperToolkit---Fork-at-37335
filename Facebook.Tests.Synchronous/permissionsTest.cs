@@ -20,7 +20,7 @@ namespace Facebook.Tests.Synchronous
 		{
             var api = Constants.FBSamples_WebApplicationKey2;
 			var expected = true;
-			var actual = _apiWeb.Permissions.RevokeApiAccess(api);
+			var actual = _facebookApiWeb.Permissions.RevokeApiAccess(api);
 			Assert.AreEqual(expected, actual);
 		}
 
@@ -33,7 +33,7 @@ namespace Facebook.Tests.Synchronous
 			var api = Constants.FBSamples_WebApplicationKey2;
 			var method_arr = new List<string> {"admin"};
 			var expected = true;
-			var actual = _apiWeb.Permissions.GrantApiAccess(api, method_arr);
+			var actual = _facebookApiWeb.Permissions.GrantApiAccess(api, method_arr);
 			Assert.AreEqual(expected, actual);
 		}
 
@@ -44,7 +44,7 @@ namespace Facebook.Tests.Synchronous
 		public void checkGrantedApiAccessTest()
 		{
 			var api = Constants.FBSamples_WebApplicationKey2;
-			var actual = _apiWeb.Permissions.CheckGrantedApiAccess(api);
+			var actual = _facebookApiWeb.Permissions.CheckGrantedApiAccess(api);
 			Assert.IsNotNull(actual);
 		}
 
@@ -55,7 +55,7 @@ namespace Facebook.Tests.Synchronous
 		public void checkAvailableApiAccessTest()
 		{
             var api = Constants.FBSamples_WebApplicationKey2;
-            var actual = _apiWeb.Permissions.CheckAvailableApiAccess(api);
+            var actual = _facebookApiWeb.Permissions.CheckAvailableApiAccess(api);
 			Assert.IsTrue(actual.Count == 0);
 		}
 
@@ -65,7 +65,7 @@ namespace Facebook.Tests.Synchronous
 		//[TestMethod()]
 		//public void permissionsModeTest()
 		//{
-		//    Api parent = _api;
+		//    FacebookApi parent = _api;
 		//    permissions target = new permissions(parent);
 		//    string permissions_apikey = string.Empty; // TODO: Initialize to an appropriate value
 		//    IList<string> expected = null; // TODO: Initialize to an appropriate value

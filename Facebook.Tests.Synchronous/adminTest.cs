@@ -52,12 +52,12 @@ namespace Facebook.Tests.Synchronous
         {
             var expectedDict = new Dictionary<string, string>();
 
-            foreach(var prop in _apiWeb.Admin.GetApplicationPropertyNames())
+            foreach(var prop in _facebookApiWeb.Admin.GetApplicationPropertyNames())
             {
                 expectedDict.Add(prop, null);
             }
 
-            var resultDict = _apiWeb.Admin.GetAppProperties(_apiWeb.Admin.GetApplicationPropertyNames());
+            var resultDict = _facebookApiWeb.Admin.GetAppProperties(_facebookApiWeb.Admin.GetApplicationPropertyNames());
             Assert.AreEqual(expectedDict.Count, resultDict.Count);
             Assert.IsNotNull(resultDict);
         }
@@ -74,8 +74,8 @@ namespace Facebook.Tests.Synchronous
             {
                 {"application_name","Sample IFrame App"}
             };
-            actual = _apiWeb.Admin.SetAppProperties(dict);
-            var props = _apiWeb.Admin.GetAppProperties(_apiWeb.Admin.GetApplicationPropertyNames());
+            actual = _facebookApiWeb.Admin.SetAppProperties(dict);
+            var props = _facebookApiWeb.Admin.GetAppProperties(_facebookApiWeb.Admin.GetApplicationPropertyNames());
             Assert.AreEqual(expected, actual);
             Assert.IsNotNull(props);
             
@@ -91,7 +91,7 @@ namespace Facebook.Tests.Synchronous
             DateTime endDate = DateTime.Now; 
             Admin.Period period = Admin.Period.Day; 
             IList<metrics> actual;
-            actual = this._apiWeb.Admin.GetMetrics(startDate, endDate, period);
+            actual = this._facebookApiWeb.Admin.GetMetrics(startDate, endDate, period);
             Assert.IsTrue(actual.Count>0);
         }
 
@@ -103,7 +103,7 @@ namespace Facebook.Tests.Synchronous
         {
             Admin.IntegrationPointName name = Admin.IntegrationPointName.requests_per_day; // TODO: Initialize to an appropriate value
             int actual;
-            actual = _apiWeb.Admin.GetAllocation(name);
+            actual = _facebookApiWeb.Admin.GetAllocation(name);
             Assert.IsTrue(actual>0);
             
         }
@@ -114,7 +114,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getRestrictionInfoTest()
         {
-            string actual = _apiWeb.Admin.GetRestrictionInfo();
+            string actual = _facebookApiWeb.Admin.GetRestrictionInfo();
             Assert.IsNotNull(actual);
         }
 
@@ -129,8 +129,8 @@ namespace Facebook.Tests.Synchronous
             {
                 {"age",Constants.AdminTestAgeRestriction}
             };
-            bool actual = _apiWeb.Admin.SetRestrictionInfo(dict);
-            var resultInfo = _apiWeb.Admin.GetRestrictionInfo();
+            bool actual = _facebookApiWeb.Admin.SetRestrictionInfo(dict);
+            var resultInfo = _facebookApiWeb.Admin.GetRestrictionInfo();
             Assert.AreEqual(expected, actual);
             Assert.IsNotNull(resultInfo);
         }
@@ -141,7 +141,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getBannedUsersTest()
         {
-            var existingBannedUsers = _apiWeb.Admin.GetBannedUsers();
+            var existingBannedUsers = _facebookApiWeb.Admin.GetBannedUsers();
             Assert.IsNotNull(existingBannedUsers);
         }
 
@@ -152,13 +152,13 @@ namespace Facebook.Tests.Synchronous
         public void banUsersTest()
         {
             List<long> expectedBannedUsers = Constants.FBSamples_uids;
-            bool actual = _apiWeb.Admin.BanUsers(expectedBannedUsers);
-            var actualBannedUsers = _apiWeb.Admin.GetBannedUsers();
+            bool actual = _facebookApiWeb.Admin.BanUsers(expectedBannedUsers);
+            var actualBannedUsers = _facebookApiWeb.Admin.GetBannedUsers();
             Assert.IsTrue(actual);
             Assert.AreEqual(actualBannedUsers.Count, expectedBannedUsers.Count);
 
             // Teardown
-            Assert.IsTrue(_apiWeb.Admin.UnbanUsers(expectedBannedUsers), "Unable to teardown (unban) users.");
+            Assert.IsTrue(_facebookApiWeb.Admin.UnbanUsers(expectedBannedUsers), "Unable to teardown (unban) users.");
         }
 
         /// <summary>
@@ -168,9 +168,9 @@ namespace Facebook.Tests.Synchronous
         public void unbanUsersTest()
         {
             List<long> bannedUsers = Constants.FBSamples_uids;
-            Assert.IsTrue(_apiWeb.Admin.BanUsers(bannedUsers), "Unable to initialize (ban) users.");
-            bool actual = _apiWeb.Admin.UnbanUsers(bannedUsers);
-            var actualBannedUsers = _apiWeb.Admin.GetBannedUsers();
+            Assert.IsTrue(_facebookApiWeb.Admin.BanUsers(bannedUsers), "Unable to initialize (ban) users.");
+            bool actual = _facebookApiWeb.Admin.UnbanUsers(bannedUsers);
+            var actualBannedUsers = _facebookApiWeb.Admin.GetBannedUsers();
             Assert.IsTrue(actual);
             Assert.AreEqual(actualBannedUsers.Count, 0);
         }

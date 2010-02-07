@@ -29,7 +29,7 @@ namespace Facebook.Tests.Synchronous
         public void queryTest2()
         {
             var query = "SELECT uid, name FROM user WHERE uid IN (" + Constants.FBSamples_UserId + ")";
-            var actual = _apiWeb.Fql.Query(query);
+            var actual = _facebookApiWeb.Fql.Query(query);
             Assert.IsNotNull(actual);
         }
 

@@ -30,7 +30,7 @@ namespace Facebook.Tests.Synchronous
 		[TestMethod]
 		public void setStatusTest1()
 		{
-            var status = "testing setStatus Api calls";
+            var status = "testing setStatus FacebookApi calls";
 			var expected = true;
             var actual = _api.Users.SetStatus(status);
 			Assert.AreEqual(expected, actual);
@@ -127,7 +127,7 @@ namespace Facebook.Tests.Synchronous
         public void getStandardInfoTest()
         {
             var userIds = Constants.FBSamples_uids;
-			var actual = _apiWeb.Users.GetStandardInfo(userIds);
+			var actual = _facebookApiWeb.Users.GetStandardInfo(userIds);
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Count > 1);
             Assert.IsTrue(actual[0].name.Equals(Constants.FBSamples_Name));

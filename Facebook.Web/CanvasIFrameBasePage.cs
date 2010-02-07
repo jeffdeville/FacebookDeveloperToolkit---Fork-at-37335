@@ -14,11 +14,11 @@ namespace Facebook.Web
     /// </summary>
     public class CanvasIFrameBasePage : Page
 	{
-		private readonly IFacebookApi _api = new Api().Initialize(new IFrameCanvasSession(null, null));
+		private readonly IFacebookApi _api = new FacebookApi().Initialize(new IFrameCanvasSession(null, null));
 		private bool _requireLogin = false;
 
         /// <summary> 
-        /// The Api Key for the application given by Facebook
+        /// The FacebookApi Key for the application given by Facebook
         /// </summary>
         public string ApiKey
 		{
@@ -27,7 +27,7 @@ namespace Facebook.Web
 		}
 
         /// <summary> 
-        /// The Api Secret for the application given by Facebook
+        /// The FacebookApi Secret for the application given by Facebook
         /// </summary>
         public string Secret
 		{

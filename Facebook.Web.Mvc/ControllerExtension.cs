@@ -14,12 +14,12 @@ namespace Facebook.Web.Mvc
         public static IFacebookApi GetApi(this Controller controller, string apiKey, string secret)
         {
             FBMLCanvasSession session = new FBMLCanvasSession(apiKey ?? WebConfigurationManager.AppSettings["ApiKey"], secret ?? WebConfigurationManager.AppSettings["Secret"]);
-			return new Api().Initialize(session);
+			return new FacebookApi().Initialize(session);
         }
 		public static IFacebookApi GetApi(this Controller controller)
         {
             FBMLCanvasSession session = new FBMLCanvasSession(WebConfigurationManager.AppSettings["ApiKey"], WebConfigurationManager.AppSettings["Secret"]);
-			return new Api().Initialize(session);
+			return new FacebookApi().Initialize(session);
         }
 		public static CanvasSession GetFacebookSession(this Controller controller)
 		{

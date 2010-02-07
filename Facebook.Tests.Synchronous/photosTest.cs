@@ -149,7 +149,7 @@ namespace Facebook.Tests.Synchronous
             var name = "test";
             var location = "test";
             var description = "test";
-			var actual = _apiWeb.Photos.CreateAlbum(name, location, description, Constants.FBSamples_UserId);
+			var actual = _facebookApiWeb.Photos.CreateAlbum(name, location, description, Constants.FBSamples_UserId);
             Assert.AreEqual(actual.description, "test");
         }
 
@@ -180,7 +180,7 @@ namespace Facebook.Tests.Synchronous
             var x = 0F;
             var y = 0F;
 
-            var result = _apiWeb.Photos.AddTag(pid, tag_uid, tag_text, x, y, Constants.FBSamples_UserId);
+            var result = _facebookApiWeb.Photos.AddTag(pid, tag_uid, tag_text, x, y, Constants.FBSamples_UserId);
             Assert.IsTrue(result);
         }
     }

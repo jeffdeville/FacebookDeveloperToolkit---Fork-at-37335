@@ -21,7 +21,7 @@ namespace Facebook.Tests.Synchronous
 			var eventName = "send";
 			var message = "Testing from the test harness.";
 			var expected = true;
-			var actual = _apiWeb.LiveMessage.Send(uid, eventName, message);
+			var actual = _facebookApiWeb.LiveMessage.Send(uid, eventName, message);
 			Assert.AreEqual(expected, actual);
 		}
 	}

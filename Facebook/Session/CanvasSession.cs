@@ -10,57 +10,7 @@ using System.Collections.Generic;
 
 namespace Facebook.Session
 {
-	internal static class QueryParameters
-	{
-		public const string AuthToken = "auth_token";
-		public const string InCanvas = "fb_sig_in_canvas";
-		public const string InIframe = "fb_sig_in_iframe";
-		public const string InProfileTab = "fb_sig_in_profile_tab";
-		public const string SessionKey = "fb_sig_session_key";
-		public const string User = "fb_sig_user";
-		public const string ProfileSessionKey = "fb_sig_profile_session_key";
-		public const string ProfileUser = "fb_sig_profile_user";
-		public const string Expires = "fb_sig_expires";
-		//static QueryParameters()
-		//{
-		//    var appKey = WebConfigurationManager.AppSettings["ApiKey"];
-		//    AuthToken = "auth_token";
-		//    InCanvas = appKey + "_in_canvas";
-		//    InIframe = appKey + "_in_iframe";
-		//    InProfileTab = appKey + "_in_profile_tab";
-		//    SessionKey = appKey + "_session_key";
-		//    User = appKey + "_user";
-		//    ProfileSessionKey = appKey + "_profile_session_key";
-		//    ProfileUser = appKey + "_profile_user";
-		//    Expires = appKey + "_expires";
-		//}
-
-		//public static readonly string AuthToken;
-		//public static readonly string InCanvas;
-		//public static readonly string InIframe;
-		//public static readonly string InProfileTab;
-		//public static readonly string SessionKey;
-		//public static readonly string User;
-		//public static readonly string ProfileSessionKey;
-		//public static readonly string ProfileUser;
-		//public static readonly string Expires;
-	}
-
-    public class CachedSessionInfo
-	{
-		public CachedSessionInfo(string sessionKey, long userId, DateTime expiryTime)
-		{
-			SessionKey = sessionKey;
-			UserId = userId;
-			ExpiryTime = expiryTime;
-		}
-
-		public string SessionKey { get; set; }
-		public long UserId { get; set; }
-		public DateTime ExpiryTime { get; set; }
-	}
-
-	/// <summary>
+    /// <summary>
 	/// Represents session object for desktop apps
 	/// </summary>
 	public class CanvasSession : FacebookSession
@@ -118,16 +68,7 @@ namespace Facebook.Session
 
         private void LoadFromRequest()
         {
-            if (string.IsNullOrEmpty(ApplicationKey) || string.IsNullOrEmpty(ApplicationSecret))
-            {
-                throw new Exception(
-                    "Session must have application key and secret before logging in." + Environment.NewLine +
-                    "To set them in your web.config, use something like the following:" + Environment.NewLine +
-                    "<appSettings>" + Environment.NewLine +
-                    "   <add key=\"ApiKey\" value =\"YOURApiKEY\"/>" + Environment.NewLine +
-                    "   <add key=\"Secret\" value =\"YOURSECRET\"/>" + Environment.NewLine +
-                    "</appSettings>\"");
-            }
+            
 
             if (HttpContext.Current.Response == null || HttpContext.Current.Request == null)
             {
@@ -155,7 +96,7 @@ namespace Facebook.Session
             }
             else if (!string.IsNullOrEmpty(authToken))
             {
-                session_info sessionInfo = new Api().Initialize(this).Auth.GetSession(authToken);
+                session_info sessionInfo = new FacebookApi().Initialize(this).Auth.GetSession(authToken);
                 SetSessionProperties(sessionInfo.session_key, sessionInfo.uid, DateHelper.ConvertUnixTimeToDateTime(sessionInfo.expires));
             }
 
@@ -184,7 +125,7 @@ namespace Facebook.Session
         /// </summary>
         public string GetNextUrl()
         {
-			var props = new Api().Initialize(this).Admin.GetAppProperties(new List<string>() { "callback_url", "canvas_name" });
+			var props = new FacebookApi().Initialize(this).Admin.GetAppProperties(new List<string>() { "callback_url", "canvas_name" });
             if (props.ContainsKey("callback_url") && props.ContainsKey("canvas_name") && !string.IsNullOrEmpty(props["callback_url"]) && !string.IsNullOrEmpty(props["callback_url"]))
             {
                 return HttpContext.Current.Request.Url.ToString().Replace(props["callback_url"], string.Format("http://apps.facebook.com/{0}/", props["canvas_name"]));

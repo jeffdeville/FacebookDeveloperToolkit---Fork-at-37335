@@ -20,7 +20,7 @@ namespace Facebook.Tests.Synchronous
 		{
 			var native_strings = new Dictionary<string, string> { { "text", "(Testing uploadNativeStrings) Do you want to add a friend?"}, {"description", "text string in a popup dialog" } };
 			var expected = false;
-			var actual = _apiWeb.Fbml.UploadNativeStrings(native_strings);
+			var actual = _facebookApiWeb.Fbml.UploadNativeStrings(native_strings);
 		    Assert.IsNotNull(actual);
 
             /*  This should return false, as the native string has not been uploaded.  
@@ -39,7 +39,7 @@ namespace Facebook.Tests.Synchronous
 			var handle = "test";
 			var fbml = "test";
 			var expected = true;
-            var actual = _apiWeb.Fbml.SetRefHandle(handle, fbml);
+            var actual = _facebookApiWeb.Fbml.SetRefHandle(handle, fbml);
 			Assert.AreEqual(expected, actual);
 		}
 
@@ -96,7 +96,7 @@ namespace Facebook.Tests.Synchronous
             };
             var expected = 2;
 
-            var actual = _apiWeb.Fbml.RegisterCustomTags(tags);
+            var actual = _facebookApiWeb.Fbml.RegisterCustomTags(tags);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -105,7 +105,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod]
         public void getCustomTagsTest()
         {
-            var actual = _apiWeb.Fbml.GetCustomTags();
+            var actual = _facebookApiWeb.Fbml.GetCustomTags();
             Assert.IsNotNull(actual);
         }
 
@@ -115,7 +115,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod]
         public void deleteCustomTagsTest()
         {
-            var actual = _apiWeb.Fbml.DeleteCustomTags(new List<string> { "video", "gallery" });
+            var actual = _facebookApiWeb.Fbml.DeleteCustomTags(new List<string> { "video", "gallery" });
             Assert.IsTrue(actual);
         }
 

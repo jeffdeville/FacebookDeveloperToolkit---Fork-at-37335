@@ -48,7 +48,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void createTokenTest()
         {
-            var result =_apiWeb.Auth.CreateToken();
+            var result =_facebookApiWeb.Auth.CreateToken();
             Assert.IsNotNull(result);
             Assert.AreNotEqual(result, string.Empty);
         }
@@ -59,9 +59,9 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void getSessionTest()
         {
-            var authToken = _apiWeb.Auth.CreateToken();
+            var authToken = _facebookApiWeb.Auth.CreateToken();
             // TODO: Get Session giving invalid parameter error.  May be affected by login process requirements.
-            //var result = _apiWeb.Auth.GetSession(authToken);
+            //var result = _facebookApiWeb.Auth.GetSession(authToken);
             //Assert.IsNotNull(result);
             //Assert.AreNotEqual(result, string.Empty);
         }
@@ -104,7 +104,7 @@ namespace Facebook.Tests.Synchronous
         [TestMethod()]
         public void revokeExtendedPermissionTest()
         {
-            var result = _apiWeb.Auth.RevokeExtendedPermission(Enums.ExtendedPermissions.sms);
+            var result = _facebookApiWeb.Auth.RevokeExtendedPermission(Enums.ExtendedPermissions.sms);
             Assert.IsTrue(result);
         }
     }

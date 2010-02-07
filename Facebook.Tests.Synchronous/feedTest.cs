@@ -88,10 +88,10 @@ namespace Facebook.Tests.Synchronous
         {
 			DeactivateAllBundles();
 			long actual = RegisterNewBundle();
-            template_bundle expected = _apiWeb.Feed.GetRegisteredTemplateBundleByID(actual);
+            template_bundle expected = _facebookApiWeb.Feed.GetRegisteredTemplateBundleByID(actual);
             Assert.AreEqual(expected.template_bundle_id, actual);
 
-            var deactivated = _apiWeb.Feed.DeactivateTemplateBundleByID(actual.ToString());
+            var deactivated = _facebookApiWeb.Feed.DeactivateTemplateBundleByID(actual.ToString());
             Assert.IsTrue(deactivated);
         }
 
@@ -102,18 +102,18 @@ namespace Facebook.Tests.Synchronous
         public void getRegisteredTemplateBundlesTest()
         {
 			RegisterNewBundle();
-            var actual = _apiWeb.Feed.GetRegisteredTemplateBundles();
+            var actual = _facebookApiWeb.Feed.GetRegisteredTemplateBundles();
             Assert.IsTrue(actual.Count > 0);
 			DeactivateAllBundles();
         }
 
 		private void DeactivateAllBundles()
 		{
-			var bundles = _apiWeb.Feed.GetRegisteredTemplateBundles();
+			var bundles = _facebookApiWeb.Feed.GetRegisteredTemplateBundles();
 
 			foreach (var b in bundles)
 			{
-				_apiWeb.Feed.DeactivateTemplateBundleByID(b.template_bundle_id.ToString());
+				_facebookApiWeb.Feed.DeactivateTemplateBundleByID(b.template_bundle_id.ToString());
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace Facebook.Tests.Synchronous
 			List<feedTemplate> shortStoryTemplates = new List<feedTemplate> { shortStoryTemplate };
 			feedTemplate fullStoryTemplate = new feedTemplate { PreferredLayout = "1", TemplateBody = fullStoryTemplateBody, TemplateTitle = fullStoryTemplateTitle };
 
-			return _apiWeb.Feed.RegisterTemplateBundle(oneLineTemplates, shortStoryTemplates, fullStoryTemplate);
+			return _facebookApiWeb.Feed.RegisterTemplateBundle(oneLineTemplates, shortStoryTemplates, fullStoryTemplate);
 		}
 	}
 }
