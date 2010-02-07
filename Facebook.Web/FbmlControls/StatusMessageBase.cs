@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Provides common functionality for the <see>Error</see>, <see>Success</see>, and <see>Explanation</see> controls.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [DefaultProperty("Message")]
     public abstract class StatusMessageBase : FbmlControl

@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Defines the subtitle for the profile box. The enclosed content is interpreted purely as plain text. 
     /// This tag may contain fb:action, an optional tag that renders an action link on the right-hand side of the subtitle. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

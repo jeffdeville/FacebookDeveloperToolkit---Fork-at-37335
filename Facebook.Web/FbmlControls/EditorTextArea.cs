@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Creates a &lt;textarea&gt; element.  
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

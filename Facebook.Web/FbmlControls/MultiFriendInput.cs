@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a multi-friend form entry field like the one used in the message composer. You can use the field inside an fb:request-form to select users for whom a request can be sent. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

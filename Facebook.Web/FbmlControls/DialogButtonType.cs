@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Type of Dialog Button (submit or button)
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum DialogButtonType
     {

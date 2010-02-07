@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Creates a JavaScript submission mechanism for a form, which makes image or text links act as Submit buttons. Markup contained by this tag is surrounded with an &lt;a&gt; tag that includes a submit onclick action. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

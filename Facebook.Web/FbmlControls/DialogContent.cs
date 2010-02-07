@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// The fb:dialog-content tag is a child of fb:dialog and represents the content that gets displayed inside the popup dialog when it appears. 
     /// This section can be styled like any other part of your app. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

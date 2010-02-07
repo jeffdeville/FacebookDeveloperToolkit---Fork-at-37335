@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Prints the specified group name and formats it as a link to the group's page. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

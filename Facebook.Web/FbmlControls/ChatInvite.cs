@@ -12,7 +12,8 @@ namespace Facebook.Web.FbmlControls
     /// Enables your users to initiate Facebook Chat with their friends from within your applications. 
     /// This tag renders a list of the current user's friends on your canvas page. When the user selects a friend, a Facebook Chat window opens, and can display a pre-populated message in the text field. This way your users can interact in real time with each other, whether to play a game with each other or to collaborate with a productivity tool. 
     /// It's best that you make the message concise, and if you include a URL, keep it as short as possible. 
-        /// </summary>
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
+    /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 
     /// <a href="http://wiki.developers.facebook.com/index.php/Fb:chat-invite" target="_blank">here</a>.</para>

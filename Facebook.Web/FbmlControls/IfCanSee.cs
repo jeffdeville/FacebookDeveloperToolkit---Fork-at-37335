@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Displays the enclosed content if the logged in user can see the specified what attribute of the specified user. 
     /// You can use these settings to provide content or links with relevance to Facebook privacy or to implement your own privacy using Facebook's current controls.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

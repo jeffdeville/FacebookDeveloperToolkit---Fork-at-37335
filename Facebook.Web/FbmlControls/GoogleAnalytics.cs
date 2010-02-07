@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Inserts appropriate Google Analytics code into a canvas page. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

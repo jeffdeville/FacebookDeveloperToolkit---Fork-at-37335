@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a single cell of a table, which contains a thumbnail and name for a particular user, similar to the Mutual Friends table on profile pages. Must be used inside a fb:user-table tag. This tag only works on profile pages. Applications cannot use this on their canvas pages
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

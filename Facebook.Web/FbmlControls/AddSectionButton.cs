@@ -13,6 +13,7 @@ namespace Facebook.Web.FbmlControls
     /// Important: The button appears only if the application has already called profile.setInfo or profile.setFBML and set info for that user. We recommend you call profile.setInfo after the user has entered enough data for your application to be able to make a compelling info section. 
     /// If the user already has a condensed profile box or an info section from the application, the button does not appear on that application's canvas page. 
     /// The Platform Guidelines state that you cannot incentivize users to add integration points, so you cannot know whether the user has added a profile box. However, you can use the fb:if-section-not-added tag to have Facebook render contents -- such as the fb:add-section-button tag with an explanation for the user -- only if the user hasn't added the profile box or info section. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

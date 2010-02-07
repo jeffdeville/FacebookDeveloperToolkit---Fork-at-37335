@@ -13,6 +13,7 @@ namespace Facebook.Web.FbmlControls
     /// fb:action 
     /// fb:create-button 
     /// fb:help 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

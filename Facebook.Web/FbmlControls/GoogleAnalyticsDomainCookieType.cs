@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Specifies the type of cookie support the <see>GoogleAnalytics</see> control can use.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum GoogleAnalyticsDomainCookieType
     {

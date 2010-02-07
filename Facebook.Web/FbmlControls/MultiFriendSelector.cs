@@ -12,6 +12,7 @@ namespace Facebook.Web.FbmlControls
     /// There are actually two versions of this button - the full version and the condensed version. This page describes the full version. For information about the condensed version, see fb:multi-friend-selector (condensed). 
     /// This is a nearly full-page interface intended to be used on canvas pages to allow the user to send a "large" number of requests or invitations (where "large" is generally some number more than 4). This tag must be used inside an fb:request-form tag. This interface includes a series of &lt;input type="hidden" name="ids[]" value="[friend id]"&gt; which are included for selected users in the form that gets submitted to your &lt;fb:request-form&gt; action URL. Both the Skip this Step button and the Submit button take the user to the parent fb:request-form action URL. 
     /// Your users can invite their friends who aren't yet on Facebook by entering their email addresses in the text box at the bottom of the multi-friend selector. You need to use Express Registration in order to have those friends join Facebook and authorize your application at the same time. After the friend authorizes your application, it gets bookmarked automatically. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

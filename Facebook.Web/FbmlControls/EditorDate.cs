@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Creates two drop down list boxes that let a user select a date. The month is listed using a three-letter abbreviation, and the day is listed as a numerical digit from 1 to 31 (with no leading zeroes). 
     /// You can only use one date selector per page.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

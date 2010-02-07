@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a table, each cell of which contains a thumbnail and name for a particular user, similar to the Mutual Friends table on profile pages. Inside this tag, use fb:user-item tags to specify the set of users. This tag only works on profile pages. Applications cannot use this on their canvas pages. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

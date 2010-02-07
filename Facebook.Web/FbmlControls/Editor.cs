@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Creates a form with two columns, just like the form on the edit-profile page. The children of fb:editor specify the rows of the form. For example, an fb:editor-text child adds a row with a text field in the right column. The label attribute of the fb:editor-* child specifies what text appears in the left column of that row. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

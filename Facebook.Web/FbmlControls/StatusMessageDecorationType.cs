@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Specifies the types of error decorations available for use with the <see>Error</see> control.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum StatusMessageDecorationType
     {

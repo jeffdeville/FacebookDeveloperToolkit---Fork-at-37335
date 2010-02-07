@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Facebook.Schema;
-
 namespace Facebook.Rest
 {
 	public interface IStream : IRestBase
@@ -14,29 +11,19 @@ namespace Facebook.Rest
 		bool AddLike(string postId);
 		void AddLikeAsync(long uid, string postId, Stream.AddLikeCallback callback, object state);
 		void AddLikeAsync(string postId, Stream.AddLikeCallback callback, object state);
-		stream_data Get(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit);
-
-		stream_data Get(long viewerId, List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit,
-		                string filter_key);
-
-		void GetAsync(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, Stream.GetCallback callback,
-		              object state);
-
-		void GetAsync(long viewerId, List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit,
-		              string filter_key, Stream.GetCallback callback, object state);
-
-		IList<comment> GetComments(string post_id);
+		Facebook.Schema.stream_data Get(System.Collections.Generic.List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit);
+		Facebook.Schema.stream_data Get(long viewerId, System.Collections.Generic.List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key);
+		void GetAsync(System.Collections.Generic.List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, Stream.GetCallback callback, object state);
+		void GetAsync(long viewerId, System.Collections.Generic.List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, string filter_key, Stream.GetCallback callback, object state);
+		System.Collections.Generic.IList<Facebook.Schema.comment> GetComments(string post_id);
 		void GetCommentsAsync(string post_id, Stream.GetCommentsCallback callback, object state);
-		IList<stream_filter> GetFilters();
-		IList<stream_filter> GetFilters(long uid);
+		System.Collections.Generic.IList<Facebook.Schema.stream_filter> GetFilters();
+		System.Collections.Generic.IList<Facebook.Schema.stream_filter> GetFilters(long uid);
 		void GetFiltersAsync(Stream.GetFiltersCallback callback, object state);
 		void GetFiltersAsync(long uid, Stream.GetFiltersCallback callback, object state);
 		string Publish(string message);
-		string Publish(string message, attachment attachment, IList<action_link> actionLinks, string target_id, long uid);
-
-		void PublishAsync(string message, attachment attachment, IList<action_link> actionLinks, string target_id, long uid,
-		                  Stream.PublishCallback callback, object state);
-
+		string Publish(string message, attachment attachment, System.Collections.Generic.IList<Facebook.Schema.action_link> actionLinks, string target_id, long uid);
+		void PublishAsync(string message, attachment attachment, System.Collections.Generic.IList<Facebook.Schema.action_link> actionLinks, string target_id, long uid, Stream.PublishCallback callback, object state);
 		void PublishAsync(string message, Stream.PublishCallback callback, object state);
 		bool Remove(long uid, string postId);
 		bool Remove(string post_id);

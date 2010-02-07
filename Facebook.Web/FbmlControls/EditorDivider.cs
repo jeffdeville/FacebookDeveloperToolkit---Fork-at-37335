@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a horizontal line separator in the column containing the form elements. Despite appearing like an &lt;hr&gt; element, it is actually a &lt;div&gt; with a class of divider. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

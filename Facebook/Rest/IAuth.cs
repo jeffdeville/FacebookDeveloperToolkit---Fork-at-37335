@@ -9,6 +9,7 @@ namespace Facebook.Rest
 		void ExpireSessionAsync(Auth.ExpireSessionCallback callback, object state);
 		Facebook.Schema.session_info GetSession();
 		Facebook.Schema.session_info GetSession(string auth_token);
+	    string ProxyGetSession(string authtoken, string generate_session_secret);
 		void GetSessionAsync(string authToken, Auth.GetSessionCallback callback, object state);
 		string PromoteSession();
 		void PromoteSessionAsync(Auth.PromoteSessionCallback callback, object state);

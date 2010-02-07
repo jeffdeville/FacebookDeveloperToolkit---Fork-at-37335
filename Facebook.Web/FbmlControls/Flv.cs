@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a Flash-based FLV player that can stream arbitrary FLV (video/audio) files on the page
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found

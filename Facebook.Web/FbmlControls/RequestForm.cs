@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// Creates a form that sends requests to the selected users. To send requests/invitations to multiple users, create one of these forms and include either an fb:multi-friend-selector or any combination of fb:multi-friend-input, fb:friend-selector and fb:request-form-submit. The form is submitted after the user confirms the sending of the request. 
     /// If you want to invite only one friend, without making the user select from a list of friends, use the fb:request-form-submit tag within the fb:request-form tag, and make sure to set the appropriate attributes (uid, label) on the submit button to indicate that you are sending an invite to only one friend. 
     /// In general, use fb:multi-friend-selector in a nearly full-page invitation interface where the user is intended to select a large number of people, and fb:friend-selector or fb:multi-friend-input in situations where the user is selecting a smaller number of users and you want to integrate it into the context of your own page. As a middle-ground alternative, you can use the fb:multi-friend-selector (condensed) for places where the user might select a medium-sized list of people without needing a full-page interstitial invitations interface. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

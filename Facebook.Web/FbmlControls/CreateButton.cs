@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a Create button for adding user-generated content. This tag must be a child of fb:dashboard.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

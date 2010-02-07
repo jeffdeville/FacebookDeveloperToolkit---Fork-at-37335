@@ -12,6 +12,7 @@ namespace Facebook.Web.FbmlControls
     /// Returns the status of the user specified by uid. If there is a URL in the status that starts with either http or https, it can be formatted as a hyperlink. 
     /// If the viewing user doesn't have permission to see the user's status, an empty string is returned. 
     /// Note: This tag only returns the status, not the user's name, so it might be more useful to display the user's name along with the status.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

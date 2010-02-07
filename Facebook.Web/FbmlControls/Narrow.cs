@@ -13,6 +13,7 @@ namespace Facebook.Web.FbmlControls
     /// If no fb:narrow or fb:wide tag is specified, all content is displayed in either column. 
     /// The narrow profile box is 200 pixels wide, including margins. There are 8 pixels of padding on each side, so the actual amount of column width you can use is 184 pixels. 
     /// If you want your fb:narrow information to appear when installed, set the Default Profile Box Column value to Narrow in Installation section of your application's settings in the Developer application. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

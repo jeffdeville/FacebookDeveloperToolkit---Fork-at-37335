@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders a standard media header, intended mainly for displaying content contributed by a particular user. The media header is shown at the top of See All pages throughout Facebook. It contains a photo of the media owner and links to actions on that user. 
     /// The links shown to the content owners must be specified using fb:owner-action tags. Links to non-owners are always Profile, Send a Message and Poke, subject to standard privacy controls. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

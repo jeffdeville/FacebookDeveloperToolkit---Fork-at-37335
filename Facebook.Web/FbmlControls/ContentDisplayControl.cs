@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Represents the base functionality for a control that can render child content.
+    /// derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [PersistChildren(false)]
     [ParseChildren(ChildrenAsProperties = true)]

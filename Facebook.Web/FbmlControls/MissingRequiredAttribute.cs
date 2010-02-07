@@ -9,6 +9,7 @@ namespace Facebook.Web
 {
     /// <summary>
     /// Specifies that a required FBML attribute was not set.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [Serializable]
     public class MissingRequiredAttribute : Exception

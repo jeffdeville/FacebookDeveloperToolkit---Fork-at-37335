@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Post,Get or None
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum HttpMethod
     {

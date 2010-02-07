@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Provides common functionality for the conditional controls, including <see>IsInNetwork</see>, <see>IfCanSee</see>, <see>IfCanSeePhoto</see>, 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// <see>IfIsAppUser</see>, <see>IfIsFriendsWithViewer</see>, <see>IfIsGroupMember</see>, <see>IfIsUser</see>, and <see>IfSectionNotAdded</see>.
     /// </summary>
     [ParseChildren(ChildrenAsProperties = true)]

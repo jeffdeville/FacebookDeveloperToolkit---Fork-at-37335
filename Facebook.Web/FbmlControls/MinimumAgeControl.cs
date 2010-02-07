@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Provides common functionality for the <see>Age18Plus</see> and <see>Age21Plus</see> controls.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [ParseChildren(ChildrenAsProperties = true)]
     [PersistChildren(false)]

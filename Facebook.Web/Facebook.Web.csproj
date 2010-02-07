@@ -16,21 +16,6 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,143 +69,6 @@
     </Compile>
     <Compile Include="CanvasIFrameLoginControl.cs" />
     <Compile Include="FBMLControlRenderer.cs" />
-    <Compile Include="FbmlControls\Age18Plus.cs" />
-    <Compile Include="FbmlControls\Age21Plus.cs" />
-    <Compile Include="FbmlControls\AgeTemplateContainer.cs" />
-    <Compile Include="FbmlControls\ContentDisplayControl.cs" />
-    <Compile Include="FbmlControls\AddSectionButton.cs" />
-    <Compile Include="FbmlControls\CanvasSection.cs" />
-    <Compile Include="FbmlControls\Action.cs" />
-    <Compile Include="FbmlControls\Board.cs" />
-    <Compile Include="FbmlControls\ChatInvite.cs" />
-    <Compile Include="FbmlControls\Comments.cs" />
-    <Compile Include="FbmlControls\Captcha.cs" />
-    <Compile Include="FbmlControls\Bypass.cs" />
-    <Compile Include="FbmlControls\ApplicationName.cs" />
-    <Compile Include="FbmlControls\WallPostAction.cs" />
-    <Compile Include="FbmlControls\WallPost.cs" />
-    <Compile Include="FbmlControls\Wall.cs" />
-    <Compile Include="FbmlControls\DialogButtonType.cs" />
-    <Compile Include="FbmlControls\DialogButton.cs" />
-    <Compile Include="FbmlControls\DialogContent.cs" />
-    <Compile Include="FbmlControls\DialogTitle.cs" />
-    <Compile Include="FbmlControls\Dialog.cs" />
-    <Compile Include="FbmlControls\TabAlign.cs" />
-    <Compile Include="FbmlControls\TabItem.cs" />
-    <Compile Include="FbmlControls\Tabs.cs" />
-    <Compile Include="FbmlControls\OwnerAction.cs" />
-    <Compile Include="FbmlControls\HeaderTitle.cs" />
-    <Compile Include="FbmlControls\MediaHeader.cs" />
-    <Compile Include="FbmlControls\HeaderStyle.cs" />
-    <Compile Include="FbmlControls\Header.cs" />
-    <Compile Include="FbmlControls\Help.cs" />
-    <Compile Include="FbmlControls\CreateButton.cs" />
-    <Compile Include="FbmlControls\Dashboard.cs" />
-    <Compile Include="FbmlControls\EditorTime.cs" />
-    <Compile Include="FbmlControls\EditorTextArea.cs" />
-    <Compile Include="FbmlControls\EditorText.cs" />
-    <Compile Include="FbmlControls\EditorMonth.cs" />
-    <Compile Include="FbmlControls\EditorDivider.cs" />
-    <Compile Include="FbmlControls\EditorDate.cs" />
-    <Compile Include="FbmlControls\EditorCustom.cs" />
-    <Compile Include="FbmlControls\EditorCancel.cs" />
-    <Compile Include="FbmlControls\EditorButtonset.cs" />
-    <Compile Include="FbmlControls\EditorButton.cs" />
-    <Compile Include="FbmlControls\Editor.cs" />
-    <Compile Include="FbmlControls\RequestFormSubmit.cs" />
-    <Compile Include="FbmlControls\MultiFriendSelector.cs" />
-    <Compile Include="FbmlControls\HttpMethod.cs" />
-    <Compile Include="FbmlControls\RequestForm.cs" />
-    <Compile Include="FbmlControls\PromptPermission.cs" />
-    <Compile Include="FbmlControls\Submit.cs" />
-    <Compile Include="FbmlControls\PageAdminEditHeader.cs" />
-    <Compile Include="FbmlControls\Time.cs" />
-    <Compile Include="FbmlControls\ShareButton.cs" />
-    <Compile Include="FbmlControls\Ref.cs" />
-    <Compile Include="FbmlControls\Redirect.cs" />
-    <Compile Include="FbmlControls\FbmlVersion.cs" />
-    <Compile Include="FbmlControls\Fbml.cs" />
-    <Compile Include="FbmlControls\JsString.cs" />
-    <Compile Include="FbmlControls\TypeaheadInput.cs" />
-    <Compile Include="FbmlControls\TypeaheadOption.cs" />
-    <Compile Include="FbmlControls\Default.cs" />
-    <Compile Include="FbmlControls\Switch.cs" />
-    <Compile Include="FbmlControls\RockTheVote.cs" />
-    <Compile Include="FbmlControls\RandomOption.cs" />
-    <Compile Include="FbmlControls\Random.cs" />
-    <Compile Include="FbmlControls\MediaType.cs" />
-    <Compile Include="FbmlControls\QuantCast.cs" />
-    <Compile Include="FbmlControls\MultiFriendInput.cs" />
-    <Compile Include="FbmlControls\Mobile.cs" />
-    <Compile Include="FbmlControls\IfMultipleActors.cs" />
-    <Compile Include="FbmlControls\FriendSelector.cs" />
-    <Compile Include="FbmlControls\Feed.cs" />
-    <Compile Include="FbmlControls\Title.cs" />
-    <Compile Include="FbmlControls\TitleDisplayControl.cs" />
-    <Compile Include="FbmlControls\LiveStream.cs" />
-    <Compile Include="FbmlControls\Flv.cs" />
-    <Compile Include="FbmlControls\SwfWMode.cs" />
-    <Compile Include="FbmlControls\SwfAlign.cs" />
-    <Compile Include="FbmlControls\SwfQuality.cs" />
-    <Compile Include="FbmlControls\SwfScale.cs" />
-    <Compile Include="FbmlControls\SwfSAlign.cs" />
-    <Compile Include="FbmlControls\PhotoAlign.cs" />
-    <Compile Include="FbmlControls\PhotoSize.cs" />
-    <Compile Include="FbmlControls\Photo.cs" />
-    <Compile Include="FbmlControls\Swf.cs" />
-    <Compile Include="FbmlControls\Mp3.cs" />
-    <Compile Include="FbmlControls\RestrictedTo.cs" />
-    <Compile Include="FbmlControls\VisibleToFriends.cs" />
-    <Compile Include="FbmlControls\VisibleToAppUsers.cs" />
-    <Compile Include="FbmlControls\VisibleToConnection.cs" />
-    <Compile Include="FbmlControls\VisibleToOwner.cs" />
-    <Compile Include="FbmlControls\PublisherLink.cs" />
-    <Compile Include="FbmlControls\Subtitle.cs" />
-    <Compile Include="FbmlControls\UserItem.cs" />
-    <Compile Include="FbmlControls\UserTable.cs" />
-    <Compile Include="FbmlControls\Wide.cs" />
-    <Compile Include="FbmlControls\Narrow.cs" />
-    <Compile Include="FbmlControls\IfSectionNotAdded.cs" />
-    <Compile Include="FbmlControls\UserStatus.cs" />
-    <Compile Include="FbmlControls\IfIsVerified.cs" />
-    <Compile Include="FbmlControls\ProfilePicSize.cs" />
-    <Compile Include="FbmlControls\GroupLink.cs" />
-    <Compile Include="FbmlControls\EventLink.cs" />
-    <Compile Include="FbmlControls\ProfilePic.cs" />
-    <Compile Include="FbmlControls\Error.cs" />
-    <Compile Include="FbmlControls\Explanation.cs" />
-    <Compile Include="FbmlControls\FbmlButtonBase.cs" />
-    <Compile Include="FbmlControls\FbmlConstants.cs" />
-    <Compile Include="FbmlControls\FbmlControl.cs" />
-    <Compile Include="FbmlControls\FbmlRequiredAttribute.cs" />
-    <Compile Include="FbmlControls\FbmlTemplateControl.cs" />
-    <Compile Include="FbmlControls\FbmlTextWriter.cs" />
-    <Compile Include="FbmlControls\GoogleAnalytics.cs" />
-    <Compile Include="FbmlControls\GoogleAnalyticsCampaignMedium.cs" />
-    <Compile Include="FbmlControls\GoogleAnalyticsDomainCookieType.cs" />
-    <Compile Include="FbmlControls\GroupMembershipRole.cs" />
-    <Compile Include="FbmlControls\IfCanSee.cs" />
-    <Compile Include="FbmlControls\IfCanSeePhoto.cs" />
-    <Compile Include="FbmlControls\IfIsAppUser.cs" />
-    <Compile Include="FbmlControls\IfIsFriendsWithViewer.cs" />
-    <Compile Include="FbmlControls\IfIsGroupMember.cs" />
-    <Compile Include="FbmlControls\IfIsUser.cs" />
-    <Compile Include="FbmlControls\IFrame.cs" />
-    <Compile Include="FbmlControls\IframeScrollMode.cs" />
-    <Compile Include="FbmlControls\IsInNetwork.cs" />
-    <Compile Include="FbmlControls\ConditionalControl.cs" />
-    <Compile Include="FbmlControls\ConditionalTemplateContainer.cs" />
-    <Compile Include="FbmlControls\MinimumAgeControl.cs" />
-    <Compile Include="FbmlControls\Name.cs" />
-    <Compile Include="FbmlControls\Pronoun.cs" />
-    <Compile Include="FbmlControls\RequestChoice.cs" />
-    <Compile Include="FbmlControls\MissingRequiredAttribute.cs" />
-    <Compile Include="FbmlControls\StatusMessageBase.cs" />
-    <Compile Include="FbmlControls\StatusMessageDecorationType.cs" />
-    <Compile Include="FbmlControls\Success.cs" />
-    <Compile Include="FbmlControls\User.cs" />
-    <Compile Include="FbmlControls\UserAgent.cs" />
-    <Compile Include="FbmlControls\UserProfilePrivacySetting.cs" />
     <Compile Include="FriendList.cs" />
     <Compile Include="IRenderableFBML.cs" />
     <Compile Include="PhotoAlbum.cs" />
@@ -243,9 +91,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FbmlControls\FbmlControl.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -261,6 +106,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FbmlControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

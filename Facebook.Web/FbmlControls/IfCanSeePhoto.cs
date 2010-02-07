@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Displays the enclosed content only if the logged in user can see the photo specified. 
     /// You should use this tag when specifying content that should only be shown when using fb:photo.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

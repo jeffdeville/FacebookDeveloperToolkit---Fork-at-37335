@@ -460,6 +460,14 @@ namespace Facebook.Rest
 			return response == null ? true : response.TypedValue;
         }
 
+        public string ProxyGetSession(string authtoken, string generate_session_secret)
+        {
+            var parameterList = new Dictionary<string, string> { { "method", "facebook.auth.getSession" } };
+            Utilities.AddOptionalParameter(parameterList, "auth_token", authtoken);
+            Utilities.AddOptionalParameter(parameterList, "generate_session_secret", generate_session_secret);
+            return SendRequest(parameterList, false);
+        }
+
         #endregion Private Methods
         
         #endregion Methods

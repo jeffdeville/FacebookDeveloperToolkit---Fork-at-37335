@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a pronoun for a specific user. If you include no additional parameters, then you is displayed if the user with uid is viewing the page. If another user is the viewer, then he or she is displayed if the gender is known; otherwise, they is displayed. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

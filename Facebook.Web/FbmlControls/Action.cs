@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders a link, usually for navigational purposes. Its appearance depends on its container. 
     /// The tag must be a child of either fb:dashboard or fb:subtitle. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

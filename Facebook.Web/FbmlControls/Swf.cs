@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a Shockwave Flash (SWF) object. On profile pages, an image appears first. When the user clicks the image, it turns into the Flash object. On canvas pages, the image is ignored, and the Flash object is directly included. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found

@@ -13,6 +13,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Displays content inside the tag only if the logged-in user (or specified user) is one of the specified users.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

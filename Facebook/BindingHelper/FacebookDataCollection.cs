@@ -77,10 +77,6 @@ namespace Facebook.BindingHelper
                     Application.Current.Dispatcher.BeginInvoke(action);
                 }
             }
-            else
-            {
-                action();
-            }
 #else
             if (Deployment.Current.Dispatcher.CheckAccess())
             {

@@ -21,7 +21,6 @@ namespace Facebook.Session
 		public const string ProfileSessionKey = "fb_sig_profile_session_key";
 		public const string ProfileUser = "fb_sig_profile_user";
 		public const string Expires = "fb_sig_expires";
-		public const string ApiKey = "fb_sig_api_key";
 		//static QueryParameters()
 		//{
 		//    var appKey = WebConfigurationManager.AppSettings["ApiKey"];
@@ -47,7 +46,7 @@ namespace Facebook.Session
 		//public static readonly string Expires;
 	}
 
-	internal class CachedSessionInfo
+    public class CachedSessionInfo
 	{
 		public CachedSessionInfo(string sessionKey, long userId, DateTime expiryTime)
 		{
@@ -64,7 +63,7 @@ namespace Facebook.Session
 	/// <summary>
 	/// Represents session object for desktop apps
 	/// </summary>
-	public abstract class CanvasSession : FacebookSession
+	public class CanvasSession : FacebookSession
 	{
 		#region Public Methods
 
@@ -147,7 +146,10 @@ namespace Facebook.Session
                     long.Parse(inProfileTab ? HttpContext.Current.Request[QueryParameters.ProfileUser] : HttpContext.Current.Request[QueryParameters.User]),
                     DateHelper.ConvertUnixTimeToDateTime(long.Parse(HttpContext.Current.Request[QueryParameters.Expires])));
             }
-            else if (HaveValidCachedSession(cachedSessionInfo, authToken, HttpContext.Current.Request[QueryParameters.ApiKey]))
+			// The code below was commented out, because w/ it, you must include all of the fbsig parameters in every link.  If you don't include them, the the application
+			// will bust out of the chrome, because you have no session.  Removing this code forces it to use the cached session info from the cookie.  This should
+			// be fine anyway, because manually adding it to the querystring param of every link would still permit expired sessions.
+            else if (cachedSessionInfo != null)// && (HttpContext.Current.Request.HttpMethod == "POST" || !string.IsNullOrEmpty(authToken))) // only use cached info if user hasn't removed the app
             {
                 SetSessionProperties(cachedSessionInfo.SessionKey, cachedSessionInfo.UserId, cachedSessionInfo.ExpiryTime);
             }
@@ -200,33 +202,33 @@ namespace Facebook.Session
 
 		#endregion
 
-		#region Absract Methods
+        //#region Abstract Methods
 
-		internal abstract void RedirectToLogin();
+        //internal abstract void RedirectToLogin();
 
-        /// <summary>
-        /// Prompt for permissions
-        /// </summary>
-        protected void PromptPermissions(string permissionsRedirect)
-        {
-            HttpContext.Current.Response.Write(permissionsRedirect);
-            HttpContext.Current.Response.End();
-        }
+        ///// <summary>
+        ///// Prompt for permissions
+        ///// </summary>
+        //protected void PromptPermissions(string permissionsRedirect)
+        //{
+        //    HttpContext.Current.Response.Write(permissionsRedirect);
+        //    HttpContext.Current.Response.End();
+        //}
 
-        /// <summary>
-        /// Get string for redirect response
-        /// </summary>
-        public abstract string GetRedirect();
-        /// <summary>
-        /// Get permissions redirect
-        /// </summary>
-        public abstract string GetPermissionsRedirect(string permissionsUrl);
+        ///// <summary>
+        ///// Get string for redirect response
+        ///// </summary>
+        //public abstract string GetRedirect();
+        ///// <summary>
+        ///// Get permissions redirect
+        ///// </summary>
+        //public abstract string GetPermissionsRedirect(string permissionsUrl);
 
-		internal abstract void CacheSession();
+        //internal abstract void CacheSession();
 
-		internal abstract CachedSessionInfo LoadCachedSession();
+        //internal abstract CachedSessionInfo LoadCachedSession();
 		
-		#endregion
+        //#endregion
 
 		#region Protected Methods
 
@@ -237,8 +239,6 @@ namespace Facebook.Session
 		{
             string canvasParam = HttpContext.Current.Request[QueryParameters.InCanvas] == "1" || HttpContext.Current.Request[QueryParameters.InIframe] == "1" ? "&canvas" : string.Empty;
 			return string.Format("http://www.facebook.com/login.php?api_key={0}&v=1.0{1}", ApplicationKey, canvasParam);
-			// Their latest code has this:
-			// return string.Format("http://www.facebook.com/login.php?api_key={0}&v=1.0&canvas", ApplicationKey);
 		}
 
 		#endregion
@@ -253,34 +253,6 @@ namespace Facebook.Session
 
 			CacheSession();
 		}
-
-        private bool HaveValidCachedSession(CachedSessionInfo cachedSessionInfo, string authToken, string apiKeyRequestParam)
-        {
-            if (cachedSessionInfo == null)
-            {
-                return false;
-            }
-            else if (DateTime.Now > cachedSessionInfo.ExpiryTime)
-            {
-                return false;
-            }
-             // assume for now that all POST requests are valid, since they would have come from a GET just before now
-            else if (HttpContext.Current.Request.HttpMethod == "POST")
-            {
-                return true;
-            }
-            // this is the case where the user removed the app, but now came back and wants to re-add it.
-            // need to check apiKeyRequestParam, too, to make sure this link is coming from Facebook with proper request params,
-            // instead of from within our app where request params are not expected
-            else if (string.IsNullOrEmpty(authToken) && !string.IsNullOrEmpty(apiKeyRequestParam))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
 
 		#endregion
 	}

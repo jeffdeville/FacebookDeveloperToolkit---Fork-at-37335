@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Displays the enclosed content only if the specified user has accepted the terms of service of the application (that is, authorized your application). For example, if the user has not authorized your application, you can display a prompt to for the user to authorize your application. If the user has already authorized your application you can use fb:else to render application content. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

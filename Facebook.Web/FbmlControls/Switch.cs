@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Evaluates every fb: tag inside and returns the first one that evaluates to anything other than an empty string. You can use fb:default to specify a default that gets rendered if nothing else does before it was executed. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

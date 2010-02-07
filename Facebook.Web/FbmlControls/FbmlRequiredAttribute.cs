@@ -6,6 +6,7 @@ namespace Facebook.Web
 {
     /// <summary>
     /// Indicates that a property is required by FBML.  This class cannot be inherited.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public sealed class FbmlRequiredAttribute : Attribute

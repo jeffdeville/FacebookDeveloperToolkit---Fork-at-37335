@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// This tag renders a block of FBML into an FBML block variable instead of rendering it on the page. You can use this variable in your JavaScript with setInnerFBML. See FBJS for more information.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

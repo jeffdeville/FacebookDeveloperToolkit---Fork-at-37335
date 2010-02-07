@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Decoration for the HeaderStyle
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum HeaderStyle
     {

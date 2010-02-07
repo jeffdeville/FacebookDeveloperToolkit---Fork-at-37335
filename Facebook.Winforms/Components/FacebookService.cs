@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
@@ -237,16 +237,6 @@ namespace Facebook.Winforms.Components
         {
             get { return api; }
 	        
-        }
-
-        /// <summary>
-        /// The secret for your Facebook application.
-        /// </summary>
-        [Category("Facebook"), Description("Secret Word")]
-        public string Secret
-        {
-            get { return api.Session.ApplicationSecret; }
-            set { api.Session.ApplicationSecret = value; }
         }
 
         /// <summary>

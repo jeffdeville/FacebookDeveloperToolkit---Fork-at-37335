@@ -14,6 +14,7 @@ namespace Facebook.Web.FbmlControls
     /// The fb:dialog tag may contain: 
     /// fb:dialog-title - which displays a title on your dialog 
     /// fb:dialog-button - which adds buttons to the bottom of your dialog 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

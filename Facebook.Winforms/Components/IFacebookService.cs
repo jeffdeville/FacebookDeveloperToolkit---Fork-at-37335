@@ -29,7 +29,7 @@ namespace Facebook.Winforms.Components
 		Facebook.Rest.IPermissions Permissions { get; }
 		Facebook.Rest.IPhotos Photos { get; }
 		Facebook.Rest.IProfile Profile { get; }
-		string Secret { get; set; }
+		//string Secret { get; set; }
 		bool SessionExpires { get; }
 		string SessionKey { get; set; }
 		Facebook.Rest.IStatus Status { get; }

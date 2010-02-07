@@ -14,6 +14,7 @@ namespace Facebook.Web.FbmlControls
     /// You can use this tag for both the subject and the object of a sentence describing an action. For example, if a user with the user ID $tagger tags a photo of a user with the user ID $tagee, you could say: 
     /// &lt; fb:name uid="$tagger" capitalize="true" /&gt; tagged a photo of &lt;fb:name subjectid="$tagger" uid="$tagee" /&gt;
     /// User names and profile links follow standard Facebook privacy rules for other viewing users. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

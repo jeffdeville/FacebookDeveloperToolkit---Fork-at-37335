@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Globalization;
+using System.Runtime.Remoting.Messaging;
+using System.Web;
 using Facebook.Session;
 using Facebook.Schema;
 
@@ -201,9 +203,24 @@ namespace Facebook.Rest
 		//    Initialize(session);
 		//}
 		
-		public Api(){}
+		public Api(IFacebookSession session)
+		{
+		    Initialize(session);
+		}
 
-		public IFacebookApi Initialize(IFacebookSession session)
+        private const string FACEBOOK_SESSION = "FACEBOOK_SESSION";
+        public Api()
+		{
+            IFacebookSession session;
+            if (HttpContext.Current == null)
+                session = HttpContext.Current.Items[FACEBOOK_SESSION] as IFacebookSession;
+            else
+                session = CallContext.GetData(FACEBOOK_SESSION) as IFacebookSession;
+            if(session == null)
+                throw new ArgumentNullException("FacebookSession", "The facebook session must exist")
+		}
+
+        public IFacebookApi Initialize(IFacebookSession session)
 		{
 			AuthToken = string.Empty;
 

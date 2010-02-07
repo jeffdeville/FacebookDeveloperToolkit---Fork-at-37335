@@ -1,4 +1,4 @@
-﻿namespace Facebook.Winforms
+namespace Facebook.Winforms
 {
     partial class EventList
     {

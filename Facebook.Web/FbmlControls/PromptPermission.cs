@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders the content of the tag as a link that, when clicked, initiates a dialog requesting the specified extended permissions from the user. You can prompt the user for a series of permissions. 
     /// If the user has already granted a permission, a dialog for that permission does not appear. If the user has not already authorized the application before clicking the link, he or she is prompted to authorize it before being prompted for the permission. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Renders a CAPTCHA on your canvas page inside of a form. When that form is submitted to a canvas page, your callback URL will be called with the additional POST parameter fb_sig_captcha_grade=1 to indicate a successfully completed CAPTCHA.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Creates a button that submits an fb:request-form. Use this along with any combination of fb:multi-friend-input or fb:friend-selector tags inside an fb:request-form if you would like to have the user send a request or invitation. When this button is clicked, a confirmation dialog appears that allows the user to confirm the sending of the request or invitations. 
     /// You can also use a single user ID as the label for the button. This means that instead of using other elements in the fb:request-form, the button results in a request being sent to the user that you specify for the label. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

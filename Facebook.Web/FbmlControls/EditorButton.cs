@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders a button of type submit inside an fb:editor tag. 
     /// This tag can be a child of an fb:editor-buttonset container to render multiple buttons next to each other. If the button is not in a fb:editor-buttonset, the button still renders, but is not styled as an editor-button
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

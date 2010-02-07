@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Hides the content enclosed within this control from any user who is blocked by the user referenced with the 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// <see>UserID</see> property.
     /// </summary>
     /// <remarks>

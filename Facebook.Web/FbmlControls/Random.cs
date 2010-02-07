@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Randomly chooses an item inside the tags based on the weights provided. 
     /// fb:random allows the developer to input a series of tags, of which one or more are shown randomly. Each item can have a weight and the tag can be specified to show more than one choice. Each option should be wrapped in an fb:random-option tag. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

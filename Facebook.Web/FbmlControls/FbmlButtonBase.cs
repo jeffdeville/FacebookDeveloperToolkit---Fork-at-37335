@@ -8,6 +8,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Represents common functionality for buttons represented in FBML.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     [DefaultProperty("Text")]
     public abstract class FbmlButtonBase : FbmlControl

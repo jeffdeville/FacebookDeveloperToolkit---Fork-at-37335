@@ -12,6 +12,7 @@ namespace Facebook.Web.FbmlControls
 
         /// <summary>
         /// Creates a new <see>ConditionalTemplateContainer</see>.
+        /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
         /// </summary>
         /// <param name="parent">The <see>ConditionalControl</see> hosting this container.</param>
         public ConditionalTemplateContainer(FbmlControl parent)

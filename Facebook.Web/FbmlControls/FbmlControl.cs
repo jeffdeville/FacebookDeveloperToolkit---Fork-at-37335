@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Represents the parent class for all FBML controls in the 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// <see>n:Facebook.Web.FbmlControls</see> namespace.
     /// </summary>
     [ToolboxBitmap(typeof(FbmlControl))]

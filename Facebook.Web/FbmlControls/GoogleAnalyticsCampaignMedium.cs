@@ -6,6 +6,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Specifies the type of campaign medium used in Google Analytics tracking supported by the <see>GoogleAnalytics</see> control.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public enum GoogleAnalyticsCampaignMedium
     {

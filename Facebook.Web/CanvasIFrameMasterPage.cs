@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Web.UI;
 using Facebook.Rest;
 using Facebook.Session;
 using System.Web.Configuration;
-using Facebook.Web.FbmlControls;
+//using Facebook.Web.FbmlControls;
 using System.Collections.Generic;
 using Facebook.Schema;
 
@@ -67,15 +67,15 @@ namespace Facebook.Web
         }
         private void CheckForFbmlControls(ControlCollection controls)
         {
-            foreach (Control c in controls)
-            {
-                FbmlControl fc = c as FbmlControl;
-                if (fc != null)
-                {
-                    fc.Xfbml = true;
-                }
-                CheckForFbmlControls(c.Controls);
-            }
+			//foreach (Control c in controls)
+			//{
+			//    FbmlControl fc = c as FbmlControl;
+			//    if (fc != null)
+			//    {
+			//        fc.Xfbml = true;
+			//    }
+			//    CheckForFbmlControls(c.Controls);
+			//}
         }
 
         /// <summary> 

@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Fetches and renders FBML from a given ref source – either a ref string "handle" you've created using fbml.setRefHandle or a URL that serves FBML. You can use this ref to publish identical FBML to a large number of user profiles and subsequently update those profiles, without having to republish FBML on behalf of each user (that is, using profile.setFBML for each user). For a high level discussion of the benefits of fb:ref and how to use it, read this forum post 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

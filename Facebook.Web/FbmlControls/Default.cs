@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// For a group of fb: tags contained within an fb:switch tag, the fb:default tag renders any content inside itself if no other fb: tag inside the fb:switch tag renders code before it.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

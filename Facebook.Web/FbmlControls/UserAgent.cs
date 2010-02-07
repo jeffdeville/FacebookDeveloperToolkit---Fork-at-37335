@@ -8,6 +8,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Displays the contents wrapped inside the tag to the specified user-agents. You can use fb:user-agent on the canvas page and the profile box. It serves as a tool to deal with browser idiosyncrasies.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Specifies the header title for a fb:mediaheader. Note: fb:header-title does not support HTML placed inside this tag (ie/ if you insert html in between fb:header-title tags, the html is escaped). 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

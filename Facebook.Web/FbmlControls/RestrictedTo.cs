@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Lets you tailor the enclosed content to display to specific ages, locations, or content types. 
     /// You should use this tag with fb:else so you can provide alternate content in case the viewing user doesn't meet the demographic requirements. Also, if the user hides their age for privacy reasons, Facebook cannot determine whether or not the content is visible to the user, and thus it cannot be displayed. In this case, your fb:else clause should contain content that any user who doesn't necessarily meet these restrictions could see. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

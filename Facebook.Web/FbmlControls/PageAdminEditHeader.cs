@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// For apps that can be added to Facebook Pages, this adds a standardized edit header for canvas pages so that the Page owner can easily jump to their Page's app configuration. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

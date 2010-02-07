@@ -16,6 +16,7 @@ namespace Facebook.Web.FbmlControls
     /// Important 
     /// You may never disclose a user's verified state anywhere in your application or on Facebook, whether to that user or the user's friends. 
     /// You should use this tag to gate elements in your application that already are privacy-controlled. Do not use this tag to gate content like rendered user data, as a savvy user can view the source and see what's hidden. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found 

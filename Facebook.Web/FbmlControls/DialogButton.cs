@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders a button for the fb:dialog popup. 
     /// The fb:dialog-button tag is a child of fb:dialog and must be contained within it. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

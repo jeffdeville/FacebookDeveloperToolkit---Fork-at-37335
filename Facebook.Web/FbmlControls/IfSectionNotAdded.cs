@@ -12,6 +12,7 @@ namespace Facebook.Web.FbmlControls
     /// Renders the content wrapped within this tag on an application canvas page if the user hasn't added a condensed profile box or info section to her profile. Use this to encourage your users to add a box or info section to their profiles. 
     /// If the user already has a condensed profile box or an info section from the application, then nothing appears on that application's canvas page for this tag. 
     /// The content cannot be more than 100 pixels in height. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// Inserts an &lt;iframe&gt; tag into an application canvas page; you cannot use the &lt;fb:iframe&gt; tag on the profile page (that is, application tabs and profile boxes). You cannot use FBML inside an iframe; use XFBML tags instead. 
     /// The conventional &lt;iframe&gt; tag has been re-created in FBML and became &lt;fb:iframe&gt;. You edit the attributes for &lt;fb:iframe&gt; the same way you would for HTML tags. 
     /// If you aren't requiring a session secret to be passed, you must use your server's Src as the src for your iframe. Otherwise, apps.facebook.com wraps your page with the Facebook layout. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook Wiki documentation for this control can be found

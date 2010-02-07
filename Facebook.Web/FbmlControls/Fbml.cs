@@ -16,6 +16,7 @@ namespace Facebook.Web.FbmlControls
     /// The value of the xmlns attribute must be a URL of the form "http://external.facebook.com/apps/&lt;app_name&gt;". The &lt;app_name&gt; must match the name of the registering application's name in the application's canvas URL (that is, "http://apps.facebook.com/&lt;app_name&gt;"). 
     /// Inside fb:fbml, you can use any custom tags you registered for your application using fbml.registerCustomTags by prefixing those tags with the namespace you selected (see Examples below). 
     /// An fb:fbml tag may have more than one xmlns property, each of which defines a different namespace. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

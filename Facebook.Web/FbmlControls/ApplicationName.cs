@@ -10,6 +10,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Renders the application name. Use this tag to render the name of an application. 
     /// You can also use this tag in instances when you cannot use the application name directly. For example, to include the application name in a Mini-Feed or News Feed story when that application name contains the word "message". 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

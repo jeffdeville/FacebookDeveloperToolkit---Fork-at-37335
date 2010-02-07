@@ -11,6 +11,7 @@ namespace Facebook.Web.FbmlControls
     /// <summary>
     /// Displays a set of comments for a unique identifier. Facebook handles posting, drawing, and see all page. 
     /// The fb:comments tag is essentially a Wall for developers to drop on canvas pages and application tabs on profiles easily. Using the tag implies a Wall-like comments set exists that can be posted or identified by the passed XID.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 

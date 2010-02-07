@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Represents the base functionality for a control that can render one fb:title within its contents.
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     public abstract class TitleDisplayControl : FbmlControl
     {

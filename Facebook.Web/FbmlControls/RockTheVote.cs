@@ -9,6 +9,7 @@ namespace Facebook.Web.FbmlControls
 {
     /// <summary>
     /// Displays a Rock the Vote &amp; CREDO Mobile registration widget inline in your application. The text inside the tags is formatted as a hyperlink. When the user clicks the link, a US voter registration form appears. When the user is done, they are prompted to share it with their friends. Then they are returned to your page. 
+    /// Derived from http://facebookui.codeplex.com/ by Robert Paveza
     /// </summary>
     /// <remarks>
     /// <para>The Facebook documentation for this control can be found 
