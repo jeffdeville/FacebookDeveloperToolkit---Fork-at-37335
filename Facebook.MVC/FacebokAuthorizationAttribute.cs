@@ -11,13 +11,17 @@ using Facebook.Session;
 namespace Facebook.MVC
 {
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
-	public class FacebokAuthorizationAttribute : ActionFilterAttribute
+	public class FacebookAttribute : ActionFilterAttribute
 	{
 		public FacebookPageType PageType { get; set; }
 		public IFacebookApi Api { get; set; }
 		public IFacebookSessionFactory SessionFactory { get; set; }
 
-		public FacebokAuthorizationAttribute(IFacebookApi api, IFacebookSessionFactory sessionFactory)
+		public FacebookAttribute() {
+			throw new NotImplementedException(
+				"There's no way to get dependencies in this way, w/out directly referencing StructureMap."); }
+
+		public FacebookAttribute(IFacebookApi api, IFacebookSessionFactory sessionFactory)
 		{
 			Api = api;
 			SessionFactory = sessionFactory;
@@ -35,7 +39,7 @@ namespace Facebook.MVC
 					case FacebookPageType.Connect:
 						throw new ArgumentOutOfRangeException("PageType",
 						                                      "The pagetype as connect doesn't know how to make you log in yet.");
-					case FacebookPageType.Iframe:
+					case FacebookPageType.IFrame:
 						c.Result = new ContentResult {Content = new IFrameLogin().GetRedirect()};
 						break;
 					case FacebookPageType.Fbml:
@@ -48,8 +52,12 @@ namespace Facebook.MVC
 
 			// do nothing if the user is logged in.
 		}
-
-		
+		public override void OnResultExecuted(ResultExecutedContext c)
+		{
+			base.OnResultExecuted(c);
+			if (PageType != FacebookPageType.Fbml)
+				c.HttpContext.Response.AppendHeader("P3P", "CP=\"CAO PSA OUR\"");
+		}
 	}
 
 	public interface ILoginHandler

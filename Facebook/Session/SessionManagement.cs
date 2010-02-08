@@ -24,7 +24,7 @@ namespace Facebook.Session
     public enum FacebookPageType
     {
         Connect,
-        Iframe,
+        IFrame,
         Fbml
     }
 
@@ -64,7 +64,7 @@ namespace Facebook.Session
             {
                 case FacebookPageType.Connect:
 					return new ConnectSessionProvider(_requestCookies, _inputParams).GetSession();
-                case FacebookPageType.Iframe:
+                case FacebookPageType.IFrame:
             		return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams).GetSession();
                 case FacebookPageType.Fbml:
 					return new FBMLSessionProvider(_inputParams).GetSession();
