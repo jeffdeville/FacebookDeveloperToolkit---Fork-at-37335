@@ -289,7 +289,7 @@ namespace Facebook.BindingHelper
         private BindingManager(FacebookSession session)
         {
             _session = session;
-			_fbApi = new FacebookApi().Initialize(session);
+			_fbApi = new Api().Initialize(session);
             _cache = new FacebookDataCache();
             Initialize();
         }
@@ -312,21 +312,22 @@ namespace Facebook.BindingHelper
                 _session = new CachedSession(appKey, null, null);
             }
 #else
-            _session = new DesktopSession(appKey,null,null,true);
+			_session = new FacebookSession();
+			//_session = new DesktopSession(appKey,null,null,true);
 #endif
 
-            _session.LoginCompleted += new EventHandler<AsyncCompletedEventArgs>(session_LoginCompleted);
-            _session.LogoutCompleted += new EventHandler<AsyncCompletedEventArgs>(session_LogoutCompleted);
+			//_session.LoginCompleted += new EventHandler<AsyncCompletedEventArgs>(session_LoginCompleted);
+			//_session.LogoutCompleted += new EventHandler<AsyncCompletedEventArgs>(session_LogoutCompleted);
         }
 
 
-        /// <summary>
-        /// Logs in the user using appkey and secret provided
-        /// </summary>
-        public void Login()
-        {
-            _session.Login();
-        }
+		///// <summary>
+		///// Logs in the user using appkey and secret provided
+		///// </summary>
+		//public void Login()
+		//{
+		//    _session.Login();
+		//}
 
         /// <summary>
         /// Refreshes current user albums that is downloaded by service object

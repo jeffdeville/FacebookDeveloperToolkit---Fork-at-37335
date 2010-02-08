@@ -76,42 +76,78 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingHelper\ActivityComment.cs" />
-    <Compile Include="BindingHelper\ActivityCommentCollection.cs" />
-    <Compile Include="BindingHelper\ActivityPost.cs" />
-    <Compile Include="BindingHelper\ActivityPostAttachment.cs" />
-    <Compile Include="BindingHelper\ActivityPostCollection.cs" />
-    <Compile Include="BindingHelper\DataCollectionErrorEventArgs.cs" />
-    <Compile Include="BindingHelper\DataRetrievalCompletedEventArgs.cs" />
-    <Compile Include="BindingHelper\FacebookContact.cs" />
-    <Compile Include="BindingHelper\FacebookDataCache.cs" />
+    <Compile Include="BindingHelper\ActivityComment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\ActivityCommentCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\ActivityPost.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\ActivityPostAttachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\ActivityPostCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\BindingManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\DataCollectionErrorEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\DataRetrievalCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookContact.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookDataCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BindingHelper\FacebookDataCollection.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BindingHelper\FacebookHashTable.cs" />
+    <Compile Include="BindingHelper\FacebookHashTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BindingHelper\FacebookImage.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BindingHelper\FacebookNotificationInfo.cs" />
-    <Compile Include="BindingHelper\FacebookPhoto.cs" />
-    <Compile Include="BindingHelper\FacebookPhotoAlbum.cs" />
-    <Compile Include="BindingHelper\FacebookPhotoAlbumCollection.cs" />
-    <Compile Include="BindingHelper\FacebookPhotoCollection.cs" />
-    <Compile Include="BindingHelper\FacebookPhotoTagCollection.cs" />
+    <Compile Include="BindingHelper\FacebookNotificationInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookPhoto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookPhotoAlbum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookPhotoAlbumCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookPhotoCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\FacebookPhotoTagCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BindingHelper\FacebookProfile.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BindingHelper\FacebookProfileCollection.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BindingHelper\BindingManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BindingHelper\GetImageSourceCompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BindingHelper\SearchResultsCollection.cs" />
-    <Compile Include="BindingHelper\UpdatableCollection.cs" />
+    <Compile Include="BindingHelper\SearchResultsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingHelper\UpdatableCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Forms\FacebookAuthentication.cs">
       <SubType>Form</SubType>
@@ -184,15 +220,8 @@
     <Compile Include="Schema\Xsd2CodeSourceExtension.cs" />
     <Compile Include="Session\ConnectSessionProvider.cs" />
     <Compile Include="Session\FacebookAuthorization.cs" />
-    <Compile Include="Session\BrowserSession.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Session\CachedSession.cs" />
     <Compile Include="Session\CachedSessionInfo.cs" />
-    <Compile Include="Session\CanvasSession.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Session\ConnectSession.cs" />
     <Compile Include="Session\DesktopPopup\FacebookWinformBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,16 +231,11 @@
     <Compile Include="Session\DesktopPopup\FacebookWPFBrowser.xaml.cs">
       <DependentUpon>FacebookWPFBrowser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Session\DesktopSession.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Session\FacebookSession.cs" />
     <Compile Include="Schema\Enums.cs" />
     <Compile Include="Rest\Users.cs" />
-    <Compile Include="Session\FBMLCanvasSession.cs" />
     <Compile Include="Session\FBMLSessionProvider.cs" />
     <Compile Include="Session\IFacebookSession.cs" />
-    <Compile Include="Session\IFrameCanvasSession.cs" />
     <Compile Include="Session\IFrameSessionProvider.cs" />
     <Compile Include="Session\QueryParameters.cs" />
     <Compile Include="Session\SessionManagement.cs" />

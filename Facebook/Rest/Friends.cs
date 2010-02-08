@@ -844,7 +844,7 @@ namespace Facebook.Rest
 			}
 
 #if !SILVERLIGHT
-			var response = SendRequest<friends_getMutualFriends_response>(parameterList, Session is DesktopSession || source_uid == null);
+			var response = SendRequest<friends_getMutualFriends_response>(parameterList, source_uid == null);
 #else
             var response = SendRequest<friends_getMutualFriends_response>(parameterList, source_uid == null);
 #endif

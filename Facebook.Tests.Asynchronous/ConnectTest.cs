@@ -1,9 +1,6 @@
-﻿using Facebook.Rest;
-using Microsoft.Silverlight.Testing;
+﻿using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Facebook.Utility;
-using Facebook.Schema;
 
 namespace Facebook.Tests.Asynchronous
 {

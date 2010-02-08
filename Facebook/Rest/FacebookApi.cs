@@ -216,8 +216,8 @@ namespace Facebook.Rest
                 session = HttpContext.Current.Items[FACEBOOK_SESSION] as IFacebookSession;
             else
                 session = CallContext.GetData(FACEBOOK_SESSION) as IFacebookSession;
-            if(session == null)
-                throw new ArgumentNullException("FacebookSession", "The facebook session must exist")
+			if (session == null)
+				throw new ArgumentNullException("FacebookSession", "The facebook session must exist");
 		}
 
         public IFacebookApi Initialize(IFacebookSession session)

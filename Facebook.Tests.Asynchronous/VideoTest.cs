@@ -1,13 +1,5 @@
-﻿using System;
-using System.Net;
-using Facebook.Rest;
-using Facebook.Utility;
-using Microsoft.Silverlight.Testing;
+﻿using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Facebook.Schema;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 
 namespace Facebook.Tests.Asynchronous
 {
