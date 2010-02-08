@@ -125,7 +125,7 @@ namespace Facebook.Session
         /// </summary>
         public string GetNextUrl()
         {
-			var props = new FacebookApi().Initialize(this).Admin.GetAppProperties(new List<string>() { "callback_url", "canvas_name" });
+			var props = new Api().Initialize(this).Admin.GetAppProperties(new List<string>() { "callback_url", "canvas_name" });
             if (props.ContainsKey("callback_url") && props.ContainsKey("canvas_name") && !string.IsNullOrEmpty(props["callback_url"]) && !string.IsNullOrEmpty(props["callback_url"]))
             {
                 return HttpContext.Current.Request.Url.ToString().Replace(props["callback_url"], string.Format("http://apps.facebook.com/{0}/", props["canvas_name"]));

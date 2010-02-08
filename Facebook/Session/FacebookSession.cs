@@ -8,25 +8,28 @@ namespace Facebook.Session
     /// <summary>
     /// Base class for session object
     /// </summary>
-    public abstract class FacebookSession : IFacebookSession
+    public class FacebookSession : IFacebookSession
     {
         public FacebookSession() : this(null, null){}
 
         public FacebookSession(string appKey, string appSecret)
         {
-            if (appKey == null || appSecret == null)
-            {
-                ApplicationKey = WebConfigurationManager.AppSettings["ApiKey"];
-                ApplicationSecret = WebConfigurationManager.AppSettings["Secret"];
-            }
-            else
-            {
-                ApplicationKey = appKey;
-                ApplicationSecret = appSecret;
-            }
+        	if (appKey == null || appSecret == null)
+        		LoadAccountInfoFromConfig();
+        	else
+        	{
+        		ApplicationKey = appKey;
+        		ApplicationSecret = appSecret;
+        	}
         }
 
-        public void VerifyKeyAndSecretExist()
+    	private void LoadAccountInfoFromConfig()
+    	{
+    		ApplicationKey = WebConfigurationManager.AppSettings["ApiKey"];
+    		ApplicationSecret = WebConfigurationManager.AppSettings["Secret"];
+    	}
+
+    	public void VerifyKeyAndSecretExist()
         {
             if (string.IsNullOrEmpty(ApplicationKey) || string.IsNullOrEmpty(ApplicationSecret))
             {
@@ -82,7 +85,7 @@ namespace Facebook.Session
         public DateTime ExpiryTime
         {
             get;
-            protected set;
+            protected internal set;
         }
 
         /// <summary>

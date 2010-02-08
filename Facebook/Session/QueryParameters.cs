@@ -1,6 +1,6 @@
 ﻿namespace Facebook.Session
 {
-    internal static class QueryParameters
+	public static class QueryParameters
     {
         public const string AuthToken = "auth_token";
         public const string InCanvas = "fb_sig_in_canvas";

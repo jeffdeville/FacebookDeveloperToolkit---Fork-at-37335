@@ -182,6 +182,7 @@
     <Compile Include="Rest\Photos.cs" />
     <Compile Include="Schema\Xsd2CodeSource.cs" />
     <Compile Include="Schema\Xsd2CodeSourceExtension.cs" />
+    <Compile Include="Session\ConnectSessionProvider.cs" />
     <Compile Include="Session\FacebookAuthorization.cs" />
     <Compile Include="Session\BrowserSession.cs">
       <SubType>Code</SubType>
@@ -208,8 +209,10 @@
     <Compile Include="Schema\Enums.cs" />
     <Compile Include="Rest\Users.cs" />
     <Compile Include="Session\FBMLCanvasSession.cs" />
+    <Compile Include="Session\FBMLSessionProvider.cs" />
     <Compile Include="Session\IFacebookSession.cs" />
     <Compile Include="Session\IFrameCanvasSession.cs" />
+    <Compile Include="Session\IFrameSessionProvider.cs" />
     <Compile Include="Session\QueryParameters.cs" />
     <Compile Include="Session\SessionManagement.cs" />
     <Compile Include="Utility\AsyncResult.cs" />

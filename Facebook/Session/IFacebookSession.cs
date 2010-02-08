@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using Facebook.Schema;
+
 namespace Facebook.Session
 {
 	public interface IFacebookSession
@@ -14,18 +17,16 @@ namespace Facebook.Session
 		long UserId { get; set; }
 	}
 
-    public interface IFacebookSessionManagement
-    {
-        void Login();
-        void Logout();
-    }
+	public interface IFacebookSessionManagement
+	{
+		void Login();
+		void Logout();
+	}
 
-    public interface IFacebookAuthorization
-    {
-        string CheckPermissions();
-        System.Collections.Generic.List<Facebook.Schema.Enums.ExtendedPermissions> RequiredPermissions { get; set; }
-        string GetPermissionUrl(string permissionString);
-        string GetPermissionUrl(string permissionString, string nextUrl);
-
-    }
+	public interface IFacebookAuthorization
+	{		
+		string CheckPermissions(List<Enums.ExtendedPermissions> requiredPermissions);
+		string GetPermissionUrl(string permissionString);
+		string GetPermissionUrl(string permissionString, string nextUrl);
+	}
 }

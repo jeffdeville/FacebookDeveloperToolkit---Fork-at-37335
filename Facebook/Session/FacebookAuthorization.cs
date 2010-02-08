@@ -13,19 +13,19 @@ namespace Facebook.Session
         /// <summary>
         /// Check if user has the proper permissions for this app
         /// </summary>
-        public string CheckPermissions(List<Enums.ExtendedPermissions> RequiredPermissions)
+        public string CheckPermissions(List<Enums.ExtendedPermissions> requiredPermissions)
         {
 #if !SILVERLIGHT
-            if (RequiredPermissions != null)
+            if (requiredPermissions != null)
             {
                 List<Enums.ExtendedPermissions> permissionsToApprove = new List<Enums.ExtendedPermissions>();
-                string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(RequiredPermissions), this.UserId); ;
+                string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(requiredPermissions), this.UserId); ;
 
                 var fql = new FacebookApi().Initialize(this).Fql;
 
                 var permission = fql.Query<permissions_response>(query);
 
-                foreach (Enums.ExtendedPermissions p in RequiredPermissions)
+                foreach (Enums.ExtendedPermissions p in requiredPermissions)
                 {
                     FieldInfo f = permission.permissions.GetType().GetField(p.ToString());
                     if (f != null)
