@@ -18,7 +18,7 @@ namespace Facebook.Session
 		private readonly HttpCookieCollection _responseCookies;
 
 		public IFrameSessionProvider(HttpCookieCollection requestCookies, HttpCookieCollection responseCookies,
-		                             NameValueCollection inputParams) : base(inputParams)
+		                             NameValueCollection inputParams) : base(inputParams, null)
 		{
 			if (responseCookies == null || requestCookies == null)
 				throw new ArgumentNullException("the request and response cookies are required");

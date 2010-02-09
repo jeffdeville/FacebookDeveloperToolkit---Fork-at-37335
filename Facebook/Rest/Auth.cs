@@ -20,9 +20,9 @@ namespace Facebook.Rest
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
         public Auth(IFacebookSession session)
-            : base(session)
-        {
-        }
+            : base(session){}
+
+    	public Auth() : this(new FacebookSession()){}
 
         #endregion Constructor
 

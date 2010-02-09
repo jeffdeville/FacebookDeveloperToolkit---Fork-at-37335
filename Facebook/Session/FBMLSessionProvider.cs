@@ -12,13 +12,15 @@ namespace Facebook.Session
 	public class FBMLSessionProvider : ISessionProvider
 	{		
 		protected NameValueCollection _inputParams;
+    	private readonly IAuth _auth;
 
-		public FBMLSessionProvider(NameValueCollection inputParams)
+    	public FBMLSessionProvider(NameValueCollection inputParams, IAuth auth)
 		{
 			_inputParams = inputParams;
+			_auth = auth;
 		}
 
-		public virtual IFacebookSession GetSession()
+    	public virtual IFacebookSession GetSession()
 		{
 			// The logic here, is to look for a sessionkey that already exists, or exchange an 
 			// authtoken for a sessionkey if that exists instead.
@@ -66,7 +68,7 @@ namespace Facebook.Session
 
 		protected IFacebookSession ExchangeAuthTokenForSession()
 		{
-			var sessionInfo = new Auth(new FacebookSession()).GetSession(AuthToken);
+			var sessionInfo = _auth.GetSession(AuthToken);
 			return CreateSession(sessionInfo.session_key, sessionInfo.uid,
 			                            DateHelper.ConvertUnixTimeToDateTime(sessionInfo.expires));
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web;
+using Facebook.Rest;
 
 namespace Facebook.Session
 {
@@ -67,7 +68,7 @@ namespace Facebook.Session
                 case FacebookPageType.IFrame:
             		return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams).GetSession();
                 case FacebookPageType.Fbml:
-					return new FBMLSessionProvider(_inputParams).GetSession();
+					return new FBMLSessionProvider(_inputParams, new Auth()).GetSession();
                 default:
                     throw new ArgumentOutOfRangeException("pageType");
             }
