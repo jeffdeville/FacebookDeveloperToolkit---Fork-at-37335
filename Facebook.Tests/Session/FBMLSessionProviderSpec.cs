@@ -52,12 +52,6 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
 			Assert.That(session.ExpiryTime.Minute, Is.EqualTo(expiration.Minute));
 			Assert.That(session.ExpiryTime.Second, Is.EqualTo(expiration.Second));
         }
-
-        [Test]
-        public void InProfileTab_is_true()
-        {
-            Assert.That(sut.InProfileTab, Is.True);
-        }
     }
 
     [TestFixture]
@@ -102,12 +96,6 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
 			Assert.That(session.ExpiryTime.Hour, Is.EqualTo(expiration.Hour));
 			Assert.That(session.ExpiryTime.Minute, Is.EqualTo(expiration.Minute));
 			Assert.That(session.ExpiryTime.Second, Is.EqualTo(expiration.Second));
-		}
-
-		[Test]
-		public void InProfileTab_is_false()
-		{
-			Assert.That(sut.InProfileTab, Is.False);
 		}
     }
 

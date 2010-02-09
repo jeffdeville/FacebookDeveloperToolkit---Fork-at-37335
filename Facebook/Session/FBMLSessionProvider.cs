@@ -29,12 +29,12 @@ namespace Facebook.Session
 			return !string.IsNullOrEmpty(AuthToken) ? ExchangeAuthTokenForSession() : null;
 		}
 		
-		protected internal bool InProfileTab
+		private bool InProfileTab
 		{
 			get { return _inputParams[QueryParameters.InProfileTab] == "1"; }
 		}
 
-		protected string SessionKeyFromRequest
+		protected virtual string SessionKeyFromRequest
 		{
 			get
 			{

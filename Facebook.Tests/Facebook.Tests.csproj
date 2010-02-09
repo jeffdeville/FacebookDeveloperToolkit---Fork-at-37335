@@ -59,6 +59,7 @@
     <Compile Include="FacebookConfigurationSpec.cs" />
     <Compile Include="Session\ConnectSessionProviderSpec.cs" />
     <Compile Include="Session\FBMLSessionProviderSpec.cs" />
+    <Compile Include="Session\IFrameSessonProviderSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Facebook.MVC\Facebook.Mvc.csproj">

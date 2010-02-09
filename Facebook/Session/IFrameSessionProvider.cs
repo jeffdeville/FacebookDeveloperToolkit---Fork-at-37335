@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web;
+using Facebook.Rest;
 
 namespace Facebook.Session
 {
@@ -16,9 +17,11 @@ namespace Facebook.Session
 
 		private readonly HttpCookieCollection _requestCookies;
 		private readonly HttpCookieCollection _responseCookies;
+		private readonly IAuth _auth;
 
 		public IFrameSessionProvider(HttpCookieCollection requestCookies, HttpCookieCollection responseCookies,
-		                             NameValueCollection inputParams) : base(inputParams, null)
+									 NameValueCollection inputParams, IAuth auth)
+			: base(inputParams, auth)
 		{
 			if (responseCookies == null || requestCookies == null)
 				throw new ArgumentNullException("the request and response cookies are required");
@@ -26,6 +29,11 @@ namespace Facebook.Session
 			_responseCookies = responseCookies;
 			_requestCookies = requestCookies;
 		}
+
+		//protected override string SessionKeyFromRequest
+		//{
+		//    get{ return _inputParams[QueryParameters.SessionKey];}
+		//}
 
 		/// <summary>
 		/// This version of GetSession looks for a sessionkey in the request.  If it can't find one, it looks 
@@ -40,6 +48,7 @@ namespace Facebook.Session
 
 			// The logic here, is to look for a sessionkey that already exists, look for one that was cached,
 			// or exchange an authtoken for a sessionkey if that exists instead.
+			
 			if (!string.IsNullOrEmpty(SessionKeyFromRequest))
 				session = CreateSession(SessionKeyFromRequest, UserId, ExpirationTime);
 			else if (cachedSessionInfo != null)
