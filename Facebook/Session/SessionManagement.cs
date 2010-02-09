@@ -66,7 +66,7 @@ namespace Facebook.Session
                 case FacebookPageType.Connect:
 					return new ConnectSessionProvider(_requestCookies).GetSession();
                 case FacebookPageType.IFrame:
-            		return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams).GetSession();
+            		return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams, new Auth()).GetSession();
                 case FacebookPageType.Fbml:
 					return new FBMLSessionProvider(_inputParams, new Auth()).GetSession();
                 default:

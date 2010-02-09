@@ -11,9 +11,9 @@ namespace Facebook.Session
 	/// </summary>
 	public class IFrameSessionProvider : FBMLSessionProvider
 	{
-		private const string SESSION_KEY_COOKIE = "SessionKey";
-		private const string USER_ID_COOKIE = "UserId";
-		private const string EXPIRY_TIME_COOKIE = "ExpiryTime";
+		public const string SESSION_KEY_COOKIE = "SessionKey";
+	    public const string USER_ID_COOKIE = "UserId";
+	    public const string EXPIRY_TIME_COOKIE = "ExpiryTime";
 
 		private readonly HttpCookieCollection _requestCookies;
 		private readonly HttpCookieCollection _responseCookies;
@@ -30,10 +30,10 @@ namespace Facebook.Session
 			_requestCookies = requestCookies;
 		}
 
-		//protected override string SessionKeyFromRequest
-		//{
-		//    get{ return _inputParams[QueryParameters.SessionKey];}
-		//}
+        protected override string SessionKeyFromRequest
+        {
+            get { return _inputParams[QueryParameters.SessionKey]; }
+        }
 
 		/// <summary>
 		/// This version of GetSession looks for a sessionkey in the request.  If it can't find one, it looks 
@@ -64,7 +64,8 @@ namespace Facebook.Session
 
 		private void CacheSession(IFacebookSession session)
 		{
-			var sessionInfo = new CachedSessionInfo(session.SessionKey, session.UserId, session.ExpiryTime);
+            if (session == null) return;
+            var sessionInfo = new CachedSessionInfo(session.SessionKey, session.UserId, session.ExpiryTime);
 
 			_responseCookies.Set(new HttpCookie(SESSION_KEY_COOKIE, sessionInfo.SessionKey));
 			_responseCookies.Set(new HttpCookie(USER_ID_COOKIE, sessionInfo.UserId.ToString()));
