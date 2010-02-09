@@ -6,8 +6,8 @@ namespace Facebook.Session
 {
 	public interface IFacebookSession
 	{
-		string ApplicationKey { get; set; }
-		string ApplicationSecret { get; set; }
+		string ApplicationKey { get; }
+		string ApplicationSecret { get; }
 		bool CompressHttp { get; set; }
 		DateTime ExpiryTime { get; }
 		bool SessionExpires { get; set; }

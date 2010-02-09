@@ -231,12 +231,14 @@
     <Compile Include="Session\DesktopPopup\FacebookWPFBrowser.xaml.cs">
       <DependentUpon>FacebookWPFBrowser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Session\FacebookCredentialsConfiguration.cs" />
     <Compile Include="Session\FacebookSession.cs" />
     <Compile Include="Schema\Enums.cs" />
     <Compile Include="Rest\Users.cs" />
     <Compile Include="Session\FBMLSessionProvider.cs" />
     <Compile Include="Session\IFacebookSession.cs" />
     <Compile Include="Session\IFrameSessionProvider.cs" />
+    <Compile Include="Session\ISessionProvider.cs" />
     <Compile Include="Session\QueryParameters.cs" />
     <Compile Include="Session\SessionManagement.cs" />
     <Compile Include="Utility\AsyncResult.cs" />

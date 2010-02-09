@@ -5,12 +5,7 @@ using Facebook.Utility;
 
 namespace Facebook.Session
 {
-	public interface ISessionProvider
-	{
-		IFacebookSession GetSession();
-	}
-
-	///<summary>
+    ///<summary>
 	/// A provider that will look for session info for FBML pages.  If the session does not exist, but an 
 	/// auth token does, the token will be exchanged for a session.
 	///</summary>
@@ -32,7 +27,7 @@ namespace Facebook.Session
 			return !string.IsNullOrEmpty(AuthToken) ? ExchangeAuthTokenForSession() : null;
 		}
 		
-		protected bool InProfileTab
+		protected internal bool InProfileTab
 		{
 			get { return _inputParams[QueryParameters.InProfileTab] == "1"; }
 		}

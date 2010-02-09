@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Facebook.Rest;
 using Facebook.Session;
 
-namespace Facebook.MVC
+namespace Facebook.Mvc
 {
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
 	public class FacebookAttribute : ActionFilterAttribute

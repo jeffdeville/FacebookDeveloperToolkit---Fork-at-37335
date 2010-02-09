@@ -31,17 +31,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\lib\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="yellowbook.testing.common">
+      <HintPath>..\lib\yellowbook.testing.common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FacebookConfigurationSpec.cs" />
+    <Compile Include="Session\ConnectSessionProviderSpec.cs" />
+    <Compile Include="Session\FBMLSessionProviderSpec.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facebook.MVC\Facebook.Mvc.csproj">
+      <Project>{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}</Project>
+      <Name>Facebook.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook\Facebook.csproj">
+      <Project>{2CA46CD1-7165-4ED6-8918-C8E8D71A1EFA}</Project>
+      <Name>Facebook</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

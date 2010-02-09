@@ -10,37 +10,13 @@ namespace Facebook.Session
     /// </summary>
     public class FacebookSession : IFacebookSession
     {
+        private FacebookConfiguration _facebookConfig;
+
         public FacebookSession() : this(null, null){}
 
         public FacebookSession(string appKey, string appSecret)
         {
-        	if (appKey == null || appSecret == null)
-        		LoadAccountInfoFromConfig();
-        	else
-        	{
-        		ApplicationKey = appKey;
-        		ApplicationSecret = appSecret;
-        	}
-        }
-
-    	private void LoadAccountInfoFromConfig()
-    	{
-    		ApplicationKey = WebConfigurationManager.AppSettings["ApiKey"];
-    		ApplicationSecret = WebConfigurationManager.AppSettings["Secret"];
-    	}
-
-    	public void VerifyKeyAndSecretExist()
-        {
-            if (string.IsNullOrEmpty(ApplicationKey) || string.IsNullOrEmpty(ApplicationSecret))
-            {
-                throw new Exception(
-                    "Session must have application key and secret before logging in." + Environment.NewLine +
-                    "To set them in your web.config, use something like the following:" + Environment.NewLine +
-                    "<appSettings>" + Environment.NewLine +
-                    "   <add key=\"ApiKey\" value =\"YOURApiKEY\"/>" + Environment.NewLine +
-                    "   <add key=\"Secret\" value =\"YOURSECRET\"/>" + Environment.NewLine +
-                    "</appSettings>\"");
-            }
+            _facebookConfig = new FacebookConfiguration(appKey, appSecret);            
         }
 
         /// <summary>
@@ -48,8 +24,7 @@ namespace Facebook.Session
         /// </summary>
         public string ApplicationKey
         {
-            get;
-            set;
+            get { return _facebookConfig.ApiKey; }
         }
 
         /// <summary>
@@ -57,8 +32,7 @@ namespace Facebook.Session
         /// </summary>
         public string ApplicationSecret
         {
-            get;
-            set;
+            get { return _facebookConfig.Secret; }
         }
 
         /// <summary>

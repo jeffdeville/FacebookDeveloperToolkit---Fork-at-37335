@@ -63,7 +63,7 @@ namespace Facebook.Session
             switch (pageType)
             {
                 case FacebookPageType.Connect:
-					return new ConnectSessionProvider(_requestCookies, _inputParams).GetSession();
+					return new ConnectSessionProvider(_requestCookies).GetSession();
                 case FacebookPageType.IFrame:
             		return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams).GetSession();
                 case FacebookPageType.Fbml:

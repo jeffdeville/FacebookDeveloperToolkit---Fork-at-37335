@@ -14,22 +14,21 @@ namespace Facebook.Session
 		internal const string EXPIRES = "expires";
 		internal const string SECRET_SESSION_KEY = "";
 
-		private readonly string _applicationKey, _applicationSecret;
-		private readonly NameValueCollection _inputParams;
 		private readonly HttpCookieCollection _requestCookies;
 
-		public ConnectSessionProvider(HttpCookieCollection requestCookies, NameValueCollection inputParams)
-			: this(requestCookies, inputParams, null, null)
-		{
-		}
+	    private FacebookConfiguration _facebookConfig;
+	    public FacebookConfiguration FacebookConfig
+	    {
+	        get
+	        {
+	            return _facebookConfig = _facebookConfig ?? new FacebookConfiguration();
+	        }
+	    }
 
-		public ConnectSessionProvider(HttpCookieCollection requestCookies, NameValueCollection inputParams,
-		                              string applicationKey, string applicationSecret)
+
+		public ConnectSessionProvider(HttpCookieCollection requestCookies)
 		{
-			_requestCookies = requestCookies;
-			_inputParams = inputParams;
-			_applicationKey = applicationKey ?? WebConfigurationManager.AppSettings["ApiKey"];
-			_applicationSecret = applicationSecret ?? WebConfigurationManager.AppSettings["Secret"];
+            _requestCookies = requestCookies;
 		}
 
 		#region ISessionProvider Members
@@ -49,13 +48,10 @@ namespace Facebook.Session
 		///<returns></returns>
 		public string GetCookie(string cookieName)
 		{
-			string fullCookieName = string.Format("{0}_{1}", _applicationKey, cookieName);
-			if (HttpContext.Current != null
-			    && HttpContext.Current.Request != null
-			    && HttpContext.Current.Request.Cookies != null
-			    && HttpContext.Current.Request.Cookies[fullCookieName] != null)
+            string fullCookieName = string.Format("{0}_{1}", FacebookConfig.ApiKey, cookieName);
+			if (_requestCookies[fullCookieName] != null)
 			{
-				return HttpContext.Current.Request.Cookies[fullCookieName].Value;
+                return _requestCookies[fullCookieName].Value;
 			}
 
 			return null;
@@ -66,9 +62,9 @@ namespace Facebook.Session
 		///<returns></returns>
 		public bool IsConnected()
 		{
-			if (!AllCookiesExist(HttpContext.Current.Request.Cookies))
+			if (!AllCookiesExist(_requestCookies))
 				return false;
-			return ResponseWasNotTamperedWith(HttpContext.Current.Request.Cookies);
+			return ResponseWasNotTamperedWith(_requestCookies);
 		}
 
 		internal string GetUnencodedValueHash(HttpCookieCollection cookies)
@@ -90,14 +86,14 @@ namespace Facebook.Session
 			       + string.Format("{0}={1}", SESSION_KEY, sessionKey)
 			       + string.Format("{0}={1}", SS, ss)
 			       + string.Format("{0}={1}", USER, user)
-			       + _applicationSecret;
+			       + FacebookConfig.Secret;
 		}
 
-		private string GetCookieName(string cookieName)
+		internal string GetCookieName(string cookieName)
 		{
 			if (string.IsNullOrEmpty(cookieName))
-				return _applicationKey;
-			return string.Format("{0}_{1}", _applicationKey, cookieName);
+                return FacebookConfig.ApiKey;
+            return string.Format("{0}_{1}", FacebookConfig.ApiKey, cookieName);
 		}
 
 		private bool AllCookiesExist(HttpCookieCollection cookies)

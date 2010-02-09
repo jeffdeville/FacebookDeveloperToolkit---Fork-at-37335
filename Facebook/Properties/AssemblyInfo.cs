@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 
@@ -17,3 +18,4 @@ using System.Security.Permissions;
 [assembly: Guid("1fe0bb08-0268-416a-9ac0-edc51b0d4dff")]
 [assembly: AssemblyVersion("3.0")]
 [assembly: AssemblyFileVersion("3.0")]
+[assembly: InternalsVisibleTo("Facebook.Tests")]

@@ -8,8 +8,8 @@
     <ProjectGuid>{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Facebook.MVC</RootNamespace>
-    <AssemblyName>Facebook.MVC</AssemblyName>
+    <RootNamespace>Facebook.Mvc</RootNamespace>
+    <AssemblyName>Facebook.Mvc</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
