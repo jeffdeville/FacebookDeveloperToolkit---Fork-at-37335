@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Web;
 using System.Web.Configuration;
@@ -11,15 +12,16 @@ using Facebook.Session;
 namespace Facebook.Mvc
 {
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
-	public class FacebookAttribute : ActionFilterAttribute
+	public class FacebookAttribute : ActionFilterAttribute, IAuthorizationFilter
 	{
 		public FacebookPageType PageType { get; set; }
 		public IFacebookApi Api { get; set; }
 		public IFacebookSessionFactory SessionFactory { get; set; }
 
 		public FacebookAttribute() {
-			throw new NotImplementedException(
-				"There's no way to get dependencies in this way, w/out directly referencing StructureMap."); }
+            //throw new NotImplementedException(
+            //    "There's no way to get dependencies in this way, w/out directly referencing StructureMap.");
+        }
 
 		public FacebookAttribute(IFacebookApi api, IFacebookSessionFactory sessionFactory)
 		{
@@ -27,37 +29,39 @@ namespace Facebook.Mvc
 			SessionFactory = sessionFactory;
 		}
 
-		public override void OnActionExecuting(ActionExecutingContext c)
-		{
-			var session = SessionFactory.GetSession(PageType);
-			Api.Initialize(session);
-
-			if(session == null)
-			{
-				switch (PageType)
-				{
-					case FacebookPageType.Connect:
-						throw new ArgumentOutOfRangeException("PageType",
-						                                      "The pagetype as connect doesn't know how to make you log in yet.");
-					case FacebookPageType.IFrame:
-						c.Result = new ContentResult {Content = new IFrameLogin().GetRedirect()};
-						break;
-					case FacebookPageType.Fbml:
-						c.Result = new ContentResult {Content = new FBMLLogin(Api).GetRedirect()};
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
-			}
-
-			// do nothing if the user is logged in.
-		}
 		public override void OnResultExecuted(ResultExecutedContext c)
 		{
 			base.OnResultExecuted(c);
 			if (PageType != FacebookPageType.Fbml)
 				c.HttpContext.Response.AppendHeader("P3P", "CP=\"CAO PSA OUR\"");
 		}
+
+	    public void OnAuthorization(AuthorizationContext filterContext)
+	    {
+            var session = SessionFactory.GetSession(PageType);
+            if (session == null)
+            {
+                switch (PageType)
+                {
+                    case FacebookPageType.Connect:
+                        filterContext.Result = new RedirectResult("~/account/logon?returnUrl=" + Uri.EscapeUriString(HttpContext.Current.Request.Url.ToString()));
+                        break;                        
+                    case FacebookPageType.IFrame:
+                        filterContext.Result = new ContentResult { Content = new IFrameLogin().GetRedirect() };
+                        break;
+                    case FacebookPageType.Fbml:
+                        filterContext.Result = new ContentResult { Content = new FBMLLogin(Api).GetRedirect() };
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            else
+            {
+                Api.Initialize(session);
+                filterContext.HttpContext.User = new GenericPrincipal(new GenericIdentity(Api.Session.UserId.ToString()),null);
+            }
+	    }
 	}
 
 	public interface ILoginHandler
