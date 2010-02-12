@@ -9,7 +9,7 @@ namespace Facebook.Session
 	/// The only difference between this provider and the FBML one is that this one can cache session info
 	/// in cookies.
 	/// </summary>
-	public class IFrameSessionProvider : FBMLSessionProvider
+	public class IFrameSessionProvider : FbmlSessionProvider
 	{
 		public const string SESSION_KEY_COOKIE = "SessionKey";
 	    public const string USER_ID_COOKIE = "UserId";

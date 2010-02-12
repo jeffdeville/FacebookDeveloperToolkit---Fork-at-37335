@@ -9,12 +9,12 @@ namespace Facebook.Session
 	/// A provider that will look for session info for FBML pages.  If the session does not exist, but an 
 	/// auth token does, the token will be exchanged for a session.
 	///</summary>
-	public class FBMLSessionProvider : ISessionProvider
+	public class FbmlSessionProvider : ISessionProvider
 	{		
 		protected NameValueCollection _inputParams;
     	private readonly IAuth _auth;
 
-    	public FBMLSessionProvider(NameValueCollection inputParams, IAuth auth)
+    	public FbmlSessionProvider(NameValueCollection inputParams, IAuth auth)
 		{
 			_inputParams = inputParams;
 			_auth = auth;

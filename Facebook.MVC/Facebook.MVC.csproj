@@ -46,7 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FacebookAuthorizationAttribute.cs" />
+    <Compile Include="BaseLogin.cs" />
+    <Compile Include="ConnectLogin.cs" />
+    <Compile Include="FacebookAttribute.cs" />
+    <Compile Include="FacebookLoginFactory.cs" />
+    <Compile Include="FbmlLogin.cs" />
+    <Compile Include="IFacebookLoginFactory.cs" />
+    <Compile Include="IFrameLogin.cs" />
+    <Compile Include="ILoginHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

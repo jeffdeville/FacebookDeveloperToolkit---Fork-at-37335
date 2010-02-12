@@ -4,7 +4,7 @@ using Facebook.Session;
 using NUnit.Framework;
 using yellowbook.testing.common;
 
-namespace Facebook.Tests.Session.FacebookConfigurationSpec
+namespace Facebook.Tests.Session.ConnectSessionProviderSpec
 {
     [TestFixture]
     public class when_no_cookies_exist : Context

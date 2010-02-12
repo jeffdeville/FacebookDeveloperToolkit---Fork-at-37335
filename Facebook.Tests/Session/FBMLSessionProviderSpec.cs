@@ -12,7 +12,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
     [TestFixture]
     public class when_creating_an_fbml_session_on_a_profiletab_when_the_request_contains_the_sessionkey : Context
     {
-        protected FBMLSessionProvider sut;
+        protected FbmlSessionProvider sut;
         private NameValueCollection inputParams = new NameValueCollection();
         private DateTime expiration;
         private IFacebookSession session;
@@ -24,7 +24,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
 			inputParams[QueryParameters.InProfileTab] = "1";
             expiration = DateTime.UtcNow.AddMinutes(1);
         	inputParams[QueryParameters.Expires] = DateHelper.ConvertDateToFacebookDate(expiration).ToString();
-            sut = new FBMLSessionProvider(inputParams, null);
+            sut = new FbmlSessionProvider(inputParams, null);
         }
 
         public override void act()
@@ -57,7 +57,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
     [TestFixture]
     public class when_creating_an_fbml_session_outside_of_a_profiletab_when_the_request_contains_the_sessionkey : Context
     {
-		protected FBMLSessionProvider sut;
+		protected FbmlSessionProvider sut;
 		private NameValueCollection inputParams = new NameValueCollection();
 		private DateTime expiration;
 		private IFacebookSession session;
@@ -69,7 +69,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
 			inputParams[QueryParameters.InProfileTab] = "0";
 			expiration = DateTime.UtcNow.AddMinutes(1);
 			inputParams[QueryParameters.Expires] = DateHelper.ConvertDateToFacebookDate(expiration).ToString();
-			sut = new FBMLSessionProvider(inputParams, null);
+			sut = new FbmlSessionProvider(inputParams, null);
 		}
 
 		public override void act()
@@ -102,7 +102,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
     [TestFixture]
     public class when_an_authtoken_is_available_but_no_sessionkey : Context
     {
-        protected FBMLSessionProvider sut;
+        protected FbmlSessionProvider sut;
         private NameValueCollection inputParams = new NameValueCollection();        
         private IFacebookSession session;
 
@@ -113,7 +113,7 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
 				.Returns(new session_info() { session_key = QueryParameters.SessionKey, uid = 1234567890, expires = 1234 })
 				.Verifiable();
 
-			sut = container.Create<FBMLSessionProvider>();
+			sut = container.Create<FbmlSessionProvider>();
         	inputParams[QueryParameters.AuthToken] = QueryParameters.AuthToken;
         }
 
@@ -144,12 +144,12 @@ namespace Facebook.Tests.Session.FBMLSessionProviderSpec
     [TestFixture]
     public class when_no_login_info_is_available : Context
     {
-        protected FBMLSessionProvider sut;
+        protected FbmlSessionProvider sut;
         private IFacebookSession session;
 
         public override void setupContext()
         {
-			sut = new FBMLSessionProvider(new NameValueCollection(), null);
+			sut = new FbmlSessionProvider(new NameValueCollection(), null);
         }
 
         public override void act()

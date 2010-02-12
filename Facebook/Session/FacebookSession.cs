@@ -12,12 +12,15 @@ namespace Facebook.Session
     {
         private FacebookConfiguration _facebookConfig;
 
-        public FacebookSession() : this(null, null){}
-
-        public FacebookSession(string appKey, string appSecret)
+        public FacebookSession() 
         {
-            _facebookConfig = new FacebookConfiguration(appKey, appSecret);            
+        	_facebookConfig = new FacebookConfiguration();
         }
+		//public FacebookSession() : this(null, null) { }
+		public FacebookSession(FacebookConfiguration facebookConfig)
+		{
+			_facebookConfig = facebookConfig;
+		}
 
         /// <summary>
         /// Application key

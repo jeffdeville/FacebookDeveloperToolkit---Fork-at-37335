@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using Facebook.Session;
+﻿using Facebook.Session;
 using NUnit.Framework;
 using yellowbook.testing.common;
 
 
-namespace Facebook.Tests.FacebookConfigurationSpec
+namespace Facebook.Tests.Session.FacebookConfigurationSpec
 {
     [TestFixture]
     public class when_creating_a_FacebookConfiguration : Context
