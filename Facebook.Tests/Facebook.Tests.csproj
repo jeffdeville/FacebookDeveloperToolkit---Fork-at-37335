@@ -48,6 +48,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -57,7 +58,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMockContainer.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Mvc\FacebookAttributeSpecs.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeControllerContext.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeHttpContext.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeHttpFileCollection.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeHttpRequest.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeHttpResponse.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeHttpSessionState.cs" />
+    <Compile Include="Mvc\MvcFakes\FakeIdentity.cs" />
+    <Compile Include="Mvc\MvcFakes\FakePrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FacebookConfigurationSpec.cs" />
     <Compile Include="Mvc\BaseLoginSpecs.cs" />
@@ -70,10 +81,6 @@
     <Compile Include="Session\IFrameSessonProviderSpec.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\personalizr\MvcFakes\MvcFakes.csproj">
-      <Project>{558790E7-0F46-489F-B717-52AE3746D39B}</Project>
-      <Name>MvcFakes</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Facebook.MVC\Facebook.Mvc.csproj">
       <Project>{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}</Project>
       <Name>Facebook.Mvc</Name>

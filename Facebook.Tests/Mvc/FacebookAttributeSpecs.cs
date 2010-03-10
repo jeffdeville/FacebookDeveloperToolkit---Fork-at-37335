@@ -4,8 +4,8 @@ using System.Web.Mvc;
 using Facebook.Mvc;
 using Facebook.Rest;
 using Facebook.Session;
+using Facebook.Tests.Mvc.MvcFakes;
 using Moq;
-using MvcFakes;
 using NUnit.Framework;
 using yellowbook.testing.common;
 
