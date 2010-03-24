@@ -6,6 +6,8 @@ namespace Facebook.Session
 {
 	public interface IFacebookSession
 	{
+		List<Enums.ExtendedPermissions> RequiredPermissions { get; set; }
+		string CheckPermissions();
 		string ApplicationKey { get; }
 		string ApplicationSecret { get; }
 		bool CompressHttp { get; set; }

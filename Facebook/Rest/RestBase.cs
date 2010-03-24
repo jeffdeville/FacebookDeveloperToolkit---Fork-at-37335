@@ -872,7 +872,7 @@ namespace Facebook.Rest
             }
 
             string requestUrl = GetRequestUrl(parameterDictionary["method"] == "facebook.auth.getSession");
-            if (Permissions.IsPermissionsModeActive)
+			if (Permissions != null && Permissions.IsPermissionsModeActive)
             {
                 parameterDictionary.Add("call_as_apikey", Permissions.CallAsApiKey);
             }
