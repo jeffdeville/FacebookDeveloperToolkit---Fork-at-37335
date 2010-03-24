@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap">
+      <HintPath>..\lib\StructureMap2.6.1\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -55,6 +58,7 @@
     <Compile Include="IFrameLogin.cs" />
     <Compile Include="ILoginHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registry\FacebookMvcRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Facebook\Facebook.csproj">

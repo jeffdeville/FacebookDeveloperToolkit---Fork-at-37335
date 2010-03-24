@@ -15,6 +15,9 @@ namespace Facebook.Session
 		string SessionSecret { get; set; }
 		string Secret { get; }
 		long UserId { get; set; }
+		List<Enums.ExtendedPermissions> RequiredPermissions { get; set; }
+		string CheckPermissions();
+
 	}
 
 	public interface IFacebookSessionManagement

@@ -1,29 +1,34 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Facebook.Schema;
+
 namespace Facebook.Rest
 {
 	public interface IUsers : IRestBase
 	{
-		Facebook.Schema.user GetInfo();
-		System.Collections.Generic.IList<Facebook.Schema.user> GetInfo(System.Collections.Generic.List<long> uids);
-		Facebook.Schema.user GetInfo(long uid);
+		user GetInfo();
+		IList<user> GetInfo(IList<long> uids);
+		user GetInfo(long uid);
 		void GetInfoAsync(Users.GetInfoCallback callback, object state);
-		void GetInfoAsync(System.Collections.Generic.List<long> uids, Users.GetInfoCallback callback, object state);
+		void GetInfoAsync(IList<long> uids, Users.GetInfoCallback callback, object state);
 		void GetInfoAsync(long uid, Users.GetInfoCallback callback, object state);
 		void GetInfoAsync(string uids, Users.GetInfoCallback callback, object state);
 		long GetLoggedInUser();
 		void GetLoggedInUserAsync(Users.GetLoggedInUserCallback callback, object state);
-		System.Collections.Generic.IList<Facebook.Schema.user> GetStandardInfo(System.Collections.Generic.List<long> uids);
-		System.Collections.Generic.IList<Facebook.Schema.user> GetStandardInfo(System.Collections.Generic.List<long> uids, System.Collections.Generic.IList<string> fields);
-		System.Collections.Generic.IList<Facebook.Schema.user> GetStandardInfo(string uids);
-		System.Collections.Generic.IList<Facebook.Schema.user> GetStandardInfo(string uids, System.Collections.Generic.IList<string> fields);
-		void GetStandardInfoAsync(System.Collections.Generic.List<long> uids, Users.GetStandardInfoCallback callback, object state);
-		void GetStandardInfoAsync(System.Collections.Generic.List<long> uids, System.Collections.Generic.IList<string> fields, Users.GetStandardInfoCallback callback, object state);
+		IList<user> GetStandardInfo(IList<long> uids);
+		IList<user> GetStandardInfo(IList<long> uids, IList<string> fields);
+		IList<user> GetStandardInfo(string uids);
+		IList<user> GetStandardInfo(string uids, IList<string> fields);
+		void GetStandardInfoAsync(IList<long> uids, Users.GetStandardInfoCallback callback, object state);
+		void GetStandardInfoAsync(IList<long> uids, IList<string> fields, Users.GetStandardInfoCallback callback, object state);
 		void GetStandardInfoAsync(string uids, Users.GetStandardInfoCallback callback, object state);
-		void GetStandardInfoAsync(string uids, System.Collections.Generic.IList<string> fields, Users.GetStandardInfoCallback callback, object state);
-		bool HasAppPermission(Facebook.Schema.Enums.ExtendedPermissions ext_perm);
-		bool HasAppPermission(Facebook.Schema.Enums.ExtendedPermissions ext_perm, long uid);
-		void HasAppPermissionAsync(Facebook.Schema.Enums.ExtendedPermissions ext_perm, Users.HasAppPermissionCallback callback, object state);
-		void HasAppPermissionAsync(Facebook.Schema.Enums.ExtendedPermissions ext_perm, long uid, Users.HasAppPermissionCallback callback, object state);
+		void GetStandardInfoAsync(string uids, IList<string> fields, Users.GetStandardInfoCallback callback, object state);
+		bool HasAppPermission(Enums.ExtendedPermissions ext_perm);
+		bool HasAppPermission(Enums.ExtendedPermissions ext_perm, long uid);
+		void HasAppPermissionAsync(Enums.ExtendedPermissions ext_perm, Users.HasAppPermissionCallback callback, object state);
+
+		void HasAppPermissionAsync(Enums.ExtendedPermissions ext_perm, long uid, Users.HasAppPermissionCallback callback,
+		                           object state);
+
 		bool IsAppUser(long uid);
 		void IsAppUserAsync(long uid, Users.IsAppUserCallback callback, object state);
 		bool IsVerified(long uid);

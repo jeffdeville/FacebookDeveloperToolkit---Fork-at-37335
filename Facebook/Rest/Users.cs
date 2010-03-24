@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Users API methods.
     /// </summary>
-    public class Users : RestBase, Facebook.Rest.IUsers
+    public class Users : RestBase, IUsers
     {
         #region Methods
 
@@ -76,7 +76,7 @@ namespace Facebook.Rest
         /// </example>
         /// <param name="uids">This is a List of user IDs.</param>
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform. If no visible users are found from the passed uids argument, the method will return an empty result element.</returns>
-        public IList<user> GetInfo(List<long> uids)
+        public IList<user> GetInfo(IList<long> uids)
         {
             return GetInfo(StringHelper.ConvertToCommaSeparated(uids));
         }
@@ -112,7 +112,7 @@ namespace Facebook.Rest
         /// </example>
         /// <param name="uids">A List of user IDs.</param>
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-		public IList<user> GetStandardInfo(List<long> uids)
+		public IList<user> GetStandardInfo(IList<long> uids)
         {
             return GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), null);
         }
@@ -132,7 +132,7 @@ namespace Facebook.Rest
         /// <param name="uids">A List of user IDs.</param>
         /// <param name="fields">List of desired fields in return. This is a List of field strings and is limited to these entries only: uid, first_name, last_name, name, timezone, birthday, sex, affiliations (regional type only), locale, profile_url, proxied_email.</param>
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public IList<user> GetStandardInfo(List<long> uids, IList<string> fields)
+        public IList<user> GetStandardInfo(IList<long> uids, IList<string> fields)
         {
             return GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), fields);
         }
@@ -385,7 +385,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform. If no visible users are found from the passed uids argument, the method will return an empty result element.</returns>
-        public void GetInfoAsync(List<long> uids, GetInfoCallback callback, Object state)
+        public void GetInfoAsync(IList<long> uids, GetInfoCallback callback, Object state)
         {
             GetInfo(StringHelper.ConvertToCommaSeparated(uids), true, callback, state);
         }
@@ -465,7 +465,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public void GetStandardInfoAsync(List<long> uids, GetStandardInfoCallback callback, Object state)
+        public void GetStandardInfoAsync(IList<long> uids, GetStandardInfoCallback callback, Object state)
         {
             GetStandardInfoAsync(uids, null, callback, state);
         }
@@ -495,7 +495,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public void GetStandardInfoAsync(List<long> uids, IList<string> fields, GetStandardInfoCallback callback, Object state)
+        public void GetStandardInfoAsync(IList<long> uids, IList<string> fields, GetStandardInfoCallback callback, Object state)
 		{
 			GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), fields, true, callback, state);
 		}

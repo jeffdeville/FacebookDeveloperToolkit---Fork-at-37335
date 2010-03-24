@@ -45,6 +45,9 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\lib\StructureMap2.6.1\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -150,6 +153,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Registry\FacebookRegistry.cs" />
     <Compile Include="Rest\Admin.cs" />
     <Compile Include="Rest\FacebookApi.cs">
       <SubType>Code</SubType>
