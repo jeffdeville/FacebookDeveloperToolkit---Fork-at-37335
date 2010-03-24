@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Tests", "Facebook.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Mvc", "Facebook.MVC\Facebook.Mvc.csproj", "{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcFakes", "..\..\personalizr\MvcFakes\MvcFakes.csproj", "{558790E7-0F46-489F-B717-52AE3746D39B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -49,16 +47,6 @@ Global
 		{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{75F6543B-FCCB-4646-B3AD-BA2C1CA62B8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Release|.NET.ActiveCfg = Release|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{558790E7-0F46-489F-B717-52AE3746D39B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
