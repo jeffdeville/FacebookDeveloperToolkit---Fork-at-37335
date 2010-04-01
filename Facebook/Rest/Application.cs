@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Application API methods.
 	/// </summary>
-	public class Application : RestBase, Facebook.Rest.IApplication
+	public class Application : AuthorizedRestBase, Facebook.Rest.IApplication
 	{
 		#region Methods
 

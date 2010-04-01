@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Status API methods.
 	/// </summary>
-	public class Status : RestBase, Facebook.Rest.IStatus
+	public class Status : AuthorizedRestBase, Facebook.Rest.IStatus
 	{
 		#region Methods
 

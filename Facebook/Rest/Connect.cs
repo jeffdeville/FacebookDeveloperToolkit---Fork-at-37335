@@ -10,7 +10,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Connect API methods.
 	/// </summary>
-	public class Connect : RestBase, Facebook.Rest.IConnect
+	public class Connect : AuthorizedRestBase, Facebook.Rest.IConnect
 	{
 		#region Methods
 

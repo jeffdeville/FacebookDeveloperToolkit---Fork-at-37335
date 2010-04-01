@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IMarketplace : IRestBase
+	public interface IMarketplace : IAuthorizedRestBase
 	{
 		long CreateListing(long listing_id, bool show_on_profile, System.Collections.Generic.Dictionary<string, string> listing_attrs);
 		System.Collections.Generic.IList<string> GetCategories();

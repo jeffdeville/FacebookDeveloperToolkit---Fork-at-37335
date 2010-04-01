@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Admin API methods.
     /// </summary>
-    public class Admin : RestBase, Facebook.Rest.IAdmin
+    public class Admin : AuthorizedRestBase, Facebook.Rest.IAdmin
     {
         #region Enumerations
 

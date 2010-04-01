@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Friends API methods.
     /// </summary>
-    public class Friends : RestBase, Facebook.Rest.IFriends
+    public class Friends : AuthorizedRestBase, Facebook.Rest.IFriends
     {
         #region Private Members
 
@@ -58,7 +58,7 @@ namespace Facebook.Rest
         /// <param name="uids2">A list of user ids matched with uids1.</param>
         /// <returns>Returns a list of friend_info elements corresponding to the lists passed. The are_friends subelement of each friend_info element is 0 or false if the users are not friends, and 1 or true if they are friends. Note that, for each pair, this function is symmetric. That is, it does not matter which user is in uids1 and which is in uids2.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public IList<friend_info> AreFriends(List<user> uids1, List<user> uids2)
+        public IList<friend_info> AreFriends(IList<user> uids1, IList<user> uids2)
 		{
             var u1 = (from u in uids1 select u.uid.Value).ToList();
             var u2 = (from u in uids2 select u.uid.Value).ToList();
@@ -125,7 +125,7 @@ namespace Facebook.Rest
         /// <param name="uids2">A list of user ids matched with uids1.</param>
         /// <returns>Returns a list of friend_info elements corresponding to the lists passed. The are_friends subelement of each friend_info element is 0 or false if the users are not friends, and 1 or true if they are friends. Note that, for each pair, this function is symmetric. That is, it does not matter which user is in uids1 and which is in uids2.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public IList<friend_info> AreFriends(List<long> uids1, List<long> uids2)
+        public IList<friend_info> AreFriends(IList<long> uids1, IList<long> uids2)
 		{
 		    return AreFriends(uids1, uids2, false, null, null);
 	    }
@@ -292,7 +292,7 @@ namespace Facebook.Rest
         /// <param name="target_uid">The user ID of one of the target user whose mutual friends you want to retrieve.</param>
         /// <returns>This method returns an List of user IDs of the mutual friends, or an error code.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public List<long> GetMutualFriends(long target_uid)
+        public IList<long> GetMutualFriends(long target_uid)
         {
             return GetMutualFriends(target_uid, null);
         }
@@ -310,7 +310,7 @@ namespace Facebook.Rest
         /// <param name="source_uid">The user ID of the other user for which you are getting mutual friends of. Defaults to the current session user.</param>
         /// <returns>This method returns an List of user IDs of the mutual friends, or an error code.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public List<long> GetMutualFriends(long target_uid, long? source_uid)
+        public IList<long> GetMutualFriends(long target_uid, long? source_uid)
         {
             return GetMutualFriends(target_uid, source_uid, false, null, null);
         }
@@ -348,7 +348,7 @@ namespace Facebook.Rest
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>Returns a list of friend_info elements corresponding to the lists passed. The are_friends subelement of each friend_info element is 0 or false if the users are not friends, and 1 or true if they are friends. Note that, for each pair, this function is symmetric. That is, it does not matter which user is in uids1 and which is in uids2.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public void AreFriendsAsync(List<user> uids1, List<user> uids2, AreFriendsCallback callback, Object state)
+        public void AreFriendsAsync(IList<user> uids1, IList<user> uids2, AreFriendsCallback callback, Object state)
 		{
             var u1 = (from u in uids1 select u.uid.Value).ToList();
             var u2 = (from u in uids2 select u.uid.Value).ToList();
@@ -445,7 +445,7 @@ namespace Facebook.Rest
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>Returns a list of friend_info elements corresponding to the lists passed. The are_friends subelement of each friend_info element is 0 or false if the users are not friends, and 1 or true if they are friends. Note that, for each pair, this function is symmetric. That is, it does not matter which user is in uids1 and which is in uids2.</returns>
         /// <remarks>The first array specifies one half of each pair, the second array the other half; therefore, they must be of equal size.</remarks>
-        public void AreFriendsAsync(List<long> uids1, List<long> uids2, AreFriendsCallback callback, Object state)
+        public void AreFriendsAsync(IList<long> uids1, IList<long> uids2, AreFriendsCallback callback, Object state)
         {
             AreFriends(uids1, uids2, true, callback, state);
         }
@@ -751,7 +751,7 @@ namespace Facebook.Rest
         
         #region Private Methods
 
-        private IList<friend_info> AreFriends(List<long> uids1, List<long> uids2, bool isAsync, AreFriendsCallback callback, Object state)
+        private IList<friend_info> AreFriends(IList<long> uids1, IList<long> uids2, bool isAsync, AreFriendsCallback callback, Object state)
 		{
 			var parameterList = new Dictionary<string, string>
 			                    	{
@@ -831,7 +831,7 @@ namespace Facebook.Rest
 			return response == null ? null : response.friendlist;
 		}
 
-		private List<long> GetMutualFriends(long target_uid, long? source_uid, bool isAsync, GetMutualFriendsCallback callback, Object state)
+		private IList<long> GetMutualFriends(long target_uid, long? source_uid, bool isAsync, GetMutualFriendsCallback callback, Object state)
 		{
 			var parameterList = new Dictionary<string, string> { { "method", "facebook.friends.getMutualFriends" } };
 			Utilities.AddRequiredParameter(parameterList, "target_uid", target_uid);

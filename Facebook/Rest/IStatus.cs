@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IStatus : IRestBase
+	public interface IStatus : IAuthorizedRestBase
 	{
 		System.Collections.Generic.IList<Facebook.Schema.user_status> Get();
 		System.Collections.Generic.IList<Facebook.Schema.user_status> Get(long uid);
