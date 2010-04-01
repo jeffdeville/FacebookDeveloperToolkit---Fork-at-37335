@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IPages : IRestBase
+	public interface IPages : IAuthorizedRestBase
 	{
 		System.Collections.Generic.List<string> GetFields();
 		System.Collections.Generic.IList<Facebook.Schema.page> GetInfo(System.Collections.Generic.List<string> fields, System.Collections.Generic.List<long> page_ids, long? uid);

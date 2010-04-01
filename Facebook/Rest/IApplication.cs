@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IApplication : IRestBase
+	public interface IApplication : IAuthorizedRestBase
 	{
 		Facebook.Schema.app_info GetPublicInfo();
 		Facebook.Schema.app_info GetPublicInfo(long? application_id, string application_api_key, string application_canvas_name);

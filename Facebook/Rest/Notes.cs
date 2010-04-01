@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Notes API methods.
 	/// </summary>
-	public class Notes : RestBase, Facebook.Rest.INotes
+	public class Notes : AuthorizedRestBase, Facebook.Rest.INotes
 	{
 		#region Methods
 

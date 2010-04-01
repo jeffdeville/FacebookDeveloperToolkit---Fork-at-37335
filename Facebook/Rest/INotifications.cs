@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface INotifications : IRestBase
+	public interface INotifications : IAuthorizedRestBase
 	{
 		Facebook.Schema.notifications Get();
 		void GetAsync(Notifications.GetCallback callback, object state);

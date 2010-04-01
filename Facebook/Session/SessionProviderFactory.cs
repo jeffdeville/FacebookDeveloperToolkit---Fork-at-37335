@@ -13,8 +13,8 @@ namespace Facebook.Session
 	{
         private readonly HttpCookieCollection _requestCookies;
         private readonly HttpCookieCollection _responseCookies;
-        private readonly NameValueCollection _inputParams;
-		private readonly IAuth _auth;
+        private readonly NameValueCollection _inputParams;		
+		public IAuth Auth { get; set; }
 
         public SessionProviderFactory(HttpContextBase context, IAuth auth)
             : this(context.Request.Cookies, context.Response.Cookies, context.Request.Params, auth) {}
@@ -24,7 +24,7 @@ namespace Facebook.Session
             _requestCookies = requestCookies;
             _responseCookies = responseCookies;
             _inputParams = inputParams;
-        	_auth = auth;
+			Auth = auth;
         }
 
 		public ISessionProvider GetSessionProvider(FacebookPageType pageType)
@@ -34,9 +34,9 @@ namespace Facebook.Session
                 case FacebookPageType.Connect:
 					return new ConnectSessionProvider(_requestCookies);
                 case FacebookPageType.IFrame:
-					return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams, _auth);
+					return new IFrameSessionProvider(_requestCookies, _responseCookies, _inputParams, Auth);
                 case FacebookPageType.Fbml:
-					return new FbmlSessionProvider(_inputParams, _auth);
+					return new FbmlSessionProvider(_inputParams, Auth);
                 default:
                     throw new ArgumentOutOfRangeException("pageType");
             }

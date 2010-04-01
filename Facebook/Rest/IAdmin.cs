@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IAdmin : IRestBase
+	public interface IAdmin : IAuthorizedRestBase
 	{
 		bool BanUsers(System.Collections.Generic.List<long> uids);
 		void BanUsersAsync(System.Collections.Generic.List<long> uids, Admin.BanUsersCallback callback, object state);

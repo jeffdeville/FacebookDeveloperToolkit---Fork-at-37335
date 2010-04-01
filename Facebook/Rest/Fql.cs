@@ -11,7 +11,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Fql API methods.
 	/// </summary>
-	public class Fql : RestBase, Facebook.Rest.IFql
+	public class Fql : AuthorizedRestBase, Facebook.Rest.IFql
 	{
 		#region Private Members
 		

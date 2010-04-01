@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Profile API methods.
     /// </summary>
-    public class Profile : RestBase, Facebook.Rest.IProfile
+    public class Profile : AuthorizedRestBase, Facebook.Rest.IProfile
     {
         #region Methods
 

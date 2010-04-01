@@ -377,7 +377,7 @@ namespace Facebook.Utility
         ///<param name="dict"></param>
         ///<param name="key"></param>
         ///<param name="values"></param>
-        public static void AddList(IDictionary<string, string> dict, string key, List<string> values)
+        public static void AddList(IDictionary<string, string> dict, string key, IList<string> values)
         {
             if (!Equals(values, null) && values.Count > 0)
             {
@@ -390,7 +390,7 @@ namespace Facebook.Utility
         ///<param name="dict"></param>
         ///<param name="key"></param>
         ///<param name="values"></param>
-        public static void AddList(IDictionary<string, string> dict, string key, List<long> values)
+        public static void AddList(IDictionary<string, string> dict, string key, IList<long> values)
         {
             if (!Equals(values, null) && values.Count > 0)
             {
@@ -403,7 +403,7 @@ namespace Facebook.Utility
         ///<param name="dict"></param>
         ///<param name="key"></param>
         ///<param name="values"></param>
-        public static void AddList(IDictionary<string, string> dict, string key, List<int> values)
+        public static void AddList(IDictionary<string, string> dict, string key, IList<int> values)
         {
             if (!Equals(values, null) && values.Count > 0)
             {

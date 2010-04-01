@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Fbml API methods.
     /// </summary>
-    public class Fbml : RestBase, Facebook.Rest.IFbml
+    public class Fbml : AuthorizedRestBase, Facebook.Rest.IFbml
     {
         #region Methods
 

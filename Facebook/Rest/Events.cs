@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Events API methods.
     /// </summary>
-    public class Events : RestBase, Facebook.Rest.IEvents
+    public class Events : AuthorizedRestBase, Facebook.Rest.IEvents
     {
         #region Methods
 

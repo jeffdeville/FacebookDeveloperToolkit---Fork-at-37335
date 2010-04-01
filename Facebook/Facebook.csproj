@@ -45,6 +45,9 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\lib\StructureMap2.6.1\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -182,13 +185,13 @@
     <Compile Include="Rest\IPermissions.cs" />
     <Compile Include="Rest\IPhotos.cs" />
     <Compile Include="Rest\IProfile.cs" />
-    <Compile Include="Rest\IRestBase.cs" />
+    <Compile Include="Rest\IAuthorizedRestBase.cs" />
     <Compile Include="Rest\IStatus.cs" />
     <Compile Include="Rest\IStream.cs" />
     <Compile Include="Rest\IUsers.cs" />
     <Compile Include="Rest\IVideo.cs" />
     <Compile Include="Rest\Message.cs" />
-    <Compile Include="Rest\RestBase.cs" />
+    <Compile Include="Rest\AuthorizedRestBase.cs" />
     <Compile Include="Rest\Batch.cs" />
     <Compile Include="Rest\Connect.cs" />
     <Compile Include="Rest\Comments.cs" />

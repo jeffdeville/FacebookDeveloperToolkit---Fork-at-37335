@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Notifications API methods.
 	/// </summary>
-	public class Notifications : RestBase, INotifications
+	public class Notifications : AuthorizedRestBase, INotifications
 	{
 		#region Methods
 

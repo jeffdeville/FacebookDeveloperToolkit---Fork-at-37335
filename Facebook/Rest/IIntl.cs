@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IIntl : IRestBase
+	public interface IIntl : IAuthorizedRestBase
 	{
 		System.Collections.Generic.List<Facebook.Schema.locale_data> GetTranslations(string locale, bool all);
 		void GetTranslationsAsync(string locale, bool all, Intl.GetTranslationsCallback callback, object state);

@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Marketplace API methods.
     /// </summary>
-    public class Marketplace : RestBase, Facebook.Rest.IMarketplace
+    public class Marketplace : AuthorizedRestBase, Facebook.Rest.IMarketplace
     {
         #region Methods
 
