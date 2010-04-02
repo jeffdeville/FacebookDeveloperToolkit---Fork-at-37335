@@ -5,56 +5,19 @@ using System.IO;
 using System.Net;
 using System.Text;
 using Facebook.Schema;
-using Facebook.Session;
 using Facebook.Utility;
 
 namespace Facebook.Rest
 {
-	public class ApplicationInfo
-	{
-		private FacebookConfiguration _facebookConfig;
-
-        public ApplicationInfo() 
-        {
-        	_facebookConfig = new FacebookConfiguration();
-        }
-		//public FacebookSession() : this(null, null) { }
-		public ApplicationInfo(FacebookConfiguration facebookConfig)
-		{
-			_facebookConfig = facebookConfig;
-		}
-
-		/// <summary>
-		/// Application key
-		/// </summary>
-		public string ApplicationKey
-		{
-			get { return _facebookConfig.ApiKey; }
-		}
-
-		/// <summary>
-		/// Application secret
-		/// </summary>
-		public string ApplicationSecret
-		{
-			get { return _facebookConfig.Secret; }
-		}
-
-		///<summary>
-		/// Whether the Http Post and Response should be compressed
-		///</summary>
-		public bool CompressHttp
-		{
-			get;
-			set;
-		}
-
-		
-	}
 	public class RestBase : IRestBase
 	{
-		private readonly ApplicationInfo AppInfo;
+		protected readonly ApplicationInfo AppInfo;
 
+		public RestBase()
+		{
+			// Load the appinfo from a standard config section
+			throw new NotImplementedException();
+		}
 		public RestBase(ApplicationInfo appInfo)
 		{
 			AppInfo = appInfo;
@@ -87,8 +50,33 @@ namespace Facebook.Rest
 			var result = SendRequestSynchronous(parameterDictionary);
 			return Utilities.DeserializeXML<T>(result);
 		}
+		internal static WebResponse postRequest(string requestUrl, string postString, bool compressHttp)
+		{
+#if !SILVERLIGHT
+			var webRequest = WebRequest.Create(requestUrl);
+			webRequest.Method = "POST";
+			webRequest.ContentType = "application/x-www-form-urlencoded";
+			if (compressHttp)
+				webRequest.Headers.Add("Accept-Encoding", "gzip, deflate");
+			if (!String.IsNullOrEmpty(postString))
+			{
+				var parameterString = Encoding.UTF8.GetBytes(postString);
+				webRequest.ContentLength = parameterString.Length;
 
-		protected string SendRequestSynchronous(IDictionary<string, string> parameterDictionary)
+				using (var buffer = webRequest.GetRequestStream())
+				{
+					buffer.Write(parameterString, 0, parameterString.Length);
+					buffer.Close();
+				}
+			}
+
+			return webRequest.GetResponse();
+#else
+            // SL version of postRequest
+            throw new Exception("Silverlight applications cannot issue Synchronous calls.");
+#endif
+		}
+		protected virtual string SendRequestSynchronous(IDictionary<string, string> parameterDictionary)
 		{
 			//if (useSession)
 			//{
@@ -101,21 +89,17 @@ namespace Facebook.Rest
 			//    parameterDictionary.Add("call_as_apikey", Permissions.CallAsApiKey);
 			//}
 			string parameters = CreateHTTPParameterList(parameterDictionary);
-			if (Batch != null && Batch.IsActive)
-			{
-				Batch.CallList.Add(parameters);
-				return null;
-			}
+			//if (Batch != null && Batch.IsActive)
+			//{
+			//    Batch.CallList.Add(parameters);
+			//    return null;
+			//}
 			string result = null;
 #if !SILVERLIGHT
 			if (AppInfo != null && AppInfo.CompressHttp)
-			{
 				result = processCompressedResponse(postRequest(requestUrl, parameters, true));
-			}
 			else
-			{
 				result = processResponse(postRequest(requestUrl, parameters, false));
-			}
 #else
                 result = processResponse(postRequest(requestUrl, parameters, false));
 #endif
@@ -281,21 +265,22 @@ namespace Facebook.Rest
 			//    parameterList.Add("call_as_apikey", Permissions.CallAsApiKey);
 			//}
 
+			// This data could now be passed in ahead of time, because I don't need to code above here.
 			string postData = CreatePostData(parameterList);
 
-			if (Batch != null && Batch.IsActive)
-			{
-				Batch.CallListAsync.Add(new BatchRecord(ar, postData));
-			}
-			else
-			{
+			//if (Batch != null && Batch.IsActive)
+			//{
+			//    Batch.CallListAsync.Add(new BatchRecord(ar, postData));
+			//}
+			//else
+			//{
 				WebClientHelper client = new WebClientHelper(ar);
 				UriBuilder uriBd = new UriBuilder(Constants.FacebookRESTUrl);
 
 				client.Method = "POST";
 				client.RequestCompleted += OnRequestCompleted;
 				client.SendRequest(uriBd.Uri, postData);
-			}
+			//}
 		}
 
 		internal static string GetRequestUrl(bool useSSL)
@@ -303,11 +288,11 @@ namespace Facebook.Rest
 			return useSSL ? Constants.FacebookRESTUrl.Replace("http", "https") : Constants.FacebookRESTUrl;
 		}
 
-		internal string CreateHTTPParameterList(IDictionary<string, string> parameterList)
+		protected internal virtual string CreateHTTPParameterList(IDictionary<string, string> parameterList)
 		{
 			var queryBuilder = new StringBuilder();
 
-			//parameterList.Add("api_key", Session.ApplicationKey);
+			parameterList.Add("api_key", AppInfo.ApplicationKey);
 			parameterList.Add("v", Constants.VERSION);
 			parameterList.Add("call_id", DateTime.Now.Ticks.ToString("x", CultureInfo.InvariantCulture));
 
@@ -332,6 +317,52 @@ namespace Facebook.Rest
 			}
 			queryBuilder.Remove(queryBuilder.Length - 1, 1);
 			return queryBuilder.ToString();
+		}
+
+		protected virtual byte[] CreatePostData(IDictionary<string, string> parameters, byte[] data, string contentType, string boundary)
+		{
+			if (!_mimeTypes.ContainsKey(contentType))
+			{
+				throw new FacebookException("unsupported content type");
+			}
+			parameters.Add("api_key", AppInfo.ApplicationKey);
+			//parameters.Add("session_key", Session.SessionKey);
+			parameters.Add("v", Constants.VERSION);
+			parameters.Add("call_id", DateTime.Now.Ticks.ToString("x", CultureInfo.InvariantCulture));
+			//if (Session.SessionSecret != null)
+			//{
+			//    parameters.Add("ss", "1");
+			//}
+			parameters.Add("sig", GenerateSignature(parameters));
+
+
+			// Build the query
+			var sb = new StringBuilder();
+			foreach (var kvp in parameters)
+			{
+				sb.Append(Constants.PREFIX).Append(boundary).Append(Constants.NEWLINE);
+				sb.Append("Content-Disposition: form-data; name=\"").Append(kvp.Key).Append("\"");
+				sb.Append(Constants.NEWLINE);
+				sb.Append(Constants.NEWLINE);
+				sb.Append(kvp.Value);
+				sb.Append(Constants.NEWLINE);
+			}
+
+			sb.Append(Constants.PREFIX).Append(boundary).Append(Constants.NEWLINE);
+			sb.Append("Content-Disposition: form-data; filename=\"dummyFileName." + _mimeTypes[contentType].ToString() + "\"").Append(Constants.NEWLINE);
+			sb.Append("Content-Type: ").Append(contentType).Append(Constants.NEWLINE).Append(Constants.NEWLINE);
+
+			byte[] boundaryBytes = Encoding.UTF8.GetBytes(String.Concat(Constants.NEWLINE, Constants.PREFIX, boundary, Constants.PREFIX, Constants.NEWLINE));
+
+			byte[] postHeaderBytes = Encoding.UTF8.GetBytes(sb.ToString());
+
+			using (MemoryStream stream = new MemoryStream(postHeaderBytes.Length + data.Length + boundaryBytes.Length))
+			{
+				stream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+				stream.Write(data, 0, data.Length);
+				stream.Write(boundaryBytes, 0, boundaryBytes.Length);
+				return stream.GetBuffer();
+			}
 		}
 		#region Private Methods
 
@@ -403,7 +434,7 @@ namespace Facebook.Rest
 		/// <returns>Generated signature</returns>
 		internal string GenerateSignature(IDictionary<string, string> parameters)
 		{
-			return GenerateSignature(false, parameters);
+			return GenerateSignature(AppInfo.ApplicationKey, parameters);
 		}
 
 		/// <summary>
@@ -412,8 +443,9 @@ namespace Facebook.Rest
 		/// <param name="forceApplicationSecret">Flag to force use of Application, not User Session secret.</param>
 		/// <param name="parameters">List of paramenters</param>
 		/// <returns>Generated signature</returns>
-		internal string GenerateSignature(bool forceApplicationSecret, IDictionary<string, string> parameters)
+		internal string GenerateSignature(string secret, IDictionary<string, string> parameters)
 		{
+			secret = secret ?? AppInfo.ApplicationSecret;
 			var signatureBuilder = new StringBuilder();
 
 			// Sort the keys of the method call in alphabetical order
@@ -425,7 +457,7 @@ namespace Facebook.Rest
 				signatureBuilder.Append(String.Format(CultureInfo.InvariantCulture, "{0}={1}", key, parameters[key]));
 
 			// Append the secret to the signature builder
-			signatureBuilder.Append(forceApplicationSecret ? Session.ApplicationSecret : Session.Secret);
+			signatureBuilder.Append(secret);//forceApplicationSecret ? Session.ApplicationSecret : Session.Secret);
 
 			// Compute the MD5 hash of the signature builder
 			byte[] hash = MD5Core.GetHash(signatureBuilder.ToString().Trim());
@@ -451,13 +483,13 @@ namespace Facebook.Rest
 		/// <returns>This method returns a formatted Post string.</returns>
 		protected string CreatePostData(IDictionary<string, string> parameters)
 		{
-			parameters.Add("api_key", Session.ApplicationKey);
+			parameters.Add("api_key", AppInfo.ApplicationKey);
 			parameters.Add("v", Constants.VERSION);
 			parameters.Add("call_id", DateTime.Now.Ticks.ToString("x", CultureInfo.InvariantCulture));
-			if (Session.SessionSecret != null)
-			{
-				parameters.Add("ss", "1");
-			}
+			//if (Session.SessionSecret != null)
+			//{
+			//    parameters.Add("ss", "1");
+			//}
 			parameters.Add("sig", GenerateSignature(parameters));
 
 

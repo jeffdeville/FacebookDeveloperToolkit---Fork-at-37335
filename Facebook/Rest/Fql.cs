@@ -40,7 +40,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Fql
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Fql(IFacebookSession session)
+		public Fql(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -254,11 +254,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new AsyncResult(XmlResultOperationCompleted, new FacebookCallCompleted<string>(callback), state));
+				SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new AsyncResult(XmlResultOperationCompleted, new FacebookCallCompleted<string>(callback), state));
 				return null;
 			}
 
-			return SendRequest(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			return SendRequest(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		// TODO: Fix this method. Currently, because of various XML issues, it crashes when trying to deserialize the response.
@@ -269,11 +269,11 @@ namespace Facebook.Rest
 
 		    if (isAsync)
 		    {
-		        SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<T>(callback), state);
+		        SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<T>(callback), state);
 		        return default(T);
 		    }
 
-		    return SendRequest<T>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+		    return SendRequest<T>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		private IList<fql_result> Multiquery(Dictionary<string, string> queries, bool isAsync, MultiqueryCallback callback, Object state)
@@ -283,11 +283,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<fql_multiquery_response, IList<fql_result>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<fql_result>>(callback), state, "fql_result");
+				SendRequestAsync<fql_multiquery_response, IList<fql_result>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<fql_result>>(callback), state, "fql_result");
 				return null;
 			}
 
-            var response = SendRequest<fql_multiquery_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fql_multiquery_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.fql_result;
 		}
         private IList<object> MultiqueryParsed(FqlMultiQueryInfo[] queries, bool isAsync, MultiqueryParsedCallback callback, Object state)
@@ -309,11 +309,11 @@ namespace Facebook.Rest
             if (isAsync)
             {
                 AsyncResult result = new AsyncResult(OnMultiQueryCompleted, qstate, state);
-                SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), result);
+                SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), result);
                 return null;
             }
 
-            var response = SendRequest<IList<object>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<IList<object>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
             return response == null ? null : response;
         }
         void OnMultiQueryCompleted(IAsyncResult ar)

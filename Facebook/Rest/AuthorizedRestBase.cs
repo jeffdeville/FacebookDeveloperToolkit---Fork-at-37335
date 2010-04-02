@@ -35,7 +35,7 @@ namespace Facebook.Rest
         /// <summary>
         /// Gets the FacebookSession object.
         /// </summary>
-        public IFacebookSession Session { get; set; }
+		public SessionInfo SessionInfo { get; set; }
 
         #endregion Protected Properties
 
@@ -47,13 +47,16 @@ namespace Facebook.Rest
 		/// Constructor
 		/// </summary>
 		/// <param name="session">Session object</param>
-		public AuthorizedRestBase(ApplicationInfo appInfo, IFacebookSession session)
+		public AuthorizedRestBase(ApplicationInfo appInfo, SessionInfo session)
 			: base(appInfo)
 		{
-			Session = session;
+			SessionInfo = session;
 		}
 
-
+		public AuthorizedRestBase(SessionInfo session)
+		{
+			SessionInfo = session;
+		}
         #endregion Constructor
 
         #region Public Methods
@@ -76,13 +79,42 @@ namespace Facebook.Rest
         public string SendRequest(IDictionary<string, string> parameterDictionary, bool useSession)
         {
         	if (useSession)
-        		parameterDictionary.Add("session_key", Session.SessionKey);
+        		parameterDictionary.Add("session_key", SessionInfo.SessionKey);
         	
 			var result = SendRequestSynchronous(parameterDictionary);
             return string.IsNullOrEmpty(result) ? null : result;
         }
 
-		
+		/// <summary>
+		/// Most of this version is the same as the other.  Only the
+		/// batch is different.
+		/// </summary>
+		/// <param name="parameterDictionary"></param>
+		/// <returns></returns>
+		protected override string SendRequestSynchronous(IDictionary<string, string> parameterDictionary)
+		{
+			string requestUrl = GetRequestUrl(parameterDictionary["method"] == "facebook.auth.getSession");
+			if (Permissions != null && Permissions.IsPermissionsModeActive)
+			{
+				parameterDictionary.Add("call_as_apikey", Permissions.CallAsApiKey);
+			}
+			string parameters = CreateHTTPParameterList(parameterDictionary);
+			if (Batch != null && Batch.IsActive)
+			{
+				Batch.CallList.Add(parameters);
+				return null;
+			}
+			string result = null;
+#if !SILVERLIGHT
+			if (AppInfo != null && AppInfo.CompressHttp)
+				result = processCompressedResponse(postRequest(requestUrl, parameters, true));
+			else
+				result = processResponse(postRequest(requestUrl, parameters, false));
+#else
+                result = processResponse(postRequest(requestUrl, parameters, false));
+#endif
+			return string.IsNullOrEmpty(result) ? null : result;
+		}
 
 		/// <summary>
 		/// Makes a synchronous call to facebook server and returns result.
@@ -94,7 +126,7 @@ namespace Facebook.Rest
         public T SendRequest<T>(IDictionary<string, string> parameterDictionary, bool useSession)
 		{
 			if (useSession)
-				parameterDictionary.Add("session_key", Session.SessionKey);
+				parameterDictionary.Add("session_key", SessionInfo.SessionKey);
 			var result = SendRequestSynchronous(parameterDictionary);
 			return Utilities.DeserializeXML<T>(result);
         }
@@ -116,12 +148,39 @@ namespace Facebook.Rest
 		public void SendRequestAsync<T>(Dictionary<string, string> parameterList, bool useSession, FacebookCallCompleted<T> callback, Object state)
 		{
 			if (useSession)
-				parameterList.Add("session_key", Session.SessionKey);
+				parameterList.Add("session_key", SessionInfo.SessionKey);
 			AsyncResult result = new AsyncResult(OnFacebookCallCompleted<T>, callback, state);
 			SendRequestAsync(parameterList, result);
 		}
 
-       
+		public override void SendRequestAsync(IDictionary<string, string> parameterList, AsyncResult ar)
+		{
+			if (Permissions != null && Permissions.IsPermissionsModeActive)
+			{
+				parameterList.Add("call_as_apikey", Permissions.CallAsApiKey);
+			}
+
+			// This data could now be passed in ahead of time, because I don't need to code above here.
+			string postData = CreatePostData(parameterList);
+
+			if (Batch != null && Batch.IsActive)
+				Batch.CallListAsync.Add(new BatchRecord(ar, postData));
+			else
+			{
+				WebClientHelper client = new WebClientHelper(ar);
+				UriBuilder uriBd = new UriBuilder(Constants.FacebookRESTUrl);
+
+				client.Method = "POST";
+				client.RequestCompleted += OnRequestCompleted;
+				client.SendRequest(uriBd.Uri, postData);
+			}
+		}
+
+		protected internal override string CreateHTTPParameterList(IDictionary<string, string> parameterList)
+		{
+			parameterList.Add("ss", "1");
+			return base.CreateHTTPParameterList(parameterList);
+		}
 
 		/// <summary>
 		/// Makes a call to facebook server and returns the result in callback specified
@@ -133,7 +192,7 @@ namespace Facebook.Rest
 		public void SendRequestAsync<TObject, TResult>(Dictionary<string, string> parameterList, bool useSession, FacebookCallCompleted<TResult> callback, Object state)
 		{
 			if (useSession)
-				parameterList.Add("session_key", Session.SessionKey);
+				parameterList.Add("session_key", SessionInfo.SessionKey);
 			SendRequestAsync<TObject, TResult>(parameterList, callback, state, "TypedValue");
 		}
 
@@ -148,9 +207,9 @@ namespace Facebook.Rest
 		/// <remarks>Function made virtual for unittesting</remarks>
 		public void SendRequestAsync(IDictionary<string, string> parameterList, bool useSession, AsyncResult ar)
 		{
-			if (useSession && Session.SessionKey != null)
+			if (useSession && SessionInfo.SessionKey != null)
 			{
-				parameterList.Add("session_key", Session.SessionKey);
+				parameterList.Add("session_key", SessionInfo.SessionKey);
 			}
 
 			if (Permissions != null && Permissions.IsPermissionsModeActive)
@@ -227,18 +286,18 @@ namespace Facebook.Rest
 
 #if !SILVERLIGHT
 
-        /// <summary>
+		/// <summary>
         /// Makes a REST call to upload an image to the facebook server. 
         /// </summary>
         /// <param name="uploadFile">pointer to the image file on the local drive</param>
         /// <param name="parameterList">Parameters for REST call</param>
         public string ExecuteApiImageUpload(FileSystemInfo uploadFile, IDictionary<string, string> parameterList)
         {
-            parameterList.Add("api_key", Session.ApplicationKey);
-            parameterList.Add("session_key", Session.SessionKey);
+            parameterList.Add("api_key", SessionInfo.ApplicationKey);
+            parameterList.Add("session_key", SessionInfo.SessionKey);
             parameterList.Add("v", Constants.VERSION);
             parameterList.Add("call_id", DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture));
-            if (Session.SessionSecret != null)
+            if (SessionInfo.SessionSecret != null)
             {
                 parameterList.Add("ss", "1");
             }
@@ -254,11 +313,11 @@ namespace Facebook.Rest
         /// <param name="parameterList">Parameters for REST call</param>
         public string ExecuteApiVideoUpload(FileSystemInfo uploadFile, IDictionary<string, string> parameterList)
         {
-            parameterList.Add("api_key", Session.ApplicationKey);
-            parameterList.Add("session_key", Session.SessionKey);
+            parameterList.Add("api_key", SessionInfo.ApplicationKey);
+            parameterList.Add("session_key", SessionInfo.SessionKey);
             parameterList.Add("v", Constants.VERSION);
             parameterList.Add("call_id", DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture));
-            if (Session.SessionSecret != null)
+            if (SessionInfo.SessionSecret != null)
             {
                 parameterList.Add("ss", "1");
             }
@@ -373,55 +432,16 @@ namespace Facebook.Rest
 			{
 				throw new FacebookException("unsupported content type");
 			}
-			parameters.Add("api_key", Session.ApplicationKey);
-			parameters.Add("session_key", Session.SessionKey);
-			parameters.Add("v", Constants.VERSION);
-			parameters.Add("call_id", DateTime.Now.Ticks.ToString("x", CultureInfo.InvariantCulture));
-			if (Session.SessionSecret != null)
-			{
+
+			parameters.Add("session_key", SessionInfo.SessionKey);
+			if (SessionInfo.SessionSecret != null)
 				parameters.Add("ss", "1");
-			}
-			parameters.Add("sig", GenerateSignature(parameters));
-
-
-			// Build the query
-			var sb = new StringBuilder();
-			foreach (var kvp in parameters)
-			{
-				sb.Append(Constants.PREFIX).Append(boundary).Append(Constants.NEWLINE);
-				sb.Append("Content-Disposition: form-data; name=\"").Append(kvp.Key).Append("\"");
-				sb.Append(Constants.NEWLINE);
-				sb.Append(Constants.NEWLINE);
-				sb.Append(kvp.Value);
-				sb.Append(Constants.NEWLINE);
-			}
-
-			sb.Append(Constants.PREFIX).Append(boundary).Append(Constants.NEWLINE);
-			sb.Append("Content-Disposition: form-data; filename=\"dummyFileName." + _mimeTypes[contentType].ToString() + "\"").Append(Constants.NEWLINE);
-			sb.Append("Content-Type: ").Append(contentType).Append(Constants.NEWLINE).Append(Constants.NEWLINE);
-
-			byte[] boundaryBytes = Encoding.UTF8.GetBytes(String.Concat(Constants.NEWLINE, Constants.PREFIX, boundary, Constants.PREFIX, Constants.NEWLINE));
-
-			byte[] postHeaderBytes = Encoding.UTF8.GetBytes(sb.ToString());
-
-			using (MemoryStream stream = new MemoryStream(postHeaderBytes.Length + data.Length + boundaryBytes.Length))
-			{
-				stream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
-				stream.Write(data, 0, data.Length);
-				stream.Write(boundaryBytes, 0, boundaryBytes.Length);
-				return stream.GetBuffer();
-			}
+			return base.CreatePostData(parameters, data, contentType, boundary);
 		}
-
-       
-
-        
-
-        
-
+		
         internal bool IsSessionActive()
         {
-            return !String.IsNullOrEmpty(Session.SessionKey);
+            return !String.IsNullOrEmpty(SessionInfo.SessionKey);
         }
 
         #endregion Internal Methods
@@ -508,7 +528,18 @@ namespace Facebook.Rest
         #endregion Methods
     }
 
-    #region Delegates
+	public class SessionInfo
+	{
+		public string SessionKey{ get; set;}
+
+		public string ApplicationKey { get; set; }
+
+		public string SessionSecret { get; set; }
+
+		public string UserId { get; set; }
+	}
+
+	#region Delegates
 
     /// <summary>
     /// Delegate called when facebook call completes

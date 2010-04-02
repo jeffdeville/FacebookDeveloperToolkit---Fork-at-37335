@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.LiveMessage
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Message(IFacebookSession session)
+		public Message(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -99,11 +99,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<message_getThreadsInFolder_response, IList<thread>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<thread>>(callback), state);
+				SendRequestAsync<message_getThreadsInFolder_response, IList<thread>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<thread>>(callback), state);
 				return null;
 			}
 
-            var response = SendRequest<message_getThreadsInFolder_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<message_getThreadsInFolder_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.thread;
 		}
 

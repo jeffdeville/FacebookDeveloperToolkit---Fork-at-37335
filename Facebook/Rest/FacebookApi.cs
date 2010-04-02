@@ -157,7 +157,7 @@ namespace Facebook.Rest
             get
             {
                 var args = new object[2];
-                args[0] = Session.ApplicationKey;
+                args[0] = AppInfo.ApplicationKey;
                 args[1] = AuthToken;
 
                 return String.Format(CultureInfo.InvariantCulture, Constants.FacebookLoginUrl, args);
@@ -172,7 +172,7 @@ namespace Facebook.Rest
             get
             {
                 var args = new object[2];
-                args[0] = Session.ApplicationKey;
+                args[0] = AppInfo.ApplicationKey;
                 args[1] = AuthToken;
 
                 return String.Format(CultureInfo.InvariantCulture, Constants.FacebookLogoutUrl, args);
@@ -203,7 +203,7 @@ namespace Facebook.Rest
 		//    Initialize(session);
 		//}
 		
-		public Api(IFacebookSession session)
+		public Api(SessionInfo session)
 		{
 		    Initialize(session);
 		}
@@ -221,7 +221,7 @@ namespace Facebook.Rest
             //    throw new ArgumentNullException("FacebookSession", "The facebook session must exist");
 		}
 
-        public IFacebookApi Initialize(IFacebookSession session)
+        public IFacebookApi Initialize(SessionInfo session)
 		{
 			AuthToken = string.Empty;
 
@@ -231,36 +231,36 @@ namespace Facebook.Rest
             InstalledCulture = CultureInfo.CurrentUICulture;
 #endif
 
-			Session = session;
+			SessionInfo = session;
 
-			Auth = new Auth(Session);
-			Video = new Video(Session);
-			Marketplace = new Marketplace(Session);
-			Admin = new Admin(Session);
-			Photos = new Photos(Session);
-			Users = new Users(Session);
-			Friends = new Friends(Users, Session);
-			Events = new Events(Session);
-			Groups = new Groups(Session);
-			Notifications = new Notifications(Session);
-			Profile = new Profile(Session);
-			Fbml = new Fbml(Session);
-			Feed = new Feed(Session);
-			Fql = new Fql(Session);
-			LiveMessage = new LiveMessage(Session);
-			Message = new Message(Session);
-			Batch = new Batch(Session);
-			Pages = new Pages(Session);
-			Application = new Application(Session);
-			Data = new Data(Session);
-			Permissions = new Permissions(Session);
-			Connect = new Connect(Session);
-			Comments = new Comments(Session);
-			Stream = new Stream(Session);
-			Status = new Status(Session);
-			Links = new Links(Session);
-			Notes = new Notes(Session);
-			Intl = new Intl(Session);
+			Auth = new Auth(SessionInfo);
+			Video = new Video(SessionInfo);
+			Marketplace = new Marketplace(SessionInfo);
+			Admin = new Admin(SessionInfo);
+			Photos = new Photos(SessionInfo);
+			Users = new Users(SessionInfo);
+			Friends = new Friends(Users, SessionInfo);
+			Events = new Events(SessionInfo);
+			Groups = new Groups(SessionInfo);
+			Notifications = new Notifications(SessionInfo);
+			Profile = new Profile(SessionInfo);
+			Fbml = new Fbml(SessionInfo);
+			Feed = new Feed(SessionInfo);
+			Fql = new Fql(SessionInfo);
+			LiveMessage = new LiveMessage(SessionInfo);
+			Message = new Message(SessionInfo);
+			Batch = new Batch(SessionInfo);
+			Pages = new Pages(SessionInfo);
+			Application = new Application(SessionInfo);
+			Data = new Data(SessionInfo);
+			Permissions = new Permissions(SessionInfo);
+			Connect = new Connect(SessionInfo);
+			Comments = new Comments(SessionInfo);
+			Stream = new Stream(SessionInfo);
+			Status = new Status(SessionInfo);
+			Links = new Links(SessionInfo);
+			Notes = new Notes(SessionInfo);
+			Intl = new Intl(SessionInfo);
 
 			Batch.Batch = Batch;
 			Permissions.Permissions = Permissions;
@@ -290,7 +290,7 @@ namespace Facebook.Rest
         public string ExtendedPermissionUrl(Enums.ExtendedPermissions permission)
         {
             var args = new object[2];
-            args[0] = Session.ApplicationKey;
+            args[0] = AppInfo.ApplicationKey;
             args[1] = permission;
 
             return String.Format(CultureInfo.InvariantCulture, Constants.FacebookRequestExtendedPermissionUrl, args);

@@ -52,7 +52,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Photo
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Photos(IFacebookSession session)
+        public Photos(SessionInfo session)
             : base(session)
         {
         }
@@ -258,7 +258,7 @@ namespace Facebook.Rest
         /// <remarks>It is an error to omit both of the uid and aids parameters. They have no defaults. In this call, an album owned by a user will be returned to an application if that user has not turned off access to the Facbook Platform.</remarks>
         public IList<album> GetAlbums()
         {
-            return GetAlbums(Session.UserId, null);
+            return GetAlbums(SessionInfo.UserId, null);
         }
 
         /// <summary>
@@ -524,7 +524,7 @@ namespace Facebook.Rest
         /// <remarks>It is an error to omit both of the uid and aids parameters. They have no defaults. In this call, an album owned by a user will be returned to an application if that user has not turned off access to the Facbook Platform.</remarks>
         public void GetAlbumsAsync(GetAlbumsCallback callback, Object state)
 		{
-			GetAlbumsAsync(Session.UserId, null, callback, state);
+			GetAlbumsAsync(SessionInfo.UserId, null, callback, state);
 		}
 
         /// <summary>

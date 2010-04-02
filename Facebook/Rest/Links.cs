@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Links
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Links(IFacebookSession session)
+		public Links(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -200,11 +200,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<links_post_response, long>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<long>(callback), state);
+				SendRequestAsync<links_post_response, long>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<long>(callback), state);
 				return 0;
 			}
 
-			var response = SendRequest<links_post_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<links_post_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? -1 : response.TypedValue;
 		}
 

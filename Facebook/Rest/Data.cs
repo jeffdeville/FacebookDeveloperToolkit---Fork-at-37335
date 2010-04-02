@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Data API methods.
 	/// </summary>
-	public class Data : AuthorizedRestBase, Facebook.Rest.IData
+	public class Data : AuthorizedRestBase, IData
 	{
 		#region Methods
 
@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Data
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Data(IFacebookSession session)
+		public Data(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -719,7 +719,7 @@ namespace Facebook.Rest
         /// <returns>A list of cookies</returns>
         public IList<cookie> GetCookies()
 		{
-			return GetCookies(Session.UserId);
+			return GetCookies(SessionInfo.UserId);
 		}
 
         /// <summary>
@@ -1545,7 +1545,7 @@ namespace Facebook.Rest
         /// <returns>A list of cookies</returns>
         public IList<cookie> GetCookiesAsync(GetCookiesCallback callback, Object state)
 		{
-			return GetCookiesAsync(Session.UserId, callback, state);
+			return GetCookiesAsync(SessionInfo.UserId, callback, state);
 		}
 
         /// <summary>
@@ -2223,11 +2223,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<data_getCookies_response, IList<cookie>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<cookie>>(callback), state, "cookie");
+                SendRequestAsync<data_getCookies_response, IList<cookie>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<cookie>>(callback), state, "cookie");
 				return null;
 			}
 
-            return SendRequest<data_getCookies_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey)).cookie;
+            return SendRequest<data_getCookies_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey)).cookie;
 		}
 
 		private bool SetCookie(long uid, string cookieName, string value, DateTime? expires, string path, bool isAsync, SetCookieCallback callback, Object state)
@@ -2241,11 +2241,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<data_setCookie_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<data_setCookie_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<data_setCookie_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<data_setCookie_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 

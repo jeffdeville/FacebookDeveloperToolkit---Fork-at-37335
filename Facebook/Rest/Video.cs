@@ -51,7 +51,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.video
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Video(IFacebookSession session)
+        public Video(SessionInfo session)
             : base(session)
         {
         }

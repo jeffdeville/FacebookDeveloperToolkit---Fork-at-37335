@@ -20,7 +20,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Fbml
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Fbml(IFacebookSession session)
+		public Fbml(SessionInfo session)
             : base(session)
         {
         }
@@ -491,11 +491,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<fbml_refreshImgSrc_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<fbml_refreshImgSrc_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<fbml_refreshImgSrc_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_refreshImgSrc_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
      	}
 
@@ -509,11 +509,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<fbml_refreshRefUrl_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<fbml_refreshRefUrl_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<fbml_refreshRefUrl_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_refreshRefUrl_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -526,11 +526,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<fbml_setRefHandle_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<fbml_setRefHandle_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<fbml_setRefHandle_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_setRefHandle_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
       	}
 
@@ -541,11 +541,11 @@ namespace Facebook.Rest
                 
             if (isAsync)
             {
-                SendRequestAsync<fbml_uploadNativeStrings_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<fbml_uploadNativeStrings_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<fbml_uploadNativeStrings_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_uploadNativeStrings_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
@@ -557,11 +557,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<fbml_deleteCustomTags_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<fbml_deleteCustomTags_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<fbml_deleteCustomTags_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_deleteCustomTags_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -572,11 +572,11 @@ namespace Facebook.Rest
                 
             if (isAsync)
             {
-                SendRequestAsync<fbml_getCustomTags_response, IList<custom_tag>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<custom_tag>>(callback), state, "custom_tag");
+                SendRequestAsync<fbml_getCustomTags_response, IList<custom_tag>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<custom_tag>>(callback), state, "custom_tag");
                 return null;
             }
 
-            var response = SendRequest<fbml_getCustomTags_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<fbml_getCustomTags_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.custom_tag;
         }
 

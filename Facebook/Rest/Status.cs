@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Status
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Status(IFacebookSession session)
+		public Status(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -294,11 +294,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<status_set_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<status_set_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 #if !SILVERLIGHT
-            var response = SendRequest<status_set_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<status_set_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 #else
             var response = SendRequest<status_set_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
 #endif

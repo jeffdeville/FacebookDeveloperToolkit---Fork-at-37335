@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Stream
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Stream(IFacebookSession session)
+		public Stream(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -116,7 +116,7 @@ namespace Facebook.Rest
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
 		public stream_data Get(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit)
 		{
-			return Get(Session.UserId, sourceIds, startTime, endTime, limit, string.Empty);
+			return Get(SessionInfo.UserId, sourceIds, startTime, endTime, limit, string.Empty);
 		}
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Facebook.Rest
         /// <returns>This method returns a stream_data object containing the following arrays:  posts, which is an array of post data, containing the fields defined by the stream (FQL) table.  profiles, which is an array of profile information, containing the fields defined by the profile (FQL) table.  albums, which is an array of album information, containing the field as defined by the album (FQL) table.</returns>
         public void GetAsync(List<long> sourceIds, DateTime? startTime, DateTime? endTime, int? limit, GetCallback callback, Object state)
 		{
-			GetAsync(Session.UserId, sourceIds, startTime, endTime, limit, string.Empty, callback, state);
+			GetAsync(SessionInfo.UserId, sourceIds, startTime, endTime, limit, string.Empty, callback, state);
 		}
 
         /// <summary>
@@ -757,7 +757,7 @@ namespace Facebook.Rest
         /// <returns>This method returns true on success, or false and an error code if it fails.</returns>
         public void AddLikeAsync(string postId, AddLikeCallback callback, Object state)
 		{
-			AddLikeAsync(Session.UserId, postId, callback, state);
+			AddLikeAsync(SessionInfo.UserId, postId, callback, state);
 		}
 
         /// <summary>
@@ -811,7 +811,7 @@ namespace Facebook.Rest
         /// <returns>This method returns true on success, or false and an error code if it fails.</returns>
         public void RemoveLikeAsync(string postId, RemoveLikeCallback callback, Object state)
 		{
-			RemoveLike(Session.UserId, postId, true, callback, state);
+			RemoveLike(SessionInfo.UserId, postId, true, callback, state);
 		}
 
         /// <summary>
@@ -907,11 +907,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<stream_getComments_response, IList<comment>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<comment>>(callback), state, "comment");
+				SendRequestAsync<stream_getComments_response, IList<comment>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<comment>>(callback), state, "comment");
 				return null;
 			}
 
-            var response = SendRequest<stream_getComments_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<stream_getComments_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.comment;
 		}
 
@@ -1036,11 +1036,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<stream_remove_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<stream_remove_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<stream_remove_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<stream_remove_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 

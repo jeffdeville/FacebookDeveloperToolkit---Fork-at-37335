@@ -62,7 +62,7 @@ namespace Facebook.Rest
         /// Public constructor for Facebook.ExampleObject
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Admin(IFacebookSession session)
+        public Admin(SessionInfo session)
             : base(session)
         {
         }
@@ -805,11 +805,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<admin_banUsers_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<admin_banUsers_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<admin_banUsers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_banUsers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
             return response == null ? true : response.TypedValue;
         }
 
@@ -820,11 +820,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<admin_getAllocation_response, int>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<int>(callback), state);
+                SendRequestAsync<admin_getAllocation_response, int>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<int>(callback), state);
                 return 0;
             }
 
-            var response = SendRequest<admin_getAllocation_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_getAllocation_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? default(int) : response.TypedValue;
         }
 
@@ -839,11 +839,11 @@ namespace Facebook.Rest
        
             if (isAsync)
             {
-                SendRequestAsync<admin_getAppProperties_response, string>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<string>(OnGetAppPropertiesCompleted), newState);
+                SendRequestAsync<admin_getAppProperties_response, string>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<string>(OnGetAppPropertiesCompleted), newState);
                 return null;
             }
 
-            var response = SendRequest<admin_getAppProperties_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_getAppProperties_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : JSONHelper.ConvertFromJSONAssoicativeArray(response.TypedValue);
         }
 
@@ -854,11 +854,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-           		SendRequestAsync<admin_getBannedUsers_response, IList<long>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
+           		SendRequestAsync<admin_getBannedUsers_response, IList<long>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
                 return null;
             }
 
-			var response = SendRequest<admin_getBannedUsers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<admin_getBannedUsers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.uid;
         }
 
@@ -873,11 +873,11 @@ namespace Facebook.Rest
                 
             if (isAsync)
             {
-                SendRequestAsync<admin_getMetrics_response, IList<metrics>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<metrics>>(callback), state, "metrics");
+                SendRequestAsync<admin_getMetrics_response, IList<metrics>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<metrics>>(callback), state, "metrics");
                 return null;
             }
 
-            var response = SendRequest<admin_getMetrics_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_getMetrics_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.metrics;
         }
         
@@ -887,11 +887,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<admin_getRestrictionInfo_response, string>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<string>(callback), state);
+                SendRequestAsync<admin_getRestrictionInfo_response, string>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<string>(callback), state);
                 return null;
             }
 
-            var response = SendRequest<admin_getRestrictionInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_getRestrictionInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.TypedValue;
         }
 
@@ -902,11 +902,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<admin_getAppProperties_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<admin_getAppProperties_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<admin_setAppProperties_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_setAppProperties_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -918,11 +918,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<admin_setRestrictionInfo_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<admin_setRestrictionInfo_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                return true;
             }
 
-            var response = SendRequest<admin_setRestrictionInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_setRestrictionInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -933,11 +933,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<admin_unbanUsers_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<admin_unbanUsers_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<admin_unbanUsers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<admin_unbanUsers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 

@@ -27,7 +27,7 @@ namespace Facebook.Rest
         /// </summary>
         /// <param name="users"></param>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Friends(IUsers users, IFacebookSession session)
+		public Friends(IUsers users, SessionInfo session)
             : base(session)
         {
             _users = users;
@@ -778,11 +778,11 @@ namespace Facebook.Rest
 
              if(isAsync)
             {
-                SendRequestAsync<friends_get_response, IList<long>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
+                SendRequestAsync<friends_get_response, IList<long>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
                 return null;
             }
 
-			 var response = SendRequest<friends_get_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			 var response = SendRequest<friends_get_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			 return response == null ? null : response.uid;
    		}
 
@@ -839,7 +839,7 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<friends_getMutualFriends_response, IList<long>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
+				SendRequestAsync<friends_getMutualFriends_response, IList<long>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<long>>(callback), state, "uid");
 				return null;
 			}
 
@@ -870,7 +870,7 @@ namespace Facebook.Rest
                 return null;
             }
 
-            var response = SendRequest<friends_get_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey)).uid;
+            var response = SendRequest<friends_get_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey)).uid;
 			return _users.GetInfo(response);// StringHelper.ConvertToCommaSeparated(response));
         }
 

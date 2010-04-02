@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Rest\Admin.cs" />
+    <Compile Include="Rest\ApplicationInfo.cs" />
     <Compile Include="Rest\FacebookApi.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -190,11 +191,13 @@
     <Compile Include="Rest\IStream.cs" />
     <Compile Include="Rest\IUsers.cs" />
     <Compile Include="Rest\IVideo.cs" />
+    <Compile Include="Rest\LoggedInAuth.cs" />
     <Compile Include="Rest\Message.cs" />
     <Compile Include="Rest\AuthorizedRestBase.cs" />
     <Compile Include="Rest\Batch.cs" />
     <Compile Include="Rest\Connect.cs" />
     <Compile Include="Rest\Comments.cs" />
+    <Compile Include="Rest\RestBase.cs" />
     <Compile Include="Rest\Video.cs" />
     <Compile Include="Rest\Stream.cs" />
     <Compile Include="Rest\Status.cs" />

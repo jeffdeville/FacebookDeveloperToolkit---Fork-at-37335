@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Comments
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Comments(IFacebookSession session)
+		public Comments(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -348,11 +348,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<comments_add_response, int>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<int>(callback), state);
+				SendRequestAsync<comments_add_response, int>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<int>(callback), state);
 				return 0;
 			}
 
-            var response = SendRequest<comments_add_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<comments_add_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? 0 : response.TypedValue;
 		}
 		

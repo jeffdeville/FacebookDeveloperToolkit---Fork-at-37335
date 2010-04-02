@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Events
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Events(IFacebookSession session)
+		public Events(SessionInfo session)
             : base(session)
         {
         }
@@ -66,7 +66,7 @@ namespace Facebook.Rest
         /// <returns>This method returns all events satisfying the filters specified. The method can be used to return all events associated with user, or query a specific set of events by a list of eids.</returns> 
         public IList<facebookevent> Get()
         {
-            return Get(Session.UserId, null, null, null, null);
+            return Get(SessionInfo.UserId, null, null, null, null);
         }
 
         /// <summary>
@@ -298,7 +298,7 @@ namespace Facebook.Rest
         /// <returns>This method returns all events satisfying the filters specified. The method can be used to return all events associated with user, or query a specific set of events by a list of eids.</returns> 
         public void GetAsync(GetEventsCallback callback, Object state)
 		{
-			Get(Session.UserId, null, null, null, null, true, callback, state);
+			Get(SessionInfo.UserId, null, null, null, null, true, callback, state);
 		}
 
         /// <summary>
@@ -640,11 +640,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<events_get_response, IList<facebookevent>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<facebookevent>>(callback), state, "facebookevent");
+                SendRequestAsync<events_get_response, IList<facebookevent>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<facebookevent>>(callback), state, "facebookevent");
                 return null;
             }
 
-			var response = SendRequest<events_get_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<events_get_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.facebookevent;
         }
 
@@ -656,11 +656,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<events_cancel_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<events_cancel_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-			var response = SendRequest<events_cancel_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<events_cancel_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
         }
 
@@ -699,11 +699,11 @@ namespace Facebook.Rest
                 
             if (isAsync)
             {
-                SendRequestAsync<events_create_response, long>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<long>(callback), state);
+                SendRequestAsync<events_create_response, long>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<long>(callback), state);
                 return 0;
             }
 
-			var response = SendRequest<events_create_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<events_create_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? 0 : response.TypedValue;
         }
 
@@ -727,11 +727,11 @@ namespace Facebook.Rest
                 
             if (isAsync)
             {
-                SendRequestAsync<events_edit_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<events_edit_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-			var response = SendRequest<events_edit_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<events_edit_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
         }
 
@@ -747,7 +747,7 @@ namespace Facebook.Rest
                return true;
             }
 
-            var response = SendRequest<events_rsvp_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<events_rsvp_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
         }
 
@@ -758,11 +758,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<event_members>(callback), state);
+                SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<event_members>(callback), state);
                 return null;
             }
 
-			return SendRequest<events_getMembers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			return SendRequest<events_getMembers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
         }
 
         #endregion Private Methods

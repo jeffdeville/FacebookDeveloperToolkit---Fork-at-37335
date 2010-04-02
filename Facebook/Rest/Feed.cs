@@ -20,7 +20,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Feed
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Feed(IFacebookSession session)
+		public Feed(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -542,11 +542,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<feed_publishTemplatizedAction_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<feed_publishTemplatizedAction_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<feed_publishTemplatizedAction_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<feed_publishTemplatizedAction_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
@@ -557,11 +557,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<feed_deactivateTemplateBundleByID_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<feed_deactivateTemplateBundleByID_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<feed_deactivateTemplateBundleByID_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<feed_deactivateTemplateBundleByID_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
@@ -572,11 +572,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<feed_getRegisteredTemplateBundleByID_response>(callback), state);
+                SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<feed_getRegisteredTemplateBundleByID_response>(callback), state);
 				return null;
 			}
 
-            return SendRequest<feed_getRegisteredTemplateBundleByID_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            return SendRequest<feed_getRegisteredTemplateBundleByID_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		private IList<template_bundle> GetRegisteredTemplateBundles(bool isAsync, GetRegisteredTemplateBundlesCallback callback, Object state)
@@ -585,11 +585,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<feed_getRegisteredTemplateBundles_response, IList<template_bundle>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<template_bundle>>(callback), state, "template_bundle");
+                SendRequestAsync<feed_getRegisteredTemplateBundles_response, IList<template_bundle>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<template_bundle>>(callback), state, "template_bundle");
 				return null;
 			}
 
-            var response = SendRequest<feed_getRegisteredTemplateBundles_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<feed_getRegisteredTemplateBundles_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.template_bundle;
 		}
 
@@ -632,11 +632,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<feed_registerTemplateBundle_response, long>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<long>(callback), state);
+                SendRequestAsync<feed_registerTemplateBundle_response, long>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<long>(callback), state);
 				return 0;
 			}
 
-            var response = SendRequest<feed_registerTemplateBundle_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<feed_registerTemplateBundle_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? 0 : response.TypedValue;
 		}
 

@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Notifications
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Notifications(IFacebookSession session)
+		public Notifications(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -473,12 +473,12 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<notifications_send_response, string>(parameterList, !string.IsNullOrEmpty(Session.SessionKey),
+				SendRequestAsync<notifications_send_response, string>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey),
 				                                                      new FacebookCallCompleted<string>(callback), state);
 				return null;
 			}
 
-			var response = SendRequest<notifications_send_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notifications_send_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.TypedValue;
 		}
 
@@ -497,12 +497,12 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<notifications_sendEmail_response, string>(parameterList, !string.IsNullOrEmpty(Session.SessionKey),
+				SendRequestAsync<notifications_sendEmail_response, string>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey),
 				                                                           new FacebookCallCompleted<string>(callback), state);
 				return null;
 			}
 
-			var response = SendRequest<notifications_sendEmail_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notifications_sendEmail_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.TypedValue;
 		}
 
@@ -540,7 +540,7 @@ namespace Facebook.Rest
 				return true;
 			}
 
-			var response = SendRequest<notifications_markRead_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notifications_markRead_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
 		}
 

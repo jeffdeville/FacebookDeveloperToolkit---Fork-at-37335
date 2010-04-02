@@ -57,7 +57,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Batch
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Batch(IFacebookSession session)
+		public Batch(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -168,11 +168,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new AsyncResult(OnRunCompleted, null, null));
+                SendRequestAsync(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new AsyncResult(OnRunCompleted, null, null));
 				return null;
 			}
 
-            return SendRequest(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            return SendRequest(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		/// <summary>

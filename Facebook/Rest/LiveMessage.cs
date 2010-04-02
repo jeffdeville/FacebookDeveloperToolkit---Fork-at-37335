@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.LiveMessage
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public LiveMessage(IFacebookSession session)
+		public LiveMessage(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -97,7 +97,7 @@ namespace Facebook.Rest
 			var parameterList = new Dictionary<string, string> { { "method", "facebook.liveMessage.send" } };
 			Utilities.AddRequiredParameter(parameterList, "recipient", recipient.ToString());
 			Utilities.AddRequiredParameter(parameterList, "event_name", event_name);
-			Utilities.AddJSONAssociativeArray(parameterList, "message", new Dictionary<string, string> { { "from", Session.UserId.ToString() }, { "msg", message } });
+			Utilities.AddJSONAssociativeArray(parameterList, "message", new Dictionary<string, string> { { "from", SessionInfo.UserId.ToString() }, { "msg", message } });
 
 			if (isAsync)
 			{

@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Application
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Application(IFacebookSession session)
+		public Application(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -45,7 +45,7 @@ namespace Facebook.Rest
         /// <returns>This method returns public information for an application.</returns>
 		public app_info GetPublicInfo()
 		{
-			return GetPublicInfo(null, Session.ApplicationKey, null);
+			return GetPublicInfo(null, AppInfo.ApplicationKey, null);
 		}
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Facebook.Rest
         /// <returns>This method returns public information for an application.</returns>
         public app_info GetPublicInfoAsync(GetPublicInfoCallback callback, Object state)
 		{
-			return GetPublicInfoAsync(null, Session.ApplicationKey, null, callback, state);
+			return GetPublicInfoAsync(null, AppInfo.ApplicationKey, null, callback, state);
 		}
 
         /// <summary>
@@ -153,11 +153,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<application_getPublicInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<application_getPublicInfo_response>(callback), state);
+                SendRequestAsync<application_getPublicInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<application_getPublicInfo_response>(callback), state);
 				return null;
 			}
 
-            return SendRequest<application_getPublicInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            return SendRequest<application_getPublicInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		#endregion Private Methods

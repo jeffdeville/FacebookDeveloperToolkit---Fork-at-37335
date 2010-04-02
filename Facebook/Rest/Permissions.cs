@@ -35,7 +35,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Permissions
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Permissions(IFacebookSession session)
+		public Permissions(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -271,11 +271,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<permissions_grantApiAccess_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<permissions_grantApiAccess_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<permissions_grantApiAccess_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<permissions_grantApiAccess_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
@@ -286,11 +286,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<permissions_checkAvailableApiAccess_response, IList<string>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state, "permissions_checkAvailableApiAccess_response_elt");
+                SendRequestAsync<permissions_checkAvailableApiAccess_response, IList<string>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state, "permissions_checkAvailableApiAccess_response_elt");
 				return null;
 			}
 
-            var response = SendRequest<permissions_checkAvailableApiAccess_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<permissions_checkAvailableApiAccess_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.permissions_checkAvailableApiAccess_response_elt;
 		}
 
@@ -301,11 +301,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<permissions_revokeApiAccess_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<permissions_revokeApiAccess_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<permissions_revokeApiAccess_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<permissions_revokeApiAccess_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
@@ -316,11 +316,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<permissions_checkGrantedApiAccess_response, IList<string>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state, "permissions_checkGrantedApiAccess_response_elt");
+                SendRequestAsync<permissions_checkGrantedApiAccess_response, IList<string>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state, "permissions_checkGrantedApiAccess_response_elt");
 				return null;
 			}
 
-            var response = SendRequest<permissions_checkGrantedApiAccess_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<permissions_checkGrantedApiAccess_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.permissions_checkGrantedApiAccess_response_elt;
 		}
 

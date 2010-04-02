@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Notes
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Notes(IFacebookSession session)
+		public Notes(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -290,11 +290,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<notes_create_response, long>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<long>(callback), state);
+				SendRequestAsync<notes_create_response, long>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<long>(callback), state);
 				return 0;
 			}
 
-			var response = SendRequest<notes_create_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notes_create_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? -1 : response.TypedValue;
 		}
 		
@@ -307,11 +307,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<notes_edit_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<notes_edit_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-			var response = SendRequest<notes_edit_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notes_edit_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
 		}
 
@@ -322,11 +322,11 @@ namespace Facebook.Rest
 			
 			if (isAsync)
 			{
-				SendRequestAsync<notes_delete_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<notes_delete_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-			var response = SendRequest<notes_delete_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<notes_delete_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? false : response.TypedValue;
 		}
 

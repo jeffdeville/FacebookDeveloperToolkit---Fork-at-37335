@@ -20,7 +20,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Connect
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Connect(IFacebookSession session)
+		public Connect(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -241,10 +241,10 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<connect_unregisterUsers_response, IList<string>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state);
+                SendRequestAsync<connect_unregisterUsers_response, IList<string>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state);
 				return null;
 			}
-            var response = SendRequest<connect_unregisterUsers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<connect_unregisterUsers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response.connect_unregisterUsers_response_elt;
 		}
 
@@ -278,11 +278,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<connect_registerUsers_response, IList<string>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state);
+                SendRequestAsync<connect_registerUsers_response, IList<string>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<string>>(callback), state);
                 return null;
             }
 
-            var response = SendRequest<connect_registerUsers_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<connect_registerUsers_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response.connect_registerUsers_response_elt;
         }
 

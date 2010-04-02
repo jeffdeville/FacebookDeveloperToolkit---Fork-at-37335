@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Groups
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Groups(IFacebookSession session)
+		public Groups(SessionInfo session)
             : base(session)
         {
         }
@@ -46,7 +46,7 @@ namespace Facebook.Rest
         /// <remarks>Group creators will be visible to an application only if the creator has not turned off access to the Platform or used the application'; If the creator has opted out, the creator element will appear as nil=true.</remarks>
         public IList<group> Get()
         {
-            return Get(Session.UserId, null);
+            return Get(SessionInfo.UserId, null);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Facebook.Rest
         /// <remarks>Group creators will be visible to an application only if the creator has not turned off access to the Platform or used the application'; If the creator has opted out, the creator element will appear as nil=true.</remarks>
         public void GetAsync(GetCallback callback, Object state)
 		{
-			GetAsync(Session.UserId, null, callback, state);
+			GetAsync(SessionInfo.UserId, null, callback, state);
 		}
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Facebook.Rest
         /// <remarks>Group creators will be visible to an application only if the creator has not turned off access to the Platform or used the application'; If the creator has opted out, the creator element will appear as nil=true.</remarks>
         public void GetAsync(List<long> gids, GetCallback callback, Object state)
         {
-            GetAsync(Session.UserId, gids, callback, state);
+            GetAsync(SessionInfo.UserId, gids, callback, state);
         }
 
         /// <summary>

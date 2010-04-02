@@ -61,7 +61,7 @@ namespace Facebook.Session
 			return session;
 		}
 
-		private void CacheSession(IFacebookSession session)
+		private void CacheSession(SessionInfo session)
 		{
             if (session == null) return;
             var sessionInfo = new CachedSessionInfo(session.SessionKey, session.UserId, session.ExpiryTime);

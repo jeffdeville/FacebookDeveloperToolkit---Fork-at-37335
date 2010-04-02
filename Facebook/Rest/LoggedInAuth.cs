@@ -8,7 +8,7 @@ namespace Facebook.Rest
 {
 	public class LoggedInAuth : AuthorizedRestBase, ILoggedInAuth
 	{
-		public LoggedInAuth(ApplicationInfo appInfo, IFacebookSession session) : base(appInfo, session)
+		public LoggedInAuth(ApplicationInfo appInfo, SessionInfo session) : base(appInfo, session)
 		{
 		}
 
@@ -199,11 +199,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<auth_revokeAuthorization_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<auth_revokeAuthorization_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return;
 			}
 
-			SendRequest(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			SendRequest(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 		}
 
 		private bool RevokeExtendedPermission(Enums.ExtendedPermissions ext_perm, long uid, bool isAsync, RevokeExtendedPermissionCallback callback, Object state)
@@ -214,11 +214,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<auth_revokeExtendedPermission_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<auth_revokeExtendedPermission_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-			var response = SendRequest<auth_revokeExtendedPermission_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<auth_revokeExtendedPermission_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 

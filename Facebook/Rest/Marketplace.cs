@@ -20,7 +20,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Marketplace
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Marketplace(IFacebookSession session)
+		public Marketplace(SessionInfo session)
             : base(session)
         {
         }
@@ -123,7 +123,7 @@ namespace Facebook.Rest
                 return null;
             }
 
-            return SendRequest<marketplace_getCategories_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey)).marketplace_category;
+            return SendRequest<marketplace_getCategories_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey)).marketplace_category;
         }
 
         [Obsolete("facebook deprecated")]
@@ -137,7 +137,7 @@ namespace Facebook.Rest
                 return null;
             }
 
-            return SendRequest<marketplace_getSubCategories_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey)).marketplace_subcategory;
+            return SendRequest<marketplace_getSubCategories_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey)).marketplace_subcategory;
         }
 
         [Obsolete("facebook deprecated")]

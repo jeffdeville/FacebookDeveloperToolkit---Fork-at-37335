@@ -19,7 +19,7 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Users
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Users(IFacebookSession session)
+		public Users(SessionInfo session)
             : base(session)
         {
         }
@@ -44,7 +44,7 @@ namespace Facebook.Rest
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform. If no visible users are found from the passed uids argument, the method will return an empty result element.</returns>
         public user GetInfo()
         {
-            return GetInfo(Session.UserId);
+            return GetInfo(SessionInfo.UserId);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Facebook.Rest
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform. If no visible users are found from the passed uids argument, the method will return an empty result element.</returns>
         public void GetInfoAsync(GetInfoCallback callback, Object state)
         {
-            GetInfoAsync(Session.UserId, callback, state);
+            GetInfoAsync(SessionInfo.UserId, callback, state);
         }
 
         /// <summary>
@@ -803,7 +803,7 @@ namespace Facebook.Rest
         {
             var parameterList = new Dictionary<string, string> { { "method", "facebook.users.getInfo" } };
             Utilities.AddOptionalParameter(parameterList, "uids", uids);
-            if (string.IsNullOrEmpty(Session.SessionKey))
+            if (string.IsNullOrEmpty(SessionInfo.SessionKey))
             {
                 Utilities.AddRequiredParameter(parameterList, "fields",
                                   "first_name, last_name, name, pic_square, affiliations, locale");
@@ -816,11 +816,11 @@ namespace Facebook.Rest
             
             if (isAsync)
             {
-                SendRequestAsync<users_getInfo_response, IList<user>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<user>>(callback), state, "user");
+                SendRequestAsync<users_getInfo_response, IList<user>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<user>>(callback), state, "user");
                 return null;
             }
 
-			var response = SendRequest<users_getInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<users_getInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.user;
         }
 
@@ -839,11 +839,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<users_getStandardInfo_response, IList<user>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<user>>(callback), state, "standard_user_info");
+                SendRequestAsync<users_getStandardInfo_response, IList<user>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<user>>(callback), state, "standard_user_info");
                 return null;
             }
 
-            var response = SendRequest<users_getStandardInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<users_getStandardInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.standard_user_info;
         }
 
@@ -872,11 +872,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<users_hasAppPermission_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<users_hasAppPermission_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return false;
             }
 
-            var response = SendRequest<users_hasAppPermission_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<users_hasAppPermission_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -887,11 +887,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<users_isAppUser_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<users_isAppUser_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return false;
             }
 
-            var response = SendRequest<users_isAppUser_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<users_isAppUser_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 
@@ -922,11 +922,11 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-				SendRequestAsync<users_setStatus_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+				SendRequestAsync<users_setStatus_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
                 return true;
             }
 
-            var response = SendRequest<users_setStatus_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<users_setStatus_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
         }
 

@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Pages
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Pages(IFacebookSession session)
+		public Pages(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -97,7 +97,7 @@ namespace Facebook.Rest
         /// <returns>Returns true or false.</returns>
         public bool IsFan(long page_id)
 		{
-			return IsFan(page_id, Session.UserId, false, null, null);
+			return IsFan(page_id, SessionInfo.UserId, false, null, null);
 		}
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Facebook.Rest
         /// <returns>Returns true or false.</returns>
         public void IsFanAsync(long page_id, IsFanCallback callback, Object state)
 		{
-			IsFanAsync(page_id, Session.UserId, callback, state);
+			IsFanAsync(page_id, SessionInfo.UserId, callback, state);
 		}
 
         /// <summary>
@@ -317,11 +317,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-            	SendRequestAsync<pages_getInfo_response, IList<page>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<IList<page>>(callback), state, "page");
+            	SendRequestAsync<pages_getInfo_response, IList<page>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<IList<page>>(callback), state, "page");
 				return null;
 			}
 
-			var response = SendRequest<pages_getInfo_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<pages_getInfo_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? null : response.page;
 		}
 
@@ -332,11 +332,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<pages_isAppAdded_response, bool>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<bool>(callback), state);
+                SendRequestAsync<pages_isAppAdded_response, bool>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<bool>(callback), state);
 				return true;
 			}
 
-            var response = SendRequest<pages_isAppAdded_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+            var response = SendRequest<pages_isAppAdded_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? true : response.TypedValue;
 		}
 
