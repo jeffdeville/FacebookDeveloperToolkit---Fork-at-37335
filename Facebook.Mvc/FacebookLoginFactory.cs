@@ -9,13 +9,11 @@ namespace Facebook.Mvc
 	{
 		private readonly Uri _currentUrl;
 		private NameValueCollection _requestParameters;
-		private IFacebookApi _facebookApi;
-
-		public FacebookLoginFactory(Uri currentUrl, NameValueCollection requestParameters, IFacebookApi facebookApi)
+		
+		public FacebookLoginFactory(Uri currentUrl, NameValueCollection requestParameters)
 		{
 			_currentUrl = currentUrl;
-			_requestParameters = requestParameters;
-			_facebookApi = facebookApi;
+			_requestParameters = requestParameters;			
 		}
 
 		#region Implementation of IFacebookLoginFactory
@@ -29,7 +27,7 @@ namespace Facebook.Mvc
 				case FacebookPageType.IFrame:
 					return new IFrameLogin(_requestParameters);
 				case FacebookPageType.Fbml:
-					return new FbmlLogin(_requestParameters, _facebookApi);
+					return new FbmlLogin(_requestParameters);
 				default:
 					throw new ArgumentOutOfRangeException();
 			}

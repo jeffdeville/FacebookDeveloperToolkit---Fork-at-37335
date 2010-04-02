@@ -15,7 +15,7 @@ namespace Facebook.Tests.Mvc.FacebookLoginFactorySpecs
 
 		public override void setupContext()
 		{
-			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection(), null);			
+			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection());			
 		}
 
 		public override void act()
@@ -38,7 +38,7 @@ namespace Facebook.Tests.Mvc.FacebookLoginFactorySpecs
 
 		public override void setupContext()
 		{
-			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection(), null);
+			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection());
 		}
 
 		public override void act()
@@ -61,7 +61,7 @@ namespace Facebook.Tests.Mvc.FacebookLoginFactorySpecs
 
 		public override void setupContext()
 		{
-			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection(), null);
+			sut = new FacebookLoginFactory(new Uri("http://www.arizona.edu"), new NameValueCollection());
 		}
 
 		public override void act()

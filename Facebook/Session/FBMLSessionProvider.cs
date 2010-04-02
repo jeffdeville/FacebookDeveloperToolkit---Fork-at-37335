@@ -73,10 +73,10 @@ namespace Facebook.Session
 			                            DateHelper.ConvertUnixTimeToDateTime(sessionInfo.expires));
 		}
 
-		protected FacebookSession CreateSession(string sessionKey, long userId, 
+		protected SessionInfo CreateSession(string sessionKey, long userId, 
 			DateTime expiryTime)
 		{
-			return new FacebookSession {SessionKey = sessionKey, UserId = userId, ExpiryTime = expiryTime};			
+			return new SessionInfo { SessionKey = sessionKey, UserId = userId, ExpiryTime = expiryTime };			
 		}
 	}
 }

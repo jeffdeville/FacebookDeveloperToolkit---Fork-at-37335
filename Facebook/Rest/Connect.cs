@@ -10,7 +10,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Connect API methods.
 	/// </summary>
-	public class Connect : AuthorizedRestBase, Facebook.Rest.IConnect
+	public class Connect : BaseAuthenticatedService, Facebook.Rest.IConnect
 	{
 		#region Methods
 
@@ -20,8 +20,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Connect
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Connect(IFacebookSession session)
-			: base(session)
+		public Connect(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

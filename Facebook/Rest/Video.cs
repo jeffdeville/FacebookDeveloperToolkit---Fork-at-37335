@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Video API methods.
     /// </summary>
-    public class Video : AuthorizedRestBase, Facebook.Rest.IVideo
+    public class Video : BaseAuthenticatedService, Facebook.Rest.IVideo
     {
         #region Private Members
 
@@ -51,8 +51,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.video
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Video(IFacebookSession session)
-            : base(session)
+        public Video(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
         {
         }
 

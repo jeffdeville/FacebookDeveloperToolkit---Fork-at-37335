@@ -10,7 +10,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Feed API methods.
 	/// </summary>
-	public class Feed : AuthorizedRestBase, Facebook.Rest.IFeed
+	public class Feed : BaseAuthenticatedService, Facebook.Rest.IFeed
 	{
 		#region Methods
 
@@ -20,8 +20,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Feed
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Feed(IFacebookSession session)
-			: base(session)
+		public Feed(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

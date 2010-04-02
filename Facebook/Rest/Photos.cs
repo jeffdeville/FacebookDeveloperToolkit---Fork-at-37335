@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Photo API methods.
     /// </summary>
-    public class Photos : AuthorizedRestBase, Facebook.Rest.IPhotos
+    public class Photos : BaseAuthenticatedService, Facebook.Rest.IPhotos
     {
 #region Private Members
 
@@ -52,8 +52,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Photo
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Photos(IFacebookSession session)
-            : base(session)
+        public Photos(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

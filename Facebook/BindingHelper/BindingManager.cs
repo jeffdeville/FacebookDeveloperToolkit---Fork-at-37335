@@ -32,6 +32,7 @@ namespace Facebook.BindingHelper
         // Cache locations in Isolated Storage.
 
         private FacebookDataCache _cache;
+
         #region Queries
 
         private const string _UserFields = "about_me, activities, birthday, books, first_name, interests, last_name, name, pic_big, pic_small, pic_square, pic, profile_update_time, quotes, status, timezone, uid, hometown_location, current_location";
@@ -71,7 +72,7 @@ namespace Facebook.BindingHelper
         #region Members
 
         IFacebookApi _fbApi;
-        FacebookSession _session;
+        IFacebookSession _session;
 
         #endregion
 
@@ -145,7 +146,7 @@ namespace Facebook.BindingHelper
                 {
                     if (_albums == null)
                     {
-                        _albums = GetAlbums(this._session.UserId);
+                        _albums = GetAlbums(this._Session.UserId);
                     }
                 }
                 return _albums;
@@ -197,7 +198,7 @@ namespace Facebook.BindingHelper
                     if (_stream == null)
                     {
                         _stream = new ActivityPostCollection();
-                        _fbApi.Stream.GetAsync(_session.UserId, null, null, null, null, null, OnGetStream, _stream);
+                        _fbApi.Stream.GetAsync(_Session.UserId, null, null, null, null, null, OnGetStream, _stream);
                     }
                 }
                 return _stream;
@@ -211,7 +212,9 @@ namespace Facebook.BindingHelper
         }
 
         FacebookNotificationInfo _notifications;
-        /// <summary>
+    	private IFacebookSession _Session;
+
+    	/// <summary>
         /// Notifications for current user
         /// </summary>
         public FacebookNotificationInfo Notifications
@@ -252,7 +255,7 @@ namespace Facebook.BindingHelper
         {
             get
             {
-                return _session.UserId;
+                return _Session.UserId;
             }
         }
 
@@ -275,9 +278,9 @@ namespace Facebook.BindingHelper
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        static public BindingManager CreateInstance(FacebookSession session)
+		static public BindingManager CreateInstance(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
         {
-            Instance = new BindingManager(session);
+			Instance = new BindingManager(clientHelper,session);
             return Instance;
         }
 
@@ -286,10 +289,10 @@ namespace Facebook.BindingHelper
         /// Initializes new BindingManager object
         /// </summary>
         /// <param name="session">Session object</param>
-        private BindingManager(FacebookSession session)
+        private BindingManager(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
         {
             _session = session;
-			_fbApi = new Api().Initialize(session);
+			_fbApi = new Api(clientHelper, _session);//.Initialize(session);
             _cache = new FacebookDataCache();
             Initialize();
         }
@@ -312,7 +315,7 @@ namespace Facebook.BindingHelper
                 _session = new CachedSession(appKey, null, null);
             }
 #else
-			_session = new FacebookSession();
+			_session = new SessionInfo();
 			//_session = new DesktopSession(appKey,null,null,true);
 #endif
 
@@ -334,7 +337,7 @@ namespace Facebook.BindingHelper
         /// </summary>
         public void RefreshCurrentUserAlbums()
         {
-            this.GetAlbumsAndMerge(this._session.UserId, MyPhotoAlbums);
+            this.GetAlbumsAndMerge(this._Session.UserId, MyPhotoAlbums);
         }
 
         /// <summary>
@@ -354,7 +357,7 @@ namespace Facebook.BindingHelper
         /// </summary>
         public void RefreshFriends()
         {
-            string query = string.Format(_GetFriendQueryString, _session.UserId);
+            string query = string.Format(_GetFriendQueryString, _Session.UserId);
             ExecuteFqlQuery<users_getInfo_response>(query, OnGetFriendsCompleted, _friends);
         }
 
@@ -391,7 +394,7 @@ namespace Facebook.BindingHelper
         /// <param name="getProfilePictureAlbums">Indicator if we want to include profile picture albums</param>
         public FacebookPhotoAlbumCollection GetFriendsAlbums(int? limit, DateTime? startTime, DateTime? endTime, bool? getProfilePictureAlbums)
         {
-            string query = string.Format(_GetFriendsAlbumsQueryString, _session.UserId);
+            string query = string.Format(_GetFriendsAlbumsQueryString, _Session.UserId);
 
             if (startTime != null || startTime != null || getProfilePictureAlbums != null)
             {
@@ -518,7 +521,7 @@ namespace Facebook.BindingHelper
         public ActivityPostCollection GetStream(List<long> userIds, DateTime? startTime, DateTime? endTime, int? limit, string filter)
         {
             ActivityPostCollection posts = new ActivityPostCollection();
-            _fbApi.Stream.GetAsync(_session.UserId, userIds, startTime, endTime, limit, filter, OnGetStream, posts);
+            _fbApi.Stream.GetAsync(_Session.UserId, userIds, startTime, endTime, limit, filter, OnGetStream, posts);
             return posts;
         }
 
@@ -749,11 +752,11 @@ namespace Facebook.BindingHelper
 
         void GetLoggedInUserInfo()
         {
-            FacebookContact user = _cache.GetUser(this._session.UserId);
+            FacebookContact user = _cache.GetUser(this._Session.UserId);
 
             if (user == null)
             {
-                string query = string.Format(_GetUsersQueryString, this._session.UserId);
+                string query = string.Format(_GetUsersQueryString, this._Session.UserId);
                 ExecuteFqlQuery<users_getInfo_response>(query, GetUserInfoCompleted, null);
             }
             else
@@ -787,7 +790,7 @@ namespace Facebook.BindingHelper
 
                 if (photoIds.Count != 0)
                 {
-                    Photos photos = new Photos(this._session);
+                    IPhotos photos = _fbApi.Photos;
                     photos.GetAsync(null, null, photoIds, OnGetAlbumCoverPhotos, hash);
                 }
             }

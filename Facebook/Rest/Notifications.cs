@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Notifications API methods.
 	/// </summary>
-	public class Notifications : AuthorizedRestBase, INotifications
+	public class Notifications : BaseAuthenticatedService, INotifications
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Notifications
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Notifications(IFacebookSession session)
-			: base(session)
+		public Notifications(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

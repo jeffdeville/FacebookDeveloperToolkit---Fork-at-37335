@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Groups API methods.
     /// </summary>
-    public class Groups : AuthorizedRestBase, Facebook.Rest.IGroups
+    public class Groups : BaseAuthenticatedService, Facebook.Rest.IGroups
     {
         #region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Groups
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Groups(IFacebookSession session)
-            : base(session)
+        public Groups(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

@@ -38,6 +38,12 @@ namespace Facebook.Mvc
 				filterContext.Result = LoginFactory.GetLoginHandler(PageType).GetRedirect();
 	    	else
 	    	{
+				// 
+				// THIS IS NOT OBVIOUS!!!  I'm setting the session object on the Api here.
+				// Is it clear that that should happen?  No. Not in the slightest, but I can't
+				// do this work before newing the Api up, and this is where the session 
+				// is pulled.
+				// 
 	    		Api.Initialize(session);
 	    		filterContext.HttpContext.User = new GenericPrincipal(new GenericIdentity(session.UserId.ToString()), null);
 	    	}

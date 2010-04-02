@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Profile API methods.
     /// </summary>
-    public class Profile : AuthorizedRestBase, Facebook.Rest.IProfile
+    public class Profile : BaseAuthenticatedService, Facebook.Rest.IProfile
     {
         #region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Profile
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Profile(IFacebookSession session)
-            : base(session)
+        public Profile(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

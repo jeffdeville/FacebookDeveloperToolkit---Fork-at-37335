@@ -1,17 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using Facebook.Schema;
 using Facebook.Session;
 using Facebook.Utility;
 
 namespace Facebook.Rest
 {
-	public class LoggedInAuth : AuthorizedRestBase, ILoggedInAuth
+	public class LoggedInAuth : BaseAuthenticatedService, ILoggedInAuth
 	{
-		public LoggedInAuth(ApplicationInfo appInfo, IFacebookSession session) : base(appInfo, session)
+		private readonly IFql Fql;
+
+		public LoggedInAuth(IFacebookNetworkWrapper networkWrapper, ApplicationInfo appInfo, SessionInfo session, IFql fql)
+			: base(networkWrapper, appInfo, session)
 		{
+			Fql = fql;
 		}
 
+		/// <summary>
+		/// Check if user has the proper permissions for this app
+		/// </summary>
+		public string CheckPermissions()
+		{
+#if !SILVERLIGHT
+			if (Session.RequiredPermissions != null)
+			{
+				List<Enums.ExtendedPermissions> permissionsToApprove = new List<Enums.ExtendedPermissions>();
+				string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(Session.RequiredPermissions), Session.UserId); ;
+
+				var permission = Fql.Query<permissions_response>(query);
+
+				foreach (Enums.ExtendedPermissions p in this.Session.RequiredPermissions)
+				{
+					FieldInfo f = permission.permissions.GetType().GetField(p.ToString());
+					if (f == null) continue;
+					var hasPermission = (bool)f.GetValue(permission.permissions);
+					if (!hasPermission) permissionsToApprove.Add(p);
+				}
+
+				if (permissionsToApprove.Count != 0)
+				{
+					return PermissionsToString(permissionsToApprove);
+				}
+			}
+#endif
+			return null;
+		}
+
+		/// <summary>
+		/// Convert permission list to "read_stream, status_update, photo_upload, publish_stream" format
+		/// </summary>
+		/// <param name="permissions"></param>
+		/// <returns>This method returns a string of permissions.</returns>
+		protected string PermissionsToString(List<Enums.ExtendedPermissions> permissions)
+		{
+			StringBuilder sb = new StringBuilder();
+
+			int i = 0;
+			foreach (Enums.ExtendedPermissions permission in permissions)
+			{
+				sb.Append(permission.ToString());
+				i++;
+				if (i < permissions.Count)
+					sb.Append(",");
+			}
+
+			return sb.ToString();
+		}
 		/// <summary>
 		/// Expires the session indicated in the API call, for your application.
 		/// </summary>

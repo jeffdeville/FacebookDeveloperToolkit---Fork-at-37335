@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Fbml API methods.
     /// </summary>
-    public class Fbml : AuthorizedRestBase, Facebook.Rest.IFbml
+    public class Fbml : BaseAuthenticatedService, Facebook.Rest.IFbml
     {
         #region Methods
 
@@ -20,8 +20,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Fbml
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Fbml(IFacebookSession session)
-            : base(session)
+        public Fbml(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

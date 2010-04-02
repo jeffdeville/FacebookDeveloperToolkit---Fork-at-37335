@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Admin API methods.
     /// </summary>
-    public class Admin : AuthorizedRestBase, Facebook.Rest.IAdmin
+    public class Admin : BaseAuthenticatedService, Facebook.Rest.IAdmin
     {
         #region Enumerations
 
@@ -62,8 +62,8 @@ namespace Facebook.Rest
         /// Public constructor for Facebook.ExampleObject
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Admin(IFacebookSession session)
-            : base(session)
+        public Admin(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

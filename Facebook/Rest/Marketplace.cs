@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Marketplace API methods.
     /// </summary>
-    public class Marketplace : AuthorizedRestBase, Facebook.Rest.IMarketplace
+    public class Marketplace : BaseAuthenticatedService, Facebook.Rest.IMarketplace
     {
         #region Methods
 
@@ -20,8 +20,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Marketplace
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Marketplace(IFacebookSession session)
-            : base(session)
+        public Marketplace(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 

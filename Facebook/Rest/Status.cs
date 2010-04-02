@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Status API methods.
 	/// </summary>
-	public class Status : AuthorizedRestBase, Facebook.Rest.IStatus
+	public class Status : BaseAuthenticatedService, Facebook.Rest.IStatus
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Status
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Status(IFacebookSession session)
-			: base(session)
+		public Status(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

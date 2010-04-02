@@ -114,7 +114,7 @@ namespace Facebook.Tests.Mvc.FacebookAuthorizationAttributeSpecs
 				.Returns(container.GetMock<ISessionProvider>().Object);
 			container.GetMock<ISessionProvider>()
 				.Setup(svc => svc.GetSession())
-				.Returns(new FacebookSession(){UserId = 1234567890});
+				.Returns(new SessionInfo(){UserId = 1234567890});
 			container.GetMock<IFacebookApi>()
 				.Setup(svc=> svc.Initialize(It.IsAny<IFacebookSession>()))
 				.Verifiable();

@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Comments API methods.
 	/// </summary>
-	public class Comments : AuthorizedRestBase, Facebook.Rest.IComments
+	public class Comments : BaseAuthenticatedService, Facebook.Rest.IComments
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Comments
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Comments(IFacebookSession session)
-			: base(session)
+		public Comments(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

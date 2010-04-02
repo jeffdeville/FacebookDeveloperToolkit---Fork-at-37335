@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Pages API methods.
 	/// </summary>
-	public class Pages : AuthorizedRestBase, Facebook.Rest.IPages
+	public class Pages : BaseAuthenticatedService, Facebook.Rest.IPages
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Pages
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Pages(IFacebookSession session)
-			: base(session)
+		public Pages(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

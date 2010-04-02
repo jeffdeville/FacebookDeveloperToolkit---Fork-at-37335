@@ -22,6 +22,9 @@ namespace Facebook.Session
             Secret = values["Secret"];
         	ConnectLogonUrl = values["ConnectLogonUrl"];
 
+        	var compress = values["CompressRequest"] ?? "true";
+			CompressRequest = Convert.ToBoolean(compress);
+
             if (string.IsNullOrEmpty(ApiKey) || string.IsNullOrEmpty(Secret))
                 throw new Exception("Session must have application key and secret before logging in." + Environment.NewLine);
         }
@@ -40,6 +43,7 @@ namespace Facebook.Session
         public string ApiKey { get; private set; }
         public string Secret { get; private set; }
     	public string ConnectLogonUrl { get; set; }
+    	public bool CompressRequest { get; set; }
     	
     }
 }

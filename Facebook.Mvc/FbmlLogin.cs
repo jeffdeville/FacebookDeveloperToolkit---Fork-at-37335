@@ -8,10 +8,10 @@ namespace Facebook.Mvc
 {
 	public class FbmlLogin : BaseLogin, ILoginHandler
 	{
-		private readonly IFacebookApi _api;
-		public FbmlLogin(NameValueCollection requestParameters,  IFacebookApi api) : base(requestParameters)
+		//private readonly IFacebookApi _api;
+		public FbmlLogin(NameValueCollection requestParameters) : base(requestParameters)
 		{
-			_api = api;
+			//_api = api;
 		}
 
 		///// <summary>

@@ -11,7 +11,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Fql API methods.
 	/// </summary>
-	public class Fql : AuthorizedRestBase, Facebook.Rest.IFql
+	public class Fql : BaseAuthenticatedService, Facebook.Rest.IFql
 	{
 		#region Private Members
 		
@@ -40,8 +40,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Fql
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Fql(IFacebookSession session)
-			: base(session)
+		public Fql(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

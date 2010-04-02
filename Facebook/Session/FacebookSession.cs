@@ -12,80 +12,80 @@ namespace Facebook.Session
     /// <summary>
     /// Base class for session object
     /// </summary>
-    public class FacebookSession : IFacebookSession
+    public class FacebookSession2 : IFacebookSession
     {
         private FacebookConfiguration _facebookConfig;
 
-        public FacebookSession() 
+        public FacebookSession2() 
         {
         	_facebookConfig = new FacebookConfiguration();
         }
 		//public FacebookSession() : this(null, null) { }
-		public FacebookSession(FacebookConfiguration facebookConfig)
+		public FacebookSession2(FacebookConfiguration facebookConfig)
 		{
 			_facebookConfig = facebookConfig;
 		}
 
-		const string _promptPermissionsUrl = "http://www.facebook.com/connect/prompt_permissions.php?api_key={0}&v=1.0&next={1}&display=popup&ext_perm={2}&enable_profile_selector=1&profile_selector_ids={3}";
-		const string _promptPermissionsNextUrl = "http://www.facebook.com/connect/login_success.html?xxRESULTTOKENxx";
+		//const string _promptPermissionsUrl = "http://www.facebook.com/connect/prompt_permissions.php?api_key={0}&v=1.0&next={1}&display=popup&ext_perm={2}&enable_profile_selector=1&profile_selector_ids={3}";
+		//const string _promptPermissionsNextUrl = "http://www.facebook.com/connect/login_success.html?xxRESULTTOKENxx";
 		/// List of extended permissions required by this application
 		/// </summary>
 		public List<Enums.ExtendedPermissions> RequiredPermissions { get; set; }
 
-		/// <summary>
-		/// Check if user has the proper permissions for this app
-		/// </summary>
-		public string CheckPermissions()
-		{
-#if !SILVERLIGHT
-			if (RequiredPermissions != null)
-			{
-				List<Enums.ExtendedPermissions> permissionsToApprove = new List<Enums.ExtendedPermissions>();
-				string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(RequiredPermissions), this.UserId); ;
+//        /// <summary>
+//        /// Check if user has the proper permissions for this app
+//        /// </summary>
+//        public string CheckPermissions()
+//        {
+//#if !SILVERLIGHT
+//            if (RequiredPermissions != null)
+//            {
+//                List<Enums.ExtendedPermissions> permissionsToApprove = new List<Enums.ExtendedPermissions>();
+//                string query = string.Format("select {0} from permissions where uid = {1}", PermissionsToString(RequiredPermissions), this.UserId); ;
 
-				var fql = new Api(this).Fql;
+//                var fql = new Api(this).Fql;
 
-				var permission = fql.Query<permissions_response>(query);
+//                var permission = fql.Query<permissions_response>(query);
 
-				foreach (Enums.ExtendedPermissions p in this.RequiredPermissions)
-				{
-					FieldInfo f = permission.permissions.GetType().GetField(p.ToString());
-					if (f == null) continue;
-					var hasPermission = (bool)f.GetValue(permission.permissions);
-					if (!hasPermission) permissionsToApprove.Add(p);
-				}
+//                foreach (Enums.ExtendedPermissions p in this.RequiredPermissions)
+//                {
+//                    FieldInfo f = permission.permissions.GetType().GetField(p.ToString());
+//                    if (f == null) continue;
+//                    var hasPermission = (bool)f.GetValue(permission.permissions);
+//                    if (!hasPermission) permissionsToApprove.Add(p);
+//                }
 
-				if (permissionsToApprove.Count != 0)
-				{
-					return PermissionsToString(permissionsToApprove);
-				}
-			}
-#endif
-			return null;
-		}
+//                if (permissionsToApprove.Count != 0)
+//                {
+//                    return PermissionsToString(permissionsToApprove);
+//                }
+//            }
+//#endif
+//            return null;
+//        }
 
-		/// <summary>
-		/// Convert permission list to "read_stream, status_update, photo_upload, publish_stream" format
-		/// </summary>
-		/// <param name="permissions"></param>
-		/// <returns>This method returns a string of permissions.</returns>
-		protected string PermissionsToString(List<Enums.ExtendedPermissions> permissions)
-		{
-			StringBuilder sb = new StringBuilder();
+//        /// <summary>
+//        /// Convert permission list to "read_stream, status_update, photo_upload, publish_stream" format
+//        /// </summary>
+//        /// <param name="permissions"></param>
+//        /// <returns>This method returns a string of permissions.</returns>
+//        protected string PermissionsToString(List<Enums.ExtendedPermissions> permissions)
+//        {
+//            StringBuilder sb = new StringBuilder();
 
-			int i = 0;
-			foreach (Enums.ExtendedPermissions permission in permissions)
-			{
-				sb.Append(permission.ToString());
-				i++;
-				if (i < permissions.Count)
-				{
-					sb.Append(",");
-				}
-			}
+//            int i = 0;
+//            foreach (Enums.ExtendedPermissions permission in permissions)
+//            {
+//                sb.Append(permission.ToString());
+//                i++;
+//                if (i < permissions.Count)
+//                {
+//                    sb.Append(",");
+//                }
+//            }
 
-			return sb.ToString();
-		}
+//            return sb.ToString();
+//        }
 
         /// <summary>
         /// Application key

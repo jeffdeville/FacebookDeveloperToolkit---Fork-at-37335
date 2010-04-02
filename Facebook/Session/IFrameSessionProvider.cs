@@ -67,7 +67,7 @@ namespace Facebook.Session
             var sessionInfo = new CachedSessionInfo(session.SessionKey, session.UserId, session.ExpiryTime);
 
 			_responseCookies.Set(new HttpCookie(SESSION_KEY_COOKIE, sessionInfo.SessionKey));
-			_responseCookies.Set(new HttpCookie(USER_ID_COOKIE, sessionInfo.UserId.ToString()));
+			_responseCookies.Set(new HttpCookie(USER_ID_COOKIE, session.UserId.ToString()));
 			_responseCookies.Set(new HttpCookie(EXPIRY_TIME_COOKIE, sessionInfo.ExpiryTime.ToString()));
 		}
 

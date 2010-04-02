@@ -15,7 +15,7 @@ namespace Facebook.Tests.Mvc.FbmlLoginSpecs
 
 		public override void setupContext()
 		{
-			sut = new FbmlLogin(new NameValueCollection(), null);
+			sut = new FbmlLogin(new NameValueCollection());
 		}
 
 		public override void act()

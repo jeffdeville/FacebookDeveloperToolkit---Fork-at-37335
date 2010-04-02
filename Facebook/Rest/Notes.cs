@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Notes API methods.
 	/// </summary>
-	public class Notes : AuthorizedRestBase, Facebook.Rest.INotes
+	public class Notes : BaseAuthenticatedService, Facebook.Rest.INotes
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Notes
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Notes(IFacebookSession session)
-			: base(session)
+		public Notes(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

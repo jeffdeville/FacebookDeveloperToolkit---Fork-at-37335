@@ -4,20 +4,16 @@ using System.Runtime.Remoting.Messaging;
 using System.Web;
 using Facebook.Session;
 using Facebook.Schema;
+using Facebook.Utility;
 
 namespace Facebook.Rest
 {
     /// <summary>
     /// Provides various methods to utilize the Facebook Platform API.
     /// </summary>
-    public class Api : AuthorizedRestBase, IFacebookApi
+    public class Api : BaseAuthenticatedService, IFacebookApi
     {
         #region Public Properties
-
-        ///<summary>
-        /// Gets or sets the Auth REST API object instance.
-        ///</summary>
-        public IAuth Auth { get; private set; }
 
         ///<summary>
         /// Gets or sets the Connect REST API object instance.
@@ -63,8 +59,8 @@ namespace Facebook.Rest
         /// Gets or sets the Groups REST API object instance.
         ///</summary>
 		public IGroups Groups { get; private set; }
-
-        ///<summary>
+		
+    	///<summary>
         /// Gets or sets the Admin REST API object instance.
         ///</summary>
 		public IAdmin Admin { get; private set; }
@@ -114,7 +110,12 @@ namespace Facebook.Rest
         ///</summary>
 		public IApplication Application { get; private set; }
 
-        ///<summary>
+		public ILoggedInAuth LoggedInAuth
+		{
+			get; private set;
+		}
+
+    	///<summary>
         /// Gets or sets the Data REST API object instance.
         ///</summary>
 		public IData Data { get; private set; }
@@ -198,30 +199,32 @@ namespace Facebook.Rest
 		///// Facebook API Instance
 		///// </summary>
 		///// <param name="session"></param>
-		//public Api(FacebookSession session) : base(session)
+		//public Api(FacebookSession session) : base(networkWrapper, session)
 		//{
-		//    Initialize(session);
+		//    Initialize(NetworkWrapper, Session);
 		//}
 		
-		public Api(IFacebookSession session)
+
+		public Api(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
-		    Initialize(session);
+		    Initialize(Session);
 		}
 
         private const string FACEBOOK_SESSION = "FACEBOOK_SESSION";
-        public Api()
-		{
-            IFacebookSession session;
-            if (HttpContext.Current == null)
-                session = HttpContext.Current.Items[FACEBOOK_SESSION] as IFacebookSession;
-            else
-                session = CallContext.GetData(FACEBOOK_SESSION) as IFacebookSession;
-        	Initialize(session);
-            //if (session == null)
-            //    throw new ArgumentNullException("FacebookSession", "The facebook session must exist");
-		}
+		//public Api()
+		//{
+		//    IFacebookSession session;
+		//    if (HttpContext.Current == null)
+		//        session = HttpContext.Current.Items[FACEBOOK_SESSION] as IFacebookSession;
+		//    else
+		//        session = CallContext.GetData(FACEBOOK_SESSION) as IFacebookSession;
+		//    Initialize(NetworkWrapper, Session);
+		//    //if (session == null)
+		//    //    throw new ArgumentNullException("FacebookSession", "The facebook session must exist");
+		//}
 
-        public IFacebookApi Initialize(IFacebookSession session)
+		public IFacebookApi Initialize(IFacebookSession session)
 		{
 			AuthToken = string.Empty;
 
@@ -233,45 +236,45 @@ namespace Facebook.Rest
 
 			Session = session;
 
-			Auth = new Auth(Session);
-			Video = new Video(Session);
-			Marketplace = new Marketplace(Session);
-			Admin = new Admin(Session);
-			Photos = new Photos(Session);
-			Users = new Users(Session);
-			Friends = new Friends(Users, Session);
-			Events = new Events(Session);
-			Groups = new Groups(Session);
-			Notifications = new Notifications(Session);
-			Profile = new Profile(Session);
-			Fbml = new Fbml(Session);
-			Feed = new Feed(Session);
-			Fql = new Fql(Session);
-			LiveMessage = new LiveMessage(Session);
-			Message = new Message(Session);
-			Batch = new Batch(Session);
-			Pages = new Pages(Session);
-			Application = new Application(Session);
-			Data = new Data(Session);
-			Permissions = new Permissions(Session);
-			Connect = new Connect(Session);
-			Comments = new Comments(Session);
-			Stream = new Stream(Session);
-			Status = new Status(Session);
-			Links = new Links(Session);
-			Notes = new Notes(Session);
-			Intl = new Intl(Session);
+			
+			Video = new Video(NetworkWrapper, Session);
+			Marketplace = new Marketplace(NetworkWrapper, Session);
+			Admin = new Admin(NetworkWrapper, Session);
+			Photos = new Photos(NetworkWrapper, Session);
+			Users = new Users(NetworkWrapper, Session);
+			Friends = new Friends(NetworkWrapper, Users, Session);
+			Events = new Events(NetworkWrapper, Session);
+			Groups = new Groups(NetworkWrapper, Session);
+			Notifications = new Notifications(NetworkWrapper, Session);
+			Profile = new Profile(NetworkWrapper, Session);
+			Fbml = new Fbml(NetworkWrapper, Session);
+			Feed = new Feed(NetworkWrapper, Session);
+			Fql = new Fql(NetworkWrapper, Session);
+			LiveMessage = new LiveMessage(NetworkWrapper, Session);
+			Message = new Message(NetworkWrapper, Session);
+			//Batch = new Batch(NetworkWrapper, Session);
+			Pages = new Pages(NetworkWrapper, Session);
+			Application = new Application(NetworkWrapper, Session);
+			Data = new Data(NetworkWrapper, Session);
+			Permissions = new Permissions(NetworkWrapper, Session);
+			Connect = new Connect(NetworkWrapper, Session);
+			Comments = new Comments(NetworkWrapper, Session);
+			Stream = new Stream(NetworkWrapper, Session);
+			Status = new Status(NetworkWrapper, Session);
+			Links = new Links(NetworkWrapper, Session);
+			Notes = new Notes(NetworkWrapper, Session);
+			Intl = new Intl(NetworkWrapper, Session);
 
-			Batch.Batch = Batch;
+			//Batch.Batch = Batch;
 			Permissions.Permissions = Permissions;
-			Batch.Permissions = Permissions;
-			Permissions.Batch = Batch;
+			//Batch.Permissions = Permissions;
+			//Permissions.Batch = Batch;
 
-			foreach (IAuthorizedRestBase restBase in new IAuthorizedRestBase[] {Auth, Video, Marketplace, Admin, Photos, Users, Friends, Events,
+			foreach (IAuthenticatedService restBase in new IAuthenticatedService[] {LoggedInAuth, Video, Marketplace, Admin, Photos, Users, Friends, Events,
 				Groups, Notifications, Profile, Fbml, Feed, Fql, LiveMessage, Message, Pages, Application, Data, Connect, Comments,
 				Stream, Status, Links, Notes})
 			{
-				restBase.Batch = Batch;
+				//restBase.Batch = Batch;
 				restBase.Permissions = Permissions;
 			}
 

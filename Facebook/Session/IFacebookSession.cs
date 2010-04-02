@@ -16,7 +16,7 @@ namespace Facebook.Session
 		string Secret { get; }
 		long UserId { get; set; }
 		List<Enums.ExtendedPermissions> RequiredPermissions { get; set; }
-		string CheckPermissions();
+		//string CheckPermissions();
 
 	}
 

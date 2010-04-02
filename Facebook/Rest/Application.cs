@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Application API methods.
 	/// </summary>
-	public class Application : AuthorizedRestBase, Facebook.Rest.IApplication
+	public class Application : BaseAuthenticatedService, Facebook.Rest.IApplication
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Application
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Application(IFacebookSession session)
-			: base(session)
+		public Application(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

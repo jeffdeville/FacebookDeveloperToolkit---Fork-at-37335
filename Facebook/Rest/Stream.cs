@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Stream API methods.
 	/// </summary>
-	public class Stream : AuthorizedRestBase, Facebook.Rest.IStream
+	public class Stream : BaseAuthenticatedService, Facebook.Rest.IStream
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Stream
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Stream(IFacebookSession session)
-			: base(session)
+		public Stream(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

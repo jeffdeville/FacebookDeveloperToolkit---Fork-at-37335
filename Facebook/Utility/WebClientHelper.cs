@@ -6,12 +6,32 @@ using System.ComponentModel;
 
 namespace Facebook.Utility
 {
-    internal class WebClientHelper
-    {
+	public interface IWebClientHelper
+	{
+		event EventHandler<RequestCompletedEventArgs> RequestCompleted;
+		string Method { get; set; }
+		string ContentType { get; set; }
+		Uri RequestUri { get; }
+		Object UserState { get; set; }
+		void SendRequest(Uri uri, string data);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="uri"></param>
+		/// <param name="postData"></param>
+		/// <param name="contentType"></param>
+		void SendRequest(Uri uri, byte[] postData, string contentType);
+
+		Stream GetRequestStream(WebRequest request);
+	}
+
+	public class WebClientHelper : IWebClientHelper
+	{
         public event EventHandler<RequestCompletedEventArgs> RequestCompleted;
 
         WebRequest _webRequest;
-        readonly Object _userState;
+		public Object UserState { get; set; }
 
         public string Method
         {
@@ -39,7 +59,7 @@ namespace Facebook.Utility
 
         public WebClientHelper(Object userState)
         {
-            _userState = userState;
+			UserState = userState;
             Method = "GET";
         }
 
@@ -78,7 +98,12 @@ namespace Facebook.Utility
             }
         }
 
-        /// <summary>
+		public Stream GetRequestStream(WebRequest request)
+		{
+			return request.GetRequestStream();
+		}
+
+		/// <summary>
         /// Writes post data to stream and begin to retrieve response from server
         /// </summary>
         /// <param name="ar"></param>
@@ -140,13 +165,13 @@ namespace Facebook.Utility
 
             if (RequestCompleted != null)
             {
-                RequestCompleted(this, new RequestCompletedEventArgs(response, exception, _userState));
+                RequestCompleted(this, new RequestCompletedEventArgs(response, exception, UserState));
             }
 
         }
     }
 
-    class RequestCompletedEventArgs : AsyncCompletedEventArgs
+	public class RequestCompletedEventArgs : AsyncCompletedEventArgs
     {
         public Stream Response
         {

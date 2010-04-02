@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Friends API methods.
     /// </summary>
-    public class Friends : AuthorizedRestBase, Facebook.Rest.IFriends
+    public class Friends : BaseAuthenticatedService, Facebook.Rest.IFriends
     {
         #region Private Members
 
@@ -27,8 +27,8 @@ namespace Facebook.Rest
         /// </summary>
         /// <param name="users"></param>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Friends(IUsers users, IFacebookSession session)
-            : base(session)
+        public Friends(IFacebookNetworkWrapper networkWrapper, IUsers users, IFacebookSession session)
+            : base(networkWrapper, session)
         {
             _users = users;
         }
@@ -802,7 +802,7 @@ namespace Facebook.Rest
 
         private IList<user> GetAppUsersObjects(bool isAsync, Users.GetInfoCallback callback, Object state)
         {
-            if (Batch.IsActive)
+            if (IsBatchActive)
             {
                 throw new Exception("Extended API methods are not supported within a batch");
             }
@@ -853,7 +853,7 @@ namespace Facebook.Rest
 
         private IList<user> GetUserObjects(long uid, long flid, bool isAsync, Users.GetInfoCallback callback, Object state)
         {
-            if (Batch.IsActive)
+			if (IsBatchActive)
             {
                 throw new Exception("Extended API methods are not supported within a batch");
             }

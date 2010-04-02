@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook LiveMessage API methods.
 	/// </summary>
-	public class LiveMessage : AuthorizedRestBase, Facebook.Rest.ILiveMessage
+	public class LiveMessage : BaseAuthenticatedService, Facebook.Rest.ILiveMessage
 	{
 		#region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.LiveMessage
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public LiveMessage(IFacebookSession session)
-			: base(session)
+		public LiveMessage(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+			: base(networkWrapper, session)
 		{
 		}
 

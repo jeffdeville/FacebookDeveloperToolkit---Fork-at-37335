@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Events API methods.
     /// </summary>
-    public class Events : AuthorizedRestBase, Facebook.Rest.IEvents
+    public class Events : BaseAuthenticatedService, Facebook.Rest.IEvents
     {
         #region Methods
 
@@ -19,8 +19,8 @@ namespace Facebook.Rest
         /// Public constructor for facebook.Events
         /// </summary>
         /// <param name="session">Needs a connected Facebook Session object for making requests</param>
-        public Events(IFacebookSession session)
-            : base(session)
+        public Events(IFacebookNetworkWrapper networkWrapper, IFacebookSession session)
+            : base(networkWrapper, session)
         {
         }
 
