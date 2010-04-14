@@ -19,7 +19,7 @@ namespace Facebook.Rest
 		/// Public constructor for facebook.Application
 		/// </summary>
 		/// <param name="session">Needs a connected Facebook Session object for making requests</param>
-		public Intl(IFacebookSession session)
+		public Intl(SessionInfo session)
 			: base(session)
 		{
 		}
@@ -102,11 +102,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-                SendRequestAsync<intl_getTranslations_response, List<locale_data>>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<List<locale_data>>(callback), state);
+                SendRequestAsync<intl_getTranslations_response, List<locale_data>>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<List<locale_data>>(callback), state);
 				return null;
 			}
 
-            return SendRequest<intl_getTranslations_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey)).locale_data;
+            return SendRequest<intl_getTranslations_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey)).locale_data;
         }
 
         private long UploadNativeStrings(List<native_string> native_strings, bool isAsync, UploadNativeStringsCallback callback, Object state)
@@ -125,11 +125,11 @@ namespace Facebook.Rest
 
 			if (isAsync)
 			{
-				SendRequestAsync<intl_uploadNativeStrings_response, long>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<long>(callback), state);
+				SendRequestAsync<intl_uploadNativeStrings_response, long>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<long>(callback), state);
 				return 0;
 			}
 
-			var response = SendRequest<intl_uploadNativeStrings_response>(parameterList, !string.IsNullOrEmpty(Session.SessionKey));
+			var response = SendRequest<intl_uploadNativeStrings_response>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey));
 			return response == null ? -1 : response.TypedValue;
 		}
 

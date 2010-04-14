@@ -820,7 +820,7 @@ namespace Facebook.Rest
 
             if (isAsync)
             {
-                SendRequestAsync<admin_getAllocation_response, int>(parameterList, !string.IsNullOrEmpty(Session.SessionKey), new FacebookCallCompleted<int>(callback), state);
+                SendRequestAsync<admin_getAllocation_response, int>(parameterList, !string.IsNullOrEmpty(SessionInfo.SessionKey), new FacebookCallCompleted<int>(callback), state);
                 return 0;
             }
 

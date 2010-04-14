@@ -25,7 +25,7 @@ namespace Facebook.Rest
 	{
 		Batch Batch { get; set; }
 		Permissions Permissions { get; set; }
-		IFacebookSession Session { get; }
+		SessionInfo SessionInfo { get; }
 		string ExecuteApiImageUpload(FileSystemInfo uploadFile, IDictionary<string, string> parameterList);
 		string ExecuteApiVideoUpload(FileSystemInfo uploadFile, IDictionary<string, string> parameterList);
 
