@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IStream : IAuthorizedRestBase
+	public interface IStream : IRestBase
 	{
 		string AddComment(long uid, string postId, string comment);
 		string AddComment(string postId, string comment);

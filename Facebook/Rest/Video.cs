@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Video API methods.
     /// </summary>
-    public class Video : AuthorizedRestBase, Facebook.Rest.IVideo
+    public class Video : RestBase, Facebook.Rest.IVideo
     {
         #region Private Members
 

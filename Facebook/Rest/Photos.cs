@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Photo API methods.
     /// </summary>
-    public class Photos : AuthorizedRestBase, Facebook.Rest.IPhotos
+    public class Photos : RestBase, Facebook.Rest.IPhotos
     {
 #region Private Members
 

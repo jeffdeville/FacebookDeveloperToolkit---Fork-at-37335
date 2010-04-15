@@ -10,7 +10,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Feed API methods.
 	/// </summary>
-	public class Feed : AuthorizedRestBase, Facebook.Rest.IFeed
+	public class Feed : RestBase, Facebook.Rest.IFeed
 	{
 		#region Methods
 

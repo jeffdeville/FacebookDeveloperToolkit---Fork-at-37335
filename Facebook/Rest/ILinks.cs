@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface ILinks : IAuthorizedRestBase
+	public interface ILinks : IRestBase
 	{
 		System.Collections.Generic.IList<Facebook.Schema.link> Get();
 		System.Collections.Generic.IList<Facebook.Schema.link> Get(long uid);

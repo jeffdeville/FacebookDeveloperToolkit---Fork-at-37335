@@ -17,6 +17,7 @@ namespace Facebook.Session
 
 		private readonly HttpCookieCollection _requestCookies;
 		private readonly HttpCookieCollection _responseCookies;
+		private readonly IAuth _auth;
 
 		public IFrameSessionProvider(HttpCookieCollection requestCookies, HttpCookieCollection responseCookies,
 									 NameValueCollection inputParams, IAuth auth)

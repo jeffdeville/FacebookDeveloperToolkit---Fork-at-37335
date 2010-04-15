@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IData : IAuthorizedRestBase
+	public interface IData : IRestBase
 	{
 		long CreateObject(string obj_type, System.Collections.Generic.Dictionary<string, string> properties);
 		long CreateObjectAsync(string obj_type, System.Collections.Generic.Dictionary<string, string> properties, Data.CreateObjectCallback callback, object state);

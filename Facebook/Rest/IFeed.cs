@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IFeed : IAuthorizedRestBase
+	public interface IFeed : IRestBase
 	{
 		bool DeactivateTemplateBundleByID(string template_bundle_id);
 		void DeactivateTemplateBundleByIDAsync(string template_bundle_id, Feed.DeactivateTemplateBundleByIDCallback callback, object state);

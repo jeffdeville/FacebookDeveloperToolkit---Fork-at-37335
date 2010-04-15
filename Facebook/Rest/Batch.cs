@@ -14,7 +14,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Batch API methods.
 	/// </summary>
-	public class Batch : AuthorizedRestBase, Facebook.Rest.IBatch
+	public class Batch : RestBase, Facebook.Rest.IBatch
 	{
 		#region Private Members
 		

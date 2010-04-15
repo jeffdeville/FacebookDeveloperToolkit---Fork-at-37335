@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Permissions API methods.
 	/// </summary>
-	public class Permissions : AuthorizedRestBase, Facebook.Rest.IPermissions
+	public class Permissions : RestBase, Facebook.Rest.IPermissions
 	{
         #region Internal Properties
 

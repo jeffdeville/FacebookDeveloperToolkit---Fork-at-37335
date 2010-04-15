@@ -3,7 +3,7 @@ using Facebook.Schema;
 
 namespace Facebook.Rest
 {
-	public interface IUsers : IAuthorizedRestBase
+	public interface IUsers : IRestBase
 	{
 		user GetInfo();
 		IList<user> GetInfo(IList<long> uids);
@@ -14,12 +14,12 @@ namespace Facebook.Rest
 		void GetInfoAsync(string uids, Users.GetInfoCallback callback, object state);
 		long GetLoggedInUser();
 		void GetLoggedInUserAsync(Users.GetLoggedInUserCallback callback, object state);
-		IList<user> GetStandardInfo(IList<long> uids);
-		IList<user> GetStandardInfo(IList<long> uids, IList<string> fields);
+		IList<user> GetStandardInfo(List<long> uids);
+		IList<user> GetStandardInfo(List<long> uids, IList<string> fields);
 		IList<user> GetStandardInfo(string uids);
 		IList<user> GetStandardInfo(string uids, IList<string> fields);
-		void GetStandardInfoAsync(IList<long> uids, Users.GetStandardInfoCallback callback, object state);
-		void GetStandardInfoAsync(IList<long> uids, IList<string> fields, Users.GetStandardInfoCallback callback, object state);
+		void GetStandardInfoAsync(List<long> uids, Users.GetStandardInfoCallback callback, object state);
+		void GetStandardInfoAsync(List<long> uids, IList<string> fields, Users.GetStandardInfoCallback callback, object state);
 		void GetStandardInfoAsync(string uids, Users.GetStandardInfoCallback callback, object state);
 		void GetStandardInfoAsync(string uids, IList<string> fields, Users.GetStandardInfoCallback callback, object state);
 		bool HasAppPermission(Enums.ExtendedPermissions ext_perm);

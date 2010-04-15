@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Users API methods.
     /// </summary>
-    public class Users : AuthorizedRestBase, IUsers
+    public class Users : RestBase, Facebook.Rest.IUsers
     {
         #region Methods
 
@@ -47,7 +47,7 @@ namespace Facebook.Rest
             return GetInfo(Session.UserId);
         }
 
-        /// <summary>
+    	/// <summary>
         /// Returns a wide array of user-specific information for each user identifier passed, limited by the view of the current user.
         /// </summary>
         /// <example>
@@ -112,7 +112,7 @@ namespace Facebook.Rest
         /// </example>
         /// <param name="uids">A List of user IDs.</param>
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-		public IList<user> GetStandardInfo(IList<long> uids)
+		public IList<user> GetStandardInfo(List<long> uids)
         {
             return GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), null);
         }
@@ -132,7 +132,7 @@ namespace Facebook.Rest
         /// <param name="uids">A List of user IDs.</param>
         /// <param name="fields">List of desired fields in return. This is a List of field strings and is limited to these entries only: uid, first_name, last_name, name, timezone, birthday, sex, affiliations (regional type only), locale, profile_url, proxied_email.</param>
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public IList<user> GetStandardInfo(IList<long> uids, IList<string> fields)
+        public IList<user> GetStandardInfo(List<long> uids, IList<string> fields)
         {
             return GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), fields);
         }
@@ -465,7 +465,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public void GetStandardInfoAsync(IList<long> uids, GetStandardInfoCallback callback, Object state)
+        public void GetStandardInfoAsync(List<long> uids, GetStandardInfoCallback callback, Object state)
         {
             GetStandardInfoAsync(uids, null, callback, state);
         }
@@ -495,7 +495,7 @@ namespace Facebook.Rest
         /// <param name="callback">The AsyncCallback delegate</param>
         /// <param name="state">An object containing state information for this asynchronous request</param>        
         /// <returns>The user info elements returned are those friends visible to the Facebook Platform.</returns>
-        public void GetStandardInfoAsync(IList<long> uids, IList<string> fields, GetStandardInfoCallback callback, Object state)
+        public void GetStandardInfoAsync(List<long> uids, IList<string> fields, GetStandardInfoCallback callback, Object state)
 		{
 			GetStandardInfo(StringHelper.ConvertToCommaSeparated(uids), fields, true, callback, state);
 		}
@@ -811,7 +811,7 @@ namespace Facebook.Rest
             else
             {
                 Utilities.AddRequiredParameter(parameterList, "fields",
-                                  "uid, about_me, activities, affiliations, birthday, books, current_location, education_history, email_hashes, first_name, hometown_location, hs_info, interests, is_app_user, last_name, locale, meeting_for, meeting_sex, movies, music, name, notes_count, pic, pic_with_logo, pic_big, pic_big_with_logo, pic_small, pic_small_with_logo, pic_square, pic_square_with_logo, political, profile_blurb, profile_update_time, profile_url, proxied_email, quotes, relationship_status, religion, sex, significant_other_id, status, timezone, tv, wall_count, work_history");
+                                  "uid, about_me, activities, affiliations, birthday, birthday_date, books, current_location, education_history, email_hashes, first_name, hometown_location, hs_info, interests, is_app_user, last_name, locale, meeting_for, meeting_sex, movies, music, name, notes_count, pic, pic_with_logo, pic_big, pic_big_with_logo, pic_small, pic_small_with_logo, pic_square, pic_square_with_logo, political, profile_blurb, profile_update_time, profile_url, proxied_email, quotes, relationship_status, religion, sex, significant_other_id, status, timezone, tv, wall_count, work_history");
             }
             
             if (isAsync)

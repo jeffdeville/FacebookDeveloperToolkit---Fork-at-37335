@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Stream API methods.
 	/// </summary>
-	public class Stream : AuthorizedRestBase, Facebook.Rest.IStream
+	public class Stream : RestBase, Facebook.Rest.IStream
 	{
 		#region Methods
 

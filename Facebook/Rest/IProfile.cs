@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IProfile : IAuthorizedRestBase
+	public interface IProfile : IRestBase
 	{
 		string GetFBML(long uid, int type);
 		void GetFBMLAsync(long uid, int type, Profile.GetFBMLCallback callback, object state);

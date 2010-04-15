@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IVideo : IAuthorizedRestBase
+	public interface IVideo : IRestBase
 	{
 		Facebook.Schema.video_limits GetUploadLimits();
 		void GetUploadLimitsAsync(Video.GetUploadLimitsCallback callback, object state);

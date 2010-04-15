@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IFql : IAuthorizedRestBase
+	public interface IFql : IRestBase
 	{
 		System.Collections.Generic.IList<Facebook.Schema.fql_result> Multiquery(FqlMultiQueryInfo[] queries);
 		System.Collections.Generic.IList<Facebook.Schema.fql_result> Multiquery(System.Collections.Generic.Dictionary<string, string> queries);

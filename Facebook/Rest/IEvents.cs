@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IEvents : IAuthorizedRestBase
+	public interface IEvents : IRestBase
 	{
 		bool Cancel(long eid, string cancelMessage);
 		void CancelAsync(long eid, string cancelMessage, Events.CancelEventCallback callback, object state);

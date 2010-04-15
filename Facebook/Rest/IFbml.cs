@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IFbml : IAuthorizedRestBase
+	public interface IFbml : IRestBase
 	{
 		bool DeleteCustomTags(System.Collections.Generic.List<string> names);
 		void DeleteCustomTagsAsync(System.Collections.Generic.List<string> names, Fbml.DeleteCustomTagsCallback callback, object state);

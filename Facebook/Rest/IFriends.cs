@@ -3,7 +3,7 @@ using Facebook.Schema;
 
 namespace Facebook.Rest
 {
-	public interface IFriends : IAuthorizedRestBase
+	public interface IFriends : IRestBase
 	{
 		IList<friend_info> AreFriends(user user1, user user2);
 		IList<friend_info> AreFriends(IList<user> uids1, IList<user> uids2);

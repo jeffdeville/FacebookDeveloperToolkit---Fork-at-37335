@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Admin API methods.
     /// </summary>
-    public class Admin : AuthorizedRestBase, Facebook.Rest.IAdmin
+    public class Admin : RestBase, Facebook.Rest.IAdmin
     {
         #region Enumerations
 
@@ -702,7 +702,6 @@ namespace Facebook.Rest
                 "description",
                 "desktop",
                 "dev_mode",
-                "edit_info_url",
                 "edit_url",
                 "email",
                 "help_url",
@@ -715,7 +714,6 @@ namespace Facebook.Rest
                 "is_mobile",
                 "logo_url",
                 "message_action",
-                "message_url",
                 "post_authorize_redirect_url",
                 "preload_fql",
                 "privacy_url",

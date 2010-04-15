@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook LiveMessage API methods.
 	/// </summary>
-	public class LiveMessage : AuthorizedRestBase, Facebook.Rest.ILiveMessage
+	public class LiveMessage : RestBase, Facebook.Rest.ILiveMessage
 	{
 		#region Methods
 

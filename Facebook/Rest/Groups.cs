@@ -9,7 +9,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Groups API methods.
     /// </summary>
-    public class Groups : AuthorizedRestBase, Facebook.Rest.IGroups
+    public class Groups : RestBase, Facebook.Rest.IGroups
     {
         #region Methods
 

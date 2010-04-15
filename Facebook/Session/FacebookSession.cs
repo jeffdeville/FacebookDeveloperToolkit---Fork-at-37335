@@ -28,6 +28,7 @@ namespace Facebook.Session
 
 		const string _promptPermissionsUrl = "http://www.facebook.com/connect/prompt_permissions.php?api_key={0}&v=1.0&next={1}&display=popup&ext_perm={2}&enable_profile_selector=1&profile_selector_ids={3}";
 		const string _promptPermissionsNextUrl = "http://www.facebook.com/connect/login_success.html?xxRESULTTOKENxx";
+		/// <summary>
 		/// List of extended permissions required by this application
 		/// </summary>
 		public List<Enums.ExtendedPermissions> RequiredPermissions { get; set; }
@@ -50,9 +51,14 @@ namespace Facebook.Session
 				foreach (Enums.ExtendedPermissions p in this.RequiredPermissions)
 				{
 					FieldInfo f = permission.permissions.GetType().GetField(p.ToString());
-					if (f == null) continue;
-					var hasPermission = (bool)f.GetValue(permission.permissions);
-					if (!hasPermission) permissionsToApprove.Add(p);
+					if (f != null)
+					{
+						bool hasPermission = (bool)f.GetValue(permission.permissions);
+						if (!hasPermission)
+						{
+							permissionsToApprove.Add(p);
+						}
+					}
 				}
 
 				if (permissionsToApprove.Count != 0)

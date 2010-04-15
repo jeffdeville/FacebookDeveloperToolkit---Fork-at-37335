@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IComments : IAuthorizedRestBase
+	public interface IComments : IRestBase
 	{
 		int Add(string xid, string text);
 		int Add(string xid, string text, long uid);

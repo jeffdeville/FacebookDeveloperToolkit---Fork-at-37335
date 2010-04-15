@@ -17,7 +17,7 @@ namespace Facebook.Session
     	public FbmlSessionProvider(NameValueCollection inputParams, IAuth auth)
 		{
 			_inputParams = inputParams;
-			_auth = auth;
+			_auth = auth ?? new Auth();
 		}
 
     	public virtual IFacebookSession GetSession()

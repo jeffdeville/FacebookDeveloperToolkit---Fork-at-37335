@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IPhotos : IAuthorizedRestBase
+	public interface IPhotos : IRestBase
 	{
 		bool AddTag(string pid, long tag_uid, string tag_text, float x, float y);
 		bool AddTag(string pid, long tag_uid, string tag_text, float x, float y, long owner_uid);

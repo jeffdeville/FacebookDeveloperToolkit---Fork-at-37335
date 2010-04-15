@@ -9,7 +9,7 @@ namespace Facebook.Rest
 	/// <summary>
 	/// Facebook Comments API methods.
 	/// </summary>
-	public class Comments : AuthorizedRestBase, Facebook.Rest.IComments
+	public class Comments : RestBase, Facebook.Rest.IComments
 	{
 		#region Methods
 

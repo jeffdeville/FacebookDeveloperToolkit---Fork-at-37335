@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Facebook Friends API methods.
     /// </summary>
-    public class Friends : AuthorizedRestBase, Facebook.Rest.IFriends
+    public class Friends : RestBase, Facebook.Rest.IFriends
     {
         #region Private Members
 
@@ -831,7 +831,7 @@ namespace Facebook.Rest
 			return response == null ? null : response.friendlist;
 		}
 
-		private IList<long> GetMutualFriends(long target_uid, long? source_uid, bool isAsync, GetMutualFriendsCallback callback, Object state)
+		private List<long> GetMutualFriends(long target_uid, long? source_uid, bool isAsync, GetMutualFriendsCallback callback, Object state)
 		{
 			var parameterList = new Dictionary<string, string> { { "method", "facebook.friends.getMutualFriends" } };
 			Utilities.AddRequiredParameter(parameterList, "target_uid", target_uid);

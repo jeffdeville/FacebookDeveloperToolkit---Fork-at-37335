@@ -4,9 +4,17 @@ using System.Collections.Generic;
 using System.Net;
 using System.Xml.Serialization;
 using Facebook.Utility;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
+using System.Text;
 
 #if !SILVERLIGHT
 using System.Drawing;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Collections.ObjectModel;
+using System.Collections;
 #endif
 
 namespace Facebook.Schema
@@ -67,7 +75,48 @@ namespace Facebook.Schema
 
 		public request_argsLocalType request_args {get; set;}
 	}
+    public partial class album
+    {
+        [System.Xml.Serialization.XmlElementAttribute("created", IsNullable=true)]
+        public string createdString { 
+            get { return this.createdField.ToString(); } 
+            set {
+                if (value != null)
+                    createdField = long.Parse(value);
+                else
+                    createdField = 0;
+            } 
+        }
+        [System.Xml.Serialization.XmlElementAttribute("modified", IsNullable = true)]
+        public string modifiedString
+        {
+            get { return this.modifiedField.ToString(); }
+            set
+            {
+                if (value != null)
+                    modifiedField = long.Parse(value);
+                else
+                    modifiedField = 0;
+            }
+        }
 
+    }
+    public partial class page
+    {
+        private string fan_countField;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public string fan_count
+        {
+            get
+            {
+                return this.fan_countField;
+            }
+            set
+            {
+                this.fan_countField = value;
+            }
+        }
+    }
 	public partial class album
 	{
 		public DateTime created_date
@@ -368,6 +417,21 @@ namespace Facebook.Schema
 		private Image _pictureBig;
 		private Image _pictureSmall;
 		private Image _pictureSquare;
+        private string _birthdayDate;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true, ElementName="birthday_date")]
+        public string birthday_date
+        {
+            get
+            {
+                return this._birthdayDate;
+            }
+            set
+            {
+                this._birthdayDate = value;
+            }
+        }
+
+
         public Image picture
 		{
 			get
@@ -458,33 +522,6 @@ namespace Facebook.Schema
         private string profile_urlField;
         private string proxied_emailField;
 
-		public DateTime birthday_date
-		{
-			get
-			{
-				//If we have a full date, it will come back as a double
-				double dblBirthDay;
-				if (Double.TryParse(this.birthday, out dblBirthDay))
-					return DateHelper.ConvertDoubleToDate(dblBirthDay);
-
-				//If the user just has their birthday without a year, append 1901 to it and try to parse it.
-				try
-				{
-					var tempBirthday = this.birthday;
-					tempBirthday = tempBirthday + " 1901";
-					return DateTime.Parse(tempBirthday);
-
-				}
-				catch (Exception)
-				{
-					//If we couldn't get any date, return 
-					return new DateTime(1900, 1, 1);
-				}
-
-
-			}
-
-		}
         [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
         public string proxied_email
         {
@@ -533,6 +570,561 @@ namespace Facebook.Schema
 			this.image_link_url = image_link_url;
 		}
 	}
+    public partial class dashboard_bundle
+    {
+
+
+        public dashboard_bundle()
+        {
+            if ((this.action_link == null))
+            {
+                this.action_link = new action_link();
+            }
+        }
+        public string message
+        {
+            get;set;
+        }
+        public action_link action_link
+        {
+            get;set;
+        }
+    }
+
+
+
+    public partial class dashboard_activity
+    {
+
+
+        public dashboard_activity()
+        {
+            if ((this.bundle == null))
+            {
+                this.bundle = new dashboard_bundle();
+            }
+        }
+
+        public dashboard_bundle bundle
+        {
+            get;
+            set;
+        }
+
+        public long time
+        {
+            get;
+            set;
+        }
+        public long fbid
+        {
+            get;
+            set;
+        }
+        public string activity_id
+        {
+            get;
+            set;
+        }
+
+    }
+#if !SILVERLIGHT
+    public class Dashboard_GetActivityResponseConverter : JavaScriptConverter
+    {
+
+        public override IEnumerable<Type> SupportedTypes
+        {
+            //Define the ListItemCollection as a supported type.
+            get { return new ReadOnlyCollection<Type>(new List<Type>(new Type[] { typeof(List<dashboard_activity>) })); }
+        }
+
+        public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)
+        {
+            return new Dictionary<string, object>();
+        }
+
+        public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
+        {
+            var result = new List<dashboard_activity>();
+            foreach (var item in dictionary)
+            {
+                var activity = new dashboard_activity();
+                activity.activity_id = item.Key;
+                Dictionary<string, object> inner = (Dictionary<string, object>)item.Value;
+                activity.fbid = long.Parse(inner["fbid"].ToString());
+                activity.time = long.Parse(inner["time"].ToString());
+                activity.bundle.message = inner["message"].ToString();
+                Dictionary<string, object> al = (Dictionary<string, object>)inner["action_link"];
+                activity.bundle.action_link.href = al["href"].ToString();
+                activity.bundle.action_link.text = al["text"].ToString();
+                result.Add(activity);
+            }
+            return result;
+        }
+
+    }
+    public class FacebookExceptionConverter : JavaScriptConverter
+    {
+
+        public override IEnumerable<Type> SupportedTypes
+        {
+            //Define the ListItemCollection as a supported type.
+            get { return new ReadOnlyCollection<Type>(new List<Type>(new Type[] { typeof(FacebookApiException) })); }
+        }
+
+        public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)
+        {
+            return new Dictionary<string, object>();
+        }
+
+        public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
+        {
+            var result = new FacebookApiException()
+            {
+                error_code = int.Parse(dictionary["error_code"].ToString()),
+                error_msg = dictionary["error_msg"].ToString()
+            };
+            ArrayList parms = (ArrayList)dictionary["request_args"];
+            foreach (var parm in parms)
+            {
+                var dict = parm as Dictionary<string, object>;
+                result.request_args.list = true;
+                result.request_args.listSpecified = true;
+
+                result.request_args.arg.Add(new arg() { key = dict["key"].ToString(), value = dict["value"].ToString() });
+            }
+
+            return result;
+        }
+
+    }
+    public class Dashboard_GetNewsResponseConverter : JavaScriptConverter
+    {
+
+        public override IEnumerable<Type> SupportedTypes
+        {
+            //Define the ListItemCollection as a supported type.
+            get { return new ReadOnlyCollection<Type>(new List<Type>(new Type[] { typeof(List<dashboard_news>) })); }
+        }
+
+        public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)
+        {
+            return new Dictionary<string, object>();
+        }
+
+        public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
+        {
+            var result = new List<dashboard_news>();
+            foreach (var item in dictionary)
+            {
+                var news = new dashboard_news();
+                news.news_id = item.Key;
+                Dictionary<string, object> inner = (Dictionary<string, object>)item.Value;
+                news.fbid = long.Parse(inner["fbid"].ToString());
+                news.time = long.Parse(inner["time"].ToString());
+                news.image = inner["image"].ToString();
+                if (inner["news"].GetType() == typeof(ArrayList))
+                {
+                    var bundles = (ArrayList)inner["news"];
+                    foreach (Dictionary<string, object> b in bundles)
+                    {
+                        var bundle = new dashboard_bundle();
+                        bundle.message = b["message"].ToString();
+                        Dictionary<string, object> al = (Dictionary<string, object>)b["action_link"];
+                        if (al != null)
+                        {
+                            bundle.action_link.href = al["href"].ToString();
+                            bundle.action_link.text = al["text"].ToString();
+                        }
+                        else
+                        {
+                            bundle.action_link = null;
+                        }
+
+                        news.news.Add(bundle);
+                    }
+                }
+                else
+                {
+                    var bundles = (Object[])inner["news"];
+                    foreach (Dictionary<string, object> b in bundles)
+                    {
+                        var bundle = new dashboard_bundle();
+                        bundle.message = b["message"].ToString();
+                        Dictionary<string, object> al = (Dictionary<string, object>)b["action_link"];
+                        if (al != null)
+                        {
+                            bundle.action_link.href = al["href"].ToString();
+                            bundle.action_link.text = al["text"].ToString();
+                        }
+                        else
+                        {
+                            bundle.action_link = null;
+                        }
+
+                        news.news.Add(bundle);
+                    }
+
+                }
+                result.Add(news);
+            }
+            return result;
+        }
+
+    }
+#else
+    public class JsonConverterManager
+    {
+        public JsonConverterManager()
+        {
+            Converters = new List<JsonConverter>();
+        }
+        public List<JsonConverter> Converters{get;set;}
+        public object Deserialize(string json, Type type)
+        {
+            JsonConverter converter = Converters.FirstOrDefault(c => c.SupportedType == type);
+            if(converter != null)
+            {
+                return converter.Deserialize(json,type);
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+    public class JsonConverter
+    {
+        public Type SupportedType{get;set;}
+        public virtual object Deserialize(string json, Type type)
+        {
+            return null;
+        }
+    }
+    public class JsonDictionaryStringObjectConverter : JsonConverter
+    {
+        public JsonDictionaryStringObjectConverter()
+        {
+            SupportedType = typeof(Dictionary<string,object>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, object> ret = new Dictionary<string, object>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    ret.Add(result.Keys.ElementAt(i).ToString().Replace("\"", string.Empty), result.Values.ElementAt(i).ToString().Replace("\"", string.Empty));
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDictionaryStringStringConverter : JsonConverter
+    {
+        public JsonDictionaryStringStringConverter()
+        {
+            SupportedType = typeof(Dictionary<string, string>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, string> ret = new Dictionary<string, string>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    ret.Add(result.Keys.ElementAt(i).ToString().Replace("\"", string.Empty), result.Values.ElementAt(i).ToString().Replace("\"", string.Empty));
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDictionaryStringBoolConverter : JsonConverter
+    {
+        public JsonDictionaryStringBoolConverter()
+        {
+            SupportedType = typeof(Dictionary<string, bool>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, bool> ret = new Dictionary<string, bool>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    ret.Add(result.Keys.ElementAt(i).ToString(), bool.Parse(result.Values.ElementAt(i).ToString()));
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDictionaryStringIntConverter : JsonConverter
+    {
+        public JsonDictionaryStringIntConverter()
+        {
+            SupportedType = typeof(Dictionary<string, int>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, int> ret = new Dictionary<string, int>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    ret.Add(result.Keys.ElementAt(i).ToString(), int.Parse(result.Values.ElementAt(i).ToString()));
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDictionaryStringDictionaryConverter : JsonConverter
+    {
+        public JsonDictionaryStringDictionaryConverter()
+        {
+            SupportedType = typeof(Dictionary<string, Dictionary<string, object>>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, Dictionary<string, object>> ret = new Dictionary<string, Dictionary<string, object>>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    Dictionary<string, object> inner = new Dictionary<string, object>();
+                    System.Json.JsonObject value = (System.Json.JsonObject)result.Values.ElementAt(i);
+                    for (int j = 0; j < value.Count; j++)
+                    {
+                        inner.Add(value.Keys.ElementAt(i).ToString(), value.Values.ElementAt(i).ToString());
+                    }
+                    ret.Add(result.Keys.ElementAt(i).ToString(), inner);
+
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDictionaryStringNewsConverter : JsonConverter
+    {
+        public JsonDictionaryStringNewsConverter()
+        {
+            SupportedType = typeof(Dictionary<string, List<dashboard_news>>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                Dictionary<string, List<dashboard_news>> ret = new Dictionary<string, List<dashboard_news>>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    List<dashboard_news> inner = new List<dashboard_news>();
+                    System.Json.JsonObject value = (System.Json.JsonObject)result.Values.ElementAt(i);
+                    for (int j = 0; j < value.Count; j++)
+                    {
+                        System.Json.JsonArray news = (System.Json.JsonArray)value.Values.ElementAt(j)["news"];
+                        List<dashboard_bundle> bundles = new List<dashboard_bundle>();
+                        foreach(var item in news)
+                        {
+                            var bundle = new dashboard_bundle()
+                            {
+                                message = item["message"].ToString().Replace("\"", string.Empty)
+                            };
+                            var action_link = new action_link();
+                            var al = item["action_link"];
+                            if (al != null && al.Count > 0)
+                            {
+                                action_link.href = al["href"].ToString().Replace("\"", string.Empty);
+                                action_link.text = al["text"].ToString().Replace("\"", string.Empty);
+                                bundle.action_link = action_link;
+                            }
+                            bundles.Add(bundle);
+                        }
+                        var news_item = new dashboard_news()
+                        {
+                            news_id = value.Keys.ElementAt(j).ToString().Replace("\"", string.Empty),
+                            fbid = long.Parse(value.Values.ElementAt(j)["fbid"].ToString()),
+                            image = value.Values.ElementAt(j)["image"].ToString().Replace("\"", string.Empty),
+                            time = long.Parse(value.Values.ElementAt(j)["time"].ToString()),
+                            news = bundles
+                        };
+
+                        inner.Add(news_item);
+                    }
+                    ret.Add(result.Keys.ElementAt(i).ToString(), inner);
+
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonFacebookApiExceptionConverter : JsonConverter
+    {
+        public JsonFacebookApiExceptionConverter()
+        {
+            SupportedType = typeof(FacebookApiException);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                FacebookApiException ret = new FacebookApiException()
+                    {
+                        error_code = int.Parse(result["error_code"].ToString().Replace("\"", string.Empty)),
+                        error_msg = result["error_msg"].ToString().Replace("\"", string.Empty)
+                    };
+                System.Json.JsonArray args = (System.Json.JsonArray)result["request_args"];
+                foreach (var arg in args)
+                {
+                    ret.request_args.list = true;
+                    ret.request_args.listSpecified = true;
+
+                    ret.request_args.arg.Add(new arg(){key = arg["key"].ToString().Replace("\"", string.Empty), value = arg["value"].ToString().Replace("\"", string.Empty)});
+                }
+
+                return ret;
+            }
+        }
+    }
+    public class JsonDashboardActivityListConverter : JsonConverter
+    {
+        public JsonDashboardActivityListConverter()
+        {
+            SupportedType = typeof(List<dashboard_activity>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                List<dashboard_activity> ret = new List<dashboard_activity>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                        var bundle = new dashboard_bundle()
+                        {
+                            message = result.Values.ElementAt(i)["message"].ToString().Replace("\"", string.Empty)
+                        };
+                        var action_link = new action_link();
+                        var al = result.Values.ElementAt(i)["action_link"];
+                        if (al != null && al.Count > 0)
+                        {
+                            action_link.href = al["href"].ToString().Replace("\"", string.Empty);
+                            action_link.text = al["text"].ToString().Replace("\"", string.Empty);
+                            bundle.action_link = action_link;
+                        }
+                        var activity = new dashboard_activity()
+                        {
+                            activity_id = result.Keys.ElementAt(i).ToString().Replace("\"", string.Empty),
+                            fbid = long.Parse(result.Values.ElementAt(i)["fbid"].ToString()),
+                            time = long.Parse(result.Values.ElementAt(i)["time"].ToString()),
+                            bundle = bundle
+                        };
+
+                        ret.Add(activity);
+                    }
+                return ret;
+            }
+        }
+    }
+    public class JsonDashboardNewsListConverter : JsonConverter
+    {
+        public JsonDashboardNewsListConverter()
+        {
+            SupportedType = typeof(List<dashboard_news>);
+        }
+        public override object Deserialize(string json, Type type)
+        {
+            using (var mo = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                System.Json.JsonObject result = (System.Json.JsonObject)System.Json.JsonArray.Load(mo);
+                List<dashboard_news> ret = new List<dashboard_news>();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    System.Json.JsonArray news = (System.Json.JsonArray)result.Values.ElementAt(i)["news"];
+                    List<dashboard_bundle> bundles = new List<dashboard_bundle>();
+                    foreach (var item in news)
+                    {
+                        var bundle = new dashboard_bundle()
+                        {
+                            message = item["message"].ToString().Replace("\"", string.Empty)
+                        };
+                        var action_link = new action_link();
+                        var al = item["action_link"];
+                        if (al != null && al.Count > 0)
+                        {
+                            action_link.href = al["href"].ToString().Replace("\"", string.Empty);
+                            action_link.text = al["text"].ToString().Replace("\"", string.Empty);
+                            bundle.action_link = action_link;
+                        }
+                        bundles.Add(bundle);
+                    }
+                    var news_item = new dashboard_news()
+                    {
+                        news_id = result.Keys.ElementAt(i).ToString().Replace("\"", string.Empty),
+                        image = result.Keys.ElementAt(i).ToString().Replace("\"", string.Empty),
+                        fbid = long.Parse(result.Values.ElementAt(i)["fbid"].ToString()),
+                        time = long.Parse(result.Values.ElementAt(i)["time"].ToString()),
+                        news = bundles
+                    };
+
+                    ret.Add(news_item);
+                }
+
+                return ret;
+            }
+        }
+    }
+
+#endif
+    public partial class dashboard_news
+    {
+
+        public dashboard_news()
+        {
+            if ((this.news == null))
+            {
+                this.news = new List<dashboard_bundle>();
+            }
+        }
+
+        public string image
+        {
+            get;set;
+        }
+
+        public List<dashboard_bundle> news
+        {
+            get;set;
+        }
+
+        public long fbid
+        {
+            get;set;
+        }
+
+        public long time
+        {
+            get;set;
+        }
+        public string news_id
+        {
+            get;
+            set;
+        }
+    }
+
+
 
 
 	#region Classes not generated by Xsd2Code
@@ -643,7 +1235,7 @@ namespace Facebook.Schema
 	public class data_getHashValue_response : StringResponse { }
 
 	[XmlRootAttribute("data_getObject_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
-	public class data_getObject_response : container { }
+	public class data_getObject_response : Dictionary<string,string> { }
 
 	[XmlRootAttribute("data_getObjectProperty_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
 	public class data_getObjectProperty_response : StringResponse { }
@@ -878,6 +1470,49 @@ namespace Facebook.Schema
 
 	[XmlRootAttribute("video_upload_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
 	public class video_upload_response : video { }
+
+    [XmlRootAttribute("dashboard_addGlobalNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_addGlobalNews_response : LongResponse { }
+
+    [XmlRootAttribute("dashboard_addNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_addNews_response : LongResponse { }
+
+    [XmlRootAttribute("dashboard_clearGlobalNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_clearGlobalNews_response : Dictionary<string,bool> { }
+
+    [XmlRootAttribute("dashboard_clearNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_clearNews_response : Dictionary<string, bool> { }
+    [XmlRootAttribute("dashboard_decrementCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_decrementCount_response : BooleanResponse { }
+    [XmlRootAttribute("dashboard_getCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_getCount_response : IntResponse { }
+    [XmlRootAttribute("dashboard_incrementCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_incrementCount_response : BooleanResponse { }
+    [XmlRootAttribute("dashboard_multiAddNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiAddNews_response : Dictionary<string,object> { }
+    [XmlRootAttribute("dashboard_multiClearNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiClearNews_response : Dictionary<string, Dictionary<string, object>> { }
+    [XmlRootAttribute("dashboard_multiDecrementCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiDecrementCount_response : Dictionary<string, bool> { }
+    [XmlRootAttribute("dashboard_multiGetCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiGetCount_response : Dictionary<string, int> { }
+    [XmlRootAttribute("dashboard_multiGetNews_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiGetNews_response : Dictionary<string, Dictionary<string, object>> { }
+    [XmlRootAttribute("dashboard_multiIncrementCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiIncrementCount_response : Dictionary<string, bool> { }
+    [XmlRootAttribute("dashboard_multiSetCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_multiSetCount_response : Dictionary<string, bool> { }
+    [XmlRootAttribute("dashboard_publishActivity_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_publishActivity_response : LongResponse { }
+    [XmlRootAttribute("dashboard_removeActivity_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_removeActivity_response : Dictionary<string, bool> { }
+    [XmlRootAttribute("dashboard_setCount_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class dashboard_setCount_response : BooleanResponse { }
+    [XmlRootAttribute("sms_send_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class sms_send_response : LongResponse { }
+
+    [XmlRootAttribute("sms_canSend_response", Namespace = "http://api.facebook.com/1.0/", IsNullable = false)]
+    public class sms_canSend_response : LongResponse { }
 
 	#endregion
 

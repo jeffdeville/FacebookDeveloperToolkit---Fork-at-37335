@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IConnect : IAuthorizedRestBase
+	public interface IConnect : IRestBase
 	{
 		int GetUnconnectedFriends();
 		void GetUnconnectedFriendsAsync(Connect.GetUnconnectedFriendsCallback callback, object state);

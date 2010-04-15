@@ -45,9 +45,6 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\lib\StructureMap2.6.1\StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -68,6 +65,7 @@
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -185,13 +183,13 @@
     <Compile Include="Rest\IPermissions.cs" />
     <Compile Include="Rest\IPhotos.cs" />
     <Compile Include="Rest\IProfile.cs" />
-    <Compile Include="Rest\IAuthorizedRestBase.cs" />
+    <Compile Include="Rest\IRestBase.cs" />
     <Compile Include="Rest\IStatus.cs" />
     <Compile Include="Rest\IStream.cs" />
     <Compile Include="Rest\IUsers.cs" />
     <Compile Include="Rest\IVideo.cs" />
     <Compile Include="Rest\Message.cs" />
-    <Compile Include="Rest\AuthorizedRestBase.cs" />
+    <Compile Include="Rest\RestBase.cs" />
     <Compile Include="Rest\Batch.cs" />
     <Compile Include="Rest\Connect.cs" />
     <Compile Include="Rest\Comments.cs" />
@@ -271,6 +269,7 @@
     <Content Include="Schema\generationInstructions.txt" />
     <Content Include="Schema\schemaChanges.txt" />
     <Content Include="Schema\sourceChanges.txt" />
+    <Content Include="Schema\Xsd2Code.exe" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />

@@ -15,6 +15,7 @@ namespace Facebook.Schema
 	using System.Collections.Generic;
     using System.Xml;
     using System.Xml.Linq;
+    using System.Runtime.Serialization;
 
 #pragma warning disable 1591 // Disable "Missing XML comment" warnings for all code in this file
 
@@ -1811,7 +1812,9 @@ namespace Facebook.Schema
 
 		private stream_attachmentMedia mediaField;
 
-		private string nameField;
+		private string comments_xidField;
+
+        private string nameField;
 
 		private string hrefField;
 
@@ -1858,6 +1861,17 @@ namespace Facebook.Schema
 				this.nameField = value;
 			}
 		}
+        public string comments_xid
+        {
+            get
+            {
+                return this.comments_xidField;
+            }
+            set
+            {
+                this.comments_xidField = value;
+            }
+        }
 
 		public string href
 		{
@@ -3458,7 +3472,8 @@ namespace Facebook.Schema
 			}
 		}
 
-		public long created
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public long created
 		{
 			get
 			{
@@ -3470,7 +3485,8 @@ namespace Facebook.Schema
 			}
 		}
 
-		public long modified
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public long modified
 		{
 			get
 			{
@@ -10548,11 +10564,11 @@ namespace Facebook.Schema
 
 		private string hs2_nameField;
 
-		private int grad_yearField;
+        private System.Nullable<int> grad_yearField;
 
-		private int hs1_idField;
+        private System.Nullable<int> hs1_idField;
 
-		private int hs2_idField;
+        private System.Nullable<int> hs2_idField;
 
 		public string hs1_name
 		{
@@ -10578,41 +10594,44 @@ namespace Facebook.Schema
 			}
 		}
 
-		public int grad_year
-		{
-			get
-			{
-				return this.grad_yearField;
-			}
-			set
-			{
-				this.grad_yearField = value;
-			}
-		}
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public System.Nullable<int> grad_year
+        {
+            get
+            {
+                return this.grad_yearField;
+            }
+            set
+            {
+                this.grad_yearField = value;
+            }
+        }
 
-		public int hs1_id
-		{
-			get
-			{
-				return this.hs1_idField;
-			}
-			set
-			{
-				this.hs1_idField = value;
-			}
-		}
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public System.Nullable<int> hs1_id
+        {
+            get
+            {
+                return this.hs1_idField;
+            }
+            set
+            {
+                this.hs1_idField = value;
+            }
+        }
 
-		public int hs2_id
-		{
-			get
-			{
-				return this.hs2_idField;
-			}
-			set
-			{
-				this.hs2_idField = value;
-			}
-		}
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public System.Nullable<int> hs2_id
+        {
+            get
+            {
+                return this.hs2_idField;
+            }
+            set
+            {
+                this.hs2_idField = value;
+            }
+        }
 	}
 
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
@@ -14195,13 +14214,14 @@ namespace Facebook.Schema
 
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://api.facebook.com/1.0/")]
+    [DataContract]
 	public partial class action_link
 	{
 
 		private string textField;
 
 		private string hrefField;
-
+        [DataMember]
 		public string text
 		{
 			get
@@ -14213,7 +14233,7 @@ namespace Facebook.Schema
 				this.textField = value;
 			}
 		}
-
+        [DataMember]
 		public string href
 		{
 			get

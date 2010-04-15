@@ -222,6 +222,278 @@ namespace Facebook.Schema {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
+    [System.Xml.Serialization.XmlRootAttribute("dashboard_clearGlobalNews_response", Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
+    public partial class container {
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
+    [System.Xml.Serialization.XmlRootAttribute("dashboard_getActivity_response", Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
+    public partial class dashboard_activity {
+        
+        private string imageField;
+        
+        private dashboard_activityActivity activityField;
+        
+        private long fbidField;
+        
+        private int timeField;
+        
+        public dashboard_activity() {
+            if ((this.activityField == null)) {
+                this.activityField = new dashboard_activityActivity();
+            }
+        }
+        
+        public string image {
+            get {
+                return this.imageField;
+            }
+            set {
+                this.imageField = value;
+            }
+        }
+        
+        public dashboard_activityActivity activity {
+            get {
+                return this.activityField;
+            }
+            set {
+                this.activityField = value;
+            }
+        }
+        
+        public long fbid {
+            get {
+                return this.fbidField;
+            }
+            set {
+                this.fbidField = value;
+            }
+        }
+        
+        public int time {
+            get {
+                return this.timeField;
+            }
+            set {
+                this.timeField = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://api.facebook.com/1.0/")]
+    public partial class dashboard_activityActivity {
+        
+        private List<dashboard_bundle> dashboard_bundleField;
+        
+        private bool listField;
+        
+        private bool listFieldSpecified;
+        
+        public dashboard_activityActivity() {
+            if ((this.dashboard_bundleField == null)) {
+                this.dashboard_bundleField = new List<dashboard_bundle>();
+            }
+        }
+        
+        [System.Xml.Serialization.XmlElementAttribute("dashboard_bundle")]
+        public List<dashboard_bundle> dashboard_bundle {
+            get {
+                return this.dashboard_bundleField;
+            }
+            set {
+                this.dashboard_bundleField = value;
+            }
+        }
+        
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool list {
+            get {
+                return this.listField;
+            }
+            set {
+                this.listField = value;
+            }
+        }
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool listSpecified {
+            get {
+                return this.listFieldSpecified;
+            }
+            set {
+                this.listFieldSpecified = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
+    public partial class dashboard_bundle {
+        
+        private string messageField;
+        
+        private action_link action_linkField;
+        
+        public dashboard_bundle() {
+            if ((this.action_linkField == null)) {
+                this.action_linkField = new action_link();
+            }
+        }
+        
+        public string message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        public action_link action_link {
+            get {
+                return this.action_linkField;
+            }
+            set {
+                this.action_linkField = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
+    public partial class action_link {
+        
+        private string textField;
+        
+        private string hrefField;
+        
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+        
+        public string href {
+            get {
+                return this.hrefField;
+            }
+            set {
+                this.hrefField = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
+    [System.Xml.Serialization.XmlRootAttribute("dashboard_getNews_response", Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
+    public partial class dashboard_news {
+        
+        private string imageField;
+        
+        private dashboard_newsNews newsField;
+        
+        private long fbidField;
+        
+        private int timeField;
+        
+        public dashboard_news() {
+            if ((this.newsField == null)) {
+                this.newsField = new dashboard_newsNews();
+            }
+        }
+        
+        public string image {
+            get {
+                return this.imageField;
+            }
+            set {
+                this.imageField = value;
+            }
+        }
+        
+        public dashboard_newsNews news {
+            get {
+                return this.newsField;
+            }
+            set {
+                this.newsField = value;
+            }
+        }
+        
+        public long fbid {
+            get {
+                return this.fbidField;
+            }
+            set {
+                this.fbidField = value;
+            }
+        }
+        
+        public int time {
+            get {
+                return this.timeField;
+            }
+            set {
+                this.timeField = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://api.facebook.com/1.0/")]
+    public partial class dashboard_newsNews {
+        
+        private List<dashboard_bundle> dashboard_bundleField;
+        
+        private bool listField;
+        
+        private bool listFieldSpecified;
+        
+        public dashboard_newsNews() {
+            if ((this.dashboard_bundleField == null)) {
+                this.dashboard_bundleField = new List<dashboard_bundle>();
+            }
+        }
+        
+        [System.Xml.Serialization.XmlElementAttribute("dashboard_bundle")]
+        public List<dashboard_bundle> dashboard_bundle {
+            get {
+                return this.dashboard_bundleField;
+            }
+            set {
+                this.dashboard_bundleField = value;
+            }
+        }
+        
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool list {
+            get {
+                return this.listField;
+            }
+            set {
+                this.listField = value;
+            }
+        }
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool listSpecified {
+            get {
+                return this.listFieldSpecified;
+            }
+            set {
+                this.listFieldSpecified = value;
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://api.facebook.com/1.0/")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
     public partial class events_get_response {
@@ -10478,12 +10750,6 @@ namespace Facebook.Schema {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
-    [System.Xml.Serialization.XmlRootAttribute("data_getObject_response", Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
-    public partial class container {
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://api.facebook.com/1.0/")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://api.facebook.com/1.0/", IsNullable=false)]
     public partial class data_getObjects_response {
@@ -11254,33 +11520,6 @@ namespace Facebook.Schema {
             }
             set {
                 this.listFieldSpecified = value;
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "2.8.2.29599")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://api.facebook.com/1.0/")]
-    public partial class action_link {
-        
-        private string textField;
-        
-        private string hrefField;
-        
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-        
-        public string href {
-            get {
-                return this.hrefField;
-            }
-            set {
-                this.hrefField = value;
             }
         }
     }

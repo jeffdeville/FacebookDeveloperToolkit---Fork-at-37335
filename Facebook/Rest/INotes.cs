@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface INotes : IAuthorizedRestBase
+	public interface INotes : IRestBase
 	{
 		long Create(long uid, string title, string content);
 		void CreateAsync(long uid, string title, string content, Notes.CreateCallback callback, object state);

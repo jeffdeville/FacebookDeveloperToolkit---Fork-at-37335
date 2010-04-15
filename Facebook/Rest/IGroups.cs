@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Facebook.Rest
 {
-	public interface IGroups : IAuthorizedRestBase
+	public interface IGroups : IRestBase
 	{
 		System.Collections.Generic.IList<Facebook.Schema.group> Get();
 		System.Collections.Generic.IList<Facebook.Schema.group> Get(System.Collections.Generic.List<long> gids);

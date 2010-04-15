@@ -3,7 +3,7 @@ using Facebook.Session;
 
 namespace Facebook.Rest
 {
-	public interface IFacebookApi : IAuthorizedRestBase
+	public interface IFacebookApi : IRestBase
 	{
 		IFacebookApi Initialize(IFacebookSession session);
 		IAdmin Admin { get; }

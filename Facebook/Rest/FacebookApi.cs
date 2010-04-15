@@ -10,7 +10,7 @@ namespace Facebook.Rest
     /// <summary>
     /// Provides various methods to utilize the Facebook Platform API.
     /// </summary>
-    public class Api : AuthorizedRestBase, IFacebookApi
+    public class Api : RestBase, IFacebookApi
     {
         #region Public Properties
 
@@ -216,7 +216,6 @@ namespace Facebook.Rest
                 session = HttpContext.Current.Items[FACEBOOK_SESSION] as IFacebookSession;
             else
                 session = CallContext.GetData(FACEBOOK_SESSION) as IFacebookSession;
-        	Initialize(session);
             //if (session == null)
             //    throw new ArgumentNullException("FacebookSession", "The facebook session must exist");
 		}
@@ -267,7 +266,7 @@ namespace Facebook.Rest
 			Batch.Permissions = Permissions;
 			Permissions.Batch = Batch;
 
-			foreach (IAuthorizedRestBase restBase in new IAuthorizedRestBase[] {Auth, Video, Marketplace, Admin, Photos, Users, Friends, Events,
+			foreach (IRestBase restBase in new IRestBase[] {Auth, Video, Marketplace, Admin, Photos, Users, Friends, Events,
 				Groups, Notifications, Profile, Fbml, Feed, Fql, LiveMessage, Message, Pages, Application, Data, Connect, Comments,
 				Stream, Status, Links, Notes})
 			{
